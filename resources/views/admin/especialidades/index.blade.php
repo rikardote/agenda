@@ -18,8 +18,8 @@
         
          
          <td>
-            <a href="{{ route('especialidades.edit', $especialidad->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
-            <a href="{{ route('admin.especialidades.destroy', $especialidad->id) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+            <a href="{{ route('especialidades.edit', $especialidad->id) }}" class="btn btn-warning"><span class="fa fa-pencil-square-o" aria-hidden="true"></span></a>
+            <a href="{{ route('admin.especialidades.destroy', $especialidad->id) }}" class="btn btn-danger"><span class="fa fa-trash" aria-hidden="true"></span></a>
          </td>
         </tr>
     @endforeach

@@ -17,16 +17,26 @@ class EspecialidadesController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {	
     	$especialidades = Especialidad::orderBy('name', 'DESC')->get();
     	return view('admin/especialidades/index')->with('especialidades', $especialidades);
     }
+
     public function create()
     {
-    	$especialidades = "";
-        return view('admin.especialidades.create')->with('especialidades', $especialidades);
+    	
+        return view('admin.especialidades.createorupdate');
     }
+
+    public function edit($id)
+    {
+        $especialidad = Especialidad::find($id);
+        
+        return view('admin.especialidades.createorupdate')->with('especialidad', $especialidad);
+    }
+
     public function store(EspecialidadesRequest $request)
     {
         $especialidad = new Especialidad($request->all());
@@ -35,6 +45,7 @@ class EspecialidadesController extends Controller
         Flash::success('Especialidad registrada con exito!');
         return redirect()->route('especialidades.index');
     }  
+    
     public function destroy($id)
     {
         $especialidad = Especialidad::find($id);

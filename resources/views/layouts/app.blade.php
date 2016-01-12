@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,20 +28,19 @@
 <body id="app-layout">
     @include('layouts.nav')
     <section>
-    <div class="container spark-screen">
-     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-primary">
-                <div class="panel-heading">@yield('title')</div>
-                <div class="panel-body">
-                    @include('flash::message')
-                    @yield('content')
+        <div class="container spark-screen">
+             <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">@yield('title')</div>
+                        <div class="panel-body">
+                            @include('flash::message')
+                            @yield('content')
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-       
     </section>
    
 
