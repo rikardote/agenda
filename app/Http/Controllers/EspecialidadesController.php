@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\EspecialidadesRequest;
+use App\Especialidad;
+use Laracasts\Flash\Flash;
 
 class EspecialidadesController extends Controller
 {
@@ -16,8 +18,9 @@ class EspecialidadesController extends Controller
         $this->middleware('auth');
     }
     public function index()
-    {
-    	return view('admin/especialidades/index');
+    {	
+    	$especialidades = Especialidad::orderBy('name', 'DESC')->get();
+    	return view('admin/especialidades/index')->with('especialidades', $especialidades);
     }
     public function create()
     {
@@ -26,10 +29,18 @@ class EspecialidadesController extends Controller
     }
     public function store(EspecialidadesRequest $request)
     {
-        $employe = new Employe($request->all());
-        $employe->save();
+        $especialidad = new Especialidad($request->all());
+        $especialidad->save();
 
-        Flash::success('Empleado registrado con exito!');
-        return redirect()->route('employees.index');
-    }   
+        Flash::success('Especialidad registrada con exito!');
+        return redirect()->route('especialidades.index');
+    }  
+    public function destroy($id)
+    {
+        $especialidad = Especialidad::find($id);
+        $especialidad->delete();
+
+        Flash::error('La especialidad ' . $especialidad->name . ' ha sido borrada con exito!');
+        return redirect()->route('especialidades.index');
+    } 
 }

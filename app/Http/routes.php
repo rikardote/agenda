@@ -36,4 +36,8 @@ Route::group(['middleware' => 'web'], function () {
    // Route::get('/home', 'HomeController@index');
     Route::resource('agenda', 'AgendaController');
     Route::resource('especialidades', 'EspecialidadesController');
+    Route::get('especialidades/{id}/destroy', [
+		'uses' => 'EspecialidadesController@destroy',
+		'as' => 'admin.especialidades.destroy'
+	]);
 });
