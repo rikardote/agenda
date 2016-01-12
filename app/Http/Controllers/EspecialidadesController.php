@@ -37,6 +37,16 @@ class EspecialidadesController extends Controller
         return view('admin.especialidades.createorupdate')->with('especialidad', $especialidad);
     }
 
+    public function update(Request $request, $id)
+    {
+        $especialidad = Especialidad::find($id);
+        $especialidad->fill($request->all());
+
+        $especialidad->save();
+        Flash::success('Especialidad editada con exito!');
+        return redirect()->route('especialidades.index');
+    }
+
     public function store(EspecialidadesRequest $request)
     {
         $especialidad = new Especialidad($request->all());
@@ -45,7 +55,7 @@ class EspecialidadesController extends Controller
         Flash::success('Especialidad registrada con exito!');
         return redirect()->route('especialidades.index');
     }  
-    
+
     public function destroy($id)
     {
         $especialidad = Especialidad::find($id);
