@@ -34,8 +34,10 @@ class AgendaController extends Controller
 
     public function show($slug)
     {
-        $medicos = Medico::findBySlug($slug);
-        dd($medicos);
+                
+        $especialidad = Especialidad::SearchEspecialidad($slug)->first();
+        $medicos = $especialidad->medicos()->get();
+        
         $medicos->each(function($medicos) {
             $medicos->especialidad;
             $medicos->horario;

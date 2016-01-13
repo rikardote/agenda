@@ -28,5 +28,9 @@ class Especialidad extends Model implements SluggableInterface
     {
         $this->attributes['name'] = strtoupper($value);
     }
+    public function scopeSearchEspecialidad($query, $slug)
+    {
+        return $query->where('slug', '=', $slug);
+    }
     
 }
