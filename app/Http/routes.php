@@ -62,12 +62,18 @@ Route::group(['middleware' => 'web'], function () {
     ]);
     // Rutas Citas //
     Route::resource('citas', 'CitasController');
-    Route::get('citas/{id}/consultar', [
-        'uses' => 'CitasController@consultar',
-        'as' => 'citas.consultar'
+    Route::get('citas/{id}', [
+        'uses' => 'CitasController@show',
+        'as' => 'citas.show'
     ]);
+    Route::get('citas/{id}/nueva_cita', [
+        'uses' => 'CitasController@nueva_cita',
+        'as' => 'citas.nueva_cita'
+    ]);
+
     Route::get('citas/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'admin.citas.destroy'
     ]);
+
 });
