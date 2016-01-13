@@ -52,4 +52,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HorariosController@destroy',
         'as' => 'admin.horarios.destroy'
     ]);
+    // Rutas Pacientes //
+    Route::resource('pacientes', 'PacientesController');
+    Route::get('pacientes/{id}/destroy', [
+        'uses' => 'PacientesController@destroy',
+        'as' => 'admin.pacientes.destroy'
+    ]);
 });
