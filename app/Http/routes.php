@@ -70,10 +70,13 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CitasController@nueva_cita',
         'as' => 'citas.nueva_cita'
     ]);
+   
 
     Route::get('citas/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'admin.citas.destroy'
     ]);
+
+
 
 });

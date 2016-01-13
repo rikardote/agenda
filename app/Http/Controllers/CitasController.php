@@ -12,7 +12,7 @@ use App\Http\Requests\CitasRequest;
 use App\Cita;
 use App\Especialidad;
 use App\Medico;
-use App\Pacientes;
+use App\Paciente;
 use Laracasts\Flash\Flash;
 
 class CitasController extends Controller
@@ -24,8 +24,9 @@ class CitasController extends Controller
 
 	public function show($slug){
 		$medico = Medico::findBySlug($slug);
-		$medico->especialidad;
-		return view('admin.citas.index')->with('medico', $medico);	
+	
+		$pacientes = Paciente::all()->lists('rfc', 'id')->toArray();
+		return view('admin.citas.index')->with('medico', $medico)->with('pacientes', $pacientes);	
 	}
 	public function nueva_cita($slug)
     {
@@ -82,6 +83,14 @@ class CitasController extends Controller
         Flash::error('El Medico ' . $medico->name . ' ha sido borrada con exito!');
         return redirect()->route('medicos.index');
     } 
+    public function search(Request $request) {
+
+        // Sets the parameters from the get request to the variables.
+        $rfc = $request->rfc;
+        
+        dd($rfc);
+                return $result;
+    }
 	
     
 }
