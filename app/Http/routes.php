@@ -33,8 +33,10 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::resource('agenda', 'AgendaController');
+    
    // Rutas Especialidades //
     Route::resource('especialidades', 'EspecialidadesController');
+    
     Route::get('especialidades/{id}/destroy', [
 		'uses' => 'EspecialidadesController@destroy',
 		'as' => 'admin.especialidades.destroy'
@@ -60,6 +62,10 @@ Route::group(['middleware' => 'web'], function () {
     ]);
     // Rutas Citas //
     Route::resource('citas', 'CitasController');
+    Route::get('citas/{id}/consultar', [
+        'uses' => 'CitasController@consultar',
+        'as' => 'citas.consultar'
+    ]);
     Route::get('citas/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'admin.citas.destroy'

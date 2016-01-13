@@ -4,8 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Medico extends Model
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
+
+
+class Medico extends Model implements SluggableInterface
 {
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from' => 'Fullname',
+        'save_to'    => 'slug',
+    ];
      protected $table = 'medicos';
 
      protected $fillable = ['num_empleado', 'nombres', 'apellido_pat', 'apellido_mat', 'cedula', 'especialidad_id', 'horario_id'];
@@ -30,6 +40,11 @@ class Medico extends Model
     public function setapellidomatAttribute($value)
     {
         $this->attributes['apellido_mat'] = strtoupper($value);
+    }
+  
+    public function getFullnameAttribute() {
+        return $this->apellido_pat . ' ' . $this->apellido_mat. ' ' . $this->nombres;
+    
     }
 }
 

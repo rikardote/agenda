@@ -4,11 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Paciente extends Model
-{
-     protected $table = 'pacientes';
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-     protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat'];
+class Paciente extends Model implements SluggableInterface
+{
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from' => 'Fullname',
+        'save_to'    => 'slug',
+    ];
+
+    protected $table = 'pacientes';
+    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat'];
 
     public function setnombresAttribute($value)
     {
@@ -25,5 +34,9 @@ class Paciente extends Model
     public function setrfcAttribute($value)
     {
         $this->attributes['rfc'] = strtoupper($value);
+    }
+    public function getFullnameAttribute() {
+        return $this->apellido_pat . ' ' . $this->apellido_mat. ' ' . $this->nombres;
+    
     }
 }

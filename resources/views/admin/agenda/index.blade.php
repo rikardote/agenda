@@ -1,8 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'Agenda Medica')
+@section('title', 'Agendas Medica')
 
 @section('content')
+
+	<table>
+
+		@foreach($especialidades as $especialidad)
+			<div class="col-md-4">
+  			<div class="panel panel-default">
+  				<div class="panel-body">
+						<a href="{{ route('agenda.show', $especialidad->slug) }}">
+							<h3 class="text-center">{{ $especialidad->name }}</h3>
+						</a>
+					</div>
+				</div>
+			</div>
+
+		@endforeach
 
 
 @endsection

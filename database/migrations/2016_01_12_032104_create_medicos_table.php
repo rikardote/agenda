@@ -19,6 +19,7 @@ class CreateMedicosTable extends Migration
             $table->string('apellido_pat', 60);
             $table->string('apellido_mat', 60);
             $table->string('cedula');
+            $table->string('slug')->nullable();
             $table->integer('especialidad_id')->unsigned();
             $table->integer('horario_id')->unsigned();
             

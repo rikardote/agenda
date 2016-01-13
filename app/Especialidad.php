@@ -2,10 +2,20 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Especialidad extends Model
+class Especialidad extends Model implements SluggableInterface
 {
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    ];
+
     protected $table = 'especialidades';
 
     protected $fillable = ['name'];
@@ -18,4 +28,5 @@ class Especialidad extends Model
     {
         $this->attributes['name'] = strtoupper($value);
     }
+    
 }
