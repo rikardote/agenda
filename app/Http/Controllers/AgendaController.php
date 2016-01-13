@@ -24,6 +24,6 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        return view('front/index');
+        return view('admin.agenda.index');
     }
 }

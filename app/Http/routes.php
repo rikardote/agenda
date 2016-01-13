@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -26,18 +22,34 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
 
 Route::group(['middleware' => 'web'], function () {
+    Route::get('/', [
+        'as' => 'admin.index',
+        'uses' => 'AgendaController@index'
+    ]);
+
     Route::auth();
 
-   // Route::get('/home', 'HomeController@index');
+
     Route::resource('agenda', 'AgendaController');
+   // Rutas Especialidades //
     Route::resource('especialidades', 'EspecialidadesController');
     Route::get('especialidades/{id}/destroy', [
 		'uses' => 'EspecialidadesController@destroy',
 		'as' => 'admin.especialidades.destroy'
 	]);
+    // Rutas Medicos //
+    Route::resource('medicos', 'MedicosController');
+    Route::get('medicos/{id}/destroy', [
+        'uses' => 'MedicosController@destroy',
+        'as' => 'admin.medicos.destroy'
+    ]);
+
+     // Rutas Horarios //
+    Route::resource('horarios', 'HorariosController');
+    Route::get('horarios/{id}/destroy', [
+        'uses' => 'HorariosController@destroy',
+        'as' => 'admin.horarios.destroy'
+    ]);
 });
