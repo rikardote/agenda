@@ -58,4 +58,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'PacientesController@destroy',
         'as' => 'admin.pacientes.destroy'
     ]);
+    // Rutas Citas //
+    Route::resource('citas', 'CitasController');
+    Route::get('citas/{id}/destroy', [
+        'uses' => 'CitasController@destroy',
+        'as' => 'admin.citas.destroy'
+    ]);
 });

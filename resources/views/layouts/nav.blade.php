@@ -20,7 +20,19 @@
                 <!-- Left Side Of Navbar -->
                 @if(Auth::user())
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/agenda') }}">Ver Agenda</a></li>
+                    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Agenda <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{route('pacientes.index')}}">Consultar Agenda</a></li>
+                                <li><a href="{{route('pacientes.create')}}">Asignar Cita</a></li>
+                                
+                                
+                            </ul>
+
+                      
+                        </li>
                      <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Medicos <span class="caret"></span>
