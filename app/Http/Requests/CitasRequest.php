@@ -13,7 +13,7 @@ class CitasRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class CitasRequest extends Request
     public function rules()
     {
         return [
-            //
+            'paciente_id' => 'required',
+            'medico_id' => 'required',
+            'fecha' => 'required',
+            'horario' => 'required',
+
         ];
     }
 }

@@ -28,6 +28,8 @@ class AgendaController extends Controller
     public function index()
     {
         $especialidades = Especialidad::orderBy('name', 'ASC')->get();
+        //$especialidad = $especialidades->name;
+       // dd($especialidad);
    
         return view('admin.agenda.index')->with('especialidades', $especialidades);
     }

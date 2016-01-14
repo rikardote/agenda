@@ -21,5 +21,5 @@
 </div>
 
 {{ Form::hidden('medico_id', $medico->id) }}
-{{ Form::hidden('paciente_id', $paciente->id) }}
+{{ Form::hidden('paciente_id', $cita->paciente->id) }}
 {{ Form::hidden('slug', $medico->slug) }}

@@ -29,6 +29,10 @@ class Medico extends Model implements SluggableInterface
     {
     	return $this->belongsTo('App\Horario');
     }
+    public function citas()
+    {
+        return $this->belongsTo('App\Cita');
+    }
     public function setnombresAttribute($value)
     {
         $this->attributes['nombres'] = strtoupper($value);

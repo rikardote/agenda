@@ -24,73 +24,71 @@ class CitasController extends Controller
 
 	public function show($slug){
 		$medico = Medico::findBySlug($slug);
-	
-		$pacientes = Paciente::all()->lists('rfc', 'id')->toArray();
-		return view('admin.citas.index')->with('medico', $medico)->with('pacientes', $pacientes);	
+        $citas = Cita::orderBy('id', 'DESC')->where('medico_id', '=' , $medico->id)->get();
+        $citas->each(function($citas) {
+            $citas->paciente;
+        });
+	         
+		return view('admin.citas.index')->with('medico', $medico)->with('citas', $citas);
+           
 	}
 	public function nueva_cita($slug)
     {
     	$medico = Medico::findBySlug($slug);
 		$medico->especialidad;
-       return view('admin.citas.createorupdate')->with('medico', $medico);
-        	
-    }
-	public function create($medico_id)
-    {
-    	
-        return view('admin.citas.createorupdate');
-        	
-    }
 
-
-    public function edit($id)
-    {
-        $medico = Medico::find($id);
-        $especialidades = Especialidad::all()->lists('name', 'id')->toArray();
-        $horarios = horario::all()->lists('name', 'id')->toArray();
-        return view('admin.medicos.createorupdate')
-            ->with('medico', $medico)
-            ->with('especialidades', $especialidades)
-            ->with('horarios', $horarios);
         
+       
+       return view('admin.citas.buscar_paciente')->with('medico', $medico);
+        	
+    }
+
+    public function edit($slug,$id)
+    {
+        $cita = Cita::find($id);
+        $cita->paciente;
+       
+        $medico = Medico::findBySlug($slug);
+        $medico->especialidad;
+       
+        return view('admin.citas.edit')->with('cita', $cita)->with('medico', $medico);
         
     }
 
     public function update(Request $request, $id)
     {
-        $medico = Medico::find($id);
-        $medico->fill($request->all());
+        $cita = Cita::find($id);
+        $cita->fill($request->all());
+        $cita->user_id = \Auth::user()->id;
 
-        $medico->save();
-        Flash::success('Medico editado con exito!');
-        return redirect()->route('medicos.index');
+        $cita->save();
+        Flash::success('Cita editada con exito!');
+        return redirect()->route('admin.citas.show', array('slug' => $request->slug));
+ 
     }
 
-    public function store(MedicosRequest $request)
+    public function store(CitasRequest $request)
     {
-        $medico = new Medico($request->all());
-        $medico->save();
+        $cita = new Cita($request->all());
 
-        Flash::success('Medico registrado con exito!');
-        return redirect()->route('medicos.index');
+        $cita->user_id = \Auth::user()->id;
+        $cita->save();
+        $slug = $request->slug;
+ 
+        Flash::success('Cita registrada con exito!');
+        return redirect()->route('admin.citas.show', array('slug' => $slug));
     }  
 
-    public function destroy($id)
+    public function destroy($slug, $id)
     {
-        $medico = Medico::find($id);
-        $medico->delete();
-
-        Flash::error('El Medico ' . $medico->name . ' ha sido borrada con exito!');
-        return redirect()->route('medicos.index');
-    } 
-    public function search(Request $request) {
-
-        // Sets the parameters from the get request to the variables.
-        $rfc = $request->rfc;
+        $cita = Cita::find($id);
         
-        dd($rfc);
-                return $result;
-    }
+        $cita->delete();
+       
+        Flash::error('La cita de ' . $cita->apellido_pat .' '. $cita->apellido_mat .' ha sido borrada con exito!');
+        return redirect()->route('admin.citas.show', array('slug' => $slug));
+    } 
+    
 	
     
 }
