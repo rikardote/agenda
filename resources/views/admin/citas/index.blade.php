@@ -7,6 +7,7 @@
 @if(isset($citas))
  <table class="table table-striped">
     <thead>
+        <th>Folio</th>
         <th>Fecha</th>
         <th>Paciente</th>
         <th>Horario</th>
@@ -16,7 +17,8 @@
     <tbody>
     @foreach($citas as $cita)
         <tr>
-         <td>{{ $cita->fecha }}</td>
+         <td>{{ $cita->id }}</td>
+         <td>{{ fecha_dmy($cita->fecha) }}</td>
  		 <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }}</td>
  		 <td>{{ $cita->horario }}</td>
         

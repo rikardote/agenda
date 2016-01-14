@@ -18,4 +18,8 @@ class Cita extends Model
     {
     	return $this->hasMany('App\Medico');
     }
+    public function getidAttribute($value)
+    {
+        return str_pad($value, 6, '0', STR_PAD_LEFT);
+    }
 }

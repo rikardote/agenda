@@ -6,7 +6,8 @@
 		
 		'class' => 'form-control',
 		'placeholder' => 'Selecciona la fecha', 
-		'required'
+		'required',
+		'id' => 'fecha_inicial'
 	]) !!}
 </div>
 <div class="form-group">

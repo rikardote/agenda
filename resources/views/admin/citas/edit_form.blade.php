@@ -2,11 +2,12 @@
 <div class="form-group">
 	{!! Form::label('fecha', 'Fecha') !!}
 	
-	{!! Form::text('fecha', null, [
+	{!! Form::text('fecha', fecha_dmy($cita->fecha), [
 		
 		'class' => 'form-control',
 		'placeholder' => 'Selecciona la fecha', 
-		'required'
+		'required',
+		'id' => 'fecha_inicial'
 	]) !!}
 </div>
 <div class="form-group">

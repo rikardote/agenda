@@ -7,7 +7,7 @@
 	<table>
 
 		@foreach($especialidades as $especialidad)
-			<div class="col-md-4">
+			<div class="col-md-6">
   			<div class="panel panel-default">
   				<div class="panel-body">
 						<a href="{{ route('agenda.show', $especialidad->slug) }}">

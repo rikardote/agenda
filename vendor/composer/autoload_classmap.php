@@ -24,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\HorariosController' => $baseDir . '/app/Http/Controllers/HorariosController.php',
     'App\\Http\\Controllers\\MedicosController' => $baseDir . '/app/Http/Controllers/MedicosController.php',
     'App\\Http\\Controllers\\PacientesController' => $baseDir . '/app/Http/Controllers/PacientesController.php',
+    'App\\Http\\Controllers\\SearchPacientesController' => $baseDir . '/app/Http/Controllers/SearchPacientesController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',

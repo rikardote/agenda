@@ -60,7 +60,7 @@ class CitasController extends Controller
         $cita = Cita::find($id);
         $cita->fill($request->all());
         $cita->user_id = \Auth::user()->id;
-
+        $cita->fecha = fecha_ymd($request->fecha);
         $cita->save();
         Flash::success('Cita editada con exito!');
         return redirect()->route('admin.citas.show', array('slug' => $request->slug));
@@ -72,6 +72,8 @@ class CitasController extends Controller
         $cita = new Cita($request->all());
 
         $cita->user_id = \Auth::user()->id;
+        $cita->fecha = fecha_ymd($request->fecha);
+
         $cita->save();
         $slug = $request->slug;
  
