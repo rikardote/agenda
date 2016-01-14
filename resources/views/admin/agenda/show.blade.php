@@ -4,18 +4,18 @@
 
 @section('content')
 
-			@foreach($medicos as $medico)
-			<div class="col-md-6">
-  			<div class="panel panel-default">
+<div class="row">
+	@foreach($medicos as $medico)
+		<div class="col-md-6" id="contenedor-mains">
+  			<div class="panel panel-default" id="contenedor-ma">
   				<div class="panel-body">
-						<a href="{{ route('citas.show', $medico->slug) }}">
-							<h3 class="text-center">Dr. {{ $medico->apellido_pat }} {{ $medico->apellido_mat }} {{ $medico->nombres }}</h3>
-						</a>
-					</div>
+					<a href="{{ route('citas.show', $medico->slug) }}">
+						<strong><h5 class="text-center">Dr. {{ $medico->apellido_pat }} {{ $medico->apellido_mat }} {{ $medico->nombres }}</h5></strong>
+					</a>
 				</div>
 			</div>
-
-		@endforeach
-
+		</div>
+	@endforeach
+</div>
 
 @endsection

@@ -27,7 +27,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $especialidades = Especialidad::orderBy('name', 'ASC')->get();
+        $especialidades = Especialidad::orderBy('name', 'ASC')->paginate(6);
         //$especialidad = $especialidades->name;
        // dd($especialidad);
    
