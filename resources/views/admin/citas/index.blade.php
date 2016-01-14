@@ -58,6 +58,7 @@
         changeMonth: true,
         changeYear: true,
         firstDay: 1,
+        beforeShowDay: highlightDays,
         onSelect: function () {
             var Path = window.location.pathname;
             window.open(Path + '?date=' + this.value, '_self',false);
