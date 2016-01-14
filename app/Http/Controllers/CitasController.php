@@ -23,13 +23,21 @@ class CitasController extends Controller
     }
 
 	public function show($slug){
+        if (isset($_GET["date"])) {
+            $date = $_GET["date"];
+        }else{
+
+            $date = date('d-m-Y');
+        }
+        $date = fecha_ymd($date);      
+        
 		$medico = Medico::findBySlug($slug);
-        $citas = Cita::orderBy('id', 'DESC')->where('medico_id', '=' , $medico->id)->get();
+        $citas = Cita::orderBy('id', 'DESC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
             $citas->paciente;
         });
 	         
-		return view('admin.citas.index')->with('medico', $medico)->with('citas', $citas);
+		return view('admin.citas.index')->with('medico', $medico)->with('citas', $citas)->with('date', $date);
            
 	}
 	public function nueva_cita($slug)

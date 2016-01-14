@@ -32,10 +32,7 @@ $('#fecha_inicial').datepicker({
     changeMonth: true,
     changeYear: true,
     firstDay: 1,
-    onSelect: function () {
-    	 var Path = document.URL;
-            window.open(Path + '?date=' + this.value, '_self',false);
-        }
+    
     
 });
 
