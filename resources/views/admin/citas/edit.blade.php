@@ -4,7 +4,7 @@
 
 @section('content')
 @if($cita)
-	Paciente: 
+	<strong>Paciente: </strong> 
 	<br>
 	<br>
 	{{ $cita->paciente->nombres }} {{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }}
