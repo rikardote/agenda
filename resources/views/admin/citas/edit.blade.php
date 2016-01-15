@@ -28,7 +28,7 @@
  <script>
 $.datepicker.setDefaults($.datepicker.regional['es-MX']);
 $('#fecha_inicial').datepicker({
-    dateFormat: 'dd/mm/yy',
+    dateFormat: 'dd-mm-yy',
     changeMonth: true,
     changeYear: true,
     firstDay: 1,

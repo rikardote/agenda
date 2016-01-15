@@ -12,7 +12,6 @@
 </div>
 
 
-
 @if(isset($citas))
 <div align="center">
   @if($citas->count() < 10)
@@ -63,10 +62,11 @@
  <script>
   $.datepicker.setDefaults($.datepicker.regional['es-MX']);
     $( "#datepicker" ).datepicker({
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'yy-mm-dd',
         changeMonth: true,
         changeYear: true,
         firstDay: 1,
+        defaultDate: '{{ $date }}',
 
         onSelect: function () {
             var Path = window.location.pathname;

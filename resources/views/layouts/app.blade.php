@@ -19,15 +19,6 @@
     
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
 </head>
 <body id="app-layout">
     @include('layouts.nav')
@@ -38,7 +29,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">@yield('title')</div>
                         <div class="panel-body">
-                            @include('flash::message')
+                            <div id="alert"> @include('flash::message')</div>
                             @include('layouts.errors')
                             @yield('content')
                         </div>
@@ -55,7 +46,9 @@
     <script src="{{ asset('plugins/datepicker/js/ui.datepicker-es-MX.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-
+    <script>
+        $('#alert').delay(2000).fadeOut(800)
+    </script>
     @yield('js')
     
 </body>

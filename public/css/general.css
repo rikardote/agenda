@@ -1,5 +1,10 @@
 body {
   background-color: #E9EAED; 
+  font-family: 'Lato';
+}
+       
+.fa-btn {
+  margin-right: 6px;
 }
 
 #contenedor-mains { 
