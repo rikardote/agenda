@@ -10,8 +10,15 @@ use App\Http\Controllers\Controller;
 use App\Paciente;
 use App\Medico;
 
+use Carbon\Carbon;
+
 class SearchPacientesController extends Controller
 {
+		public function __construct()
+	    {
+	        
+	        setlocale(LC_ALL,"es_MX.utf8");
+	    }
 	    public function index(Request $request, $slug, $date)
 		{
 		

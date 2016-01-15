@@ -15,11 +15,15 @@ use App\Medico;
 use App\Paciente;
 use Laracasts\Flash\Flash;
 
+use Carbon\Carbon;
+
+
 class CitasController extends Controller
 {
 	public function __construct()
     {
         $this->middleware('auth');
+        setlocale(LC_ALL,"es_MX.utf8");
     }
 
 	public function show($slug,$date){
@@ -27,8 +31,10 @@ class CitasController extends Controller
         if (isset($_GET["date"])) {
             $date = $_GET["date"];
         }
-        $date = fecha_ymd($date);      
-        
+        $date = fecha_ymd($date);  
+         
+        //$a = strftime("%A %d de %B del %Y");
+        //dd($a);
 		$medico = Medico::findBySlug($slug);
         $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
