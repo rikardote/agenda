@@ -4,7 +4,7 @@
 
 @section('content')
 
-Asignar cita para el {{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d %B %Y') }}
+Asignar cita para el {{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d de %B del %Y') }}
 {!! Form::open(['method'=>'GET','url'=>'citas/'.$medico->slug.'/'.$date.'/nueva_cita/paciente','role'=>'search'])  !!}
 
 <div class="input-group ">
