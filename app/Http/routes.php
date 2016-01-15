@@ -61,36 +61,41 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'admin.pacientes.destroy'
     ]);
     // Rutas Citas //
-    Route::resource('citas', 'CitasController');
-    Route::get('citas/{id}', [
+    //Route::resource('citas', 'CitasController');
+    Route::get('citas/{id}/{date}', [
         'uses' => 'CitasController@show',
         'as' => 'admin.citas.show'
     ]);
-    Route::get('citas/{slug}/{id}/update', [
+    Route::patch('citas/{slug}/{date}/{id}/update', [
         'uses' => 'CitasController@update',
         'as' => 'admin.citas.update'
     ]);
-       Route::get('citas/{slug}/{id}/edit', [
+       Route::get('citas/{slug}/{date}/{id}/edit', [
         'uses' => 'CitasController@edit',
         'as' => 'admin.citas.edit'
     ]);
-    Route::get('citas/{slug}/{id}/destroy', [
+    Route::get('citas/{slug}/{date}/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'admin.citas.destroy'
     ]);
-    Route::get('citas/{id}/nueva_cita', [
+    Route::get('citas/{id}/{date}/nueva_cita/', [
         'uses' => 'CitasController@nueva_cita',
         'as' => 'citas.nueva_cita'
     ]);
+     Route::post('citas/{slug}/{date}/nueva_cita/paciente', [
+        'uses' => 'CitasController@store',
+        'as' => 'admin.citas.store'
+    ]);
 
-   Route::post('citas/{id}/nueva_cita', [
+
+   /*Route::post('citas/{id}/{date}/nueva_cita/', [
         'uses' => 'SearchPacientesController@index',
         'as' => 'citas.search'
     ]);
-   
+   */
 
   //Route::resource('citas/{id}/nueva_cita/search', 'SearchPacientesController');
-    Route::get('citas/{slug}/nueva_cita/paciente', [
+    Route::get('citas/{slug}/{date}/nueva_cita/paciente', [
         'uses' => 'SearchPacientesController@index',
         'as' => 'pacientes.search'
     ]);

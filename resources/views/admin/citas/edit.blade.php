@@ -10,7 +10,7 @@
 	{{ $cita->paciente->nombres }} {{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }}
 	<br>
 	<br>
-	{!!  Form::model($cita, ['route' => ['citas.update', $cita->id], 'method' => 'PATCH']) !!}
+	{!!  Form::model($cita, ['route' => ['admin.citas.update', $medico->slug, $date, $cita->id], 'method' => 'PATCH']) !!}
 		@include('admin.citas.edit_form')
 		{!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
 	{!! Form::close() !!}

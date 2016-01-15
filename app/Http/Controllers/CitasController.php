@@ -22,17 +22,15 @@ class CitasController extends Controller
         $this->middleware('auth');
     }
 
-	public function show($slug){
+	public function show($slug,$date){
+        
         if (isset($_GET["date"])) {
             $date = $_GET["date"];
-        }else{
-
-            $date = date('d-m-Y');
         }
         $date = fecha_ymd($date);      
         
 		$medico = Medico::findBySlug($slug);
-        $citas = Cita::orderBy('id', 'DESC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
+        $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
             $citas->paciente;
         });
@@ -40,18 +38,17 @@ class CitasController extends Controller
 		return view('admin.citas.index')->with('medico', $medico)->with('citas', $citas)->with('date', $date);
            
 	}
-	public function nueva_cita($slug)
+	public function nueva_cita($slug, $date)
     {
     	$medico = Medico::findBySlug($slug);
 		$medico->especialidad;
 
-        
        
-       return view('admin.citas.buscar_paciente')->with('medico', $medico);
+       return view('admin.citas.buscar_paciente')->with('medico', $medico)->with('date', $date);
         	
     }
 
-    public function edit($slug,$id)
+    public function edit($slug,$date,$id)
     {
         $cita = Cita::find($id);
         $cita->paciente;
@@ -59,11 +56,11 @@ class CitasController extends Controller
         $medico = Medico::findBySlug($slug);
         $medico->especialidad;
        
-        return view('admin.citas.edit')->with('cita', $cita)->with('medico', $medico);
+        return view('admin.citas.edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date);
         
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug,$date,$id)
     {
         $cita = Cita::find($id);
         $cita->fill($request->all());
@@ -71,11 +68,11 @@ class CitasController extends Controller
         $cita->fecha = fecha_ymd($request->fecha);
         $cita->save();
         Flash::success('Cita editada con exito!');
-        return redirect()->route('admin.citas.show', array('slug' => $request->slug));
+        return redirect()->route('admin.citas.show', array('slug' => $request->slug, 'date' => $date));
  
     }
 
-    public function store(CitasRequest $request)
+    public function store(CitasRequest $request, $slug, $date)
     {
         $cita = new Cita($request->all());
 
@@ -86,17 +83,17 @@ class CitasController extends Controller
         $slug = $request->slug;
  
         Flash::success('Cita registrada con exito!');
-        return redirect()->route('admin.citas.show', array('slug' => $slug));
+        return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $request->date));
     }  
 
-    public function destroy($slug, $id)
+    public function destroy($slug, $date, $id)
     {
         $cita = Cita::find($id);
         
         $cita->delete();
        
-        Flash::error('La cita de ' . $cita->apellido_pat .' '. $cita->apellido_mat .' ha sido borrada con exito!');
-        return redirect()->route('admin.citas.show', array('slug' => $slug));
+        Flash::error('La cita ha sido borrada con exito!');
+        return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $date));
     } 
     
 	

@@ -12,8 +12,9 @@ use App\Medico;
 
 class SearchPacientesController extends Controller
 {
-	    public function index(Request $request, $slug)
+	    public function index(Request $request, $slug, $date)
 		{
+		
 	   	// Gets the query string from our form submission 
 	    $query = $request->rfc;
 	    // Returns an array of articles that have the query string located somewhere within 
@@ -21,7 +22,8 @@ class SearchPacientesController extends Controller
 	  	$paciente = Paciente::where('rfc', '=', $query)->first();
 	   	$medico = Medico::findBySlug($slug);
 		$medico->especialidad;
+
 		// returns a view and passes the view the list of articles and the original query.
-	    return view('admin.citas.create')->with('paciente', $paciente)->with('medico', $medico);
+	    return view('admin.citas.create')->with('paciente', $paciente)->with('medico', $medico)->with('date', $date);
 	 }
 }

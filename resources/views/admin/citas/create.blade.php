@@ -7,10 +7,11 @@
 	<strong>Paciente: </strong>
 	<br>
 	<br>
+
 	{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }}
 	<br>
 	<br>
-	{!! Form::open(['route' => 'citas.store', 'method' => 'POST', 'class' => 'datepickerform']) !!}
+	{!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 		@include('admin.citas.form')
 		{!! Form::submit('Registrar', ['class' => 'btn btn-primary']) !!}
 	{!! Form::close() !!}
@@ -28,7 +29,7 @@
  <script>
 $.datepicker.setDefaults($.datepicker.regional['es-MX']);
 $('#fecha_inicial').datepicker({
-    dateFormat: 'dd/mm/yy',
+    dateFormat: 'dd-mm-yy',
     changeMonth: true,
     changeYear: true,
     firstDay: 1,

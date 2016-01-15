@@ -1,3 +1,7 @@
+body {
+  background-color: #E9EAED; 
+}
+
 #contenedor-mains { 
 	
 width: 287px;
@@ -46,4 +50,23 @@ a:link {
      margin: 0 auto;
      text-align: left;
 }
+
+.blink {
+color: red;
+  animation: blink 1s steps(5, start) infinite;
+  -webkit-animation: blink 1s steps(5, start) infinite;
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+
+
 

@@ -45,7 +45,8 @@ class AgendaController extends Controller
             $medicos->horario;
             
         });
+        $date = date('Y-m-d');
 
-        return view('admin.agenda.show')->with('medicos', $medicos);
+        return view('admin.agenda.show')->with('medicos', $medicos)->with('date', $date);
     }
 }

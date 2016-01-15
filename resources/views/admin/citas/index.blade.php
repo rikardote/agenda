@@ -5,15 +5,24 @@
 @section('content')
 <div class="col-md-4">
     
-    <div id="datepicker"></div>
+    <div id="datepicker" id="depart"></div>
+
+    
     
 </div>
-<div align="center">
-    <a href="{{ route('citas.nueva_cita', $medico->slug) }}" class="fa fa-pencil fa-2x"></a> <h4> Citas del dia: {{ fecha_dmy($date) }}</h4>
-</div>
+
 
 
 @if(isset($citas))
+<div align="center">
+  @if($citas->count() < 10)
+        <a href="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="fa fa-pencil fa-2x"></a> <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
+  @else
+  <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
+  <br>
+    <b><span class="blink">No se pueden programar mas Citas para esta fecha.</span></b>
+  @endif
+</div>
 <div class="col-md-8">
  <table class="table table-striped">
     <thead>
@@ -34,8 +43,8 @@
         
          
          <td>
-            <a href="{{ route('admin.citas.edit', [$medico->slug, $cita->id]) }}" ><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span></a>
-            <a href="{{ route('admin.citas.destroy', [$medico->slug, $cita->id]) }}" ><span class="fa fa-trash fa-2x" aria-hidden="true"></span></a>
+            <a href="{{ route('admin.citas.edit', [$medico->slug, $date, $cita->id]) }}" ><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span></a>
+            <a href="{{ route('admin.citas.destroy', [$medico->slug, $date, $cita->id]) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span class="fa fa-trash fa-2x" aria-hidden="true"></span></a>
          </td>
         </tr>
     @endforeach
@@ -58,13 +67,13 @@
         changeMonth: true,
         changeYear: true,
         firstDay: 1,
-        beforeShowDay: highlightDays,
+
         onSelect: function () {
             var Path = window.location.pathname;
             window.open(Path + '?date=' + this.value, '_self',false);
         }
   });
-
-  </script
+    
+  </script>
 
 @endsection

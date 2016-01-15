@@ -39,6 +39,7 @@
                         <div class="panel-heading">@yield('title')</div>
                         <div class="panel-body">
                             @include('flash::message')
+                            @include('layouts.errors')
                             @yield('content')
                         </div>
                     </div>
