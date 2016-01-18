@@ -38,8 +38,6 @@ class CreateMedicosTable extends Migration
      */
     public function down()
     {
-        Schema::table('medicos', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('medicos');
     }
 }

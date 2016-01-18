@@ -14,12 +14,15 @@ class CreatePacientesTable extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('rfc', 13)->unique();
+            $table->string('rfc', 13);
             $table->string('nombres', 60);
             $table->string('apellido_pat', 60);
             $table->string('apellido_mat', 60);
             $table->string('slug')->nullable();
+            $table->integer('tipo_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('tipo_id')->references('id')->on('tipos');
         });
     }
 
@@ -30,8 +33,6 @@ class CreatePacientesTable extends Migration
      */
     public function down()
     {
-        Schema::table('pacientes', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('pacientes');
     }
 }

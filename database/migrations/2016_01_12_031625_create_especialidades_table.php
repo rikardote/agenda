@@ -27,8 +27,8 @@ class CreateEspecialidadesTable extends Migration
      */
     public function down()
     {
-        Schema::table('especialidades', function (Blueprint $table) {
-            //
-        });
+        
+     Schema::drop('especialidades');
+      
     }
 }
