@@ -17,7 +17,17 @@
 	{!! Form::close() !!}
 @else
 	No se encontraron datos con ese RFC
+ <hr>
+ <br>
+ <a data-url="{{ route('admin.pacientes.create', [$medico->slug , $date]) }}" class="load-form-modal fa fa-pencil fa-2x" data-toggle ="modal" data-target='#form-modal'>
+	Dar de alta a este paciente?
+ </a> 
+
 @endif
+
+@include('admin.partials.form-modal', ['title'=>'Form Modal'])
+@include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
+
 @endsection
 
 @section('js')

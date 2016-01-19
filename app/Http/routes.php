@@ -99,6 +99,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'SearchPacientesController@index',
         'as' => 'pacientes.search'
     ]);
+     Route::get('citas/{slug}/{date}/nueva_cita/paciente/nuevo_paciente', [
+        'uses' => 'SearchPacientesController@NuevoPaciente',
+        'as' => 'admin.pacientes.create'
+    ]);
     
 
 });

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Paciente;
 use App\Medico;
-
+use App\Tipo;
 use Carbon\Carbon;
 
 class SearchPacientesController extends Controller
@@ -22,15 +22,22 @@ class SearchPacientesController extends Controller
 	    public function index(Request $request, $slug, $date)
 		{
 		
-	   	// Gets the query string from our form submission 
-	    $query = $request->rfc;
-	    // Returns an array of articles that have the query string located somewhere within 
-	    // our articles titles. Paginates them so we can break up lots of search results.
-	  	$paciente = Paciente::where('rfc', '=', $query)->first();
-	   	$medico = Medico::findBySlug($slug);
-		$medico->especialidad;
+		   	// Gets the query string from our form submission 
+		    $query = $request->rfc;
+		    // Returns an array of articles that have the query string located somewhere within 
+		    // our articles titles. Paginates them so we can break up lots of search results.
+		  	$paciente = Paciente::where('rfc', '=', $query)->first();
+		   	$medico = Medico::findBySlug($slug);
+			$medico->especialidad;
 
-		// returns a view and passes the view the list of articles and the original query.
-	    return view('admin.citas.create')->with('paciente', $paciente)->with('medico', $medico)->with('date', $date);
+			// returns a view and passes the view the list of articles and the original query.
+		    return view('admin.citas.create')->with('paciente', $paciente)->with('medico', $medico)->with('date', $date);
+	 }
+	 public function NuevoPaciente(){
+	 	$tipos = Tipo::all()->lists('tipo', 'id')->toArray();
+        asort($tipos);
+       $rfc = $_GET["rfc"];
+        
+	 	return view('admin.pacientes.form_nuevo')->with('tipos', $tipos)->with('rfc',$rfc);
 	 }
 }
