@@ -28,6 +28,7 @@ class PacientesRequest extends Request
             'nombres' => 'min:4|max:20|required',
             'apellido_pat' => 'min:4|max:20|required',
             'apellido_mat' => 'min:4|max:20|required',
+            'tipo_id' => 'required',
         ];
     }
 }

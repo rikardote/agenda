@@ -45,6 +45,7 @@
     <script src="{{ asset('plugins/datepicker/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('plugins/datepicker/js/ui.datepicker-es-MX.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script>
         $('#alert').delay(2000).fadeOut(800)

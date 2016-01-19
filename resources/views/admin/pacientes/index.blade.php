@@ -14,7 +14,7 @@
     <tbody>
     @foreach($pacientes as $paciente)
         <tr>
-         <td>{{ $paciente->rfc }}</td>
+        <td>{{ $paciente->rfc }} / {{$paciente->tipo->tipo}}</td>
          <td>{{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} {{ $paciente->nombres }}</td>
         
          

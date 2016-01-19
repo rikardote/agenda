@@ -17,7 +17,7 @@ class Paciente extends Model implements SluggableInterface
     ];
 
     protected $table = 'pacientes';
-    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat'];
+    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id'];
 
     public function setnombresAttribute($value)
     {
@@ -43,4 +43,9 @@ class Paciente extends Model implements SluggableInterface
     {
         return $this->hasMany('App\Cita');
     }
+   public function tipo()
+    {
+        return $this->belongsTo('App\Tipo');
+    }
+  
 }

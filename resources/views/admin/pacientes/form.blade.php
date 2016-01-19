@@ -7,8 +7,14 @@
 		'placeholder' => 'Ingresar RFC', 
 		'required'
 	]) !!}
-</div>
-<div class="form-group">
+
+	{!! Form::label('tipo', 'Tipo') !!}
+	{!! Form::select('tipo_id', $tipos, null, [
+		'class' => 'form-control',
+		'placeholder' => 'Selecciona un tipo', 
+		'required'
+	]) !!}
+
 	{!! Form::label('nombres', 'Nombres') !!}
 	
 	{!! Form::text('nombres', null, [
@@ -17,8 +23,7 @@
 		'placeholder' => 'Nombres', 
 		'required'
 	]) !!}
-</div>
-<div class="form-group">
+
 	{!! Form::label('apellido_pat', 'Apellido Paterno') !!}
 	
 	{!! Form::text('apellido_pat', null, [
@@ -27,8 +32,7 @@
 		'placeholder' => 'Apellido Paterno', 
 		'required'
 	]) !!}
-</div>
-<div class="form-group">
+
 	{!! Form::label('apellido_mat', 'Apellido Materno') !!}
 	
 	{!! Form::text('apellido_mat', null, [
@@ -37,4 +41,5 @@
 		'placeholder' => 'Apellido Materno', 
 		'required'
 	]) !!}
-</div>
+</div>	
+	

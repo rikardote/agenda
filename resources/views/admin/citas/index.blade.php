@@ -4,18 +4,14 @@
 
 @section('content')
 <div class="col-md-4">
-    
     <div id="datepicker" id="depart"></div>
-
-    
-    
 </div>
-
 
 @if(isset($citas))
 <div align="center">
   @if($citas->count() < 10)
-        <a href="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="fa fa-pencil fa-2x"></a> <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
+      <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal fa fa-pencil fa-2x" data-toggle ="modal" data-target='#form-modal'></a> 
+      <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
   @else
   <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
   <br>
@@ -53,6 +49,8 @@
    @endif
    
 </table>
+    @include('admin.partials.form-modal', ['title'=>'Form Modal'])
+    @include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
 
 </div>
 
@@ -75,5 +73,7 @@
   });
     
   </script>
+
+
 
 @endsection

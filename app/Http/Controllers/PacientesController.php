@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PacientesRequest;
 use App\Paciente;
+use App\Tipo;
 use Laracasts\Flash\Flash;
 
 class PacientesController extends Controller
@@ -20,20 +21,27 @@ class PacientesController extends Controller
     public function index()
     {	
     	$pacientes = Paciente::orderBy('rfc', 'ASC')->get();
+        $pacientes->each(function($pacientes) {
+            $pacientes->tipo;
+        });
+        
     	return view('admin/pacientes/index')->with('pacientes', $pacientes);
     }
 
     public function create()
     {
-    	
-        return view('admin.pacientes.createorupdate');
+        $tipos = Tipo::all()->lists('tipo', 'id')->toArray();
+        asort($tipos);
+    
+        return view('admin.pacientes.createorupdate')->with('tipos', $tipos);
     }
 
     public function edit($id)
     {
         $paciente = Paciente::find($id);
+        $tipos = Tipo::all()->lists('tipo', 'id')->toArray();
         
-        return view('admin.pacientes.createorupdate')->with('paciente', $paciente);
+        return view('admin.pacientes.createorupdate')->with('paciente', $paciente)->with('tipos', $tipos);;
     }
 
     public function update(Request $request, $id)
