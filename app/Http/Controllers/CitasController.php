@@ -80,18 +80,19 @@ class CitasController extends Controller
 
     public function store(CitasRequest $request, $slug, $date)
     {
+
         $cita = new Cita($request->all());
 
         $cita->user_id = \Auth::user()->id;
         $cita->fecha = fecha_ymd($request->fecha);
 
         $cita->save();
-        $slug = $request->slug;
+      
  
         Flash::success('Cita registrada con exito!');
         return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $request->date));
     }  
-
+ 
     public function destroy($slug, $date, $id)
     {
         $cita = Cita::find($id);

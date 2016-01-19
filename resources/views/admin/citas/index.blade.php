@@ -39,7 +39,13 @@
          
          <td>
             <a href="{{ route('admin.citas.edit', [$medico->slug, $date, $cita->id]) }}" ><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span></a>
-            <a href="{{ route('admin.citas.destroy', [$medico->slug, $date, $cita->id]) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span class="fa fa-trash fa-2x" aria-hidden="true"></span></a>
+   
+            <a 
+            class="load-confirmation-modal"
+            data-url="{{ route('admin.citas.destroy', [$medico->slug , $date, $cita->id]) }}" 
+            data-toggle ="modal" data-target='#confirmation-modal'><span class="fa fa-trash fa-2x" aria-hidden="true"></span>
+            </a> 
+
          </td>
         </tr>
     @endforeach

@@ -15,6 +15,7 @@ var Modal = {
     },
     initConfirmationModal: function() {
         $(document).on('click', '.load-confirmation-modal', function(event){
+             console.log('Modal: '+ $(this).attr('data-url'));
             $('#confirmation-modal form').attr('action', $(this).attr('data-url'));
             event.preventDefault();
         });

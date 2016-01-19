@@ -82,19 +82,13 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CitasController@nueva_cita',
         'as' => 'citas.nueva_cita'
     ]);
-     Route::post('citas/{slug}/{date}/nueva_cita/paciente', [
+    Route::post('citas/{slug}/{date}/nueva_cita/paciente', [
         'uses' => 'CitasController@store',
         'as' => 'admin.citas.store'
     ]);
 
 
-   /*Route::post('citas/{id}/{date}/nueva_cita/', [
-        'uses' => 'SearchPacientesController@index',
-        'as' => 'citas.search'
-    ]);
-   */
 
-  //Route::resource('citas/{id}/nueva_cita/search', 'SearchPacientesController');
     Route::get('citas/{slug}/{date}/nueva_cita/paciente', [
         'uses' => 'SearchPacientesController@index',
         'as' => 'pacientes.search'

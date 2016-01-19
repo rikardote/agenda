@@ -3,11 +3,12 @@
 @section('title', 'Dr. ' . $medico->apellido_pat . ' ' . $medico->apellido_mat . ' ' . $medico->nombres . ' / ' . $medico->especialidad->name)
 
 @section('content')
-<strong>Pacientes: </strong>
-	<br>
-	<br>
-@if($pacientes->count() == 1)
+@if($pacientes->count() > 1)
 
+
+	<strong>Pacientes: </strong>
+	<br>
+	<br>
 	@foreach($pacientes as $paciente)
 		{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }}
 		<br>
@@ -19,23 +20,9 @@
 	@endforeach
 	
 @else
-@foreach($pacientes as $paciente)
- <a type="button" data-toggle="collapse" data-target="#{{$paciente->tipo->tipo}}">
- 	<ul>
- 		<li>
- 			{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->tipo }}	
- 		</li>
- 	</ul>
- </a>
-  <div id="{{$paciente->tipo->tipo}}" class="collapse">
-
-   {!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
-			@include('admin.citas.form')
-			{!! Form::submit('Registrar', ['class' => 'btn btn-primary']) !!}
-		{!! Form::close() !!}
-  </div>
-
-@endforeach
+	{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }}
+		<br>
+		<br>
  <hr>
  <br>
 
