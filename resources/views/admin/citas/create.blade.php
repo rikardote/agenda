@@ -19,8 +19,10 @@
 	No se encontraron datos con ese RFC
  <hr>
  <br>
- <a data-url="{{ route('admin.pacientes.create', [$medico->slug , $date]) }}" class="load-form-modal fa fa-pencil fa-2x" data-toggle ="modal" data-target='#form-modal'>
-	Dar de alta a este paciente?
+
+
+ <a data-url="{{ route('admin.pacientes.create', [$medico->slug , $date, $_GET['rfc']]) }}" class="load-form-modal fa fa-pencil fa-2x" data-toggle ="modal" data-target='#form-modal'>
+	Dar de alta al paciente con RFC: {{$_GET['rfc']}}?
  </a> 
 
 @endif

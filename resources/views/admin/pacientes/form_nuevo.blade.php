@@ -1,3 +1,4 @@
+{!! Form::open(['route' => ['admin.pacientes.store', $slug, $date], 'method' => 'POST']) !!}
 <div class="form-group">
 	{!! Form::label('rfc', 'RFC') !!}
 	
@@ -42,4 +43,8 @@
 		'required'
 	]) !!}
 </div>	
-	
+<div align="right">
+	{!! Form::submit('Agregar', ['class' => 'btn btn-success']) !!}
+
+</div>	
+{!!Form::close()!!}

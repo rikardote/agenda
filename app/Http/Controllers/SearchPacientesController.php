@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\PacientesRequest;
 use App\Paciente;
 use App\Medico;
 use App\Tipo;
 use Carbon\Carbon;
+use Laracasts\Flash\Flash;
 
 class SearchPacientesController extends Controller
 {
@@ -33,11 +34,22 @@ class SearchPacientesController extends Controller
 			// returns a view and passes the view the list of articles and the original query.
 		    return view('admin.citas.create')->with('paciente', $paciente)->with('medico', $medico)->with('date', $date);
 	 }
-	 public function NuevoPaciente(){
+	 public function NuevoPaciente($slug, $date, $rfc){
 	 	$tipos = Tipo::all()->lists('tipo', 'id')->toArray();
         asort($tipos);
-       $rfc = $_GET["rfc"];
-        
-	 	return view('admin.pacientes.form_nuevo')->with('tipos', $tipos)->with('rfc',$rfc);
+      // $rfc = $_GET["rfc"];
+       
+	 	return view('admin.pacientes.form_nuevo')->with('tipos', $tipos)->with('slug',$slug)->with('date',$date)->with('rfc',$rfc);
 	 }
+	 public function StorePaciente(PacientesRequest $request, $slug, $date)
+    {
+        $paciente = new Paciente($request->all());
+        $paciente->save();
+        
+        $medico = Medico::findBySlug($slug);
+		$medico->especialidad;
+
+        Flash::success('Paciente registrado con exito!');
+     	return view('admin.citas.create')->with('paciente', $paciente)->with('medico', $medico)->with('date', $date);
+    }  
 }
