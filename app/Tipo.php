@@ -14,7 +14,7 @@ class Tipo extends Model
     {
     	return $this->hasMany('App\Paciente');
     }
-    public function setTipoAttribute($value) 
+    public function settipoAttribute($value) 
     {
      return $this->tipo . ' - ' . $this->descripcion;
     }

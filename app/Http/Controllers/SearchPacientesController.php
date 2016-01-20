@@ -44,13 +44,20 @@ class SearchPacientesController extends Controller
 	 }
 	 public function StorePaciente(PacientesRequest $request, $slug, $date)
     {
-        $paciente = new Paciente($request->all());
-        $paciente->save();
-        
-        $medico = Medico::findBySlug($slug);
-		$medico->especialidad;
+        $pacientes = new Paciente($request->all());
+        $pacientes->save();
+
+       	$pacientes = Paciente::where('rfc', '=', $request->rfc)->get();
+		$pacientes->each(function($pacientes) {
+          	$pacientes->tipo;
+      	});
+
+	   $medico = Medico::findBySlug($slug);
+			$medico->especialidad;
+
 
         Flash::success('Paciente registrado con exito!');
-     	return view('admin.citas.create')->with('paciente', $paciente)->with('medico', $medico)->with('date', $date);
+        return view('admin.citas.create')->with('pacientes', $pacientes)->with('medico', $medico)->with('date', $date)->with('rfc', $request->rfc);
+     	//return view('admin.citas.create')->with('rfc', $request-rfc)->with('medico', $medico)->with('date', $date);
     }  
 }

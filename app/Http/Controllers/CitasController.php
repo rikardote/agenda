@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CitasRequest;
-
+use Vsmoraes\Pdf\Pdf;
 use App\Cita;
 use App\Especialidad;
 use App\Medico;
@@ -20,10 +20,12 @@ use Carbon\Carbon;
 
 class CitasController extends Controller
 {
-	public function __construct()
+	private $pdf;
+	public function __construct(Pdf $pdf)
     {
         $this->middleware('auth');
         setlocale(LC_ALL,"es_MX.utf8");
+        $this->pdf = $pdf;
     }
 
 	public function show($slug,$date){
@@ -32,9 +34,7 @@ class CitasController extends Controller
             $date = $_GET["date"];
         }
         $date = fecha_ymd($date);  
-         
-        //$a = strftime("%A %d de %B del %Y");
-        //dd($a);
+
 		$medico = Medico::findBySlug($slug);
         $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
@@ -42,15 +42,21 @@ class CitasController extends Controller
         });
 	         
 		return view('admin.citas.index')->with('medico', $medico)->with('citas', $citas)->with('date', $date);
-           
+       /* 
+        $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
+
+        return $this->pdf
+            ->load($html)
+            ->download();   
+       */
 	}
+
 	public function nueva_cita($slug, $date)
     {
     	$medico = Medico::findBySlug($slug);
 		$medico->especialidad;
 
-       
-       return view('admin.citas.buscar_paciente')->with('medico', $medico)->with('date', $date);
+        return view('admin.citas.buscar_paciente')->with('medico', $medico)->with('date', $date);
         	
     }
 
@@ -85,10 +91,8 @@ class CitasController extends Controller
 
         $cita->user_id = \Auth::user()->id;
         $cita->fecha = fecha_ymd($request->fecha);
-
         $cita->save();
-      
- 
+
         Flash::success('Cita registrada con exito!');
         return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $request->date));
     }  
@@ -96,7 +100,7 @@ class CitasController extends Controller
     public function destroy($slug, $date, $id)
     {
         $cita = Cita::find($id);
-        
+
         $cita->delete();
        
         Flash::error('La cita ha sido borrada con exito!');

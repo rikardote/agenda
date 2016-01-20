@@ -15,9 +15,12 @@ class AgendaController extends Controller
      *
      * @return void
      */
+    
+
     public function __construct()
     {
         $this->middleware('auth');
+        
     }
 
     /**
@@ -32,6 +35,7 @@ class AgendaController extends Controller
        // dd($especialidad);
    
         return view('admin.agenda.index')->with('especialidades', $especialidades);
+
     }
 
     public function show($slug)

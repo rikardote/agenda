@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/jquery-bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
-    
+     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
     
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 

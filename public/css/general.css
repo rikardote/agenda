@@ -72,6 +72,34 @@ color: red;
   }
 }
 
+.modal-content {
+  background-color: #0480be;
+  color: navy;
+}
+.modal-body {
+  background-color: #fff;
+
+}
+.panelColor{
+  color: white;
+}
+.panelColorGreen{
+  color: blue;
+}
+.panelColorRed{
+  color: red;
+}
+
+
+
+#card-div{
+  text-align: center;
+  
+  margin: 16px;
+  height: 50px;
+  
+
+}
 
 
 
