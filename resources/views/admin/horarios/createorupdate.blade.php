@@ -6,7 +6,7 @@
 	{!! Form::open(['route' => 'horarios.store', 'method' => 'POST']) !!}
 @endif
       @include('admin.horarios.form')
-
+<div align="right">
      {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
-  
+</div>  
     {!! Form::close() !!}

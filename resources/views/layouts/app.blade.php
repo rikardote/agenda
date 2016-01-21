@@ -39,7 +39,11 @@
         </div>
     </section>
    
-
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted"> &copy;  {{date('Y')}} ISSSTE BAJA CALIFORNIA Por: Ricardo Fuentes</p>
+  </div>
+</footer>
     <!-- JavaScripts -->
     <script src="{{ asset('plugins/jquery/js/jquery.js') }}"></script>
     <script src="{{ asset('plugins/datepicker/js/jquery-ui.js') }}"></script>

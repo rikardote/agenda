@@ -7,7 +7,8 @@
 	{!! Form::open(['route' => 'especialidades.store', 'method' => 'POST']) !!}
 @endif
       @include('admin.especialidades.form')
+  <div align="right">
     {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
-  
+  </div>
     {!! Form::close() !!}
 

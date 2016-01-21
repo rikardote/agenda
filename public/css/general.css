@@ -1,6 +1,11 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
-  background-color: #E9EAED; 
+  background-color: #F1F1F1; 
   font-family: 'Lato';
+  margin-bottom: 60px;
 }
        
 .fa-btn {
@@ -10,6 +15,16 @@ body {
 a:link {
     text-decoration: none;
 }
+
+footer { 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 20px;
+  background-color: #E9EAED;
+  text-align: center;
+ }
 
 
 .blink {
@@ -55,6 +70,11 @@ color: red;
   height: 50px;
   
 
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #D9EDF7;
 }
 
 

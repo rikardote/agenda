@@ -7,8 +7,8 @@
 	{!! Form::open(['route' => 'medicos.store', 'method' => 'POST']) !!}
 @endif
       @include('admin.medicos.form')
-
+<div align="right">
      {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
-  
+ </div>
     {!! Form::close() !!}
 

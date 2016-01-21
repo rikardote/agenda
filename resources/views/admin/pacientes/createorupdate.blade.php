@@ -6,8 +6,9 @@
 			{!! Form::open(['route' => 'pacientes.store', 'method' => 'POST']) !!}
 		@endif
 		      @include('admin.pacientes.form')
+<div align="right">
 
 		     {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
-
+</div>
 		    {!! Form::close() !!}
 
