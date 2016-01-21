@@ -1,8 +1,3 @@
-@extends('layouts.app')
-
-@section('title', 'Agregar Nuevo Horario')
-
-@section('content')
 @if(isset($horario))
 	<?php $estado = 'Actualizar';  ?>
 	{!! Form::model($horario, ['route' => ['horarios.update', $horario->id], 'method' => 'PATCH']) !!}
@@ -12,8 +7,6 @@
 @endif
       @include('admin.horarios.form')
 
-     {!! Form::submit($estado, ['class' => 'btn btn-primary']) !!}
+     {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
   
     {!! Form::close() !!}
-
-@endsection

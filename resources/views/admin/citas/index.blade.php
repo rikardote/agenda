@@ -56,7 +56,7 @@
   No hay citas asignadas
 @endif
  
-        @include('admin.partials.form-modal', ['title'=>'Form Modal'])
+        @include('admin.partials.form-modal', ['title'=>'Cita para el dia: '.fecha_dmy($date)])
         @include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
 
     </div>

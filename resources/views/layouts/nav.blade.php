@@ -25,10 +25,8 @@
                                 Agenda <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{route('pacientes.index')}}">Consultar Agenda</a></li>
-                                <li><a href="{{route('pacientes.create')}}">Asignar Cita</a></li>
-                                
-                                
+                                <li><a href="{{route('agenda.index')}}">Consultar Agenda</a></li>
+
                             </ul>
 
                       
@@ -51,9 +49,7 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{route('pacientes.index')}}">Consultar Pacientes</a></li>
-                                <li><a href="{{route('pacientes.create')}}">Altas nuevos pacientes</a></li>
-                                
-                                
+
                             </ul>
 
                       

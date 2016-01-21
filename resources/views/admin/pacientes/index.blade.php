@@ -3,8 +3,9 @@
 @section('title', 'Pacientes')
 
 @section('content')
-
-{!! link_to_route('pacientes.create', 'Alta de Paciente', [], ['class' => 'btn btn-info'])  !!}
+  <a data-url="{{ route('pacientes.create') }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
+    <span class="fa fa-plus-circle fa-2x" aria-hidden='true'></span>
+  </a> 
    <table class="table table-striped">
     <thead>
         <th>RFC</th>
@@ -19,12 +20,18 @@
         
          
          <td>
-            <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-warning"><span class="fa fa-pencil-square-o" aria-hidden="true"></span></a>
-            <a href="{{ route('admin.pacientes.destroy', $paciente->id) }}" class="btn btn-danger"><span class="fa fa-trash" aria-hidden="true"></span></a>
+            <a data-url="{{ route('pacientes.edit', $paciente->id) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
+                <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
+            </a>
+            <a href="{{ route('admin.pacientes.destroy', $paciente->id) }}" <span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span></a>
          </td>
         </tr>
     @endforeach
     </tbody>
 </table>
+{!! $pacientes->render() !!}
+
+@include('admin.partials.form-modal', ['title'=>'Agregar/Editar Pacientes'])
+@include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
 
 @endsection

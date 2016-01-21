@@ -4,7 +4,9 @@
 
 @section('content')
 
-{!! link_to_route('medicos.create', 'Alta de Medico', [], ['class' => 'btn btn-info'])  !!}
+  <a data-url="{{ route('medicos.create') }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
+    <span class="fa fa-plus-circle fa-2x" aria-hidden='true'></span>
+  </a> 
    <table class="table table-striped">
     <thead>
         <th>Num Empleado</th>
@@ -26,12 +28,17 @@
         
          
          <td>
-            <a href="{{ route('medicos.edit', $medico->id) }}" class="btn btn-warning"><span class="fa fa-pencil-square-o" aria-hidden="true"></span></a>
-            <a href="{{ route('admin.medicos.destroy', $medico->id) }}" class="btn btn-danger"><span class="fa fa-trash" aria-hidden="true"></span></a>
+            <a data-url="{{ route('medicos.edit', $medico->id) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
+               <span class="fa fa-pencil-square-o fa-2x" aria-hidden='true'></span>
+            </a> 
+            <a href="{{ route('admin.medicos.destroy', $medico->id) }}" ><span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span></a>
          </td>
         </tr>
     @endforeach
     </tbody>
 </table>
+
+@include('admin.partials.form-modal', ['title'=>'Agregar/Editar Medicos'])
+@include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
 
 @endsection

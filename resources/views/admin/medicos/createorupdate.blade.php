@@ -1,8 +1,3 @@
-@extends('layouts.app')
-
-@section('title', 'Alta de Medico')
-
-@section('content')
 @if(isset($medico))
 	
 	<?php $estado = 'Actualizar';  ?>
@@ -13,8 +8,7 @@
 @endif
       @include('admin.medicos.form')
 
-     {!! Form::submit($estado, ['class' => 'btn btn-primary']) !!}
+     {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
   
     {!! Form::close() !!}
 
-@endsection

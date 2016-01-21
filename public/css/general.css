@@ -7,54 +7,10 @@ body {
   margin-right: 6px;
 }
 
-#contenedor-mains { 
-	
-width: 287px;
-height: 80px;
-
-border: 1px rgb(89,89,89) solid;
-
-padding: 0px;
-
-margin: 5px;
-
--ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=84)";
-filter: alpha(opacity=84);
--moz-opacity: 0.84;
--khtml-opacity: 0.84;
-opacity: 0.84;
-
-background: rgb(121, 111, 111);
-
-color: rgb(25,25,25);
-font-size: 24px;
-font-weight: inherit;
-font-family: inherit;
-font-style: inherit;
-text-decoration: inherit;
-text-align: center;
-
-border-radius: 25px;
-line-height: 2.5em;
-text-shadow: 0px 0px 9px rgb(89,89,89);
-
--moz-box-shadow: inset 0px 69px 0px 0px rgb(128,128,128);
--webkit-box-shadow: inset 0px 69px 0px 0px rgb(128,128,128);
-box-shadow: inset 0px 40px 0px 10px rgb(128,128,128);
-
-}
-#contenedor-ma { 
-	border-radius: 25px;
-
-} 
 a:link {
     text-decoration: none;
 }
 
-#main_container {
-     margin: 0 auto;
-     text-align: left;
-}
 
 .blink {
 color: red;
@@ -84,10 +40,10 @@ color: red;
   color: white;
 }
 .panelColorGreen{
-  color: blue;
+  color: #337AB7;
 }
 .panelColorRed{
-  color: red;
+  color: #B1103C;
 }
 
 

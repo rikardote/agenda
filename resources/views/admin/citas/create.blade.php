@@ -11,7 +11,7 @@
 	@foreach($pacientes as $paciente)
 		{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }}
 		<br>
-		<br>
+
 		{!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
 			{!! Form::submit('Registrar', ['class' => 'btn btn-success']) !!}
@@ -21,14 +21,13 @@
 	
 @else
 @foreach($pacientes as $paciente)
- <a type="button" data-toggle="collapse" data-target="#{{$paciente->tipo->tipo}}">
- 	<ul>
- 		<li>
+ <a type="button" data-toggle="collapse" data-target="#{{$paciente->slug}}">
+ 		<li class="alert alert-info">
  			{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->tipo }}	
  		</li>
- 	</ul>
  </a>
-  <div id="{{$paciente->tipo->tipo}}" class="collapse">
+
+  <div id="{{$paciente->slug}}" class="collapse">
 
    {!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
@@ -59,28 +58,30 @@
 	</div>
  @endif
 
-@include('admin.partials.form-modal', ['title'=>'Form Modal'])
+@include('admin.partials.form-modal', ['title'=>'Nuevo Paciente'])
 @include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
 
 @endsection
 
 @section('js')
-	<script type="text/javascript">
-	  $(function() {
-	    $( "#fecha_inicial" ).datepicker();
-	  });
-	 </script>
-	 <script>
-	$.datepicker.setDefaults($.datepicker.regional['es-MX']);
-	$('#fecha_inicial').datepicker({
-	    dateFormat: 'dd-mm-yy',
-	    changeMonth: true,
-	    changeYear: true,
-	    firstDay: 1,
-	    
-	    
-	});
+@foreach($pacientes as $paciente)
+		<script type="text/javascript">
+		  $(function() {
+		    $( "#{{$paciente->id}}" ).datepicker();
+		  });
+		 </script>
+		 <script>
+		$.datepicker.setDefaults($.datepicker.regional['es-MX']);
+		$('#{{$paciente->id}}').datepicker({
+		    dateFormat: 'dd-mm-yy',
+		    changeMonth: true,
+		    changeYear: true,
+		    firstDay: 1,
+		    
+		    
+		});
 
-	</script> 
+		</script> 
+@endforeach
 
 @endsection

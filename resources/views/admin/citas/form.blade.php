@@ -7,7 +7,7 @@
 		'class' => 'form-control',
 		'placeholder' => 'Selecciona la fecha', 
 		'required',
-		'id' => 'fecha_inicial'
+		'id' => $paciente->id
 	]) !!}
 </div>
 <div class="form-group">
