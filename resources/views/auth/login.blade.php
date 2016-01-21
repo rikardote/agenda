@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Iniciar Session')
+@section('title', 'Ingrese sus crendenciales')
 
 @section('content')
 

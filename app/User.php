@@ -23,4 +23,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function especialidades()
+    {
+        return $this->belongsToMany('App\Especialidad')->withTimestamps();
+    }
 }

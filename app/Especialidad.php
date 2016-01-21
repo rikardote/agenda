@@ -24,6 +24,10 @@ class Especialidad extends Model implements SluggableInterface
     {
     	return $this->hasMany('App\Medico');
     }
+    public function especialidades()
+    {
+        return $this->belongsToMany('App\Especialidad');
+    }
     public function setnameAttribute($value)
     {
         $this->attributes['name'] = strtoupper($value);
