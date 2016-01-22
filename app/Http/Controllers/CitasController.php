@@ -14,7 +14,7 @@ use App\Especialidad;
 use App\Medico;
 use App\Paciente;
 use Laracasts\Flash\Flash;
-
+use App\User;
 use Carbon\Carbon;
 
 
@@ -39,8 +39,15 @@ class CitasController extends Controller
         $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
             $citas->paciente;
+
         });
-	         
+	       
+        $user = User::find(2);
+        //$user->especialidades()->attach([3]);
+        //dd($user);
+
+        $user_espe = $user->especialidades;
+        dd($user_espe);
 		return view('admin.citas.index')->with('medico', $medico)->with('citas', $citas)->with('date', $date);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();

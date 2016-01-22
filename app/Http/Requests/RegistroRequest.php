@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class PacientesRequest extends Request
+class RegistroRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class PacientesRequest extends Request
     public function rules()
     {
         return [
-            'rfc' => 'min:10|max:13|required',
-            'nombres' => 'min:4|max:20|required',
-            'apellido_pat' => 'min:4|max:20|required',
-            'apellido_mat' => 'min:4|max:20|required',
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
             
         ];
     }

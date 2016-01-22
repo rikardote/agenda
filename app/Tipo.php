@@ -14,8 +14,16 @@ class Tipo extends Model
     {
     	return $this->hasMany('App\Paciente');
     }
-    public function settipoAttribute($value) 
+
+    public function getTipoAttribute($value)
     {
-     return $this->tipo . ' - ' . $this->descripcion;
+        
+       return $this->code . ' - ' . $this->descripcion;
+        
     }
+     public function getCodeAttribute($value)
+    {
+        return str_pad($value, 2, '0', STR_PAD_LEFT);
+    }
+
 }

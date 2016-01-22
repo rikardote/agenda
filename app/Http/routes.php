@@ -30,7 +30,12 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::auth();
-
+    // Route::get('registrar','RegistroController@index');
+    Route::resource('registrar', 'RegistroController');   
+    Route::get('registrar/{id}/destroy', [
+        'uses' => 'RegistroController@destroy',
+        'as' => 'registrar.destroy'
+    ]);
 
     Route::resource('agenda', 'AgendaController');
     

@@ -12,7 +12,7 @@ class CreateUserEspecialidadTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_especialidad', function (Blueprint $table) {
+        Schema::create('especialidad_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('especialidad_id')->unsigned();
@@ -30,6 +30,6 @@ class CreateUserEspecialidadTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user_especialidad');
+        Schema::drop('especialidad_user');
     }
 }

@@ -43,7 +43,7 @@ class MedicosController extends Controller
         	->with('especialidades', $especialidades)
         	->with('horarios', $horarios);
     }
-
+ 
     public function edit($id)
     {
         $medico = Medico::find($id);

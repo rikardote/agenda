@@ -12,92 +12,92 @@ class TiposTableSeeder extends Seeder
     public function run()
     {
         DB::table('tipos')->insert([
-        	'tipo' => '1',
+        	'code' => '01',
         	'descripcion' => 'TRABAJADOR',
         	'created_at' => date("Y-m-d H:i:s"),
         	'updated_at' => date("Y-m-d H:i:s"),
 
         ]);
         DB::table('tipos')->insert([
-        	'tipo' => '2',
+        	'code' => '02',
         	'descripcion' => 'TRABAJADORA',
         	'created_at' => date("Y-m-d H:i:s"),
         	'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-        	'tipo' => '3',
+        	'code' => '03',
         	'descripcion' => 'ESPOSA',
         	'created_at' => date("Y-m-d H:i:s"),
         	'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '4',
+            'code' => '04',
             'descripcion' => 'ESPOSO',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '5',
+            'code' => '05',
             'descripcion' => 'PAPA',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '6',
+            'code' => '06',
             'descripcion' => 'MAMA',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '7',
+            'code' => '07',
             'descripcion' => 'HIJO',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '8',
+            'code' => '08',
             'descripcion' => 'HIJA',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '9',
+            'code' => '90',
             'descripcion' => 'JUBILADO / PENSIONADO',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '91',
+            'code' => '91',
             'descripcion' => 'JUBILADA / PENSIONADA',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '92',
+            'code' => '92',
             'descripcion' => 'VIUDEZ',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '31',
+            'code' => '31',
             'descripcion' => 'CONCUBINA',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '41',
+            'code' => '41',
             'descripcion' => 'CONCUBINO',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '51',
+            'code' => '51',
             'descripcion' => 'ABUELO',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tipos')->insert([
-            'tipo' => '61',
+            'code' => '61',
             'descripcion' => 'ABUELA',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),

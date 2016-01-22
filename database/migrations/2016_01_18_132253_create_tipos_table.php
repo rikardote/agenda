@@ -14,10 +14,11 @@ class CreateTiposTable extends Migration
     {
         Schema::create('tipos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tipo');
+           
             $table->string('descripcion');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE tipos ADD code INT(2) UNSIGNED ZEROFILL NOT NULL AFTER id");
     }
 
     /**
