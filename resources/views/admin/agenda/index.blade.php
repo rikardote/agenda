@@ -16,7 +16,6 @@
 	@endforeach
 </div>
 
-{!! $especialidades->render() !!}
 
 
 @endsection

@@ -8,7 +8,7 @@ class Cita extends Model
 {
     protected $table = 'citas';
 
-    protected $fillable = ['paciente_id', 'medico_id', 'user_id', 'fecha', 'horario', 'concretada'];
+    protected $fillable = ['paciente_id', 'medico_id', 'user_id', 'fecha', 'horario', 'concretada', 'capturado_por'];
 
     public function paciente()
     {

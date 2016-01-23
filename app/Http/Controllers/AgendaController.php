@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Especialidad;
 use App\Medico;
+use App\User;
 
 class AgendaController extends Controller
 {
@@ -30,10 +31,10 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $especialidades = Especialidad::orderBy('name', 'ASC')->paginate(6);
-   
-        return view('admin.agenda.index')->with('especialidades', $especialidades);
+        $user = User::find(\Auth::user()->id);
+        $user_espe = $user->especialidades;
 
+        return view('admin.agenda.index')->with('especialidades', $user_espe);
     }
 
     public function show($slug)

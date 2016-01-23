@@ -75,7 +75,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CitasController@update',
         'as' => 'admin.citas.update'
     ]);
-       Route::get('citas/{slug}/{date}/{id}/edit', [
+    Route::get('citas/{slug}/{date}/{id}/edit', [
         'uses' => 'CitasController@edit',
         'as' => 'admin.citas.edit'
     ]);
@@ -90,6 +90,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('citas/{slug}/{date}/nueva_cita/paciente', [
         'uses' => 'CitasController@store',
         'as' => 'admin.citas.store'
+    ]);
+        Route::get('citas/{slug}/{date}/{id}/concretada', [
+        'uses' => 'CitasController@concretada',
+        'as' => 'admin.citas.concretada'
     ]);
 
 

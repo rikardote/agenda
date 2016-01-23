@@ -23,9 +23,13 @@ class RegistroController extends Controller
 
     public function index()
     {	
-    	$users = User::orderBy('name', 'ASC')->get();
+        if (!\Auth::user()->admin()) {
+            return redirect()->route('agenda.index');
+        }
+    	   $users = User::orderBy('type', 'DESC')->orderBy('name', 'ASC')->get();
     	
-    	return view('admin.users.index')->with('users', $users);
+    	   return view('admin.users.index')->with('users', $users);
+      
     }
     public function create(){
     	$especialidades = Especialidad::all()->lists('name', 'id')->toArray();

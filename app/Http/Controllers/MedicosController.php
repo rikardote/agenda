@@ -23,7 +23,9 @@ class MedicosController extends Controller
 
     public function index()
     {	
-
+        if (!\Auth::user()->admin()) {
+            return redirect()->route('agenda.index');
+        }
     	$medicos = Medico::orderBy('num_empleado', 'ASC')->get();
 
         $medicos->each(function($medicos) {

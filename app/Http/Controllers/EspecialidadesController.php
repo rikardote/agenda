@@ -20,7 +20,10 @@ class EspecialidadesController extends Controller
 
     public function index()
     {	
-    	$especialidades = Especialidad::orderBy('name', 'DESC')->get();
+        if (!\Auth::user()->admin()) {
+            return redirect()->route('agenda.index');
+        }
+    	$especialidades = Especialidad::orderBy('name', 'ASC')->get();
     	return view('admin/especialidades/index')->with('especialidades', $especialidades);
     }
 

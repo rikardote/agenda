@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->enum('type', ['member', 'admin'])->default('member');
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

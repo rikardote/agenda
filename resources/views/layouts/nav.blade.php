@@ -21,17 +21,9 @@
                 @if(Auth::user())
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Agenda <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{route('agenda.index')}}">Consultar Agenda</a></li>
-
-                            </ul>
-
-                      
-                        </li>
-                     @if(Auth::user()->type == 'Admin')
+                            <a href="{{route('agenda.index')}}"> Agenda     </a>
+                    </li>
+                     @if(Auth::user()->admin())
                      <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Medicos <span class="caret"></span>
@@ -45,16 +37,9 @@
                             </ul>
                         </li>
 
-                    <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Pacientes <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{route('pacientes.index')}}">Consultar Pacientes</a></li>
+                    <li class="">
+                            <a href="{{route('pacientes.index')}}">Pacientes </a>
 
-                            </ul>
-
-                      
                     </li>
                     @endif
                     
@@ -75,6 +60,9 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                @if(Auth::user()->admin())
+                                    <li><a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a></li>
+                                @endif
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
                             </ul>
                         </li>

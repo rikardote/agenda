@@ -20,7 +20,9 @@ class HorariosController extends Controller
 
     public function index()
     {	
-
+        if (!\Auth::user()->admin()) {
+            return redirect()->route('agenda.index');
+        }
     	$horarios = Horario::orderBy('name', 'DESC')->get();
     	return view('admin/horarios/index')->with('horarios', $horarios);
     }

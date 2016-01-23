@@ -18,8 +18,8 @@ class CreateUserEspecialidadTable extends Migration
             $table->integer('especialidad_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('especialidad_id')->references('id')->on('especialidades');    
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('especialidad_id')->references('id')->on('especialidades')->onDelete('cascade');    
         });
     }
 

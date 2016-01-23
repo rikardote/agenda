@@ -2,7 +2,7 @@
 	<strong>Paciente: </strong> 
 	<br>
 	<br>
-	{{ $cita->paciente->nombres }} {{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }}
+	{{ $cita->paciente->nombres }} {{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} /{{$cita->paciente->tipo->code}}
 	<br>
 	<br>
 	{!!  Form::model($cita, ['route' => ['admin.citas.update', $medico->slug, $date, $cita->id], 'method' => 'PATCH']) !!}

@@ -42,12 +42,7 @@ class CitasController extends Controller
 
         });
 	       
-        $user = User::find(2);
-        //$user->especialidades()->attach([3]);
-        //dd($user);
-
-        $user_espe = $user->especialidades;
-        dd($user_espe);
+       
 		return view('admin.citas.index')->with('medico', $medico)->with('citas', $citas)->with('date', $date);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
@@ -96,8 +91,8 @@ class CitasController extends Controller
 
         $cita = new Cita($request->all());
 
-        $cita->user_id = \Auth::user()->id;
         $cita->fecha = fecha_ymd($request->fecha);
+        $cita->capturado_por = \Auth::user()->id;
         $cita->save();
 
         Flash::success('Cita registrada con exito!');
@@ -113,6 +108,23 @@ class CitasController extends Controller
         Flash::error('La cita ha sido borrada con exito!');
         return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $date));
     } 
+    public function concretada($slug,$date,$id)
+    {
+    	$cita = Cita::find($id);
+   		if ($cita->concretada == 1) {
+   			$cita->concretada = 0;
+   		}
+   		else{
+   			$cita->concretada = 1;
+   		}
+
+       	$cita->save();
+       
+        $medico = Medico::findBySlug($slug);
+        $medico->especialidad;
+       
+        return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $date));
+    }
     
 	
     

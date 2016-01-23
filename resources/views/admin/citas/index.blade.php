@@ -24,7 +24,7 @@
           </div>
         </div>
 
-     <table class="table table-hover">
+     <table class="table table-hover table-condensed">
       <thead>
         <th>Folio</th>
         <th>Paciente</th>
@@ -33,13 +33,18 @@
       </thead>
       <tbody>
         @foreach($citas as $cita)
-          <tr>
+        {{--*/ $tachado = ($cita->concretada == 1) ? "tachado" : "" /*--}}
+          <tr class='{{$tachado}}'>
             <td>{{ $cita->id }}</td>
-          	<td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }}</td>
+          
+            <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }} <br> <strong><small>{{$cita->paciente->rfc}}</small></strong></td>
      		<td>{{ $cita->horario }}</td>
             <td>
-              <a 
-                class="load-form-modal panelColorGreen"
+
+            <a class="panelColorGreen" href="{{ route('admin.citas.concretada', [$medico->slug , $date, $cita->id]) }}">
+                <span class="fa fa-check-square-o fa-2x"></span>
+              </a>
+              <a class="load-form-modal panelColorGreen"
                 data-url="{{ route('admin.citas.edit', [$medico->slug , $date, $cita->id]) }}" 
                 data-toggle ="modal" data-target='#form-modal'><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
               </a> 

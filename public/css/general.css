@@ -76,6 +76,11 @@ color: red;
 .table-striped>tbody>tr:nth-child(odd)>th {
   background-color: #D9EDF7;
 }
+.tachado{
+	text-decoration:line-through;
+	color: #FF5151;
+}
+
 
 
 

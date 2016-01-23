@@ -9,7 +9,7 @@
 @if($pacientes->count() == 1)
 
 	@foreach($pacientes as $paciente)
-		{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }}
+		{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}
 		<br>
 
 		{!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
@@ -23,7 +23,7 @@
 @foreach($pacientes as $paciente)
  <a type="button" data-toggle="collapse" data-target="#{{$paciente->slug}}">
  		<li class="alert alert-info">
- 			{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->tipo }}	
+ 			{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}	
  		</li>
  </a>
 
