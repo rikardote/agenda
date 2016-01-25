@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+ 
     
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -30,6 +32,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">@yield('title')</div>
                         <div class="panel-body">
+
                             <div id="alert"> @include('flash::message')</div>
                             @include('layouts.errors')
                             @yield('content')
@@ -52,11 +55,13 @@
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('plugins/toastr/js/toastr.min.js') }}"></script>
+    
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script>
         $('#alert').delay(2000).fadeOut(800)
     </script>
     @yield('js')
-    
+     {!! Toastr::render() !!}
 </body>
 </html>

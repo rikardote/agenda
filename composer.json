@@ -11,7 +11,8 @@
         "laracasts/flash": "^1.3",
         "cviebrock/eloquent-sluggable": "^3.1",
         "nesbot/carbon": "^1.21",
-        "vsmoraes/laravel-pdf": "^1.0"
+        "vsmoraes/laravel-pdf": "^1.0",
+        "oriceon/toastr-5-laravel": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

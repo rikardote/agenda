@@ -91,7 +91,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CitasController@store',
         'as' => 'admin.citas.store'
     ]);
-        Route::get('citas/{slug}/{date}/{id}/concretada', [
+    Route::get('citas/{slug}/{date}/{id}/concretada', [
         'uses' => 'CitasController@concretada',
         'as' => 'admin.citas.concretada'
     ]);

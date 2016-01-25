@@ -13,9 +13,10 @@ use App\Cita;
 use App\Especialidad;
 use App\Medico;
 use App\Paciente;
-use Laracasts\Flash\Flash;
+
 use App\User;
 use Carbon\Carbon;
+use Toastr;
 
 
 class CitasController extends Controller
@@ -78,11 +79,12 @@ class CitasController extends Controller
     {
         $cita = Cita::find($id);
         $cita->fill($request->all());
-        $cita->user_id = \Auth::user()->id;
+        $cita->capturado_por  = \Auth::user()->id;
         $cita->fecha = fecha_ymd($request->fecha);
         $cita->save();
-        Flash::success('Cita editada con exito!');
-        return redirect()->route('admin.citas.show', array('slug' => $request->slug, 'date' => $date));
+        
+        Toastr::success('Cita actualizada exitosamente');
+        return redirect()->route('admin.citas.show', ['slug' => $request->slug, 'date' => $date]);
  
     }
 
@@ -95,8 +97,9 @@ class CitasController extends Controller
         $cita->capturado_por = \Auth::user()->id;
         $cita->save();
 
-        Flash::success('Cita registrada con exito!');
-        return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $request->date));
+        //Flash::success('Cita registrada con exito!');
+        Toastr::success('Cita generada con exito');
+        return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);
     }  
  
     public function destroy($slug, $date, $id)
@@ -105,8 +108,8 @@ class CitasController extends Controller
 
         $cita->delete();
        
-        Flash::error('La cita ha sido borrada con exito!');
-        return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $date));
+        Toastr::error('Cita borrada exitosamente');
+        return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
     } 
     public function concretada($slug,$date,$id)
     {
@@ -122,8 +125,9 @@ class CitasController extends Controller
        
         $medico = Medico::findBySlug($slug);
         $medico->especialidad;
+        Toastr::success('Cita Concretada');
+        return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
        
-        return redirect()->route('admin.citas.show', array('slug' => $slug, 'date' => $date));
     }
     
 	

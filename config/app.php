@@ -160,6 +160,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
         Vsmoraes\Pdf\PdfServiceProvider::class,
+        Kamaln7\Toastr\ToastrServiceProvider::class,
     ],
 
     /*
@@ -208,7 +209,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
-        'PDF' => 'Vsmoraes\Pdf\PdfFacade',
+        'PDF' => Vsmoraes\Pdf\PdfFacade::class,
+        'Toastr' => Kamaln7\Toastr\Facades\Toastr::class
     ],
 
 ];
