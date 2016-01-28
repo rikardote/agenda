@@ -10,6 +10,7 @@ var Modal = {
         $(document).on('click', '.load-form-modal', function(event){
             console.log('Modal: '+ $(this).attr('data-url'));
             $('#form-modal .modal-body').load($(this).attr('data-url'));
+            
             event.preventDefault();
         });
     },

@@ -1,4 +1,3 @@
-
 {!! Form::model($user, ['route' => ['registrar.update', $user->id], 'method' => 'PATCH']) !!}
      {!! Form::open(['route' => 'registrar.store', 'method' => 'POST']) !!}
 <div class="form-group">
@@ -24,7 +23,9 @@
 
 <div class="form-group">
 		{!! Form::label('especialidades', 'Especialidades') !!}
-		{!! Form::select('especialidades[]', $especialidades, $especialidades_select,['class' => 'form-control select-tipo', 'multiple', 'required']) !!}
+		<div class="col-xl-12">
+			{!! Form::select('especialidades[]', $especialidades, $especialidades_select,['class' => 'form-control select-tipo', 'multiple', 'required']) !!}
+		</div>
 </div>
 <div class="form-group">
 	{!! Form::label('type', 'Tipo') !!}
@@ -35,13 +36,12 @@
 	</div>  
  {!! Form::close() !!}
 	
-
-
-	
-
 <script>
 		$('.select-tipo').chosen({
 			placeholder_text_multiple: 'Seleccione las Especialidades'
+			
 		});
 		
 </script>
+	
+

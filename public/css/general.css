@@ -80,7 +80,9 @@ color: red;
 	text-decoration:line-through;
 	color: #FF5151;
 }
-
+.chosen-choices{
+     min-width: 200px;
+ }
 
 
 

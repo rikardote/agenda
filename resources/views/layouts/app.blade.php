@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/chosen-bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
  
     

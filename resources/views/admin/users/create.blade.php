@@ -30,7 +30,9 @@
 </div>
 <div class="form-group">
 		{!! Form::label('especialidades', 'Especialidades') !!}
-		{!! Form::select('especialidades[]', $especialidades, null,['class' => 'form-control select-tipo', 'multiple', 'required']) !!}
+		<div class="col-xl-12">
+			{!! Form::select('especialidades[]', $especialidades, null,['class' => 'form-control select-tipo chosen-choices', 'multiple', 'required']) !!}
+		</div>		
 </div>
 <div class="form-group">
 	{!! Form::label('type', 'Tipo') !!}
@@ -44,7 +46,8 @@
 
 <script>
 		$('.select-tipo').chosen({
-			placeholder_text_multiple: 'Seleccione las Especialidades'
+			placeholder_text_multiple: 'Seleccione las Especialidades',
+			width: "inherit"
 		});
 		
 </script>
