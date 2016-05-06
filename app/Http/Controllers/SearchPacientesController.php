@@ -21,7 +21,7 @@ class SearchPacientesController extends Controller
 	    }
 	    public function index(Request $request, $slug, $date)
 		{
-		
+		 
 		   	// Gets the query string from our form submission 
 		    $query = $request->rfc;
 		    // Returns an array of articles that have the query string located somewhere within 

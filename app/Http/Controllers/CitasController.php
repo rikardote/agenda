@@ -98,7 +98,7 @@ class CitasController extends Controller
         $cita->save();
 
         //Flash::success('Cita registrada con exito!');
-        Toastr::success('Cita generada con exito');
+        Toastr::success('Cita Agendada con exito');
         return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);
     }  
  
