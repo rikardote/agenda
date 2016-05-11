@@ -40,7 +40,7 @@ class PacientesController extends Controller
     {
         $paciente = Paciente::find($id);
         $tipos = Tipo::all()->lists('tipo', 'id')->toArray();
-        
+
         return view('admin.pacientes.createorupdate')->with('paciente', $paciente)->with('tipos', $tipos);;
     }
 
@@ -48,6 +48,7 @@ class PacientesController extends Controller
     {
         $paciente = Paciente::find($id);
         $paciente->fill($request->all());
+        $paciente->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
 
         $paciente->save();
         Flash::success('Paciente editado con exito!');
@@ -57,6 +58,7 @@ class PacientesController extends Controller
     public function store(PacientesRequest $request)
     {
         $paciente = new Paciente($request->all());
+        $paciente->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
         $paciente->save();
 
         Flash::success('Paciente registrado con exito!');

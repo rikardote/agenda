@@ -14,10 +14,11 @@ class Cita extends Model
     {
     	return $this->belongsTo('App\Paciente');
     }
-     public function medico()
+    public function medico()
     {
-    	return $this->hasMany('App\Medico');
+    	return $this->belongsTo('App\Medico');
     }
+
     public function getidAttribute($value)
     {
         return str_pad($value, 6, '0', STR_PAD_LEFT);

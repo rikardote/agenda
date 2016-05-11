@@ -18,6 +18,7 @@ class CreatePacientesTable extends Migration
             $table->string('nombres', 60);
             $table->string('apellido_pat', 60);
             $table->string('apellido_mat', 60);
+            $table->date('fecha_nacimiento');
             $table->string('slug')->nullable();
             $table->integer('tipo_id')->unsigned();
             $table->timestamps();

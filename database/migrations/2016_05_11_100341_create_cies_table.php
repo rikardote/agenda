@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFechaNacimientoToPacientes extends Migration
+class CreateCiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class AddFechaNacimientoToPacientes extends Migration
      */
     public function up()
     {
-        Schema::table('pacientes', function (Blueprint $table) {
-            //
+        Schema::create('cies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('code');
+            $table->string('description');
+            $table->timestamps();
         });
     }
 
@@ -24,8 +27,6 @@ class AddFechaNacimientoToPacientes extends Migration
      */
     public function down()
     {
-        Schema::table('pacientes', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('cies');
     }
 }

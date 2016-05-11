@@ -64,24 +64,25 @@
 @endsection
 
 @section('js')
-@foreach($pacientes as $paciente)
-		<script type="text/javascript">
-		  $(function() {
-		    $( "#{{$paciente->id}}" ).datepicker();
-		  });
-		 </script>
-		 <script>
-		$.datepicker.setDefaults($.datepicker.regional['es-MX']);
-		$('#{{$paciente->id}}').datepicker({
-		    dateFormat: 'dd-mm-yy',
-		    changeMonth: true,
-		    changeYear: true,
-		    firstDay: 1,
-		    
-		    
-		});
+	@foreach($pacientes as $paciente)
+			<script type="text/javascript">
+			  $(function() {
+			    $( "#{{$paciente->id}}" ).datepicker();
+			  });
+			 </script>
+			 <script>
+			$.datepicker.setDefaults($.datepicker.regional['es-MX']);
+			$('#{{$paciente->id}}').datepicker({
+			    dateFormat: 'dd-mm-yy',
+			    changeMonth: true,
+			    changeYear: true,
+			    firstDay: 1,
+			    
+			    
+			});
 
-		</script> 
-@endforeach
+			</script> 
+	@endforeach
+	
 
 @endsection

@@ -1,8 +1,7 @@
-{!! Form::open(['route' => ['admin.pacientes.store', $slug, $date], 'method' => 'POST']) !!}
 <div class="form-group">
 	{!! Form::label('rfc', 'RFC') !!}
 	
-	{!! Form::text('rfc', $rfc, [
+	{!! Form::text('rfc', null, [
 		
 		'class' => 'form-control',
 		'placeholder' => 'Ingresar RFC', 
@@ -42,22 +41,18 @@
 		'placeholder' => 'Apellido Materno', 
 		'required'
 	]) !!}
-    
-    {!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
-    <br>
-	{!! Form::text('fecha_nacimiento', null, [
+
+
+	{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
+	<br>
+	{!! Form::text('fecha_nacimiento',null, [
 		'class' => 'form-control',
 		'required',
 		'id' => 'dob',
 		'style' => 'width: 10em;'
 	]) !!}
-</div>	
-<div align="right">
-	{!! Form::submit('Agregar', ['class' => 'btn btn-success']) !!}
 
+			
+		
 </div>	
-{!!Form::close()!!}
-
-<script>
-		$('#dob').datetextentry();
-	</script>
+	

@@ -41,5 +41,18 @@
 		'placeholder' => 'Apellido Materno', 
 		'required'
 	]) !!}
+
+
+	{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
+	<br>
+	{!! Form::text('fecha_nacimiento', $paciente->fecha_nacimiento, [
+		'class' => 'form-control',
+		'required',
+		'id' => 'dob',
+		'style' => 'width: 10em;'
+	]) !!}
+
+			
+		
 </div>	
 	

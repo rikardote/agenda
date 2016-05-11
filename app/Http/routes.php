@@ -38,6 +38,11 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::resource('agenda', 'AgendaController');
+    Route::resource('hojas', 'HojasController');
+    Route::get('hojas/{paciente_id}/{medico_id}', [
+        'uses' => 'HojasController@custom_create',
+        'as' => 'custom.hojas.create'
+    ]);
     
    // Rutas Especialidades //
     Route::resource('especialidades', 'EspecialidadesController');
@@ -64,6 +69,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('pacientes/{id}/destroy', [
         'uses' => 'PacientesController@destroy',
         'as' => 'admin.pacientes.destroy'
+    ]);
+    Route::resource('codigos', 'CodigosController');
+    Route::get('codigos/{id}/destroy', [
+        'uses' => 'CodigosController@destroy',
+        'as' => 'admin.codigos.destroy'
     ]);
     // Rutas Citas //
     //Route::resource('citas', 'CitasController');

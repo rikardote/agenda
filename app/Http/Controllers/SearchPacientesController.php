@@ -45,6 +45,7 @@ class SearchPacientesController extends Controller
 	 public function StorePaciente(PacientesRequest $request, $slug, $date)
     {
         $pacientes = new Paciente($request->all());
+        $pacientes->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
         $pacientes->save();
 
        	$pacientes = Paciente::where('rfc', '=', $request->rfc)->get();

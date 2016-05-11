@@ -37,7 +37,7 @@
           <tr class='{{$tachado}}'>
             <td>{{ $cita->id }}</td>
           
-            <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }} <br> <strong><small>{{$cita->paciente->rfc}}</small></strong></td>
+            <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }} <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}}</small></strong></td>
      		<td>{{ $cita->horario }}</td>
             <td>
 

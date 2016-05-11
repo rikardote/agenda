@@ -33,14 +33,15 @@
                                 <li><a href="{{route('medicos.index')}}">Consultar Medicos</a></li>
                                 <li><a href="{{route('especialidades.index')}}">Especialidades</a></li>
                                 <li><a href="{{route('horarios.index')}}">Horarios</a></li>
-                                
                             </ul>
                         </li>
 
                     <li class="">
                             <a href="{{route('pacientes.index')}}">Pacientes </a>
-
+                            
                     </li>
+                    <li><a href="{{route('codigos.index')}}">Codigos Cie</a></li>
+                    <li><a href="{{route('hojas.index')}}">Codigos Cie</a></li>
                     @endif
                     
                 </ul>

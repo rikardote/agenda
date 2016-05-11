@@ -43,7 +43,7 @@ class Paciente extends Model implements SluggableInterface
     {
         return $this->hasMany('App\Cita');
     }
-   public function tipo()
+    public function tipo()
     {
         return $this->belongsTo('App\Tipo');
     }

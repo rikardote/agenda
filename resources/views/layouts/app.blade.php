@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datetextentry/datetextentry.css') }}">
     <link rel="stylesheet" href="{{ asset('css/chosen-bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
  
@@ -56,6 +57,7 @@
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('plugins/datetextentry/datetextentry.js') }}"></script>
     <script src="{{ asset('plugins/toastr/js/toastr.min.js') }}"></script>
     
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
