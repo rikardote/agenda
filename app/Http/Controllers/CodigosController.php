@@ -13,10 +13,10 @@ use Laracasts\Flash\Flash;
 
 class CodigosController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    function __construct()
+   {
+    $this->middleware('auth:doctors');
+   }
 
     public function index()
     {	

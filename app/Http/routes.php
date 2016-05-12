@@ -25,8 +25,8 @@
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', [
-        'as' => 'admin.index',
-        'uses' => 'AgendaController@index'
+        'as' => 'home.index',
+        'uses' => 'HomeController@index'
     ]);
 
     Route::auth();
@@ -124,7 +124,14 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::get('api/codigos', function (){
-    return Datatables::eloquent(App\Cie::query())
-    ->make(true);
+        return Datatables::eloquent(App\Cie::query())
+        ->make(true);
+    });
+
+    Route::get('home', 'HomeController@index');
+    Route::get('doctor/login', 'UserdoctorsController@showLoginForm');
+    Route::post('doctor/login', 'UserdoctorsController@login');
+    Route::get('doctor/logout', 'UserdoctorsController@logout');
+
 });
-});
+

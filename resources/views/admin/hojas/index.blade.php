@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.doctores')
 
 @section('title', 'Citas para Hoy del DR. '.$medico->fullname)
 

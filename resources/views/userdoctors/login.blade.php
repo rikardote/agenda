@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.doctores')
 
-@section('title', 'Usuario Ingrese sus Credenciales')
+@section('title', 'Doctor Ingrese sus crendenciales')
 
 @section('content')
 
-<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+<form class="form-horizontal" role="form" method="POST" action="{{ url('/doctor/login') }}">
     {!! csrf_field() !!}
 
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

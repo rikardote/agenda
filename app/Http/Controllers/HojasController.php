@@ -12,6 +12,10 @@ use Carbon\Carbon;
 use App\Paciente;
 class HojasController extends Controller
 {
+   function __construct()
+   {
+    $this->middleware('auth:doctors');
+   }
 	public function index()
 	{
 		$today = Carbon::today();

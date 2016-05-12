@@ -41,7 +41,7 @@
                             
                     </li>
                     <li><a href="{{route('codigos.index')}}">Codigos Cie</a></li>
-                    <li><a href="{{route('hojas.index')}}">Codigos Cie</a></li>
+                    
                     @endif
                     
                 </ul>
