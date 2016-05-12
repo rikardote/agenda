@@ -19,7 +19,7 @@
 				<td>{{$cita->paciente->fullname}}</td>
 				<td>
 				<a class="load-form-modal panelColorGreen"
-                data-url="{{ route('hoja.citas.edit', [2 , $fecha, $cita->id]) }}" 
+                data-url="{{ route('hoja.citas.edit', [$medico->id , $fecha, $cita->id]) }}" 
                 data-toggle ="modal" data-target='#form-modal'><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
               </a>
 				</td>

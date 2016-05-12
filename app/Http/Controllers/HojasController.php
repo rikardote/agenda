@@ -99,7 +99,7 @@ class HojasController extends Controller
         $cita->save();
         
         Toastr::success('Cita actualizada exitosamente');
-        return redirect()->route('hojas');
+        return redirect()->route('hojas.index');
  
     }
 	
