@@ -14,6 +14,7 @@ class CreateHojasMedicasTable extends Migration
     {
         Schema::create('hojas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('cita_id')->unsigned();
             $table->integer('paciente_id')->unsigned();
             $table->integer('medico_id')->unsigned();
             $table->enum('foraneo', ['0', '1'])->default('0');
@@ -31,7 +32,7 @@ class CreateHojasMedicasTable extends Migration
             $table->enum('suspendida', ['0', '1'])->default('0');
             $table->enum('diferida', ['0', '1'])->default('0');
             $table->integer('num_otorgados');
-            
+            $table->foreign('cita_id')->references('id')->on('citas');
             $table->foreign('paciente_id')->references('id')->on('pacientes');  
             $table->foreign('medico_id')->references('id')->on('medicos');
             $table->foreign('codigo_cie_id')->references('id')->on('cies');    

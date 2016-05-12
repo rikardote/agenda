@@ -39,9 +39,13 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('agenda', 'AgendaController');
     Route::resource('hojas', 'HojasController');
-    Route::get('hojas/{paciente_id}/{medico_id}', [
+    Route::get('hojas/{paciente_id}/{medico_id}/{cita_id}', [
         'uses' => 'HojasController@custom_create',
         'as' => 'custom.hojas.create'
+    ]);
+    Route::get('hojas/{fecha}/avanzar', [
+        'uses' => 'HojasController@avanzar',
+        'as' => 'custom.hojas.avanzar'
     ]);
     
    // Rutas Especialidades //
@@ -89,6 +93,14 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CitasController@edit',
         'as' => 'admin.citas.edit'
     ]);
+    Route::get('hojas/{medico_id}/{date}/{cita_id}/editar', [
+        'uses' => 'HojasController@citas_editar',
+        'as' => 'hoja.citas.edit'
+    ]);
+    Route::patch('hojas/{medico_id}/{date}/{cita_id}/actualizar', [
+        'uses' => 'HojasController@update',
+        'as' => 'hoja.citas.update'
+    ]);
     Route::get('citas/{slug}/{date}/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'admin.citas.destroy'
@@ -127,6 +139,10 @@ Route::group(['middleware' => 'web'], function () {
         return Datatables::eloquent(App\Cie::query())
         ->make(true);
     });
+    Route::get('getdata', [
+        'uses' => 'CodigosController@autocomplete',
+        'as' => 'codigos.autocomplete'
+    ]);
 
     Route::get('home', 'HomeController@index');
     Route::get('doctor/login', 'UserdoctorsController@showLoginForm');

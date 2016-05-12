@@ -1,10 +1,9 @@
 @extends('layouts.doctores')
 
-@section('title', 'Codigos')
+@section('title', 'Codigos CIE-10')
 
 @section('css')
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="{{ asset('plugins/datatables/media/css/datatables.bootstrap.min.css') }}">
 @endsection
 
 @section('content')

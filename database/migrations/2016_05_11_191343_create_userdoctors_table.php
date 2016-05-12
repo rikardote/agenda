@@ -14,12 +14,14 @@ class CreateUserdoctorsTable extends Migration
     {
         Schema::create('userdoctors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->integer('doctor_id')->unsigned();
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('doctor_id')->references('id')->on('medicos');  
         });
     }
 

@@ -6,3 +6,7 @@
 
 	@include('admin.hojas._form')
 @endsection
+
+@section('js')
+	
+@endsection

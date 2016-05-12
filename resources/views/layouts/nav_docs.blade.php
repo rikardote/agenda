@@ -31,10 +31,9 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::guard('doctors')->user() ? Auth::guard('doctors')->user()->name:"" }} <span class="caret"></span>
+                                {{ Auth::guard('doctors')->user() ? Auth::guard('doctors')->user()->email:"" }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

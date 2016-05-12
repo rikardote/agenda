@@ -18,9 +18,14 @@
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datetextentry/datetextentry.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/jquery/css/themes/smothness/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('css/chosen-bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+
     @yield('css')
+    <style type="text/css">
+        .ui-autocomplete { max-height: 600px; overflow-y: scroll; overflow-x: auto; position: absolute;}
+     </style>
     
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -59,21 +64,16 @@
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('plugins/datetextentry/datetextentry.js') }}"></script>
     <script src="{{ asset('plugins/toastr/js/toastr.min.js') }}"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>    
-<script type="text/javascript" src="//cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>    
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>    
-<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>    
-<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>    
-<script type="text/javascript" src="//cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script> 
-<script type="text/javascript" src="//cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>    
+    <script src="{{ asset('plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/extensions/Buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables/extensions/Buttons/js/buttons.flash.min.js') }}"></script>
     
     @yield('js')
     <script>
         $(document).ready(function(){
              $('#myTable').DataTable({
-                "language" : {"url" : "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"},
+                "language" : {"url" : "/plugins/datatables/localization/spanish.json"},
                 "processing": true,
                 "serverSide": true,
                 "ajax": "api/codigos",
@@ -81,6 +81,16 @@
                     {data: 'code'},
                     {data: 'description'},
                    ]
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('input:text').bind({
+            });
+            $("#auto").autocomplete({
+                minLength:3,
+                source: 'http://citas.app/getdata'
             });
         });
     </script>

@@ -2,6 +2,7 @@
 
 	{!! Form::hidden('paciente_id', $paciente->id) !!}
 	{!! Form::hidden('medico_id', $medico->id) !!}
+	{!! Form::hidden('cita_id', $cita_id) !!}
 	<div class="row">
 		<div class="col-md-4">
 			<div class="form-group">
@@ -58,6 +59,15 @@
 	</div>
 	<div class="col-md-4">
 		<div class="form-group">
+			{!! Form::label('codigo_cie_id', 'Diagnostico') !!}
+
+			{!! Form::text('codigo_cie_id', null, [
+				'class' => 'form-control',
+				'placeholder' => 'Numero de Licencia',
+				'id' => 'auto' 
+			]) !!}
+		</div>
+		<div class="form-group">
 			{!! Form::label('num_licencia_medica', 'Numero de Licencia Medica') !!}
 
 			{!! Form::text('num_licencia_medica', null, [
@@ -81,14 +91,7 @@
 				'placeholder' => 'Numero de medicamentos', 
 			]) !!}
 		</div>
-		<div class="form-group">
-			{!! Form::label('codigo_cie_id', 'Codigo Cie') !!}
-
-			{!! Form::text('codigo_cie_id', null, [
-				'class' => 'form-control',
-				'placeholder' => 'Numero de Licencia', 
-			]) !!}
-		</div>
+		
 	</div>
 </div>
 <div align="right">

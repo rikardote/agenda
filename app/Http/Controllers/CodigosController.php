@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CodigosRequest;
 use App\Cie;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Input;
+use Response;
 
 use Laracasts\Flash\Flash;
 
@@ -65,4 +68,16 @@ class CodigosController extends Controller
         Flash::error('El Codigo ha sido borrado con exito!');
         return redirect()->route('codigos.index');
     } 
+    public function autocomplete()
+    {
+        $term = Str::upper(Input::get('term'));
+
+        $data = Cie::where('description', 'LIKE', '%'.$term.'%')->get();
+
+        foreach ($data as $v) {
+            $return_array[] = array('value'=>$v->code,'label' => $v->description);
+        }
+        
+        return Response::json($return_array);
+    }
 }

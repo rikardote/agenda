@@ -29,9 +29,14 @@ class Medico extends Model implements SluggableInterface
     {
     	return $this->belongsTo('App\Horario');
     }
+    
     public function cita()
     {
         return $this->hasMany('App\Cita');
+    }
+    public function userdoctor()
+    {
+        return $this->hasMany('App\Userdoctor');
     }
     
     public function setnombresAttribute($value)
@@ -51,5 +56,6 @@ class Medico extends Model implements SluggableInterface
         return $this->apellido_pat . ' ' . $this->apellido_mat. ' ' . $this->nombres;
     
     }
+
 }
 
