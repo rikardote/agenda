@@ -74,6 +74,14 @@
 			]) !!}
 		</div>
 		<div class="form-group">
+			{!! Form::label('num_medicamentos', 'Numero de medicamentos') !!}
+
+			{!! Form::text('num_medicamentos', null, [
+				'class' => 'form-control',
+				'placeholder' => 'Numero de medicamentos', 
+			]) !!}
+		</div>
+		<div class="form-group">
 			{!! Form::label('codigo_cie_id', 'Codigo Cie') !!}
 
 			{!! Form::text('codigo_cie_id', null, [

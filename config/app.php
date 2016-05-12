@@ -161,6 +161,7 @@ return [
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
         Vsmoraes\Pdf\PdfServiceProvider::class,
         Kamaln7\Toastr\ToastrServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
     ],
 
     /*
@@ -210,7 +211,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
         'PDF' => Vsmoraes\Pdf\PdfFacade::class,
-        'Toastr' => Kamaln7\Toastr\Facades\Toastr::class
+        'Toastr' => Kamaln7\Toastr\Facades\Toastr::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
     ],
 
 ];

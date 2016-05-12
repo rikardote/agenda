@@ -122,4 +122,9 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'SearchPacientesController@StorePaciente',
         'as' => 'admin.pacientes.store'
     ]);
+
+    Route::get('api/codigos', function (){
+    return Datatables::eloquent(App\Cie::query())
+    ->make(true);
+});
 });
