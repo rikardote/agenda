@@ -54,10 +54,17 @@ class HojasController extends Controller
         $cie = Cie::where('code', '=', $request->codigo_cie_id)->first();
         $hoja->codigo_cie_id = $cie->id;
         $hoja->save();
-        
+
         $cita = Cita::where('id', '=', $request->cita_id)->first();
         $cita->concretada = 1;
-        $cita->save();
+        $total_citas = Cita::getTotalCitasCount($request->medico_id, $cita->fecha);
+        if($total_citas) {
+            Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
+            return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);    
+        }
+        else{
+            $cita->save();            
+        }
         Toastr::success('Hoja medica del paciente guardada con exito!!');
         return redirect()->route('hojas.index');
     }
@@ -87,7 +94,9 @@ class HojasController extends Controller
         $medico = Medico::find($medico_id);
         $medico->especialidad;
        
-        return view('admin.hojas.citas_edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date);
+       $todas_citas = Cita::getTotalCitas($medico_id, $date);
+
+        return view('admin.hojas.citas_edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas);
         
     }
     public function update(Request $request, $medico_id,$date,$cita_id)
@@ -96,7 +105,15 @@ class HojasController extends Controller
         $cita->fill($request->all());
         
         $cita->fecha = fecha_ymd($request->fecha);
-        $cita->save();
+
+        $total_citas = Cita::getTotalCitasCount($medico_id, $cita->fecha);
+        if($total_citas) {
+            Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
+            return redirect()->route('hojas.index');    
+        }
+        else{
+            $cita->save();            
+        }
         
         Toastr::success('Cita actualizada exitosamente');
         return redirect()->route('hojas.index');

@@ -123,4 +123,12 @@ color: red;
 }
 .ui-helper-hidden-accessible { display:none; }
 
+.ui-highlight .ui-state-default{
+      background: red !important;
+      border-color: red !important;
+      color: white !important;
+      border-style: solid;
+      border-width: 7px;
+      border-radius: 4px 4px 4px 4px;
 
+    }

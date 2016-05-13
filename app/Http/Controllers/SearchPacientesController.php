@@ -10,6 +10,7 @@ use App\Http\Requests\PacientesRequest;
 use App\Paciente;
 use App\Medico;
 use App\Tipo;
+use App\Cita;
 use Carbon\Carbon;
 use Laracasts\Flash\Flash;
 
@@ -32,9 +33,10 @@ class SearchPacientesController extends Controller
       		});
 		   	$medico = Medico::findBySlug($slug);
 			$medico->especialidad;
+			$todas_citas = Cita::getTotalCitas($medico->id, $date);
 
 			// returns a view and passes the view the list of articles and the original query.
-		    return view('admin.citas.create')->with('pacientes', $pacientes)->with('medico', $medico)->with('date', $date);
+		    return view('admin.citas.create')->with('pacientes', $pacientes)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas);
 	 }
 	 public function NuevoPaciente($slug, $date, $rfc){
 	 	$tipos = Tipo::all()->lists('tipo', 'id')->toArray();

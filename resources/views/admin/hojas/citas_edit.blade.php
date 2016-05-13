@@ -14,20 +14,31 @@
 
 @endif
 
-<script type="text/javascript">
-  $(function() {
-    $( "#fecha_inicial" ).datepicker();
-  });
- </script>
- <script>
+<script>
 $.datepicker.setDefaults($.datepicker.regional['es-MX']);
-$('#fecha_inicial').datepicker({
-    dateFormat: 'dd-mm-yy',
-    changeMonth: true,
-    changeYear: true,
-    firstDay: 1,
-    onClose: function () {
-        $('#datepicker_final').val(this.value);
-    }
-});
 
+  var dates = <?php echo json_encode($todas_citas); ?>;
+    $( "#fecha_inicial" ).datepicker({
+      dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true,
+        firstDay: 1,
+        defaultDate: '{{ $date }}',
+
+        beforeShowDay : function(date){
+          var y = date.getFullYear().toString(); // get full year
+          var m = (date.getMonth() + 1).toString(); // get month.
+          var d = date.getDate().toString(); // get Day
+          if(m.length == 1){ m = '0' + m; } // append zero(0) if single digit
+          if(d.length == 1){ d = '0' + d; } // append zero(0) if single digit
+          var currDate = y+'-'+m+'-'+d;
+          if(dates.indexOf(currDate) >= 0){
+            return [true, "ui-highlight"];  
+          }else{
+            return [true];
+          }         
+        }
+
+       
+  });
+   </script>

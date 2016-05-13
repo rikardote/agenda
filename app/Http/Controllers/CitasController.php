@@ -18,7 +18,6 @@ use App\User;
 use Carbon\Carbon;
 use Toastr;
 
-
 class CitasController extends Controller
 {
 	private $pdf;
@@ -43,8 +42,13 @@ class CitasController extends Controller
 
         });
 	       
-       
-		return view('admin.citas.index')->with('medico', $medico)->with('citas', $citas)->with('date', $date);
+       $todas_citas = Cita::getTotalCitas($medico->id, $date);
+
+		return view('admin.citas.index')
+            ->with('medico', $medico)
+            ->with('citas', $citas)
+            ->with('date', $date)
+            ->with('todas_citas', $todas_citas);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
 
@@ -70,8 +74,10 @@ class CitasController extends Controller
        
         $medico = Medico::findBySlug($slug);
         $medico->especialidad;
-       
-        return view('admin.citas.edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date);
+
+        $todas_citas = Cita::getTotalCitas($medico->id, $date);
+
+        return view('admin.citas.edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas);
         
     }
 
@@ -81,8 +87,17 @@ class CitasController extends Controller
         $cita->fill($request->all());
         $cita->capturado_por  = \Auth::user()->id;
         $cita->fecha = fecha_ymd($request->fecha);
-        $cita->save();
+        $medico = Medico::findBySlug($slug);
         
+        $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
+        if($total_citas) {
+            Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
+            return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);    
+        }
+        else{
+            $cita->save();            
+        }
+               
         Toastr::success('Cita actualizada exitosamente');
         return redirect()->route('admin.citas.show', ['slug' => $request->slug, 'date' => $date]);
  
@@ -95,7 +110,17 @@ class CitasController extends Controller
 
         $cita->fecha = fecha_ymd($request->fecha);
         $cita->capturado_por = \Auth::user()->id;
-        $cita->save();
+
+        $medico = Medico::findBySlug($slug);
+        $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
+        if($total_citas) {
+            Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
+            return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);    
+        }
+        else{
+            $cita->save();            
+        }
+
 
         //Flash::success('Cita registrada con exito!');
         Toastr::success('Cita Agendada con exito');
