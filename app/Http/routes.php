@@ -36,6 +36,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'RegistroController@destroy',
         'as' => 'registrar.destroy'
     ]);
+    Route::resource('registrar_medicos', 'RegistroMedicosController');   
+    Route::get('registrar_medicos/{id}/destroy', [
+        'uses' => 'RegistroMedicosController@destroy',
+        'as' => 'registrar_medicos.destroy'
+    ]);
 
     Route::resource('agenda', 'AgendaController');
     Route::resource('hojas', 'HojasController');

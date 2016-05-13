@@ -11,7 +11,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('agenda.index') }}">
                     AgendaElectronica
                 </a>
             </div>
@@ -40,7 +40,7 @@
                             <a href="{{route('pacientes.index')}}">Pacientes </a>
                             
                     </li>
-                    <li><a href="{{route('codigos.index')}}">Codigos Cie</a></li>
+                    
                     
                     @endif
                     
@@ -62,7 +62,12 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 @if(Auth::user()->admin())
-                                    <li><a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a></li>
+                                    <li>
+                                        <a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/registrar_medicos') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Medicos</a>
+                                    </li>
                                 @endif
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
                             </ul>

@@ -105,12 +105,6 @@ form button:hover {
 
         <div class="col-md-6">
             <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-            @if ($errors->has('email'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-            @endif
         </div>
     </div>
 
@@ -127,7 +121,13 @@ form button:hover {
             @endif
         </div>
     </div>
-
+    <div align="center">
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
+     </div>
 
 
     <div class="form-group">

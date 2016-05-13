@@ -22,4 +22,8 @@ class Hoja extends Model
     {
     	return $this->hasMany('App\Medico');
     }
+    public function setnumlicenciamedicaAttribute($value)
+    {
+        $this->attributes['num_licencia_medica'] = strtoupper($value);
+    }
 }

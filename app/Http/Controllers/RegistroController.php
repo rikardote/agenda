@@ -76,4 +76,5 @@ class RegistroController extends Controller
         Flash::error('El usuario ' . $user->name . ' ha sido borrado con exito!');
         return redirect()->route('registrar.index');
     } 
+    
 }
