@@ -90,7 +90,14 @@
 			});
 
 			</script> 
+
 	@endforeach
+<script>
+    $(function() {
+       $('#timepicker').timepicker({ 'step': 20 });
+
+       });
+</script>
 	
 
 @endsection

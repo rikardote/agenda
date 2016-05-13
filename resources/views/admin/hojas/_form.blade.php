@@ -59,11 +59,11 @@
 	</div>
 	<div class="col-md-4">
 		<div class="form-group">
-			{!! Form::label('codigo_cie_id', 'Diagnostico') !!}
+			{!! Form::label('codigo_cie_id', 'Diagnostico CIE 10') !!}
 
 			{!! Form::text('codigo_cie_id', null, [
 				'class' => 'form-control',
-				'placeholder' => 'Numero de Licencia',
+				'placeholder' => 'Diagnostico - CIE 10',
 				'id' => 'auto' 
 			]) !!}
 		</div>

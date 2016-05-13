@@ -130,5 +130,10 @@ color: red;
       border-style: solid;
       border-width: 7px;
       border-radius: 4px 4px 4px 4px;
+      
 
-    }
+}
+th.ui-datepicker-week-end,
+td.ui-datepicker-week-end {
+    display: none;
+}

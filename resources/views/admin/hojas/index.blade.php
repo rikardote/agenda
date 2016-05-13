@@ -1,6 +1,6 @@
 @extends('layouts.doctores')
 
-@section('title','Citas para HOY del DR. '.$medico->fullname.'<div class="pull-right">'.fecha_dmy($fecha).'<a href="/hojas/'.$fecha.'/avanzar"> >> </a></div>')
+@section('title','Citas del DR. '.$medico->fullname.'<div class="pull-right">'.fecha_dmy($fecha).'<a href="/hojas/'.$fecha.'/avanzar"> >> </a></div>')
 
 @section('content')
 <table class="table table-striped">

@@ -14,7 +14,7 @@
 	{!! Form::label('horario', 'Horario') !!}
 	
 	{!! Form::text('horario', null, [
-		
+		'id' => 'timepicker',
 		'class' => 'form-control',
 		'placeholder' => 'Ingresa un horario', 
 		'required'
@@ -24,3 +24,10 @@
 {{ Form::hidden('medico_id', $medico->id) }}
 {{ Form::hidden('paciente_id', $paciente->id) }}
 {{ Form::hidden('slug', $medico->slug) }}
+
+<script>
+    $(function() {
+       $('#timepicker').timepicker();
+
+       });
+</script>

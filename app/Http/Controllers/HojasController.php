@@ -57,20 +57,24 @@ class HojasController extends Controller
 
         $cita = Cita::where('id', '=', $request->cita_id)->first();
         $cita->concretada = 1;
-        $total_citas = Cita::getTotalCitasCount($request->medico_id, $cita->fecha);
+        /*$total_citas = Cita::getTotalCitasCount($request->medico_id, $cita->fecha);
         if($total_citas) {
             Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
             return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);    
         }
         else{
             $cita->save();            
-        }
+        }*/
+        $cita->save();   
         Toastr::success('Hoja medica del paciente guardada con exito!!');
         return redirect()->route('hojas.index');
     }
     public function avanzar($fecha)
     {
-        $today = Carbon::parse($fecha)->addDay(1);
+        $today = Carbon::parse($fecha);
+        do {
+            $today->addDay(1);
+        }while ($today->isWeekend());
         
         $fecha = $today->year.'-'.$today->month.'-'.$today->day;
 
@@ -94,7 +98,7 @@ class HojasController extends Controller
         $medico = Medico::find($medico_id);
         $medico->especialidad;
        
-       $todas_citas = Cita::getTotalCitas($medico_id, $date);
+        $todas_citas = Cita::getTotalCitas($medico_id, $date);
 
         return view('admin.hojas.citas_edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas);
         

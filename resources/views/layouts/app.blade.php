@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datetextentry/datetextentry.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/timepicker/jquery.timepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/chosen-bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
     @yield('css')
@@ -58,6 +59,7 @@
     <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('plugins/datetextentry/datetextentry.js') }}"></script>
+    <script src="{{ asset('plugins/timepicker/jquery.timepicker.min.js') }}"></script>
     <script src="{{ asset('plugins/toastr/js/toastr.min.js') }}"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
