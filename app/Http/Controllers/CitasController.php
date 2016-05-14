@@ -41,6 +41,7 @@ class CitasController extends Controller
             $citas->paciente;
 
         });
+        $citas = $citas->sortBy('horario');
 	       
        $todas_citas = Cita::getTotalCitas($medico->id, $date);
 
@@ -62,6 +63,7 @@ class CitasController extends Controller
     {
     	$medico = Medico::findBySlug($slug);
 		$medico->especialidad;
+
 
         return view('admin.citas.buscar_paciente')->with('medico', $medico)->with('date', $date);
         	

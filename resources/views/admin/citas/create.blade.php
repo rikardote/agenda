@@ -58,6 +58,7 @@
 	</div>
  @endif
 
+
 @include('admin.partials.form-modal', ['title'=>'Nuevo Paciente'])
 @include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
 
@@ -70,10 +71,13 @@
 				'step': 20,
 				'minTime': '8am',
 			    'maxTime': '14:30pm',
-			    'timeFormat': 'h:i A',
-			    'disableTimeRanges': [
-            		['8am', '10am'],
+			    'timeFormat': 'H:i',
+			    'disableTextInput': true,
+			    'disableTimeRanges': 
+			    [
+            	<?php echo $horas; ?>	
 		        ]
+		        
 			});
 			
 		</script> 

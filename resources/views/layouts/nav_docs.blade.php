@@ -24,7 +24,9 @@
                     
                     <li><a href="{{route('codigos.index')}}">Codigos Cie</a></li>
                     <li><a href="{{route('hojas.index')}}">Hoja Medica</a></li>
-                   
+                    <li>
+                    <a data-url="{{ route('medico.nueva_cita') }}" class="load-form-modal  panelColor" data-toggle ="modal" data-target='#form-modal'>Asignar Cita</a> 
+                   </li>
                     
                 </ul>
           
@@ -45,3 +47,4 @@
             </div>
         </div>
     </nav>
+    @include('admin.partials.form-modal', ['title'=>'Asignar Citas'])

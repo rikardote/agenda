@@ -148,6 +148,18 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CodigosController@autocomplete',
         'as' => 'codigos.autocomplete'
     ]);
+    Route::get('medicos_citas/nueva_cita/', [
+        'uses' => 'HojasController@nueva_cita',
+        'as' => 'medico.nueva_cita'
+    ]);
+    Route::get('medico_citas/paciente', [
+        'uses' => 'HojasController@search_paciente',
+        'as' => 'medico.pacientes.search'
+    ]);
+    Route::post('medico_citas/paciente', [
+        'uses' => 'HojasController@cita_store',
+        'as' => 'medicos.cita.store'
+    ]);
 
     Route::get('home', 'HomeController@index');
     Route::get('doctor/login', 'UserdoctorsController@showLoginForm');
