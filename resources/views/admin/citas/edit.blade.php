@@ -41,5 +41,14 @@ $.datepicker.setDefaults($.datepicker.regional['es-MX']);
 
        
   });
+    $('#timepicker').timepicker({ 
+        'step': 20,
+        'minTime': '8am',
+          'maxTime': '14:30pm',
+          'timeFormat': 'h:i A',
+          'disableTimeRanges': [
+            ['8am', '10am'],
+          ]
+      });
 
  </script>

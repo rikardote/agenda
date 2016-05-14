@@ -9,15 +9,15 @@
   </a> 
    <table class="table table-striped">
     <thead>
-        <th>Nombre</th>
-
+        <th>Horario de Entrada</th>
+        <th>Horario de Salida</th>
         <th>Accion</th>
     </thead>
     <tbody>
     @foreach($horarios as $horario)
         <tr>
-         <td>{{ $horario->name }}</td>
-        
+         <td>{{ $horario->entrada }}</td>
+         <td>{{ $horario->salida }}</td>
          
          <td>
             <a data-url="{{ route('horarios.edit', $horario->id) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>

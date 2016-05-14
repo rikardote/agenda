@@ -10,3 +10,17 @@
      {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
 </div>  
     {!! Form::close() !!}
+
+<script>
+	$('#entrada').timepicker({
+		'minTime': '7:00am',
+	    'maxTime': '15:00pm',
+	    'timeFormat': 'H:i A'
+
+	});
+	$('#salida').timepicker({
+		'minTime': '12:00pm',
+	    'maxTime': '20:00pm',
+	    'timeFormat': 'H:i A'
+	});
+</script>

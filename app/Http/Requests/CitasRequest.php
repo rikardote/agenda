@@ -26,7 +26,6 @@ class CitasRequest extends Request
         return [
             'paciente_id' => 'required',
             'medico_id' => 'required',
-            'fecha' => 'required',
             'horario' => 'required',
 
         ];

@@ -14,7 +14,7 @@
 	{!! Form::label('horario', 'Horario') !!}
 	
 	{!! Form::text('horario', null, [
-		
+		'id' => 'timepicker',
 		'class' => 'form-control',
 		'placeholder' => 'Ingresa un horario', 
 		'required'

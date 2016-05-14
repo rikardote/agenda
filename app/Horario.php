@@ -8,7 +8,7 @@ class Horario extends Model
 {
      protected $table = 'horarios';
 
-     protected $fillable = ['name'];
+     protected $fillable = ['entrada', 'salida'];
 
     public function medicos()
     {

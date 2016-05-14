@@ -24,7 +24,8 @@ class HorariosRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'min:4|max:60|required'
+            'entrada' => 'min:4|max:60|required',
+            'salida' => 'min:4|max:60|required',
         ];
     }
 }
