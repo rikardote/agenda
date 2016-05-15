@@ -35,6 +35,7 @@ class Medico extends Model implements SluggableInterface
         return $this->hasMany('App\Cita');
     }
 
+
     
     public function setnombresAttribute($value)
     {

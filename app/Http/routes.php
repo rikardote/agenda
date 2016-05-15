@@ -160,6 +160,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HojasController@cita_store',
         'as' => 'medicos.cita.store'
     ]);
+    Route::resource('medico/permisos', 'PermisosController');
 
     Route::get('home', 'HomeController@index');
     Route::get('doctor/login', 'UserdoctorsController@showLoginForm');

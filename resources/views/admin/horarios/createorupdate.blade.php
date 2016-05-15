@@ -15,12 +15,12 @@
 	$('#entrada').timepicker({
 		'minTime': '7:00am',
 	    'maxTime': '15:00pm',
-	    'timeFormat': 'H:i A'
+	    'timeFormat': 'H:i'
 
 	});
 	$('#salida').timepicker({
 		'minTime': '12:00pm',
 	    'maxTime': '20:00pm',
-	    'timeFormat': 'H:i A'
+	    'timeFormat': 'H:i'
 	});
 </script>

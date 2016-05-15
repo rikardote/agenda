@@ -14,4 +14,8 @@ class Horario extends Model
     {
     	return $this->hasMany('App\Horario');
     }
+    public function getTodosAttribute() {
+        return $this->entrada . ' A ' . $this->salida;
+    
+    }
 }

@@ -42,10 +42,15 @@ $.datepicker.setDefaults($.datepicker.regional['es-MX']);
        
   });
     $('#timepicker').timepicker({ 
-        'step': 20,
-        'minTime': '8am',
-          'maxTime': '14:30pm',
-          'timeFormat': 'H:i A',
-          
-      });
+          'step': 20,
+          'minTime': '<?php echo $entrada; ?>',
+          'maxTime': '<?php echo $salida; ?>',
+          'timeFormat': 'H:i',
+          'disableTextInput': true,
+          'disableTimeRanges': 
+          [
+              <?php echo $horas; ?>
+            ]
+            
+    });
    </script>

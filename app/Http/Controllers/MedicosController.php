@@ -40,7 +40,7 @@ class MedicosController extends Controller
     public function create()
     {
     	$especialidades = Especialidad::all()->lists('name', 'id')->toArray();
-    	$horarios = horario::all()->lists('name', 'id')->toArray();
+    	$horarios = horario::all()->lists('todos', 'id')->toArray();
         return view('admin.medicos.createorupdate')
         	->with('especialidades', $especialidades)
         	->with('horarios', $horarios);
@@ -50,7 +50,7 @@ class MedicosController extends Controller
     {
         $medico = Medico::find($id);
         $especialidades = Especialidad::all()->lists('name', 'id')->toArray();
-        $horarios = horario::all()->lists('name', 'id')->toArray();
+        $horarios = horario::all()->lists('todos', 'id')->toArray();
         return view('admin.medicos.createorupdate')
             ->with('medico', $medico)
             ->with('especialidades', $especialidades)

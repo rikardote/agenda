@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -33,6 +33,8 @@
                                 <li><a href="{{route('medicos.index')}}">Consultar Medicos</a></li>
                                 <li><a href="{{route('especialidades.index')}}">Especialidades</a></li>
                                 <li><a href="{{route('horarios.index')}}">Horarios</a></li>
+                                <li><a href="{{route('medico.permisos.index')}}">Permisos</a></li>
+
                             </ul>
                         </li>
 

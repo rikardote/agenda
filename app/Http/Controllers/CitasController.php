@@ -76,10 +76,27 @@ class CitasController extends Controller
        
         $medico = Medico::findBySlug($slug);
         $medico->especialidad;
+        $medico->horario;
 
         $todas_citas = Cita::getTotalCitas($medico->id, $date);
+        $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
+        $horas = array();
 
-        return view('admin.citas.edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas);
+        foreach ($horas_usadas as $hora) {
+            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+        }
+        $horas = implode(",",$horas);
+        $entrada = $medico->horario->entrada;
+        $salida = $medico->horario->salida;
+
+        return view('admin.citas.edit')
+            ->with('cita', $cita)
+            ->with('medico', $medico)
+            ->with('date', $date)
+            ->with('todas_citas', $todas_citas)
+            ->with('horas', $horas)
+            ->with('entrada', $entrada)
+            ->with('salida', $salida);
         
     }
 

@@ -103,10 +103,23 @@ class HojasController extends Controller
 
         $medico = Medico::find($medico_id);
         $medico->especialidad;
-       
+        $medico->horario;
         $todas_citas = Cita::getTotalCitas($medico_id, $date);
+        $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
+        $horas = array();
 
-        return view('admin.hojas.citas_edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas);
+        foreach ($horas_usadas as $hora) {
+            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+        }
+        $horas = implode(",",$horas);
+        $entrada = $medico->horario->entrada;
+        $salida = $medico->horario->salida;
+
+        return view('admin.hojas.citas_edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date)
+            ->with('todas_citas', $todas_citas)
+            ->with('horas', $horas)
+            ->with('entrada', $entrada)
+            ->with('salida', $salida);
         
     }
     public function update(Request $request, $medico_id,$date,$cita_id)
@@ -145,12 +158,23 @@ class HojasController extends Controller
             });
             $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
             $medico->especialidad;
+            $medico->horario;
+
             $today = Carbon::today();
             $date = $today->year.'-'.$today->month.'-'.$today->day;
             $todas_citas = Cita::getTotalCitas($medico->id, $date);
+            $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
+            $horas = array();
+            foreach ($horas_usadas as $hora) {
+                $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+            }
+            $horas = implode(",",$horas);
+            $entrada = $medico->horario->entrada;
+            $salida = $medico->horario->salida;
 
             // returns a view and passes the view the list of articles and the original query.
-            return view('admin.hojas.citas.create')->with('pacientes', $pacientes)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas);
+            return view('admin.hojas.citas.create')->with('pacientes', $pacientes)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas)->with('horas', $horas)->with('entrada', $entrada)
+            ->with('salida', $salida);
     }
     public function cita_store(CitasRequest $request)
     {
@@ -161,6 +185,8 @@ class HojasController extends Controller
         //$cita->capturado_por = \Auth::guard('doctors')->user()->doctor_id;
 
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
+        
+
         $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
         if($total_citas) {
             Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');

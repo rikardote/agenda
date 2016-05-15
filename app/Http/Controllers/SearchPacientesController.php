@@ -33,6 +33,8 @@ class SearchPacientesController extends Controller
       		});
 		   	$medico = Medico::findBySlug($slug);
 			$medico->especialidad;
+			$medico->horario;
+
 			$todas_citas = Cita::getTotalCitas($medico->id, $date);
 	        $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
 	        $horas = array();
@@ -40,14 +42,17 @@ class SearchPacientesController extends Controller
 	            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
 	        }
 	        $horas = implode(",",$horas);
-	        //dd($horas);
+	        $entrada = $medico->horario->entrada;
+        $salida = $medico->horario->salida;
 			// returns a view and passes the view the list of articles and the original query.
 		    return view('admin.citas.create')
 		    	->with('pacientes', $pacientes)
 		    	->with('medico', $medico)
 		    	->with('date', $date)
 		    	->with('todas_citas', $todas_citas)
-		    	->with('horas', $horas);
+		    	->with('horas', $horas)
+		    	->with('entrada', $entrada)
+            	->with('salida', $salida);
 	 }
 	 public function NuevoPaciente($slug, $date, $rfc){
 	 	$tipos = Tipo::all()->lists('tipo', 'id')->toArray();

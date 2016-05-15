@@ -72,13 +72,18 @@
          }
        
   });
-			$('#{{$paciente->rfc.$paciente->id}}').timepicker({ 
-				'step': 20,
-				'minTime': '8am',
-			    'maxTime': '14:30pm',
-			    'timeFormat': 'H:i A',
-			    
-			});
+	$('#{{$paciente->rfc.$paciente->id}}').timepicker({ 
+          'step': 20,
+          'minTime': '<?php echo $entrada; ?>',
+          'maxTime': '<?php echo $salida; ?>',
+          'timeFormat': 'H:i',
+          'disableTextInput': true,
+          'disableTimeRanges': 
+          [
+              <?php echo $horas; ?>
+            ]
+            
+    });
 			
 		</script> 
 	@endforeach
