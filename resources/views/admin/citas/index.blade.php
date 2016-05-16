@@ -24,7 +24,7 @@
               
                 if($date2 >= $f_inicio && $date2 <= $f_final) {
                   $permiso_act = 1;
-                   echo "<b><span class='blink'>El medico esta de Permiso</span></b>";
+                   echo "<b><span style='color: red'>El medico esta de Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
                 }
               }
           ?>
@@ -114,7 +114,8 @@
             var currDate = y+'-'+m+'-'+d;
             if(dates.indexOf(currDate) >= 0){
               return [true, "ui-highlight"];  
-            }else{
+            }
+            else{
               return [true];
             }
 
