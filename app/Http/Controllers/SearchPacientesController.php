@@ -43,7 +43,7 @@ class SearchPacientesController extends Controller
 	        }
 	        $horas = implode(",",$horas);
 	        $entrada = $medico->horario->entrada;
-        $salida = $medico->horario->salida;
+        	$salida = $medico->horario->salida;
 			// returns a view and passes the view the list of articles and the original query.
 		    return view('admin.citas.create')
 		    	->with('pacientes', $pacientes)

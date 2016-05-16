@@ -13,14 +13,32 @@
       <div class="panel panel-primary">
         <div class="panel-heading">
           <div align="center">
-            @if($citas->count() < 10)
+            
+
+          <?php 
+            $permiso_act = 0;
+              if (isset($permiso->fecha_inicio) && isset($permiso->fecha_final)) {
+                $date2 = strtotime($date);
+                $f_inicio = strtotime($permiso->fecha_inicio); 
+                $f_final = strtotime($permiso->fecha_final); 
+              
+                if($date2 >= $f_inicio && $date2 <= $f_final) {
+                  $permiso_act = 1;
+                   echo "<b><span class='blink'>El medico esta de Permiso</span></b>";
+                }
+              }
+          ?>
+            @if($citas->count() < 10 && $permiso_act != 1)
               <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal fa fa-pencil fa-2x panelColor" data-toggle ="modal" data-target='#form-modal'></a> 
               <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
             @else
               <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
               <br>
+              @if($citas->count() >= 10)
               <b><span class="blink">No se pueden programar mas Citas para esta fecha.</span></b>
+              @endif
             @endif
+
           </div>
         </div>
 
@@ -87,6 +105,7 @@
         },
 
         beforeShowDay: function(date){
+            var permiso = <?=$permiso_act?>;
             var y = date.getFullYear().toString(); // get full year
             var m = (date.getMonth() + 1).toString(); // get month.
             var d = date.getDate().toString(); // get Day
@@ -98,6 +117,7 @@
             }else{
               return [true];
             }
+
          }
        
   });

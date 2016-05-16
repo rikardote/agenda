@@ -15,9 +15,9 @@ class PermisosController extends Controller
 	{
 	    $permisos = Permiso::all(); 
 	    $permisos->each(function($permisos) {
-            $permisos->medicos;
+            $permisos->medico;
         });
-dd($permisos);
-	    return view('admin.medicos.permisos.index')->with('medicos', $medicos);
+
+	    return view('admin.medicos.permisos.index')->with('permisos', $permisos);
     }
 }

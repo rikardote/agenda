@@ -16,10 +16,12 @@
         <th>Accion</th>
     </thead>
     <tbody>
-    @foreach($medicos as $medico)
+
+    @foreach($permisos as $permiso)
         <tr>
-             <td>{{ $medico->fullname}}</td>
-             <td>{{ $medico->permiso}}</td>
+             <td>{{ $permiso->medico->fullname}}</td>
+             <td>{{ fecha_dmy($permiso->fecha_inicio) }}</td>
+             <td>{{ fecha_dmy($permiso->fecha_final) }}</td>
 
          <td>
             

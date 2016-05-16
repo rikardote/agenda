@@ -33,7 +33,8 @@ class AgendaController extends Controller
     {
         $user = User::find(\Auth::user()->id);
         $user_espe = $user->especialidades;
-
+        $user_espe = $user_espe->sortBy('name');
+        
         return view('admin.agenda.index')->with('especialidades', $user_espe);
     }
 

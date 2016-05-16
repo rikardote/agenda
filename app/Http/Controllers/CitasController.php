@@ -13,7 +13,7 @@ use App\Cita;
 use App\Especialidad;
 use App\Medico;
 use App\Paciente;
-
+use App\Permiso;
 use App\User;
 use Carbon\Carbon;
 use Toastr;
@@ -35,7 +35,11 @@ class CitasController extends Controller
         }
         $date = fecha_ymd($date);  
 
-		$medico = Medico::findBySlug($slug);
+        $today = Carbon::today();
+        $today = $today->year.'-'.$today->month.'-'.$today->day;
+	
+        $medico = Medico::findBySlug($slug);
+        $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
         $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
             $citas->paciente;
@@ -43,13 +47,14 @@ class CitasController extends Controller
         });
         $citas = $citas->sortBy('horario');
 	       
-       $todas_citas = Cita::getTotalCitas($medico->id, $date);
+        $todas_citas = Cita::getTotalCitas($medico->id, $date);
 
-		return view('admin.citas.index')
+	    return view('admin.citas.index')
             ->with('medico', $medico)
             ->with('citas', $citas)
             ->with('date', $date)
-            ->with('todas_citas', $todas_citas);
+            ->with('todas_citas', $todas_citas)
+            ->with('permiso', $permiso);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
 
