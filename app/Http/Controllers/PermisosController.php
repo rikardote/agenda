@@ -20,4 +20,11 @@ class PermisosController extends Controller
 
 	    return view('admin.medicos.permisos.index')->with('permisos', $permisos);
     }
+    public function create()
+    {
+    	$medicos = Medico::all()->lists('fullname', 'id')->toArray();
+    	asort($medicos);
+    	return view('admin.medicos.permisos.create')->with('medicos', $medicos);
+
+    }
 }

@@ -49,7 +49,8 @@ $.datepicker.setDefaults($.datepicker.regional['es-MX']);
           'disableTextInput': true,
           'disableTimeRanges': 
           [
-              <?php echo $horas; ?>
+            ['8am','10am'],
+            <?php echo $horas; ?>
             ]
             
     });
