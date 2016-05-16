@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.doctores')
 
 @section('title', 'Dr. ' . $medico->apellido_pat . ' ' . $medico->apellido_mat . ' ' . $medico->nombres . ' / ' . $medico->especialidad->name)
 
@@ -81,7 +81,7 @@
           'disableTimeRanges': 
           [
               <?php echo $horas; ?>
-            ]
+          ]
             
     });
 			
