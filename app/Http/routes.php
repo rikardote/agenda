@@ -161,6 +161,10 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'medicos.cita.store'
     ]);
     Route::resource('medico/permisos', 'PermisosController');
+    Route::get('medico/permisos//{id}/destroy', [
+        'uses' => 'PermisosController@destroy',
+        'as' => 'medico.permisos.destroy'
+    ]);
 
     Route::get('home', 'HomeController@index');
     Route::get('doctor/login', 'UserdoctorsController@showLoginForm');
