@@ -106,6 +106,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HojasController@update',
         'as' => 'hoja.citas.update'
     ]);
+     Route::post('medico_citas/gethoras', [
+        'uses' => 'HojasController@gethoras',
+        'as' => 'hoja.gethoras'
+    ]);
     Route::get('citas/{slug}/{date}/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'admin.citas.destroy'
@@ -148,15 +152,20 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CodigosController@autocomplete',
         'as' => 'codigos.autocomplete'
     ]);
-    Route::get('medicos_citas/nueva_cita/', [
+    Route::get('medicos_citas/{date}/nueva_cita/', [
         'uses' => 'HojasController@nueva_cita',
         'as' => 'medico.nueva_cita'
     ]);
-    Route::get('medico_citas/paciente', [
+    Route::get('medicos_citas/crear/', [
+        'uses' => 'HojasController@show',
+        'as' => 'medico.nueva_cita.show'
+    ]);
+
+    Route::get('medico_citas/paciente/{date}/search', [
         'uses' => 'HojasController@search_paciente',
         'as' => 'medico.pacientes.search'
     ]);
-    Route::post('medico_citas/paciente', [
+    Route::post('medico_citas/paciente/{date}', [
         'uses' => 'HojasController@cita_store',
         'as' => 'medicos.cita.store'
     ]);

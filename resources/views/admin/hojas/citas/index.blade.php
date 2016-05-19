@@ -29,7 +29,7 @@
               }
           ?>
             @if($citas->count() < 10 && $permiso_act != 1)
-              <a data-url="{{ route('medico.nueva_cita', $date) }}" class="load-form-modal fa fa-pencil fa-2x panelColor" data-toggle ="modal" data-target='#form-modal'></a> 
+              <a data-url="{{ route('medico.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal fa fa-pencil fa-2x panelColor" data-toggle ="modal" data-target='#form-modal'></a> 
               <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
             @else
               <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
@@ -56,10 +56,20 @@
             <td>{{ $cita->id }}</td>
           
             <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }} <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}}</small></strong></td>
-     		     <td>{{ $cita->horario }}</td>
+     		<td>{{ $cita->horario }}</td>
             <td>
 
-           
+            <a class="panelColorGreen" href="{{ route('admin.citas.concretada', [$medico->slug , $date, $cita->id]) }}">
+                <span class="fa fa-check-square-o fa-2x"></span>
+              </a>
+              <a class="load-form-modal panelColorGreen"
+                data-url="{{ route('admin.citas.edit', [$medico->slug , $date, $cita->id]) }}" 
+                data-toggle ="modal" data-target='#form-modal'><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
+              </a> 
+
+              <a href="{{ route('admin.citas.destroy', [$medico->slug, $date, $cita->id]) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span>
+              </a>
+
             </td>
           </tr>
         @endforeach
@@ -114,4 +124,3 @@
   });
     
   </script>
-  @endsection

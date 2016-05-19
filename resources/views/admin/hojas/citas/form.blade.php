@@ -2,9 +2,9 @@
 <div class="form-group">
 	{!! Form::label('fecha', 'Fecha') !!}
 	{!! Form::text('fecha', fecha_dmy($date), [
-		'id' => $paciente->id,
 		'class' => 'form-control',
 		'placeholder' => 'Selecciona la fecha', 
+		'readonly'
 	]) !!}
 </div>
 <div class="form-group">
@@ -20,5 +20,4 @@
 
 {{ Form::hidden('medico_id', $medico->id) }}
 {{ Form::hidden('paciente_id', $paciente->id) }}
-
 

@@ -1,6 +1,6 @@
 <div class="container">
 	
-	{!! Form::open(['route' => ['medico.pacientes.search'], 'method' => 'get']) !!}
+	{!! Form::open(['route' => ['medico.pacientes.search', $date], 'method' => 'get']) !!}
 	
 		<div class="form-group">
 		<div class="col-md-4">

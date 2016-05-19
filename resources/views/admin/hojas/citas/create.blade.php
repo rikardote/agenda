@@ -3,6 +3,7 @@
 @section('title', 'Dr. ' . $medico->apellido_pat . ' ' . $medico->apellido_mat . ' ' . $medico->nombres . ' / ' . $medico->especialidad->name)
 
 @section('content')
+
 <strong>Pacientes: </strong>
 	<br>
 	<br>
@@ -12,7 +13,7 @@
 		{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}
 		<br>
 
-		{!! Form::open(['route' => ['medicos.cita.store'], 'method' => 'POST', 'class' => 'datepickerform']) !!}
+		{!! Form::open(['route' => ['medicos.cita.store', $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.hojas.citas.form')
 			{!! Form::submit('Registrar', ['class' => 'btn btn-success']) !!}
 		{!! Form::close() !!}
@@ -29,7 +30,7 @@
 
   <div id="{{$paciente->slug}}" class="collapse">
 
-   {!! Form::open(['route' => ['medicos.cita.store'], 'method' => 'POST', 'class' => 'datepickerform']) !!}
+   {!! Form::open(['route' => ['medicos.cita.store', $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.hojas.citas.form')
 			{!! Form::submit('Registrar', ['class' => 'btn btn-success']) !!}
 		{!! Form::close() !!}

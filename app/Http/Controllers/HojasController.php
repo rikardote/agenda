@@ -12,6 +12,7 @@ use App\Hoja;
 use App\Cie;
 use Carbon\Carbon;
 use App\Paciente;
+use App\Permiso;
 use App\Http\Requests\CitasRequest;
 use Toastr;
 
@@ -23,45 +24,47 @@ class HojasController extends Controller
    }
 	public function index()
 	{
-		$today = Carbon::today();
-        $tomorrow = Carbon::tomorrow();
-
-		$fecha = $today->year.'-'.$today->month.'-'.$today->day;
-
-    	$citas = Cita::where('fecha', '=', $today)->where('medico_id', '=', \Auth::guard('doctors')->user()->doctor_id)->get();	
-    	$citas->each(function($citas) {
-            $citas->paciente;
-        });
-      
-        //$citas = usort($citas, create_function('$a, $b', 'return strcmp($a->horario, $b->horario);'));
-        $citas = $citas->sortBy('horario');
+		if (isset($_GET["date"])) {
+            $date = $_GET["date"];
+           
+        }else{
+            $date = Carbon::today();     
+        }
+        
+        $today = Carbon::today();
+        $today = $today->year.'-'.$today->month.'-'.$today->day;
+    
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
+        $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
 
-    	return view('admin.hojas.index')
-            ->with('citas', $citas)
-            ->with('fecha', $fecha)
-            ->with('medico', $medico);
+        $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
+        $citas->each(function($citas) {
+            $citas->paciente;
 
-	}
-    public function custom_create($paciente_id, $medico_id, $cita_id)
-    {
-        $medico = Medico::find($medico_id);
-        $paciente = Paciente::find($paciente_id);
-        return view('admin.hojas.create')
-            ->with('paciente', $paciente)
+        });
+        $citas = $citas->sortBy('horario');
+           
+        $todas_citas = Cita::getTotalCitas($medico->id, $date);
+
+        
+        return view('admin.hojas.index')
             ->with('medico', $medico)
-            ->with('cita_id', $cita_id);
-            
+            ->with('citas', $citas)
+            ->with('date', $date)
+            ->with('todas_citas', $todas_citas)
+            ->with('permiso', $permiso);
     }
     public function store(Request $request)
     {        
         $hoja = new Hoja($request->all());
+        
         $cie = Cie::where('code', '=', $request->codigo_cie_id)->first();
         $hoja->codigo_cie_id = $cie->id;
         $hoja->save();
 
         $cita = Cita::where('id', '=', $request->cita_id)->first();
         $cita->concretada = 1;
+ 
         /*$total_citas = Cita::getTotalCitasCount($request->medico_id, $cita->fecha);
         if($total_citas) {
             Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
@@ -74,28 +77,7 @@ class HojasController extends Controller
         Toastr::success('Hoja medica del paciente guardada con exito!!');
         return redirect()->route('hojas.index');
     }
-    public function avanzar($fecha)
-    {
-        $today = Carbon::parse($fecha);
-        do {
-            $today->addDay(1);
-        }while ($today->isWeekend());
-        
-        $fecha = $today->year.'-'.$today->month.'-'.$today->day;
-
-        $citas = Cita::where('fecha', '=', $today)->where('medico_id', '=', \Auth::guard('doctors')->user()->doctor_id)->get(); 
-        $citas->each(function($citas) {
-            $citas->paciente;
-        });
-        $citas = $citas->sortBy('horario');
-        $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
-
-        return view('admin.hojas.index')
-            ->with('citas', $citas)
-            ->with('fecha', $fecha)
-            ->with('medico', $medico);
-
-    }
+    
     public function citas_editar($medico_id,$date,$cita_id)
     {
         $cita = Cita::find($cita_id);
@@ -115,7 +97,9 @@ class HojasController extends Controller
         $entrada = $medico->horario->entrada;
         $salida = $medico->horario->salida;
 
-        return view('admin.hojas.citas_edit')->with('cita', $cita)->with('medico', $medico)->with('date', $date)
+        return view('admin.hojas.citas_edit')->with('cita', $cita)
+            ->with('medico', $medico)
+            ->with('date', $date)
             ->with('todas_citas', $todas_citas)
             ->with('horas', $horas)
             ->with('entrada', $entrada)
@@ -142,11 +126,28 @@ class HojasController extends Controller
         return redirect()->route('hojas.index');
  
     }
-    public function nueva_cita()
+
+    public function nueva_cita($date)
     {
-        return view('admin.hojas.citas.buscar_paciente');
+        $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
+        $medico->especialidad;
+
+
+        return view('admin.hojas.citas.buscar_paciente')->with('medico', $medico)->with('date', $date);
+
     }
-    public function search_paciente(Request $request)
+    public function nueva_cita_create($paciente_id, $medico_id)
+    {
+        $horas_usadas = Cita::where('fecha', '=', $request->fecha)->where('medico_id', '=', $request->medico_id)->lists('horario', 'id')->toArray();
+        $horas = array();
+
+        foreach ($horas_usadas as $hora) {
+            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+        }
+        $horas = implode(",",$horas);
+        return view('admin.hojas.citas.form_citas')->with('paciente_id', $paciente_id)->with('medico_id', $medico_id);
+    }
+    public function search_paciente(Request $request, $date)
     {
             // Gets the query string from our form submission 
             $query = $request->rfc;
@@ -160,8 +161,6 @@ class HojasController extends Controller
             $medico->especialidad;
             $medico->horario;
 
-            $today = Carbon::today();
-            $date = $today->year.'-'.$today->month.'-'.$today->day;
             $todas_citas = Cita::getTotalCitas($medico->id, $date);
             $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
             $horas = array();
@@ -173,34 +172,54 @@ class HojasController extends Controller
             $salida = $medico->horario->salida;
 
             // returns a view and passes the view the list of articles and the original query.
-            return view('admin.hojas.citas.create')->with('pacientes', $pacientes)->with('medico', $medico)->with('date', $date)->with('todas_citas', $todas_citas)->with('horas', $horas)->with('entrada', $entrada)
-            ->with('salida', $salida);
+            return view('admin.hojas.citas.create')
+                ->with('pacientes', $pacientes)
+                ->with('medico', $medico)
+                ->with('date', $date)
+                ->with('todas_citas', $todas_citas)
+                ->with('horas', $horas)
+                ->with('entrada', $entrada)
+                ->with('salida', $salida);
     }
-    public function cita_store(CitasRequest $request)
+    public function cita_store(CitasRequest $request, $date)
     {
 
         $cita = new Cita($request->all());
 
         $cita->fecha = fecha_ymd($request->fecha);
-        //$cita->capturado_por = \Auth::guard('doctors')->user()->doctor_id;
+        $cita->capturado_por = \Auth::guard('doctors')->user()->doctor_id;
 
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
-        
-
         $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
         if($total_citas) {
             Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
-            return redirect()->route('hojas.index');    
+            return redirect()->route('hojas.index', ['date' => $request->date]);    
         }
         else{
             $cita->save();            
         }
 
-        $fecha = Carbon::parse($cita->fecha)->subDay(1);;
+
         //Flash::success('Cita registrada con exito!');
         Toastr::success('Cita Agendada con exito');
-        return redirect()->route('custom.hojas.avanzar', ['fecha' => $fecha]);  
+        return redirect()->route('hojas.index', ['date' => $request->date]);
     }  
+   /* public function getHoras(Request $request)
+    {
+        $horas_usadas = Cita::where('fecha', '=', $request->fecha)->where('medico_id', '=', $request->medico_id)->lists('horario', 'id')->toArray();
+        $horas = array();
+
+        foreach ($horas_usadas as $hora) {
+            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+        }
+        $horas = implode(",",$horas);
+        
+        if ($request->ajax()) {
+            return response()->json(
+                $horas, 200);
+        }
+    }
+*/
 
 
 	

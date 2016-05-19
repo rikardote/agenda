@@ -20,14 +20,8 @@
                 <!-- Left Side Of Navbar -->
                 
                 <ul class="nav navbar-nav">
-                    
-                    
                     <li><a href="{{route('codigos.index')}}">Codigos Cie</a></li>
                     <li><a href="{{route('hojas.index')}}">Hoja Medica</a></li>
-                    <li>
-                    <a data-url="{{ route('medico.nueva_cita') }}" class="load-form-modal  panelColor" data-toggle ="modal" data-target='#form-modal'>Asignar Cita</a> 
-                   </li>
-                    
                 </ul>
           
                 <!-- Right Side Of Navbar -->
