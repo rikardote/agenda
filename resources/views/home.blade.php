@@ -25,12 +25,12 @@ body {
 	
 	<div class="col-md-6">
 		<div class="panel panel-primary">
-			<a href="/login"><img src="/public/fotos/agenda.png" alt="Agendar Citas"></a>
+			<a href="http://192.161.59.137/agenda/public/login"><img src="http://192.161.59.137/agenda/public/fotos/agenda.png" alt="Agendar Citas"></a>
 		</div>
 	</div>
 	<div class="col-md-6">
 		<div class="panel panel-primary">
-			<a href="/doctor/login"><img src="/public/fotos/doctor.png" alt="Hoja Medica"></a>
+			<a href="http://192.161.59.137/agenda/public/doctor/login"><img src="http://192.161.59.137/agenda/public/fotos/doctor.png" alt="Hoja Medica"></a>
 		</div>
 	</div>
 </div>
