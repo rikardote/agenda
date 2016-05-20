@@ -180,9 +180,9 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::get('home', 'HomeController@index');
-    Route::get('agenda/doctor/login', 'UserdoctorsController@showLoginForm');
-    Route::post('agenda/doctor/login', 'UserdoctorsController@login');
-    Route::get('agenda/doctor/logout', 'UserdoctorsController@logout');
+    Route::get('/doctor/login', 'UserdoctorsController@showLoginForm');
+    Route::post('/doctor/login', 'UserdoctorsController@login');
+    Route::get('/doctor/logout', 'UserdoctorsController@logout');
 
 });
 
