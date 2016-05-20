@@ -30,6 +30,10 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::auth();
+    /*Route::get('agenda/login', 'Auth\AuthController@getLogin');
+    Route::post('agenda/login', 'Auth\AuthController@postLogin');
+    Route::get('agenda/logout', 'Auth\AuthController@getLogout');
+    */
     // Route::get('registrar','RegistroController@index');
     Route::resource('registrar', 'RegistroController');   
     Route::get('registrar/{id}/destroy', [
@@ -176,9 +180,9 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::get('home', 'HomeController@index');
-    Route::get('doctor/login', 'UserdoctorsController@showLoginForm');
-    Route::post('doctor/login', 'UserdoctorsController@login');
-    Route::get('doctor/logout', 'UserdoctorsController@logout');
+    Route::get('agenda/doctor/login', 'UserdoctorsController@showLoginForm');
+    Route::post('agenda/doctor/login', 'UserdoctorsController@login');
+    Route::get('agenda/doctor/logout', 'UserdoctorsController@logout');
 
 });
 

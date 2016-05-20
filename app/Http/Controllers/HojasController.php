@@ -28,7 +28,8 @@ class HojasController extends Controller
             $date = $_GET["date"];
            
         }else{
-            $date = Carbon::today();     
+            $date = Carbon::today();
+            $date = $date->year.'-'.$date->month.'-'.$date->day;     
         }
         
         $today = Carbon::today();
