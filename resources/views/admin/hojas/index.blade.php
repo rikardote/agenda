@@ -52,15 +52,17 @@
       <tbody>
         @foreach($citas as $cita)
         {{--*/ $tachado = ($cita->concretada == 1) ? "tachado" : "" /*--}}
-          <tr class='{{$tachado}}'>
-            <td>{{ $cita->id }}</td>
           
-            <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }} <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}}</small></strong></td>
-     		     <td>{{ $cita->horario }}</td>
-            <td>
-
-           
-            </td>
+          <tr class='{{$tachado}}'>
+            
+            <td><a href="{{route('custom.hojas.create',[$cita->paciente->id, $medico->id, $cita->id])}}">{{ $cita->id }}</a></td>
+          
+              <td>
+                <a href="{{route('custom.hojas.create',[$cita->paciente->id, $medico->id, $cita->id])}}">
+                  {{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }} <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}}</small></strong>
+                </a>
+              </td>
+       		    <td>{{ $cita->horario }}</td>
           </tr>
         @endforeach
       </tbody>

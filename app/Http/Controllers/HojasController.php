@@ -205,6 +205,21 @@ class HojasController extends Controller
         Toastr::success('Cita Agendada con exito');
         return redirect()->route('hojas.index', ['date' => $request->date]);
     }  
+
+      public function custom_create($paciente_id, $medico_id, $cita_id)
+    {
+        $medico = Medico::find($medico_id);
+        $paciente = Paciente::find($paciente_id);
+        $dt = Carbon::parse($paciente->fecha_nacimiento);
+        $anos = Carbon::createFromDate($dt->year, $dt->month, $dt->day)->diff(Carbon::now())->format('%y Años');
+ 
+        return view('admin.hojas.create')
+              ->with('medico', $medico)
+              ->with('paciente', $paciente)
+              ->with('anos', $anos)
+              ->with('cita_id', $cita_id);
+            
+      }
    /* public function getHoras(Request $request)
     {
         $horas_usadas = Cita::where('fecha', '=', $request->fecha)->where('medico_id', '=', $request->medico_id)->lists('horario', 'id')->toArray();
