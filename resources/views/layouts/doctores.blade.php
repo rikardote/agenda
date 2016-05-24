@@ -92,7 +92,7 @@
             });
             $("#auto").autocomplete({
                 minLength:3,
-                source: 'http://192.161.59.137/agenda/getdata'
+                source: 'http://192.161.59.137/agenda/public/getdata'
             });
         });
     </script>
