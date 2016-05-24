@@ -92,7 +92,7 @@
             });
             $("#auto").autocomplete({
                 minLength:3,
-                source: '/getdata'
+                source: 'http://192.161.59.137/getdata'
             });
         });
     </script>
