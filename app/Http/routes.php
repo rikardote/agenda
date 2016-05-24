@@ -152,7 +152,7 @@ Route::group(['middleware' => 'web'], function () {
         return Datatables::eloquent(App\Cie::query())
         ->make(true);
     });
-    Route::get('agenda/public/getdata', [
+    Route::get('/getdata', [
         'uses' => 'CodigosController@autocomplete',
         'as' => 'codigos.autocomplete'
     ]);
