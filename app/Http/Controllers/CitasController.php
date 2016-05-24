@@ -40,6 +40,7 @@ class CitasController extends Controller
 	
         $medico = Medico::findBySlug($slug);
         $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
+        dd($permiso)
         $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
             $citas->paciente;
