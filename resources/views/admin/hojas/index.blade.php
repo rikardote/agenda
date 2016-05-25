@@ -30,9 +30,11 @@
           ?>
             @if($citas->count() < 10 && $permiso_act != 1)
               <a data-url="{{ route('medico.nueva_cita', $date) }}" class="load-form-modal fa fa-pencil fa-2x panelColor" data-toggle ="modal" data-target='#form-modal'></a> 
-              <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
+              <div class="label label-warning pull pull-right">{{ fecha_dmy($date) }}</div>
+              <div class="label label-warning pull pull-left"> Hay <span class="badge">{{ $citas->count() }} </span> Citas</div>
             @else
-              <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
+             <div class="label label-warning pull pull-right">{{ fecha_dmy($date) }}</div>
+              <div class="label label-warning pull pull-left"> Hay <span class="badge">{{ $citas->count() }} </span> Citas</div>
               <br>
               @if($citas->count() >= 10)
               <b><span class="blink">No se pueden programar mas Citas para esta fecha.</span></b>
