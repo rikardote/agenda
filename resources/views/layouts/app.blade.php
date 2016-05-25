@@ -88,7 +88,7 @@
     <script>
         $('#alert').delay(2000).fadeOut(800)
     </script>
-    @yield('js')
+  
      {!! Toastr::render() !!}
 </body>
 </html>
