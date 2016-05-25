@@ -24,7 +24,8 @@
               
                 if($date2 >= $f_inicio && $date2 <= $f_final) {
                   $permiso_act = 1;
-                   echo "<b><span class='font-border'>El medico esta de Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
+                   echo "<b><span class='font-border'>El medico esta de Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b><br>";
+
                 }
               }
           ?>
