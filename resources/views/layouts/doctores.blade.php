@@ -52,9 +52,9 @@
     </section>
    
 <footer class="footer">
-  <div class="container">
-    <p class="text-muted"> &copy;  {{date('Y')}} ISSSTE BAJA CALIFORNIA Por: Ricardo Fuentes</p>
-  </div>
+ 
+    <p class="text-muted text-white"> &copy;  {{date('Y')}} ISSSTE BAJA CALIFORNIA Por: Ricardo Fuentes</p>
+ 
 </footer>
     <!-- JavaScripts -->
     <script src="{{ asset('plugins/jquery/js/jquery.js') }}"></script>
