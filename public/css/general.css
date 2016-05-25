@@ -15,7 +15,7 @@ body {
 a:link {
     text-decoration: none;
 }
-ul
+.no-bullet
 {
     list-style-type: none;
 }

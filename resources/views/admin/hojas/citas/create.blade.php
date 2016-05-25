@@ -23,11 +23,9 @@
 @else
 @foreach($pacientes as $paciente)
  <a type="button" data-toggle="collapse" data-target="#{{$paciente->slug}}">
- 		<ul>
-      <li class="alert alert-warning">
+      <li class="alert alert-warning no-bullet">
  			  {{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}	
  		 </li>
-    </ul>
  </a>
 
   <div id="{{$paciente->slug}}" class="collapse">
