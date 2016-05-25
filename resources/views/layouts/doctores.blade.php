@@ -14,9 +14,9 @@
     <!-- Styles -->
 
     <link rel="stylesheet" href="{{ asset('css/jquery-bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/themesolar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/timepicker/jquery.timepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datetextentry/datetextentry.css') }}">
