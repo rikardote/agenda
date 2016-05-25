@@ -7,7 +7,7 @@
   <a data-url="{{ route('medico.permisos.create') }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
     <span class="fa fa-plus-circle fa-2x" aria-hidden='true'></span>
   </a> 
-   <table class="table table-striped table-condensed">
+   <table class="table table-condensed">
     <thead>
         <th>Medico</th>
         <th>Fecha Inicio</th>

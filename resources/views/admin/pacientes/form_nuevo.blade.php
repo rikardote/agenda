@@ -46,7 +46,7 @@
     {!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
     <br>
 	{!! Form::text('fecha_nacimiento', null, [
-		'class' => 'form-control',
+		'class' => 'form-control text-white',
 		'required',
 		'id' => 'dob',
 		'style' => 'width: 10em;'

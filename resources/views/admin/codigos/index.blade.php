@@ -11,7 +11,7 @@
 <a data-url="{{ route('codigos.create') }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
     <span class="fa fa-plus-circle fa-2x" aria-hidden='true'></span>
   </a> 
-   <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="myTable">
+   <table class="table table-condensed table-bordered" cellspacing="0" width="100%" id="myTable">
     <thead>
         <th>Codigo</th>
 

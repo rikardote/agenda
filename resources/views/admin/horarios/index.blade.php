@@ -7,7 +7,7 @@
 <a data-url="{{ route('horarios.create') }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
     <span class="fa fa-plus-circle fa-2x" aria-hidden='true'></span>
   </a> 
-   <table class="table table-striped">
+   <table class="table table-condensed">
     <thead>
         <th>Horario de Entrada</th>
         <th>Horario de Salida</th>
