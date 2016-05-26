@@ -35,11 +35,9 @@ class ReportesController extends Controller
     	//dd($citas);
 		$citas = $citas->sortBy('horario')->groupBy('medico_id');
 
-    	//return view('admin.reportes.show')->with('citas', $citas)->with('date', $date);
-
-    	$mpdf = new mPDF('', 'Letter', 0, '', 12.7, 12.7, 14, 12.7, 8, 8);
+    	$mpdf = new mPDF('', 'Letter-L');
         $header = \View('admin.reportes.header')->with('date', $date)->render();
-        //$mpdf->SetFooter($dpto->description.'|Generado el: {DATE j-m-Y} |Hoja {PAGENO} de {nb}');
+        $mpdf->SetFooter('Generado el: {DATE j-m-Y}| AgendaElectronica | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
         $html =  \View('admin.reportes.show')->with('citas', $citas)->with('date', $date)->render();
         $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
         $mpdf->setAutoTopMargin = 'stretch';
