@@ -178,6 +178,15 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'PermisosController@destroy',
         'as' => 'medico.permisos.destroy'
     ]);
+    Route::get('reportes', [
+        'uses' => 'ReportesController@index',
+        'as' => 'reporte.index'
+    ]);
+    Route::get('reportes/{date}', [
+        'uses' => 'ReportesController@pdf',
+        'as' => 'reporte.pdf'
+    ]);
+
 
     Route::get('home', 'HomeController@index');
     Route::get('/doctor/login', 'UserdoctorsController@showLoginForm');

@@ -34,13 +34,21 @@
                                 <li><a href="{{route('especialidades.index')}}">Especialidades</a></li>
                                 <li><a href="{{route('horarios.index')}}">Horarios</a></li>
                                 <li><a href="{{route('medico.permisos.index')}}">Permisos</a></li>
-
                             </ul>
                         </li>
 
                     <li class="">
                             <a href="{{route('pacientes.index')}}">Pacientes </a>
                             
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Reportes <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{route('reporte.index')}}">Reporte Diario de Citas</a></li>
+                        </ul>
                     </li>
                     
                     

@@ -147,3 +147,7 @@ td.ui-datepicker-week-end {
 .align-right{
   align: right!important;
 }
+.font-border{
+  color: yellow;
+   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

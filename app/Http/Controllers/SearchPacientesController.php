@@ -73,10 +73,26 @@ class SearchPacientesController extends Controller
 
 	   $medico = Medico::findBySlug($slug);
 			$medico->especialidad;
+		
+		$horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
+        $horas = array();
 
+        foreach ($horas_usadas as $hora) {
+            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+        }
+        $horas = implode(",",$horas);
+        $entrada = $medico->horario->entrada;
+        $salida = $medico->horario->salida;
 
         Flash::success('Paciente registrado con exito!');
-        return view('admin.citas.create')->with('pacientes', $pacientes)->with('medico', $medico)->with('date', $date)->with('rfc', $request->rfc);
+        return view('admin.citas.create')
+        	->with('pacientes', $pacientes)
+        	->with('medico', $medico)
+        	->with('date', $date)
+        	->with('rfc', $request->rfc)
+        	->with('horas', $horas)
+            ->with('entrada', $entrada)
+            ->with('salida', $salida);
      	//return view('admin.citas.create')->with('rfc', $request-rfc)->with('medico', $medico)->with('date', $date);
     }  
 }

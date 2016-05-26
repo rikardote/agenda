@@ -22,17 +22,19 @@
 @else
 @foreach($pacientes as $paciente)
  <a type="button" data-toggle="collapse" data-target="#{{$paciente->slug}}">
- 		<li class="alert alert-info">
+ 		<li class="alert alert-success no-bullet">
  			{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}	
  		</li>
  </a>
 
   <div id="{{$paciente->slug}}" class="collapse">
 
-   {!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
+	   {!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
-			{!! Form::submit('Registrar', ['class' => 'btn btn-success']) !!}
+
+			{!! Form::submit('Registrar', ['class' => 'btn btn-warning']) !!}
 		{!! Form::close() !!}
+		<br>
   </div>
 
 @endforeach

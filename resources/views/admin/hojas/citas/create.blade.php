@@ -32,6 +32,7 @@
 
    {!! Form::open(['route' => ['medicos.cita.store', $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.hojas.citas.form')
+      <br>
 			{!! Form::submit('Registrar', ['class' => 'btn btn-success']) !!}
 		{!! Form::close() !!}
   </div>
