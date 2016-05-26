@@ -1,7 +1,7 @@
 @foreach($citas as $cita)
 	@foreach($cita as $cit)
 				<h3>{{$cit->medico->especialidad->name}}
-				    - DR. {{$cit->medico->fullname}}</h3>
+				    -  {{$cit->medico->fullname}}</h3>
 		<?php break; ?>
 	@endforeach
 	<table style="font-family:family:Arial; width: 100%";>
