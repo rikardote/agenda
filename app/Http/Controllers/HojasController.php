@@ -189,7 +189,7 @@ class HojasController extends Controller
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
         $cita->fecha = fecha_ymd($request->fecha);
         $cita->capturado_por = 1;
-
+        $cita->folio = getRandomeStr(4);
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
         $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
         if($total_citas) {

@@ -38,16 +38,16 @@ class ReportesController extends Controller
     	//return view('admin.reportes.show')->with('citas', $citas)->with('date', $date);
 
     	$mpdf = new mPDF('', 'Letter', 0, '', 12.7, 12.7, 14, 12.7, 8, 8);
-        //$header = \View('reportes.header', compact('dpto', 'qna'))->render();
+        $header = \View('admin.reportes.header')->with('date', $date)->render();
         //$mpdf->SetFooter($dpto->description.'|Generado el: {DATE j-m-Y} |Hoja {PAGENO} de {nb}');
         $html =  \View('admin.reportes.show')->with('citas', $citas)->with('date', $date)->render();
         $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
         $mpdf->setAutoTopMargin = 'stretch';
         $mpdf->setAutoBottomMargin = 'stretch';
-        //$mpdf->setHTMLHeader($header);
+        $mpdf->setHTMLHeader($header);
         $mpdf->SetDisplayMode('fullpage');
         $mpdf->WriteHTML($html);
    
-        $mpdf->Output($pdfFilePath, "D");
+        $mpdf->Output($pdfFilePath, "I"); //D
     }
 }

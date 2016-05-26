@@ -132,9 +132,10 @@ class CitasController extends Controller
     {
 
         $cita = new Cita($request->all());
-
         $cita->fecha = fecha_ymd($request->fecha);
         $cita->capturado_por = \Auth::user()->id;
+
+        $cita->folio = getRandomeStr(4);
 
         $medico = Medico::findBySlug($slug);
         $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
