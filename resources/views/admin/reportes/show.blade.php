@@ -1,5 +1,6 @@
 	<style type="text/css">
-		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-size: small; }
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family: Helvetica; font-size: small; }
+
 	</style>
 	
 </head>
