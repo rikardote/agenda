@@ -4,14 +4,14 @@
 	
 </head>
 <body>
-<table border="0" cellpadding="12" cellspacing="0" style="width:850px;">
+<table border="0" cellpadding="12" cellspacing="2" style="width:1450px;">
 	<tbody>
 		<tr>
 			<td><img alt="" src="fotos/issste.png" style="width: 400px; height: 108px;" /></td>
 			<td align='right'>
-			<p><h2><strong>HOSPITAL GENERAL 5 DE DICIEMBRE</strong></h2></p>
+			<p><h1><strong>HOSPITAL GENERAL 5 DE DICIEMBRE</strong></h1></p>
 
-			<p><h3><strong>ATENCION AL DERECHOHABIENTE</strong></h3></p>
+			<p><h2><strong>ATENCION AL DERECHOHABIENTE</strong></h2></p>
 
 					
 			
@@ -20,7 +20,7 @@
 		<table border="0" cellpadding="1" cellspacing="1" style="width:500px;">
 			<tbody>
 				<tr>
-					<p><td style="width: 100%; background-color: rgb(102, 102, 102);"><span style="font-size: large; color:#FFFFFF;">Citas del dia: {{fecha_dmy($date)}}</span></td></p>
+					<p><td style="width: 100%; background-color: rgb(102, 102, 102);"><span style="font-size: large; color:#FFFFFF;"><h3>Citas del dia: {{fecha_dmy($date)}}</h3></span></td></p>
 				</tr>
 				
 			</tbody>

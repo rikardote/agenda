@@ -352,6 +352,7 @@ class ComposerStaticInit6d660748b59d8e8af5d7b8a23476a330
         'Abstract_Renderer' => __DIR__ . '/..' . '/dompdf/dompdf/include/abstract_renderer.cls.php',
         'AddFieldsToCitasTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_11_100342_Add_fields_to_citas_table.php',
         'AddFolioToCitasTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_25_221309_Add_folio_to_citas_table.php',
+        'AddGenderToPacientesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_26_165140_Add_gender_to_pacientes_table.php',
         'Adobe_Font_Metrics' => __DIR__ . '/..' . '/phenx/php-font-lib/classes/Adobe_Font_Metrics.php',
         'Attribute_Translator' => __DIR__ . '/..' . '/dompdf/dompdf/include/attribute_translator.cls.php',
         'Block_Frame_Decorator' => __DIR__ . '/..' . '/dompdf/dompdf/include/block_frame_decorator.cls.php',

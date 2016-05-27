@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFolioToCitasTable extends Migration
+class AddGenderToPacientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddFolioToCitasTable extends Migration
      */
     public function up()
     {
-        Schema::table('citas', function (Blueprint $table) {
-            $table->string('folio')->unique();
+        Schema::table('pacientes', function (Blueprint $table) {
+            $table->string('gender');
         });
     }
 
@@ -24,8 +24,8 @@ class AddFolioToCitasTable extends Migration
      */
     public function down()
     {
-        Schema::table('citas', function (Blueprint $table) {
-            $table->dropColumn('folio');
+        Schema::table('pacientes', function (Blueprint $table) {
+            $table->dropColumn('gender');
         });
     }
 }

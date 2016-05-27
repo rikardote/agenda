@@ -14,6 +14,12 @@
 		'placeholder' => 'Selecciona un tipo', 
 		'required'
 	]) !!}
+		{!! Form::label('gender', 'Genero') !!}
+	{!!	Form::select('gender', array('F' => 'FEMENINO', 'M' => 'MASCULINO'), null, [
+		'class' => 'form-control',
+		'placeholder' => 'Selecciona el genero', 
+		'required'
+	]) !!}
 
 	{!! Form::label('nombres', 'Nombres') !!}
 	

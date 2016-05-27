@@ -1,6 +1,18 @@
 	<style type="text/css">
 		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family: Helvetica; font-size: small; }
+		.reporte{
+			border-top: 1px solid black;
+			border-bottom:1px solid black;
+			border-left: 1px solid black;
+			border-right: 1px solid black;
 
+		}
+		.reporte2{
+			border-bottom:1px solid black;
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+
+		}
 	</style>
 	
 </head>
@@ -13,76 +25,74 @@
 		<?php break; ?>
 	@endforeach
 	<table cellspacing="0" border="0">
-		<colgroup width="79"></colgroup>
-		<colgroup width="136"></colgroup>
-		<colgroup width="79"></colgroup>
-		<colgroup width="194"></colgroup>
-		<colgroup span="4" width="79"></colgroup>
-		<colgroup width="32"></colgroup>
-		<colgroup span="3" width="79"></colgroup>
-		<colgroup width="37"></colgroup>
-		<colgroup span="4" width="79"></colgroup>
-		<colgroup width="139"></colgroup>
-		<colgroup span="7" width="79"></colgroup>
+		
 		<tr>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 height="53" align="left" valign=middle><font color="#000000">HORA</font></td>
-			<td style="width:8%;border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">EXPEDIENTE</font></td>
-			<td style="width:20%;border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 rowspan=2 align="center" valign=middle><font color="#000000">NOMBRE DEL PACIENTE</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=bottom><font color="#000000">VIGENCIA <br>DERECHO</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=bottom><font color="#000000">SEXO<br>EDAD</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">FORANEO</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=bottom><font color="#000000">SOLICITUD</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=bottom><font color="#000000">PASE UNI</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">No. SERIE<br>LIC MEDICA</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">NO. DIAS</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">NO. MED</font></td>
-			<td style="width:15%;border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=bottom><font color="#000000">DIAGNOSTICO</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">1RA VEZ</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">SUB SEC</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">REPROG</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">SUSP</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">DIFE</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">VISITA</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 align="center" valign=middle><font color="#000000">NO.OTOR</font></td>
+			<td class="reporte" rowspan=2 height="53" align="left" valign=middle>HORA</td>
+			<td class="reporte" style="width:8%;" rowspan=2 align="center" valign=middle>EXPEDIENTE</td>
+			<td class="reporte" style="width:20%;" colspan=2 rowspan=2 align="center" valign=middle>NOMBRE DEL PACIENTE</td>
+			<td class="reporte" colspan=2 align="center" valign=bottom>VIGENCIA DERECHO</td>
+			<td class="reporte" colspan=2 align="center" valign=bottom>SEXO EDAD</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>FORANEO</td>
+			<td class="reporte" colspan=3 align="center" valign=bottom>SOLICITUD</td>
+			<td class="reporte" rowspan=2 align="center" valign=bottom>PASE UNI</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>No. LIC MEDICA</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>NO. DIAS</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>NO. MED</td>
+			<td class="reporte" style="width:25%;" colspan=2 align="center" valign=bottom>DIAGNOSTICO</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>1RA VEZ</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>SUB SEC</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>REPROG</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>SUSP</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>DIFE</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>VISITA</td>
+			<td class="reporte" rowspan=2 align="center" valign=middle>NO.OTOR</td>
 		</tr>
 		<tr>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom><font color="#000000">SI</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom><font color="#000000">NO</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom><font color="#000000">F</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom><font color="#000000">M</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom><font color="#000000">LAB.</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom><font color="#000000">RX</font></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom><font color="#000000">INTER<br>CONS.</font></td>
-			<td style="width:5%;border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font color="#000000">CODIGO CIE</font></td>
-			<td style="width:10%;border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font color="#000000">DESCRIPCION</font></td>
+			<td class="reporte" align="center" valign=bottom>SI</td>
+			<td class="reporte" align="center" valign=bottom>NO</td>
+			<td class="reporte" align="center" valign=bottom>F</td>
+			<td class="reporte" align="center" valign=bottom>M</td>
+			<td class="reporte" align="center" valign=bottom>LAB.</td>
+			<td class="reporte" align="center" valign=bottom>RX</td>
+			<td class="reporte" align="left" valign=bottom>INTER CONS.</td>
+			<td class="reporte" style="width:5%;" align="center" valign=middle>CODIGO CIE</td>
+			<td class="reporte" style="width:15%;" align="center" valign=middle>DESCRIPCION</td>
 			</tr>
 		@foreach($cita as $cit)
 		<tr>
 		
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#FFFFFF" sdval="0.333333333333333" sdnum="1033;1033;H:MM"><font color="#000000">{{$cit->horario}}</font></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000">{{$cit->paciente->rfc}} /{{$cit->paciente->tipo->code}}</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000">{{$cit->paciente->fullname}}</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000">X</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF" sdval="35" sdnum="1033;"><b><font color="#000000">35</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000">X</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000">X</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000">200LM3640604</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF" sdval="28" sdnum="1033;"><b><font color="#000000">28</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF" sdval="4" sdnum="1033;"><b><font color="#000000">4</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000">S82.2</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font size=1 color="#000000">AMNZ PARTO PRE NO ESP</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000">X</font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
-			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=bottom bgcolor="#FFFFFF"><b><font color="#000000"><br></font></b></td>
+			<td class="reporte2" height="20" align="left" valign=bottom>{{$cit->horario}}</td>
+			<td class="reporte2" style="font-size: 12px;"align="left" valign=bottom >{{$cit->paciente->rfc}} /{{$cit->paciente->tipo->code}}</td>
+			<td class="reporte2" style="font-size: 12px;" colspan=2 align="left" valign=bottom >{{$cit->paciente->fullname}}</td>
+			<td class="reporte2" align="center" valign=bottom ></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom >
+				@if ($cit->paciente->gender == 'F')
+					{{getEdad($cit->paciente->fecha_nacimiento)}}
+				@endif
+			</td>
+			<td class="reporte2" align="center" valign=bottom>
+				@if ($cit->paciente->gender == 'M')
+					{{getEdad($cit->paciente->fecha_nacimiento)}}
+				@endif
+			</td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ></td>
+			<td class="reporte2" align="center" valign=bottom ></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ></td>
+			<td class="reporte2" align="center" valign=bottom ></td>
+			<td class="reporte2" align="center" valign=bottom ></td>
+			<td class="reporte2" align="center" valign=bottom ></td>
+			<td class="reporte2" align="center" valign=bottom ><b><font size=1></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ><br></td>
 		</tr>
 		@endforeach	
 	</table>

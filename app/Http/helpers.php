@@ -1,5 +1,6 @@
 <?php 
 use App\Cita;
+use Carbon\Carbon;
 function fecha_ymd($date){
 	return date('Y-m-d', strtotime(str_replace('/', '-', $date)));
 }
@@ -32,4 +33,10 @@ function getRandomeStr($num) {
              $random_string = randString($num);
         }
      return $random_string;
+}
+function getEdad($fecha)
+{
+  $dt = Carbon::parse($fecha);
+  $anos = Carbon::createFromDate($dt->year, $dt->month, $dt->day)->diff(Carbon::now())->format('%y');
+  return $anos;
 }

@@ -10,6 +10,7 @@ return array(
     'Abstract_Renderer' => $vendorDir . '/dompdf/dompdf/include/abstract_renderer.cls.php',
     'AddFieldsToCitasTable' => $baseDir . '/database/migrations/2016_05_11_100342_Add_fields_to_citas_table.php',
     'AddFolioToCitasTable' => $baseDir . '/database/migrations/2016_05_25_221309_Add_folio_to_citas_table.php',
+    'AddGenderToPacientesTable' => $baseDir . '/database/migrations/2016_05_26_165140_Add_gender_to_pacientes_table.php',
     'Adobe_Font_Metrics' => $vendorDir . '/phenx/php-font-lib/classes/Adobe_Font_Metrics.php',
     'Attribute_Translator' => $vendorDir . '/dompdf/dompdf/include/attribute_translator.cls.php',
     'Block_Frame_Decorator' => $vendorDir . '/dompdf/dompdf/include/block_frame_decorator.cls.php',
