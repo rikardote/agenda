@@ -3,7 +3,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Login form shake effect</title>
+    <title>AgendaElectronica</title>
     
     
     
@@ -19,7 +19,7 @@
   <body>
 
     <div class="login-form">
-      <img src="/fotos/issste_simple.png" alt="">
+      <img src="fotos/issste_simple.png" alt="">
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/doctor/login') }}">
       <div class="form-group ">
        {!! csrf_field() !!}
