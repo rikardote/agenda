@@ -26,8 +26,8 @@ class ReportesController extends Controller
  	}
     public function pdf($date)
     {
-    	dd($date);
-        /*$citas = Cita::where('fecha', '=', $date)->get();
+    	
+        $citas = Cita::where('fecha', '=', $date)->get();
     	$citas->each(function($citas) {
             $citas->medico->especialidad;
             $citas->paciente->tipo;
@@ -48,6 +48,6 @@ class ReportesController extends Controller
         $mpdf->WriteHTML($html);
    
         $mpdf->Output($pdfFilePath, "I"); //D
-        */
+        
     }
 }
