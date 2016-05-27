@@ -3,7 +3,7 @@ html {
   min-height: 100%;
 }
 body {
-  background-color: #2B3E50; 
+  /*background-color: #2B3E50; */
   font-family: 'Lato';
   margin-bottom: 60px;
   padding: 0px;
@@ -37,6 +37,8 @@ footer {
 
  }
 
+
+/*#1AB9C5;*/
 
 .blink {
   color: red;

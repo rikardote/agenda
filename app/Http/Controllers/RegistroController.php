@@ -76,5 +76,16 @@ class RegistroController extends Controller
         Flash::error('El usuario ' . $user->name . ' ha sido borrado con exito!');
         return redirect()->route('registrar.index');
     } 
-    
+    public function theme_get()
+    {
+        $themes = array('cerulean' => 'cerulean', 'cosmo' => 'cosmo', 'cyborg' => 'cyborg', 'darkly' => 'darkly', 'flatly' => 'flatly', 'journal' => 'journal', 'lumen' => 'lumen', 'paper' => 'paper', 'readable' => 'readable', 'sandstone' => 'sandstone', 'simplex' => 'simplex', 'slate' => 'slate', 'spacelab' => 'spacelab', 'superhero' => 'superhero', 'united' => 'united', 'yeti' => 'yeti');
+        return view('admin.themes')->with('themes', $themes);
+    }
+    public function theme_post(Request $request)
+    {
+        $user = \Auth::user();
+        $user->theme = $request->theme;
+        $user->save();
+        return redirect()->route('users.theme.get');  
+    }
 }

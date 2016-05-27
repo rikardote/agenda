@@ -15,7 +15,7 @@
 		'placeholder' => 'Selecciona un tipo', 
 		'required'
 	]) !!}
-		{!! Form::label('gender', 'Genero') !!}
+		{!! Form::label('gender', 'Sexo') !!}
 	{!!	Form::select('gender', array('F' => 'FEMENINO', 'M' => 'MASCULINO'), null, [
 		'class' => 'form-control',
 		'placeholder' => 'Selecciona el genero', 
@@ -52,7 +52,7 @@
     {!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
     <br>
 	{!! Form::text('fecha_nacimiento', null, [
-		'class' => 'form-control text-white',
+		'class' => 'form-control',
 		'required',
 		'id' => 'dob',
 		'style' => 'width: 10em;'

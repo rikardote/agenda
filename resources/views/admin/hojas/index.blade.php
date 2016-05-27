@@ -10,7 +10,7 @@
 @if($citas)
   <div class="col-md-8">
     <div class="panel-group">
-      <div class="panel panel-primary">
+      <div class="panel panel-color">
         <div class="panel-heading">
           <div align="center">
             

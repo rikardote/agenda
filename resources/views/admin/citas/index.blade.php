@@ -24,7 +24,7 @@
               
                 if($date2 >= $f_inicio && $date2 <= $f_final) {
                   $permiso_act = 1;
-                   echo "<b><span class='font-border'>El medico esta de Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
+                   echo "<b><span class='font-border'>Medico esta de<br>Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
                 }
               }
           ?>
@@ -39,7 +39,7 @@
               <div class="label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>
               <br>
               @if($citas->count() >= 10)
-              <b><span class="blink font-border">No se pueden programar mas Citas para esta fecha.</span></b>
+                <b><span class="blink font-border">No se pueden programar mas Citas para esta fecha.</span></b>
               @endif
             @endif
 

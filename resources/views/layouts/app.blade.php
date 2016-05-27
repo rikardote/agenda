@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mi Agenda</title>
+    <title>AgendaElectronica</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
@@ -13,7 +13,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/jquery-bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
+    
+    {{--*/ $user = \Auth::user(); /*--}}
+    
+    <link rel="stylesheet" href="{{ asset('css/bootswatch/'.$user->theme.'.css') }}">
+
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
     <link rel="stylesheet" href="{{ asset('css/themesolar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">

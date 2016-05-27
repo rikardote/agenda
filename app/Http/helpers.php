@@ -40,3 +40,8 @@ function getEdad($fecha)
   $anos = Carbon::createFromDate($dt->year, $dt->month, $dt->day)->diff(Carbon::now())->format('%y');
   return $anos;
 }
+
+function setActive($path, $request, $active = 'active')
+    {
+        return $request->is($path) ? $active : '';
+    }

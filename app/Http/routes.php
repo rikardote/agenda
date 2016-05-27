@@ -186,6 +186,14 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReportesController@pdf',
         'as' => 'reporte.pdf'
     ]);
+    Route::get('themes', [
+        'uses' => 'RegistroController@theme_get',
+        'as' => 'users.theme.get'
+    ]);
+    Route::post('themes', [
+        'uses' => 'RegistroController@theme_post',
+        'as' => 'users.theme.post'
+    ]);
 
 
     Route::get('home', 'HomeController@index');

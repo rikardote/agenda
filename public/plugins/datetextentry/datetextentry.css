@@ -3,7 +3,7 @@ span.jq-dte {
   position: relative;
   padding: 2px;
   margin: 1px;
-  background-color: #4E5D6C;
+  background-color: #fff;
   border: 1px solid #666;
   border-radius: 3px;
 }
@@ -13,12 +13,12 @@ span.jq-dte-inner {
   padding: 1px;
   margin: 1px;
   white-space: nowrap;
-  background-color: #4E5D6C;
+  background-color: #fff;
 }
 
 span.jq-dte input {
   border: none;
-  background-color: #4E5D6C;
+  background-color: #fff;
   text-align: center;
   margin: 0;
   padding: 0;

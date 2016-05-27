@@ -20,28 +20,28 @@
                 <!-- Left Side Of Navbar -->
                 @if(Auth::user())
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
+                    <li class="dropdown {{ Request::segment(1) === 'agenda' ? 'active' : null  }}">
                             <a href="{{route('agenda.index')}}"> Agenda     </a>
                     </li>
                      @if(Auth::user()->admin())
-                     <li class="dropdown">
+                     <li class="dropdown {{ Request::segment(1) === 'medicos' ? 'active' : null  }}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Medicos <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{route('medicos.index')}}">Consultar Medicos</a></li>
-                                <li><a href="{{route('especialidades.index')}}">Especialidades</a></li>
-                                <li><a href="{{route('horarios.index')}}">Horarios</a></li>
-                                <li><a href="{{route('medico.permisos.index')}}">Permisos</a></li>
+                                <li class="{{ Request::segment(1) === 'medicos' ? 'active' : null  }}"><a href="{{route('medicos.index')}}">Consultar Medicos</a></li>
+                                <li class="{{ Request::segment(1) === 'especialidades' ? 'active' : null  }}"><a href="{{route('especialidades.index')}}">Especialidades</a></li>
+                                <li class="{{ Request::segment(1) === 'horarios' ? 'active' : null  }}"><a href="{{route('horarios.index')}}">Horarios</a></li>
+                                <li class="{{ Request::segment(2) === 'permisos' ? 'active' : null  }}"><a href="{{route('medico.permisos.index')}}">Permisos</a></li>
                             </ul>
                         </li>
 
-                    <li class="">
+                    <li class="{{ Request::segment(1) === 'pacientes' ? 'active' : null  }}">
                             <a href="{{route('pacientes.index')}}">Pacientes </a>
                             
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown {{ Request::segment(1) === 'reportes' ? 'active' : null }}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             Reportes <span class="caret"></span>
                         </a>
@@ -72,6 +72,9 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 @if(Auth::user()->admin())
+                                    <li>
+                                        <a href="{{ url('/themes') }}"><i class="fa fa-btn fa fa-cog"></i>Cambiar Tema</a>
+                                    </li>
                                     <li>
                                         <a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a>
                                     </li>

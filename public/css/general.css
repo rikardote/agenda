@@ -30,7 +30,7 @@ footer {
   text-align: center;
  }
 
-
+ 
 .blink {
 color: red;
   animation: blink 1s steps(5, start) infinite;
