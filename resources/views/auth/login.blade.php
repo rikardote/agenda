@@ -13,7 +13,7 @@
   <body>
 
     <div class="login-form">
-      <img src="http://192.161.59.137/agenda/public/fotos/issste_simple.png" alt="">
+      <img src="../fotos/issste_simple.png" alt="">
       <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
       <div class="form-group ">
        {!! csrf_field() !!}
