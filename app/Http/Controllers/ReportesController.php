@@ -26,13 +26,14 @@ class ReportesController extends Controller
  	}
     public function pdf($date)
     {
-    	$citas = Cita::where('fecha', '=', $date)->get();
+    	dd($date);
+        /*$citas = Cita::where('fecha', '=', $date)->get();
     	$citas->each(function($citas) {
             $citas->medico->especialidad;
             $citas->paciente->tipo;
         });
 
-    	//dd($citas);
+    	//
 		$citas = $citas->sortBy('horario')->groupBy('medico_id');
 
     	$mpdf = new mPDF('', 'Legal-L');
@@ -47,5 +48,6 @@ class ReportesController extends Controller
         $mpdf->WriteHTML($html);
    
         $mpdf->Output($pdfFilePath, "I"); //D
+        */
     }
 }
