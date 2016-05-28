@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dr. ' . $medico->apellido_pat . ' ' . $medico->apellido_mat . ' ' . $medico->nombres . ' / ' . $medico->especialidad->name)
+@section('title', 'Dr. ' . $medico->fullname . ' / ' . $medico->especialidad->name)
 
 @section('content')
 <div class="col-md-4">
@@ -16,19 +16,21 @@
             
 
           <?php 
-            $permiso_act = 0;
-              if (isset($permiso->fecha_inicio) && isset($permiso->fecha_final)) {
-                $date2 = strtotime($date);
-                $f_inicio = strtotime($permiso->fecha_inicio); 
-                $f_final = strtotime($permiso->fecha_final); 
+           $permiso_act = 0;
+            if (isset($permiso->fecha_inicio) && isset($permiso->fecha_final)) {
               
-                if($date2 >= $f_inicio && $date2 <= $f_final) {
-                  $permiso_act = 1;
-                   echo "<b><span class='font-border'>Medico esta de<br>Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
-                }
+              $f_inicio = strtotime($permiso->fecha_inicio); 
+              $f_final = strtotime($permiso->fecha_final); 
+            
+              if($date2 >= $f_inicio && $date2 <= $f_final) {
+                $permiso_act = 1;
+                 echo "<b><span class='font-border'>Medico esta de<br>Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
+
               }
+            }
+              
           ?>
-            @if($citas->count() < 10 && $permiso_act != 1)
+            @if($citas->count() < 10 && $permiso_act != 1 && $f_anterior != 1)
               <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'>+Agregar Cita</a> 
               <div class="label label-warning pull pull-right">{{ fecha_dmy($date) }}</div>
               <div class="label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>

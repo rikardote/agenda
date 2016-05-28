@@ -49,13 +49,19 @@ class CitasController extends Controller
         $citas = $citas->sortBy('horario');
 	       
         $todas_citas = Cita::getTotalCitas($medico->id, $date);
-
-	    return view('admin.citas.index')
+        
+        $todaysrttotime= strtotime($today);
+        $date2 = strtotime($date);
+        $f_anterior = $date2 < $todaysrttotime ? 1:0;
+ 
+        return view('admin.citas.index')
             ->with('medico', $medico)
             ->with('citas', $citas)
             ->with('date', $date)
+            ->with('date2', $date2)
             ->with('todas_citas', $todas_citas)
-            ->with('permiso', $permiso);
+            ->with('permiso', $permiso)
+            ->with('f_anterior', $f_anterior);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
 

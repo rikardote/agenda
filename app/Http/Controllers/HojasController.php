@@ -34,6 +34,7 @@ class HojasController extends Controller
         
         $today = Carbon::today();
         $today = $today->year.'-'.$today->month.'-'.$today->day;
+        
     
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
         $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
@@ -46,14 +47,22 @@ class HojasController extends Controller
         $citas = $citas->sortBy('horario');
            
         $todas_citas = Cita::getTotalCitas($medico->id, $date);
-
+        
+        $todaysrttotime= strtotime($today);
+        $date2 = strtotime($date);
+        $f_anterior = $date2 < $todaysrttotime ? 1:0;
+ 
+        
         
         return view('admin.hojas.index')
             ->with('medico', $medico)
             ->with('citas', $citas)
             ->with('date', $date)
+            ->with('date2', $date2)
             ->with('todas_citas', $todas_citas)
-            ->with('permiso', $permiso);
+            ->with('permiso', $permiso)
+            ->with('f_anterior', $f_anterior);
+
     }
     public function store(Request $request)
     {        
