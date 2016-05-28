@@ -11,23 +11,25 @@
                 </button>
 
                 <!-- Branding Image -->
-                <div id="menubar-logo">
+               
                 <a class="navbar-brand" href="{{ route('agenda.index') }}">
                     <img style="display: inline-block; height: 55px; margin-top: -15px"
              src="/fotos/issste_simple.png">
              </a>
-                </div>
+                
             </div>
         
             <div class="collapse navbar-collapse" id="spark-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 @if(Auth::user())
                 <ul class="nav navbar-nav">
-                    <li class="dropdown {{ Request::segment(1) === 'agenda' ? 'active' : null  }}">
+                    <li class="dropdown {{ Request::segment(1) === 'agenda' || Request::segment(1) === 'citas' ? 'active' : null  }}">
                             <a href="{{route('agenda.index')}}"> Agenda     </a>
                     </li>
                      @if(Auth::user()->admin())
-                     <li class="dropdown {{ Request::segment(1) === 'medicos' ? 'active' : null  }}">
+                     <li class="dropdown 
+                        {{ Request::segment(1) === 'medicos' || Request::segment(2) === 'permisos' || 
+                            Request::segment(1) === 'especialidades' || Request::segment(1) === 'horarios' ? 'active' : null  }}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Medicos <span class="caret"></span>
                             </a>

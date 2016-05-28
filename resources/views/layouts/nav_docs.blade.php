@@ -11,12 +11,12 @@
                 </button>
 
                 <!-- Branding Image -->
-                <div id="menubar-logo">
+               
                 <a class="navbar-brand" href="{{ route('hojas.index') }}">
-                    <img style="display: inline-block; height: 50px; margin-top: -15px"
+                    <img style="display: inline-block; height: 55px; margin-top: -15px"
                      src="/fotos/issste_simple.png">
                 </a>
-                </div>
+               
             </div>
         
             <div class="collapse navbar-collapse" id="spark-navbar-collapse">
