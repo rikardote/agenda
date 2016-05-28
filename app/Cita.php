@@ -8,7 +8,9 @@ class Cita extends Model
 {
     protected $table = 'citas';
 
-    protected $fillable = ['paciente_id', 'medico_id', 'user_id', 'fecha', 'horario', 'concretada', 'capturado_por'];
+    protected $fillable = ['paciente_id', 'medico_id', 'user_id', 'fecha', 'horario', 'concretada', 'capturado_por','folio','foraneo','laboratorio','rayosx','interconsulta',
+                'pase_otra_unidad','num_licencia_medica','num_de_dias','num_medicamentos','codigo_cie_id',
+                'primera_vez','subsecuente','reprogramada','suspendida', 'diferida', 'num_otorgados'];
 
     public function paciente()
     {
@@ -18,6 +20,11 @@ class Cita extends Model
     {
     	return $this->belongsTo('App\Medico');
     }
+    public function codigo()
+    {
+        return $this->belongsTo('App\Cie','codigo_cie_id');
+    }
+    
 
     public function getidAttribute($value)
     {

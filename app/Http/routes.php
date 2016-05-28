@@ -186,6 +186,14 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReportesController@pdf',
         'as' => 'reporte.pdf'
     ]);
+    Route::get('medico/reportes', [
+        'uses' => 'ReportesController@hoja_medica_get',
+        'as' => 'reporte.hoja_medica'
+    ]);
+    Route::get('medico/reportes/{date}', [
+        'uses' => 'ReportesController@hoja_medica_pdf',
+        'as' => 'hoja_medica.pdf'
+    ]);
     Route::get('themes', [
         'uses' => 'RegistroController@theme_get',
         'as' => 'users.theme.get'

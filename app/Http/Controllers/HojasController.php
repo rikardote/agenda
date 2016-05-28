@@ -66,24 +66,27 @@ class HojasController extends Controller
     }
     public function store(Request $request)
     {        
-        $hoja = new Hoja($request->all());
-        
+        $cita = Cita::find($request->cita_id);
         $cie = Cie::where('code', '=', $request->codigo_cie_id)->first();
-        $hoja->codigo_cie_id = $cie->id;
-        $hoja->save();
-
-        $cita = Cita::where('id', '=', $request->cita_id)->first();
+        
+        $cita->codigo_cie_id = $cie->id;
+        $cita->foraneo = $request->foraneo;
+        $cita->laboratorio = $request->laboratorio;
+        $cita->rayosx = $request->rayosx;
+        $cita->interconsulta = $request->interconsulta;
+        $cita->pase_otra_unidad = $request->pase_otra_unidad;
+        $cita->num_licencia_medica =  strtoupper($request->num_licencia_medica);
+        $cita->num_de_dias = $request->num_de_dias;
+        $cita->num_medicamentos = $request->num_medicamentos;
+        $cita->reprogramada = $request->reprogramada;
+        $cita->suspendida = $request->suspendida;
+        $cita->subsecuente = $request->subsecuente;
+        $cita->diferida = $request->diferida;
+        $cita->num_otorgados =  $request->num_otorgados;
+        $cita->primera_vez =  $request->primera_vez;
         $cita->concretada = 1;
- 
-        /*$total_citas = Cita::getTotalCitasCount($request->medico_id, $cita->fecha);
-        if($total_citas) {
-            Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
-            return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);    
-        }
-        else{
-            $cita->save();            
-        }*/
-        $cita->save();   
+        $cita->save();
+        
         Toastr::success('Hoja medica del paciente guardada con exito!!');
         return redirect()->route('hojas.index');
     }

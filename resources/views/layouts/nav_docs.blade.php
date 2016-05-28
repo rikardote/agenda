@@ -25,6 +25,15 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{route('codigos.index')}}">Codigos Cie</a></li>
                     <li><a href="{{route('hojas.index')}}">Hoja Medica</a></li>
+                    <li class="dropdown {{ Request::segment(1) === 'reportes' ? 'active' : null }}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Reportes <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{route('reporte.hoja_medica')}}">Reporte Diario de Citas</a></li>
+                        </ul>
+                    </li>
                 </ul>
           
                 <!-- Right Side Of Navbar -->
