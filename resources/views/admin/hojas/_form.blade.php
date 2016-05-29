@@ -59,8 +59,6 @@
 	</div>
 	<div class="col-md-4">
 		<div class="form-group">
-			{!! Form::label('codigo_cie_id', 'Diagnostico CIE 10') !!}
-
 			{!! Form::text('codigo_cie_id', null, [
 				'class' => 'form-control',
 				'placeholder' => 'Diagnostico - CIE 10',
@@ -77,16 +75,12 @@
 			]) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('num_de_dias', 'Numero de Dias') !!}
-
 			{!! Form::text('num_de_dias', null, [
 				'class' => 'form-control',
 				'placeholder' => 'Numero de Dias', 
 			]) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('num_medicamentos', 'Numero de medicamentos') !!}
-
 			{!! Form::text('num_medicamentos', null, [
 				'class' => 'form-control',
 				'placeholder' => 'Numero de medicamentos', 
