@@ -69,8 +69,9 @@
 		</div>
 		<div class="form-group">
 			{!! Form::label('num_licencia_medica', 'Numero de Licencia Medica') !!}
-
+				
 			{!! Form::text('num_licencia_medica', null, [
+				'id' => 'tags', 
 				'class' => 'form-control',
 				'placeholder' => 'Numero de Licencia', 
 			]) !!}

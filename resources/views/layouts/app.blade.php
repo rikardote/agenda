@@ -55,6 +55,7 @@
 </footer>
     <!-- JavaScripts -->
     <script src="{{ asset('plugins/jquery/js/jquery.js') }}"></script>
+    
     <script src="{{ asset('plugins/datepicker/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('plugins/datepicker/js/ui.datepicker-es-MX.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
