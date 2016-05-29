@@ -75,15 +75,16 @@
 			]) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::text('num_de_dias', null, [
+			{!! Form::number('num_de_dias', null, [
 				'class' => 'form-control',
 				'placeholder' => 'Numero de Dias', 
 			]) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::text('num_medicamentos', null, [
+			{!! Form::number('num_medicamentos', null, [
 				'class' => 'form-control',
-				'placeholder' => 'Numero de medicamentos', 
+				'placeholder' => 'Numero de medicamentos',
+
 			]) !!}
 		</div>
 		
