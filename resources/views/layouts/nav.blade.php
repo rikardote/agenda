@@ -14,7 +14,7 @@
                
                 <a class="navbar-brand" href="{{ route('agenda.index') }}">
                     <img style="display: inline-block; height: 55px; margin-top: -15px"
-             src="fotos/issste_simple.png">
+             src="../fotos/issste_simple.png">
              </a>
                 
             </div>
