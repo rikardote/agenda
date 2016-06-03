@@ -9,6 +9,9 @@ use Cviebrock\EloquentSluggable\SluggableTrait;
 
 class Paciente extends Model implements SluggableInterface
 {
+    protected $connection = 'mysql-pacientes';
+    protected $table = 'pacientes';
+
     use SluggableTrait;
 
     protected $sluggable = [
@@ -16,7 +19,7 @@ class Paciente extends Model implements SluggableInterface
         'save_to'    => 'slug',
     ];
 
-    protected $table = 'pacientes';
+    
     protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id', 'gender'];
 
     public function setnombresAttribute($value)
