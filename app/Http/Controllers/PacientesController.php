@@ -8,8 +8,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PacientesRequest;
 use App\Paciente;
+use App\Colonia;
 use App\Tipo;
 use Laracasts\Flash\Flash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Input;
+use Response;
 
 class PacientesController extends Controller
 {
@@ -39,7 +43,10 @@ class PacientesController extends Controller
     public function edit($id)
     {
         $paciente = Paciente::find($id);
+        $paciente->colonia;
+
         $tipos = Tipo::all()->lists('tipo', 'id')->toArray();
+        
 
         return view('admin.pacientes.createorupdate')->with('paciente', $paciente)->with('tipos', $tipos);;
     }
@@ -73,4 +80,16 @@ class PacientesController extends Controller
         Flash::error('Paciente ' . $paciente->rfc . ' ha sido borrado con exito!');
         return redirect()->route('pacientes.index');
     } 
+    public function autocomplete()
+    {
+        $term = Str::upper(Input::get('term'));
+
+        $data = Colonia::where('colonia', 'LIKE', '%'.$term.'%')->get();
+
+        foreach ($data as $v) {
+            $return_array[] = array('value'=>$v->id,'label' => $v->zipcode.' - '.$v->colonia);
+        }
+        
+        return Response::json($return_array);
+    }
 }

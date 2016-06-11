@@ -11,6 +11,7 @@ return array(
     'AddFieldToCitasTable' => $baseDir . '/database/migrations/2016_05_27_234658_Add_field_to_citas_table.php',
     'AddFieldsToCitasTable' => $baseDir . '/database/migrations/2016_05_11_100342_Add_fields_to_citas_table.php',
     'AddGenderToPacientesTable' => $baseDir . '/database/migrations/2016_05_26_165140_Add_gender_to_pacientes_table.php',
+    'AddMoreFieldsToPacientesTable' => $baseDir . '/database/migrations/2016_06_10_150410_add_more_fields_to_pacientes_table.php',
     'AddThemeToUsers' => $baseDir . '/database/migrations/2016_05_26_194259_add_theme_to_users.php',
     'Adobe_Font_Metrics' => $vendorDir . '/phenx/php-font-lib/classes/Adobe_Font_Metrics.php',
     'Attribute_Translator' => $vendorDir . '/dompdf/dompdf/include/attribute_translator.cls.php',

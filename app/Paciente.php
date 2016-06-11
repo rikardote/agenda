@@ -20,7 +20,7 @@ class Paciente extends Model implements SluggableInterface
     ];
 
     
-    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id', 'gender'];
+    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id', 'gender', 'phone', 'phone_casa', 'address', 'colonia_id'];
 
     public function setnombresAttribute($value)
     {
@@ -38,6 +38,10 @@ class Paciente extends Model implements SluggableInterface
     {
         $this->attributes['rfc'] = strtoupper($value);
     }
+    public function setaddressAttribute($value)
+    {
+        $this->attributes['address'] = strtoupper($value);
+    }
     public function getFullnameAttribute() {
         return $this->apellido_pat . ' ' . $this->apellido_mat. ' ' . $this->nombres;
     
@@ -49,6 +53,10 @@ class Paciente extends Model implements SluggableInterface
     public function tipo()
     {
         return $this->belongsTo('App\Tipo');
+    }
+    public function colonia()
+    {
+        return $this->belongsTo('App\Colonia');
     }
   
 }

@@ -108,6 +108,7 @@ footer {
   *border-right-width: 2px;
   *border-bottom-width: 2px;
 }
+.ui-autocomplete-input, .ui-menu, .ui-menu-item {  z-index: 2006; }
 
 .ui-state-focus
 {

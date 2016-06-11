@@ -202,6 +202,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'RegistroController@theme_post',
         'as' => 'users.theme.post'
     ]);
+    Route::get('/getColonias', [
+        'uses' => 'PacientesController@autocomplete',
+        'as' => 'colonias.autocomplete'
+    ]);
 
 
     Route::get('home', 'HomeController@index');

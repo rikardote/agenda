@@ -42,6 +42,6 @@ function getEdad($fecha)
 }
 
 function setActive($path, $request, $active = 'active')
-    {
+{
         return $request->is($path) ? $active : '';
-    }
+}
