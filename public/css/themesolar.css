@@ -13,7 +13,7 @@ body {
   margin-right: 6px;
 }
 
-a:link {
+a:hover, a:visited, a:link, a:active{
     text-decoration: none;
 }
 .no-bullet
