@@ -45,3 +45,13 @@ function setActive($path, $request, $active = 'active')
 {
         return $request->is($path) ? $active : '';
 }
+function checkExpire($cita_date)
+{
+  $expire_at = strtotime("+1 min", strtotime($cita_date));  
+  $now    = date("Y-m-d H:i:s");
+  $now = strtotime($now);
+  if($expire_at >= $now) {
+    return true;
+  }
+  
+}

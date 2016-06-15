@@ -72,9 +72,11 @@
                 data-url="{{ route('admin.citas.edit', [$medico->slug , $date, $cita->id]) }}" 
                 data-toggle ="modal" data-target='#form-modal'><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
               </a> 
-
-              <a href="{{ route('admin.citas.destroy', [$medico->slug, $date, $cita->id]) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span>
-              </a>
+              
+              @if(checkExpire($cita->created_at))
+                <a href="{{ route('admin.citas.destroy', [$medico->slug, $date, $cita->id]) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span  class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span>
+               </a>
+              @endif
 
             </td>
           </tr>
