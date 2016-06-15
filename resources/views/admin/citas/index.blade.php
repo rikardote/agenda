@@ -65,9 +65,7 @@
      		<td>{{ $cita->horario }}</td>
             <td>
 
-            <a class="panelColorGreen" href="{{ route('admin.citas.concretada', [$medico->slug , $date, $cita->id]) }}">
-                <span class="fa fa-check-square-o fa-2x"></span>
-              </a>
+            
               <a class="load-form-modal panelColorGreen"
                 data-url="{{ route('admin.citas.edit', [$medico->slug , $date, $cita->id]) }}" 
                 data-toggle ="modal" data-target='#form-modal'><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
