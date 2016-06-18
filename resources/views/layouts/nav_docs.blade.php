@@ -14,7 +14,7 @@
                
                 <a class="navbar-brand" href="{{ route('hojas.index') }}">
                     <img style="display: inline-block; height: 55px; margin-top: -15px"
-                     src="http://192.161.59.137/agenda/public/fotos/issste_simple.png">
+                     src="/fotos/issste_simple.png">
                 </a>
                
             </div>
