@@ -51,10 +51,20 @@
 <div class="form-group">
 	{!! Form::label('especialidad_id', 'Especialidad') !!}
 	{!! Form::select('especialidad_id', $especialidades, null, [
-		'class' => 'form-control',
+		'class' => 'form-control', 
 		'placeholder' => 'Selecciona una especialidad', 
 		'required'
 	]) !!}
+</div>
+<div class="form-group">
+	{!! Form::label('d_consulta', 'Dias de consulta') !!}
+	<div class="col-xl-12">
+	{!! Form::select('d_consulta[]', $diasConsulta, isset($diasconsulta_select) ? $diasconsulta_select:null, [
+		'class' => 'form-control select-tipo', 
+		'multiple', 
+		'required'
+	]) !!}
+	</div>
 </div>
 <div class="form-group">
 	{!! Form::label('horario_id', 'Horario') !!}
@@ -64,3 +74,10 @@
 		'required'
 	]) !!}
 </div>
+<script>
+	$('.select-tipo').chosen({
+		placeholder_text_multiple: 'Seleccione dias de consulta'
+		
+	});
+		
+</script>

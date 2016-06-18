@@ -11,7 +11,6 @@
     <thead>
         <th>Num Empleado</th>
         <th>Nombre</th>
-        <th>Cedula</th>
         <th>Especialidad</th>
         <th>Horario</th>
 
@@ -22,7 +21,6 @@
         <tr>
          <td>{{ $medico->num_empleado }}</td>
          <td>{{ $medico->apellido_pat }} {{ $medico->apellido_mat }} {{ $medico->nombres }}</td>
-         <td>{{ $medico->cedula }}</td>
          <td>{{ $medico->especialidad->name }}</td>
          <td>{{ $medico->horario->name }}</td>
         

@@ -30,7 +30,7 @@
             }
               
           ?>
-            @if($citas->count() < 10 && $permiso_act != 1 && $f_anterior != 1)
+            @if($citas->count() < 10 && $permiso_act != 1 && $f_anterior != 1 && in_array($dia_semana,$diasconsulta_select))
               <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'>+Agregar Cita</a> 
               <div class="label label-warning pull pull-right">{{ fecha_dmy($date) }}</div>
               <div class="label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>

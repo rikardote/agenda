@@ -34,11 +34,15 @@ class CitasController extends Controller
             $date = $_GET["date"];
         }
         $date = fecha_ymd($date);  
-
+        $dia_semana = Carbon::parse($date);
         $today = Carbon::today();
+        $dia_semana = $dia_semana->dayOfWeek;
+
         $today = $today->year.'-'.$today->month.'-'.$today->day;
-	
+
         $medico = Medico::findBySlug($slug);
+        $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
+
         $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
         
         $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
@@ -61,7 +65,9 @@ class CitasController extends Controller
             ->with('date2', $date2)
             ->with('todas_citas', $todas_citas)
             ->with('permiso', $permiso)
-            ->with('f_anterior', $f_anterior);
+            ->with('f_anterior', $f_anterior)
+            ->with('dia_semana', $dia_semana)
+            ->with('diasconsulta_select', $diasconsulta_select);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
 
