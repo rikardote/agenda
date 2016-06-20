@@ -18,7 +18,7 @@ class Especialidad extends Model implements SluggableInterface
 
     protected $table = 'especialidades';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'consultorio_id'];
 
     public function medicos()
     {
