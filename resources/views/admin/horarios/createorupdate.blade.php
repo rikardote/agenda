@@ -14,13 +14,13 @@
 <script>
 	$('#entrada').timepicker({
 		'minTime': '7:00am',
-	    'maxTime': '15:00pm',
+	    'maxTime': '17:00pm',
 	    'timeFormat': 'H:i'
 
 	});
 	$('#salida').timepicker({
 		'minTime': '12:00pm',
-	    'maxTime': '20:00pm',
+	    'maxTime': '22:00pm',
 	    'timeFormat': 'H:i'
 	});
 </script>
