@@ -73,8 +73,6 @@
 			<td class="reporte2" align="center" valign=bottom>
 				@if ($cit->paciente->gender == 'M')
 					
-						{{/*getEdad($cit->paciente->fecha_nacimiento)*/}}
-					
 				@endif
 			</td>
 			<td class="reporte2" align="center" valign=bottom ><br></td>
