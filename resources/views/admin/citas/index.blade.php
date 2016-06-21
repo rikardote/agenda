@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dr. ' . $medico->fullname . ' / ' . $medico->especialidad->name)
+@section('title', 'Dr. ' . $medico->fullname . ' / ' . $medico->especialidad->name.' / '.$medico->consultorio)
 
 @section('content')
 <div class="col-md-4">

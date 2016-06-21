@@ -41,6 +41,7 @@ class CitasController extends Controller
         $today = $today->year.'-'.$today->month.'-'.$today->day;
 
         $medico = Medico::findBySlug($slug);
+        $medico->consultorio;
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
 
         $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
