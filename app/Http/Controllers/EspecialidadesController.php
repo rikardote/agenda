@@ -32,6 +32,7 @@ class EspecialidadesController extends Controller
     public function create()
     {
     	$consultorios = Consultorio::orderBy('name', 'ASC')->lists('name', 'id')->toArray();
+        asort($consultorios);
         return view('admin.especialidades.createorupdate')->with('consultorios', $consultorios);
     }
 
@@ -39,6 +40,7 @@ class EspecialidadesController extends Controller
     {
         $especialidad = Especialidad::find($id);
         $consultorios = Consultorio::orderBy('name', 'ASC')->lists('name', 'id')->toArray();
+        asort($consultorios);
         return view('admin.especialidades.createorupdate')->with('especialidad', $especialidad)->with('consultorios', $consultorios);
     }
 
