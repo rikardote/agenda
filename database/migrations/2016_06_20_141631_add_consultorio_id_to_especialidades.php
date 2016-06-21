@@ -12,9 +12,9 @@ class AddConsultorioIdToEspecialidades extends Migration
      */
     public function up()
     {
-        Schema::table('especialidades', function (Blueprint $table) {
+        Schema::table('medicos', function (Blueprint $table) {
             $table->integer('consultorio_id')->unsigned();
-            $table->foreign('consultorio_id')->references('id')->on('consultorios')->onDelete('cascade');
+            $table->foreign('consultorio_id')->references('id')->on('consultorios');
         });
     }
 
@@ -25,7 +25,7 @@ class AddConsultorioIdToEspecialidades extends Migration
      */
     public function down()
     {
-        Schema::table('especialidades', function (Blueprint $table) {
+        Schema::table('medicos', function (Blueprint $table) {
             $table->dropColumn('consultorio_id');
         });
     }

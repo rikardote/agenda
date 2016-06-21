@@ -18,7 +18,7 @@ class Medico extends Model implements SluggableInterface
     ];
      protected $table = 'medicos';
 
-     protected $fillable = ['num_empleado', 'nombres', 'apellido_pat', 'apellido_mat', 'cedula', 'especialidad_id', 'horario_id'];
+     protected $fillable = ['num_empleado', 'nombres', 'apellido_pat', 'apellido_mat', 'cedula', 'especialidad_id', 'horario_id', 'consultorio_id'];
 
 
     public function especialidad()
@@ -56,6 +56,10 @@ class Medico extends Model implements SluggableInterface
     public function getFullnameAttribute() {
         return $this->apellido_pat . ' ' . $this->apellido_mat. ' ' . $this->nombres;
     
+    }
+     public function consultorio()
+    {
+        return $this->belongsTo('App\Consultorio');
     }
 
 }

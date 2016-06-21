@@ -10,7 +10,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EspecialidadesRequest;
 use App\Especialidad;
 use Laracasts\Flash\Flash;
-use App\Consultorio;
 
 class EspecialidadesController extends Controller
 {
@@ -31,17 +30,15 @@ class EspecialidadesController extends Controller
 
     public function create()
     {
-    	$consultorios = Consultorio::orderBy('name', 'ASC')->lists('name', 'id')->toArray();
-        asort($consultorios);
-        return view('admin.especialidades.createorupdate')->with('consultorios', $consultorios);
+    	
+        return view('admin.especialidades.createorupdate');
     }
 
     public function edit($id)
     {
         $especialidad = Especialidad::find($id);
-        $consultorios = Consultorio::orderBy('name', 'ASC')->lists('name', 'id')->toArray();
-        asort($consultorios);
-        return view('admin.especialidades.createorupdate')->with('especialidad', $especialidad)->with('consultorios', $consultorios);
+       
+        return view('admin.especialidades.createorupdate')->with('especialidad', $especialidad);
     }
 
     public function update(Request $request, $id)

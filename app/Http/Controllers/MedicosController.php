@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\MedicosRequest;
-
+use App\Consultorio;
 use App\Medico;
 use App\Especialidad;
 use App\Horario;
@@ -43,10 +43,13 @@ class MedicosController extends Controller
     	$especialidades = Especialidad::all()->lists('name', 'id')->toArray();
     	$horarios = horario::all()->lists('todos', 'id')->toArray();
         $diasConsulta = Diasconsulta::all()->lists('day_name', 'id')->toArray();
+        $consultorios = Consultorio::orderBy('name', 'ASC')->lists('name', 'id')->toArray();
+        asort($consultorios);
         return view('admin.medicos.createorupdate')
         	->with('especialidades', $especialidades)
         	->with('horarios', $horarios)
-            ->with('diasConsulta', $diasConsulta);
+            ->with('diasConsulta', $diasConsulta)
+            ->with('consultorios', $consultorios);
     }
  
     public function edit($id)
@@ -56,13 +59,16 @@ class MedicosController extends Controller
         $diasConsulta = Diasconsulta::all()->lists('day_name', 'id')->toArray();
         $horarios = horario::all()->lists('todos', 'id')->toArray();
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
+        $consultorios = Consultorio::orderBy('name', 'ASC')->lists('name', 'id')->toArray();
+        asort($consultorios);
        
         return view('admin.medicos.createorupdate')
             ->with('medico', $medico)
             ->with('especialidades', $especialidades)
             ->with('horarios', $horarios)
             ->with('diasconsulta_select', $diasconsulta_select)
-            ->with('diasConsulta', $diasConsulta);
+            ->with('diasConsulta', $diasConsulta)
+             ->with('consultorios', $consultorios);
         
         
     }
