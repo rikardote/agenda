@@ -36,9 +36,6 @@ class Especialidad extends Model implements SluggableInterface
     {
         return $query->where('slug', '=', $slug);
     }
-    public function consultorio()
-    {
-        return $this->belongsTo('App\Consultorio');
-    }
+   
     
 }

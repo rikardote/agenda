@@ -33,10 +33,7 @@ class AgendaController extends Controller
     {
         $user = User::find(\Auth::user()->id);
         $user_espe = $user->especialidades;
-        $user_espe->each(function($user_espe) {
-            $user_espe->consultorio;
-  
-        });
+        
 
         $user_espe = $user_espe->sortBy('name');
         
@@ -52,6 +49,7 @@ class AgendaController extends Controller
         $medicos->each(function($medicos) {
             $medicos->especialidad;
             $medicos->horario;
+            $medicos->consultorio;
             
         });
         $date = date('Y-m-d');
