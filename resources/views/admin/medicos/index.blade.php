@@ -9,7 +9,6 @@
   </a> 
    <table class="table table-condensed">
     <thead>
-        <th>Num Empleado</th>
         <th>Nombre</th>
         <th>Especialidad</th>
         <th>Horario</th>
@@ -19,7 +18,6 @@
     <tbody>
     @foreach($medicos as $medico)
         <tr>
-         <td>{{ $medico->num_empleado }}</td>
          <td>{{ $medico->apellido_pat }} {{ $medico->apellido_mat }} {{ $medico->nombres }}</td>
          <td>{{ $medico->especialidad->name }}</td>
          <td>{{ $medico->horario->name }}</td>
