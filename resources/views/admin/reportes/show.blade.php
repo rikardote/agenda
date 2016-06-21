@@ -67,12 +67,12 @@
 			<td class="reporte2" align="center" valign=bottom ><br></td>
 			<td class="reporte2" align="center" valign=bottom >
 				@if ($cit->paciente->gender == 'F')
-					{{isset(getEdad($cit->paciente->fecha_nacimiento))?getEdad($cit->paciente->fecha_nacimiento):null}}
+					
 				@endif
 			</td>
 			<td class="reporte2" align="center" valign=bottom>
 				@if ($cit->paciente->gender == 'M')
-					{{isset(getEdad($cit->paciente->fecha_nacimiento))?getEdad($cit->paciente->fecha_nacimiento):null}}
+					
 				@endif
 			</td>
 			<td class="reporte2" align="center" valign=bottom ><br></td>
