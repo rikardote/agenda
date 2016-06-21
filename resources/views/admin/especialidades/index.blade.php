@@ -7,7 +7,7 @@
   <a data-url="{{ route('especialidades.create') }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
     <span class="fa fa-plus-circle fa-2x" aria-hidden='true'></span>
   </a> 
-  <table class= 'table table-condensed'>
+  <table class= 'table table-striped table-condensed'>
     <thead>
         <th>Nombre</th>
 
