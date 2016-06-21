@@ -44,7 +44,7 @@ class MedicosController extends Controller
     	$horarios = horario::all()->lists('todos', 'id')->toArray();
         $diasConsulta = Diasconsulta::all()->lists('day_name', 'id')->toArray();
         $consultorios = Consultorio::orderBy('name', 'ASC')->lists('name', 'id')->toArray();
-        asort($consultorios);
+        //asort($consultorios);
         return view('admin.medicos.createorupdate')
         	->with('especialidades', $especialidades)
         	->with('horarios', $horarios)
@@ -60,7 +60,7 @@ class MedicosController extends Controller
         $horarios = horario::all()->lists('todos', 'id')->toArray();
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
         $consultorios = Consultorio::orderBy('name', 'ASC')->lists('name', 'id')->toArray();
-        asort($consultorios);
+        //asort($consultorios);
        
         return view('admin.medicos.createorupdate')
             ->with('medico', $medico)
