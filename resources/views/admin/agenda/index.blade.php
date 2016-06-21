@@ -10,7 +10,9 @@
 			<div class="w3-card-8 w3-green panel panel-primary">
 				<a href="{{ route('agenda.show', $especialidad->slug) }}">
 					<h4 class="text-white text-center">{{ $especialidad->name }}</h4>
+					<div align="center"><small> {{$especialidad->consultorio->name}}  </small></div>
 				</a>
+				
 			</div>
 		</div>
 	@endforeach
