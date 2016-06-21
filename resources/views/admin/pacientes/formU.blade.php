@@ -61,7 +61,7 @@
 				
 				'class' => 'form-control',
 				'placeholder' => 'Telefono Movil', 
-				'required'
+				
 			]) !!}
 			{!! Form::label('phone_casa', 'Telefono Fijo') !!}
 			
@@ -69,7 +69,7 @@
 				
 				'class' => 'form-control',
 				'placeholder' => 'Telefono Fijo', 
-				'required'
+				
 			]) !!}
 			{!! Form::label('address', 'Direccion') !!}
 			
@@ -77,7 +77,7 @@
 				
 				'class' => 'form-control',
 				'placeholder' => 'Direccion', 
-				'required'
+				
 			]) !!}
 			{!! Form::label('colonia_id', 'Colonia') !!}
 			
@@ -87,14 +87,14 @@
 				'id' => 'autocomplete',
 				'class' => 'form-control',
 				'placeholder' => 'Colonia', 
-				'required'
+				
 			]) !!}
 			
 			{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
 			<br>
 			{!! Form::text('fecha_nacimiento', $paciente->fecha_nacimiento, [
 				'class' => 'form-control',
-				'required',
+				
 				'id' => 'dob',
 				'style' => 'width: 10em;'
 			]) !!}
