@@ -1,0 +1,43 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddFieldsToCitasTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('citas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('paciente_id')->unsigned();
+            $table->integer('medico_id')->unsigned();
+            $table->integer("capturado_por")->unsigned();
+            $table->date('fecha');
+            $table->string('horario');
+            $table->enum('concretada', ['0', '1'])->default('0');
+            
+            $table->foreign('paciente_id')->references('id')->on('pacientes');  
+            $table->foreign('medico_id')->references('id')->on('medicos');
+            $table->foreign('capturado_por')->references('id')->on('users');    
+            $table->timestamps();
+        
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('citas', function (Blueprint $table) {
+            Schema::drop('citas');
+        });
+    }
+}
