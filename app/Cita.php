@@ -44,7 +44,7 @@ class Cita extends Model
       $count = 0;
      
       foreach($citas as $i => $cita) {
-        if($cita->total == 10){
+        if($cita->total == 18){
             $fechas[$count++] = $cita->fecha;
         }
       }
@@ -64,7 +64,7 @@ class Cita extends Model
                  ->first();
 
         if ($citas) {
-            if($citas->total == 10){
+            if($citas->total == 18){
                 return 1;
             }
             else{
