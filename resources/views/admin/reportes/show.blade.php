@@ -27,7 +27,7 @@
 		
 		<tr>
 			<td class="reporte" rowspan=2 height="53" align="left" valign=middle>HORA</td>
-			<td class="reporte" style="width:8%;" rowspan=2 align="center" valign=middle>EXPEDIENTE</td>
+			<td class="reporte" style="width:15%;" rowspan=2 align="center" valign=middle>EXPEDIENTE</td>
 			<td class="reporte" style="width:20%;" colspan=2 rowspan=2 align="center" valign=middle>NOMBRE DEL PACIENTE</td>
 			<td class="reporte" colspan=2 align="center" valign=bottom>VIGENCIA DERECHO</td>
 			<td class="reporte" colspan=2 align="center" valign=bottom>SEXO EDAD</td>
