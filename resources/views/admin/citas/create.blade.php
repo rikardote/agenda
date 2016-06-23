@@ -77,7 +77,7 @@
 			    'disableTextInput': true,
 			    'disableTimeRanges': 
 			    [
-			    ['8am','10am'],
+			 //   ['8am','10am'],
             	<?php echo $horas; ?>
 		        ]
 		        
