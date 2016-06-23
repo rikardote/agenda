@@ -24,7 +24,7 @@ class PacientesController extends Controller
 
     public function index()
     {	
-    	$pacientes = Paciente::orderBy('rfc', 'ASC')->paginate(25);
+    	$pacientes = Paciente::orderBy('apellido_pat', 'ASC')->paginate(25);
         $pacientes->each(function($pacientes) {
             $pacientes->tipo;
         });
