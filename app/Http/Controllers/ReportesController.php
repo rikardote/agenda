@@ -35,7 +35,8 @@ class ReportesController extends Controller
     	//
 		$citas = $citas->sortBy('horario')->groupBy('medico_id');
 
-    	$mpdf = new mPDF('', array(340,216));
+    	//$mpdf = new mPDF('', array(340,216));
+        $mpdf = new mPDF('',array(340,216), 0, '', 15, 15, 16, 16, 9, 9, 'L');
         $header = \View('admin.reportes.header')->with('date', $date)->render();
         $mpdf->SetFooter('Generado el: {DATE j-m-Y}| AgendaElectronica | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
         $html =  \View('admin.reportes.show')->with('citas', $citas)->with('date', $date)->render();
