@@ -75,7 +75,18 @@
 					
 				@endif
 			</td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom ><br>
+				@if($cit->paciente->foraneo_id == 2)
+					Ens
+				@elseif($cit->paciente->foraneo_id == 3)
+					Tij
+				@elseif($cit->paciente->foraneo_id == 4)
+					SLRC
+				@elseif($cit->paciente->foraneo_id == 5)
+					Tecate
+				@endif
+
+			</td>
 			<td class="reporte2" align="center" valign=bottom ></td>
 			<td class="reporte2" align="center" valign=bottom ></td>
 			<td class="reporte2" align="center" valign=bottom ><br></td>
