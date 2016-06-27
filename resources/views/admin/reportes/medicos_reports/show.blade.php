@@ -72,7 +72,7 @@
 			</td>
 			<td class="reporte2" align="center" valign=middle>
 				@if ($cit->paciente->gender == 'M')
-					{{getEdad($cit->paciente->fecha_nacimiento)}}
+					{{$cit->age/*getEdad($cit->paciente->fecha_nacimiento)*/}}
 				@endif
 			</td>
 			<td class="reporte2" align="center" valign=middle >{{$cit->foraneo? √:null}}<br></td>

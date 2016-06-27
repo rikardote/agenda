@@ -1,11 +1,12 @@
-<?php use Carbon\Carbon; ?>
+<?php use Carbon\Carbon; // . ' | '.$anos 
+?>
 @extends('layouts.doctores')
 
 @section('css')
 	<link rel="stylesheet" href="{{ asset('plugins/jQuery-Tags-Input/jquery.tagsinput.min.css') }}">
 @endsection
 
-@section('title', 'Hoja medica del paciente: '. $paciente->fullname . ' | '.$anos)
+@section('title', 'Hoja medica del paciente: '. $paciente->fullname)
 
 @section('content')
 	@include('admin.hojas._form')

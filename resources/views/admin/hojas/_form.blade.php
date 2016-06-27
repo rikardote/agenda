@@ -5,6 +5,7 @@
 	{!! Form::hidden('cita_id', $cita_id) !!}
 	<div class="row">
 		<div class="col-md-4">
+			
 			<div class="form-group">
 				{!! Form::checkbox('foraneo') !!}
 				{!! Form::label('foraneo', 'Foraneo') !!}
@@ -55,6 +56,13 @@
 			{!! Form::checkbox('num_otorgados') !!}
 			{!! Form::label('num_otorgados', 'Num Otorgados') !!}
 		</div>
+		<div class="form-group">
+				{!! Form::text('age', null, [
+					'class' => 'form-control',
+					'placeholder' => 'Edad',
+				
+				]) !!}
+			</div>
 
 	</div>
 	<div class="col-md-4">
@@ -77,7 +85,7 @@
 		<div class="form-group">
 			{!! Form::number('num_de_dias', null, [
 				'class' => 'form-control',
-				'placeholder' => 'Numero de Dias', 
+				'placeholder' => 'Total Dias de Incapacidad', 
 			]) !!}
 		</div>
 		<div class="form-group">

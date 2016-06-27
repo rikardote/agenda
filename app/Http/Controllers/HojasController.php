@@ -85,6 +85,7 @@ class HojasController extends Controller
         $cita->num_otorgados =  $request->num_otorgados;
         $cita->primera_vez =  $request->primera_vez;
         $cita->concretada = 1;
+        $cita->age = $request->age;
         $cita->save();
         
         Toastr::success('Hoja medica del paciente guardada con exito!!');
