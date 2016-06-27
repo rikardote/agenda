@@ -55,3 +55,24 @@ function checkExpire($cita_date)
   }
   
 }
+function getForaneo($id) 
+{
+  switch ($id) {
+      case 2:
+        return  "Ens";
+      case 3:
+        return  "Tij";
+      case 4:
+        return "SLRC";
+      case 5:
+        return "Tecate";
+      case 6:
+        return "Delta";
+      case 7:
+        return "Algodones";
+      case 8:
+        return "S.F.";
+
+  }
+
+}
