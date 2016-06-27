@@ -84,6 +84,12 @@
 					SLRC
 				@elseif($cit->paciente->foraneo_id == 5)
 					Tecate
+				@elseif($cit->paciente->foraneo_id == 6)
+					Delta
+				@elseif($cit->paciente->foraneo_id == 7)
+					Algodones
+				@elseif($cit->paciente->foraneo_id == 8)
+					San Felipe
 				@endif
 
 			</td>
