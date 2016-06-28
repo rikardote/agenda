@@ -78,6 +78,15 @@ class Cita extends Model
         
 
     }
+    public static function getCitas($date, $turno){
+     $citas = Cita::getQuery()
+      ->select('*')
+      ->leftJoin('medicos', 'medicos.id', '=', 'citas.medico_id')
+      ->leftJoin('especialidades', 'especialidades.id', '=', 'medicos.especialidad_id')
+      
+      ->get();
+      return $citas;
+    }
    
 
 

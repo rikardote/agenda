@@ -36,8 +36,9 @@ class ReportesController extends Controller
     }
     public function pdf($date, $turno)
     {
-    	
-        $citas = Cita::where('fecha', '=', $date)->whereRaw('medicos.turno = 1')->get();
+    	$citas = Cita::getCitas($date, $turno);
+        dd($citas);
+        /*$citas = Cita::where('fecha', '=', $date)->get();
     	
         $citas->each(function($citas) {
             $citas->medico->especialidad;
@@ -46,7 +47,7 @@ class ReportesController extends Controller
         });
        
 		$citas = $citas->sortBy('horario')->groupBy('medico_id');
-
+        */
     	//$mpdf = new mPDF('', array(340,216));
         $mpdf = new mPDF('',array(340,216), 0, '', 15, 15, 16, 16, 9, 9);
         $header = \View('admin.reportes.header')->with('date', $date)->with('turno', $turno)->render();
