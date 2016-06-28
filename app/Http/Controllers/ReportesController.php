@@ -13,31 +13,43 @@ use \mPDF;
 
 class ReportesController extends Controller
 {
-    public function index()
+    public function index($turno)
     {
     	if (isset($_GET["date"])) {
             $date = $_GET["date"];
-            return redirect()->route('reporte.pdf', ['date' => $date]); 
+            return redirect()->route('reporte.pdf', ['date' => $date, 'turno' => $turno]); 
         }
         else
         {
        	   return view('admin.reportes.index');
         }
  	}
-    public function pdf($date)
+    public function vesp($turno) {
+        if (isset($_GET["date"])) {
+            $date = $_GET["date"];
+            return redirect()->route('reporte.pdf', ['date' => $date,'turno' => $turno]); 
+        }
+        else
+        {
+           return view('admin.reportes.index');
+        }   
+    }
+    public function pdf($date, $turno)
     {
-    	$citas = Cita::where('fecha', '=', $date)->get();
-    	$citas->each(function($citas) {
+    	
+        $citas = Cita::where('fecha', '=', $date)->whereRaw('medicos.turno = 1')->get();
+    	
+        $citas->each(function($citas) {
             $citas->medico->especialidad;
             $citas->paciente->tipo;
-        });
 
-    	//
+        });
+       
 		$citas = $citas->sortBy('horario')->groupBy('medico_id');
 
     	//$mpdf = new mPDF('', array(340,216));
         $mpdf = new mPDF('',array(340,216), 0, '', 15, 15, 16, 16, 9, 9);
-        $header = \View('admin.reportes.header')->with('date', $date)->render();
+        $header = \View('admin.reportes.header')->with('date', $date)->with('turno', $turno)->render();
         $mpdf->SetFooter('Generado el: {DATE j-m-Y}| AgendaElectronica | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
         $html =  \View('admin.reportes.show')->with('citas', $citas)->with('date', $date)->render();
         $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';

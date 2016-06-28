@@ -52,7 +52,8 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{route('reporte.index')}}">Reporte Diario de Citas</a></li>
+                            <li><a href="{{route('reporte.index',[1])}}">Reporte Diario MATUTINO de Citas</a></li>
+                            <li><a href="{{route('reporte.vesp',[2])}}">Reporte Diario VESPERTINO de Citas</a></li>
                         </ul>
                     </li>
                     

@@ -18,7 +18,7 @@ class Medico extends Model implements SluggableInterface
     ];
      protected $table = 'medicos';
 
-     protected $fillable = ['num_empleado', 'nombres', 'apellido_pat', 'apellido_mat', 'cedula', 'especialidad_id', 'horario_id', 'consultorio_id'];
+     protected $fillable = ['num_empleado', 'nombres', 'apellido_pat', 'apellido_mat', 'cedula', 'especialidad_id', 'horario_id', 'consultorio_id','turno'];
 
 
     public function especialidad()

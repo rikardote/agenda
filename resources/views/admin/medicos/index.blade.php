@@ -27,7 +27,7 @@
             <a data-url="{{ route('medicos.edit', $medico->id) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
                <span class="fa fa-pencil-square-o fa-2x" aria-hidden='true'></span>
             </a> 
-            <a href="{{ route('admin.medicos.destroy', $medico->id) }}" ><span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span></a>
+            <a href="{{ route('admin.medicos.destroy', $medico->id) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span></a>
          </td>
         </tr>
     @endforeach

@@ -79,6 +79,14 @@
 		]) !!}
 	</div>
 	<div class="form-group">
+		{!! Form::label('tuno', 'Turno') !!}
+		{!! Form::select('turno', array('1' => 'MATUTINO', '2' => 'VESPERTINO'), null,[
+			'class' => 'form-control',
+			'placeholder' => 'Selecciona el turno...', 
+			'required'
+		]) !!}
+	</div>
+	<div class="form-group">
 		{!! Form::label('consultorio_id', 'Consultorio') !!}
 		{!! Form::select('consultorio_id', $consultorios, null, [
 			'class' => 'form-control', 
