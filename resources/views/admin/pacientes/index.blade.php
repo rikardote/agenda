@@ -24,7 +24,8 @@
                 <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
             </a>
             <a href="{{ route('admin.pacientes.destroy', $paciente->id) }}" <span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span></a>
-            @if($paciente->fecha_nacimiento == "1969-12-31")
+            <?php $array = ['01','02','90','91'];  ?>
+            @if($paciente->fecha_nacimiento == "1969-12-31" && in_array($paciente->tipo->code, $array))
               !
             @endif
          </td>
