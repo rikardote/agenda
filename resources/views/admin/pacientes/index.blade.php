@@ -6,8 +6,9 @@
   <a data-url="{{ route('pacientes.create') }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
     <span class="fa fa-plus-circle fa-2x" aria-hidden='true'></span>
   </a> 
-  {!! $pacientes->render() !!}
+
    <table class="table table-striped table-condensed">
+   {!! $pacientes->render() !!}
     <thead>
         <th>RFC</th>
         <th>Nombre</th>
