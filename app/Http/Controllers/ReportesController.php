@@ -15,10 +15,10 @@ class ReportesController extends Controller
 {
     public function index()
     {
-
+        dd("ghola");
     	if (isset($_GET["date"])) {
             $date = $_GET["date"];
-            dd($date);
+
             return redirect()->route('reporte.pdf', ['date' => $date]); 
         }
         else
