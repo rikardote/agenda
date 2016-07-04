@@ -13,12 +13,12 @@ use \mPDF;
 
 class ReportesController extends Controller
 {
-    public function index($turno)
+    public function index()
     {
-        
+
     	if (isset($_GET["date"])) {
             $date = $_GET["date"];
-            return redirect()->route('reporte.pdf', ['date' => $date, 'turno' => $turno]); 
+            return redirect()->route('reporte.pdf', ['date' => $date]); 
         }
         else
         {
@@ -37,7 +37,7 @@ class ReportesController extends Controller
            return view('admin.reportes.index');
         }   
     }
-    public function pdf($date, $turno)
+    public function pdf($date)
     {
     	//$citas = Cita::getCitas($date, $turno);
         //dd($citas);
@@ -53,7 +53,7 @@ class ReportesController extends Controller
         
     	//$mpdf = new mPDF('', array(340,216));
         $mpdf = new mPDF('',array(340,216), 0, '', 15, 15, 16, 16, 9, 9);
-        $header = \View('admin.reportes.header')->with('date', $date)->with('turno', $turno)->render();
+        $header = \View('admin.reportes.header')->with('date', $date)->render();
         $mpdf->SetFooter('Generado el: {DATE j-m-Y}| AgendaElectronica | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
         $html =  \View('admin.reportes.show')->with('citas', $citas)->with('date', $date)->render();
         $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
