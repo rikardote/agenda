@@ -15,6 +15,7 @@ class ReportesController extends Controller
 {
     public function index($turno)
     {
+        
     	if (isset($_GET["date"])) {
             $date = $_GET["date"];
             return redirect()->route('reporte.pdf', ['date' => $date, 'turno' => $turno]); 
@@ -28,6 +29,8 @@ class ReportesController extends Controller
         if (isset($_GET["date"])) {
             $date = $_GET["date"];
             return redirect()->route('reporte.pdf', ['date' => $date,'turno' => $turno]); 
+
+
         }
         else
         {
@@ -36,7 +39,7 @@ class ReportesController extends Controller
     }
     public function pdf($date, $turno)
     {
-    	$citas = Cita::getCitas($date, $turno);
+    	//$citas = Cita::getCitas($date, $turno);
         //dd($citas);
         $citas = Cita::where('fecha', '=', $date)->get();
     	
