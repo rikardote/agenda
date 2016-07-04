@@ -18,6 +18,7 @@ class ReportesController extends Controller
 
     	if (isset($_GET["date"])) {
             $date = $_GET["date"];
+            dd($date);
             return redirect()->route('reporte.pdf', ['date' => $date]); 
         }
         else
