@@ -5,12 +5,14 @@
 			border-bottom:1px solid black;
 			border-left: 1px solid black;
 			border-right: 1px solid black;
+			
 
 		}
 		.reporte2{
 			border: 1px solid black;
 			border-bottom:1px solid black;
 			border-left: 1px solid black;
+			font-size: 24px;
 		}
 	</style>
 	
@@ -23,7 +25,7 @@
 				    -  {{$cit->medico->fullname}}</h3>
 		<?php break; ?>
 	@endforeach
-	<table cellspacing="0" border="0">
+	<table cellpadding="12" cellspacing="0" border="0">
 		
 		<tr>
 			<td class="reporte" rowspan=2 height="53" align="left" valign=middle>HORA</td>
@@ -58,11 +60,11 @@
 			<td class="reporte" style="width:15%;" align="center" valign=middle>DESCRIPCION</td>
 			</tr>
 		@foreach($cita as $cit)
-		<tr>
+		<tr >
 		
 			<td class="reporte2" height="20" align="left" valign=bottom>{{$cit->horario}}</td>
-			<td class="reporte2" style="font-size: 12px;"align="left" valign=bottom >{{$cit->paciente->rfc}} /{{$cit->paciente->tipo->code}}</td>
-			<td class="reporte2" style="font-size: 12px;" colspan=2 align="left" valign=bottom >{{$cit->paciente->fullname}}</td>
+			<td class="reporte2" align="left" valign=bottom >{{$cit->paciente->rfc}} /{{$cit->paciente->tipo->code}}</td>
+			<td class="reporte2" colspan=2 align="left" valign=bottom >{{$cit->paciente->fullname}}</td>
 			<td class="reporte2" align="center" valign=bottom ></td>
 			<td class="reporte2" align="center" valign=bottom ><br></td>
 			<td class="reporte2" align="center" valign=bottom >
