@@ -16,8 +16,8 @@ class ReportesController extends Controller
     public function index()
     {
 
-    	if (isset($_GET["date"])) {
-            $date = $_GET["date"];
+    	if (isset($_REQUEST["date"])) {
+            $date = $_REQUEST["date"];
 
             return redirect()->route('reporte.pdf', ['date' => $date]); 
         }
