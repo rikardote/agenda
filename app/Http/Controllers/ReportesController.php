@@ -15,7 +15,7 @@ class ReportesController extends Controller
 {
     public function index()
     {
-        
+
     	if (isset($_GET["date"])) {
             $date = $_GET["date"];
 
@@ -23,9 +23,10 @@ class ReportesController extends Controller
         }
         else
         {
-       	   return view('admin.reportes.index');
+           return view('admin.reportes.index');
         }
  	}
+    /*
     public function vesp($turno) {
         if (isset($_GET["date"])) {
             $date = $_GET["date"];
@@ -37,7 +38,7 @@ class ReportesController extends Controller
         {
            return view('admin.reportes.index');
         }   
-    }
+    }*/
     public function pdf($date)
     {
     	//$citas = Cita::getCitas($date, $turno);
