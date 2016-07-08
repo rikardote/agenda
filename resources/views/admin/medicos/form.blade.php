@@ -72,10 +72,10 @@
 		</div>
 	</div>
 	<div class="form-group">
-		{!! Form::label('d_especial_consulta', 'Dias ESPECIAL de consulta') !!}
+		{!! Form::label('d_especial_consulta', 'Dia ESPECIAL de consulta') !!}
 		<div class="col-xl-12">
 		{!! Form::select('d_especial_consulta[]', $diasConsulta, isset($diaconsulta_select) ? $diaconsulta_select:null, [
-			'class' => 'form-control select-tipo', 
+			'class' => 'form-control select-tipo2', 
 			'multiple', 
 			'required'
 		]) !!}
@@ -110,6 +110,10 @@
 <script>
 	$('.select-tipo').chosen({
 		placeholder_text_multiple: 'Seleccione dias de consulta'
+		
+	});
+	$('.select-tipo2').chosen({
+		placeholder_text_multiple: 'Seleccione Dia Especial de Consulta'
 		
 	});
 		
