@@ -85,7 +85,10 @@ class MedicosController extends Controller
 
         $medico->save();
         $medico->diasconsulta()->sync($request->d_consulta);
-        $medico->diaconsulta()->sync($request->d_especial_consulta);
+        if ($request->d_especial_consulta != null) {
+            $medico->diaconsulta()->sync($request->d_especial_consulta);    
+        }
+        
         Flash::success('Medico editado con exito!');
         return redirect()->route('medicos.index');
     }
@@ -96,7 +99,9 @@ class MedicosController extends Controller
         $medico = new Medico($request->all());
         $medico->save();
         $medico->diasconsulta()->sync($request->d_consulta);
-        $medico->diaconsulta()->sync($request->d_especial_consulta);
+        if ($request->d_especial_consulta != null) {
+            $medico->diaconsulta()->sync($request->d_especial_consulta);    
+        }
 
         Flash::success('Medico registrado con exito!');
         return redirect()->route('medicos.index');

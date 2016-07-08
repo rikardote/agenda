@@ -67,7 +67,7 @@
 		{!! Form::select('d_consulta[]', $diasConsulta, isset($diasconsulta_select) ? $diasconsulta_select:null, [
 			'class' => 'form-control select-tipo', 
 			'multiple', 
-			'required'
+			
 		]) !!}
 		</div>
 	</div>
