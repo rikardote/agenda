@@ -76,8 +76,7 @@
 		<div class="col-xl-12">
 		{!! Form::select('d_especial_consulta[]', $diasConsulta, isset($diaconsulta_select) ? $diaconsulta_select:null, [
 			'class' => 'form-control select-tipo2', 
-			'multiple', 
-			'required'
+			'multiple'
 		]) !!}
 		</div>
 	</div>
