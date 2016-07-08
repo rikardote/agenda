@@ -43,6 +43,7 @@ class CitasController extends Controller
         $medico = Medico::findBySlug($slug);
         $medico->consultorio;
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
+        $diaconsulta_select = $medico->diaconsulta->lists('id')->toArray();
 
         $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
         
@@ -68,7 +69,8 @@ class CitasController extends Controller
             ->with('permiso', $permiso)
             ->with('f_anterior', $f_anterior)
             ->with('dia_semana', $dia_semana)
-            ->with('diasconsulta_select', $diasconsulta_select);
+            ->with('diasconsulta_select', $diasconsulta_select)
+            ->with('diaconsulta_select', $diaconsulta_select);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
 

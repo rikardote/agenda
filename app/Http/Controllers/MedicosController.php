@@ -43,6 +43,7 @@ class MedicosController extends Controller
     	$especialidades = Especialidad::all()->lists('name', 'id')->toArray();
     	$horarios = horario::all()->lists('todos', 'id')->toArray();
         $diasConsulta = Diasconsulta::all()->lists('day_name', 'id')->toArray();
+        
         $consultorios = Consultorio::all()->lists('name', 'id')->toArray();
         //asort($consultorios);
         return view('admin.medicos.createorupdate')
@@ -59,6 +60,7 @@ class MedicosController extends Controller
         $diasConsulta = Diasconsulta::all()->lists('day_name', 'id')->toArray();
         $horarios = horario::all()->lists('todos', 'id')->toArray();
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
+        $diaconsulta_select = $medico->diaconsulta->lists('id')->toArray();
         $consultorios = Consultorio::all()->lists('name', 'id')->toArray();
         //asort($consultorios);
        
@@ -67,6 +69,7 @@ class MedicosController extends Controller
             ->with('especialidades', $especialidades)
             ->with('horarios', $horarios)
             ->with('diasconsulta_select', $diasconsulta_select)
+            ->with('diaconsulta_select', $diaconsulta_select)
             ->with('diasConsulta', $diasConsulta)
              ->with('consultorios', $consultorios);
         
@@ -80,7 +83,7 @@ class MedicosController extends Controller
 
         $medico->save();
 
-        $medico->diasconsulta()->sync($request->d_consulta);
+        $medico->diaconsulta()->sync($request->d_especial_consulta);
         Flash::success('Medico editado con exito!');
         return redirect()->route('medicos.index');
     }
@@ -91,6 +94,7 @@ class MedicosController extends Controller
         $medico = new Medico($request->all());
         $medico->save();
         $medico->diasconsulta()->sync($request->d_consulta);
+        $medico->diaconsulta()->sync($request->d_especial_consulta);
 
         Flash::success('Medico registrado con exito!');
         return redirect()->route('medicos.index');

@@ -39,6 +39,10 @@ class Medico extends Model implements SluggableInterface
     {
         return $this->belongsToMany('App\Diasconsulta')->withTimestamps();
     }
+    public function diaconsulta()
+    {
+        return $this->belongsToMany('App\Diaconsulta')->withTimestamps();
+    }
     
     public function setnombresAttribute($value)
     {

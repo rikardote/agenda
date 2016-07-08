@@ -30,19 +30,26 @@
             }
               
           ?>
-            @if($citas->count() < 18 && $permiso_act != 1 && $f_anterior != 1 && in_array($dia_semana,$diasconsulta_select))
+
+
+            @if($citas->count() < 18 && $permiso_act != 1 && $f_anterior != 1 && in_array($dia_semana,$diasconsulta_select) || in_array($dia_semana,$diaconsulta_select))
               <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'>+Agregar Cita</a> 
               <div class="label label-warning pull pull-right">{{ fecha_dmy($date) }}</div>
               <div class="label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>
-              
+              @if(in_array($dia_semana,$diaconsulta_select))
+              <br>
+
+               <div class="label label-warning"> <strong> Dia Especial de Consulta</strong> </div>
+              @endif
               
             @else
                <div class="label label-warning pull pull-right">{{ fecha_dmy($date) }}</div>
               <div class="label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>
               <br>
-              @if($citas->count() >= 10)
+              @if($citas->count() >= 18)
                 <b><span class="blink font-border">No se pueden programar mas Citas para esta fecha.</span></b>
               @endif
+
             @endif
 
           </div>

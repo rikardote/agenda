@@ -50,8 +50,6 @@
 			'required'
 		]) !!}
 	</div>
-</div>
-<div class="col-md-6">
 	<div class="form-group">
 		{!! Form::label('especialidad_id', 'Especialidad') !!}
 		{!! Form::select('especialidad_id', $especialidades, null, [
@@ -60,10 +58,23 @@
 			'required'
 		]) !!}
 	</div>
+</div>
+<div class="col-md-6">
+	
 	<div class="form-group">
 		{!! Form::label('d_consulta', 'Dias de consulta') !!}
 		<div class="col-xl-12">
 		{!! Form::select('d_consulta[]', $diasConsulta, isset($diasconsulta_select) ? $diasconsulta_select:null, [
+			'class' => 'form-control select-tipo', 
+			'multiple', 
+			'required'
+		]) !!}
+		</div>
+	</div>
+	<div class="form-group">
+		{!! Form::label('d_especial_consulta', 'Dias ESPECIAL de consulta') !!}
+		<div class="col-xl-12">
+		{!! Form::select('d_especial_consulta[]', $diasConsulta, isset($diaconsulta_select) ? $diaconsulta_select:null, [
 			'class' => 'form-control select-tipo', 
 			'multiple', 
 			'required'
