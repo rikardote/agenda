@@ -41,6 +41,7 @@ class MedicosController extends Controller
     public function create()
     {
     	$especialidades = Especialidad::all()->lists('name', 'id')->toArray();
+        asort($especialidades);
     	$horarios = horario::all()->lists('todos', 'id')->toArray();
         $diasConsulta = Diasconsulta::all()->lists('day_name', 'id')->toArray();
         
@@ -57,6 +58,7 @@ class MedicosController extends Controller
     {
         $medico = Medico::find($id);
         $especialidades = Especialidad::all()->lists('name', 'id')->toArray();
+        asort($especialidades);
         $diasConsulta = Diasconsulta::all()->lists('day_name', 'id')->toArray();
         $horarios = horario::all()->lists('todos', 'id')->toArray();
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
@@ -82,7 +84,7 @@ class MedicosController extends Controller
         $medico->fill($request->all());
 
         $medico->save();
-
+        $medico->diasconsulta()->sync($request->d_consulta);
         $medico->diaconsulta()->sync($request->d_especial_consulta);
         Flash::success('Medico editado con exito!');
         return redirect()->route('medicos.index');

@@ -37,8 +37,7 @@
               <div class="label label-warning pull pull-right">{{ fecha_dmy($date) }}</div>
               <div class="label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>
               @if(in_array($dia_semana,$diaconsulta_select))
-              <br>
-
+               <br>
                <div class="label label-warning"> <strong> Dia Especial de Consulta</strong> </div>
               @endif
               
