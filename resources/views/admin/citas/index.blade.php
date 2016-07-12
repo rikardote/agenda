@@ -134,7 +134,12 @@
          }
        
   });
-    
+  
+  </script>
+  <script>
+    $('#form-modal').on('shown.bs.modal', function () {
+      $('#text-input').focus();
+    });
   </script>
 
 
