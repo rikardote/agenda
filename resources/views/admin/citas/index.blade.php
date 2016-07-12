@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
 @section('title', 'Dr. ' . $medico->fullname . ' / ' . $medico->especialidad->name.' / '.$medico->consultorio->name)
-
+@section('css')
+  <link rel="stylesheet" href="{{ asset('css/flotante.css') }}">
+@endsection
 @section('content')
+<div class="social">
+    <ul>
+      <li><a href="{{route('admin.citas.print', [$medico->id, $date])}}" class="icon-pdf"><i class="fa fa-print fa-2x "></i></a></li>
+    </ul>
+  </div>
 <div class="col-md-4">
     <div id="datepicker" id="depart"></div>
 </div>

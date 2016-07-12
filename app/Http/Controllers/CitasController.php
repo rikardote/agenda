@@ -17,6 +17,7 @@ use App\Permiso;
 use App\User;
 use Carbon\Carbon;
 use Toastr;
+use \mPDF;
 
 class CitasController extends Controller
 {
@@ -194,6 +195,34 @@ class CitasController extends Controller
         Toastr::success('Cita Concretada');
         return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
        
+    }
+    public function print($medico_id, $date)
+    {
+       $medico = Medico::find($medico_id);
+
+      
+        $citas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->get();
+        $citas->each(function($citas) {
+            $citas->codigo;
+            $citas->medico->especialidad;
+            $citas->paciente->tipo;
+
+        });
+      
+        $citas = $citas->sortBy('horario')->groupBy('medico_id');
+
+        $mpdf = new mPDF('', 'Legal-L');
+        $header = \View('admin.reportes.header')->with('date', $date)->render();
+        $mpdf->SetFooter('Generado el: {DATE j-m-Y}| AgendaElectronica | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
+        $html =  \View('admin.reportes.medicos_reports.show')->with('citas', $citas)->with('date', $date)->render();
+        $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
+        $mpdf->setAutoTopMargin = 'stretch';
+        $mpdf->setAutoBottomMargin = 'stretch';
+        $mpdf->setHTMLHeader($header);
+        $mpdf->SetDisplayMode('fullpage');
+        $mpdf->WriteHTML($html);
+   
+        $mpdf->Output($pdfFilePath, "I"); //D
     }
     
 	
