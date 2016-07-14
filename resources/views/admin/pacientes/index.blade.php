@@ -38,7 +38,7 @@
               <a data-url="{{ route('pacientes.edit', $paciente->id) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
                   <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
               </a>
-              <a href="{{ route('admin.pacientes.destroy', $paciente->id) }} " <span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true" onclick="return confirm('Seguro desea eliminarlo?')"></span></a>
+              
               <?php $array = ['01','02','90','91'];  ?>
               @if($paciente->fecha_nacimiento == "1969-12-31" && in_array($paciente->tipo->code, $array))
                 !
