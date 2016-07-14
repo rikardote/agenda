@@ -74,11 +74,11 @@
           <tr class='{{$tachado}}'>
             <td>{{ $cita->folio }}</td>
           
-            <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }} <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}}</small></strong></td>
-     		<td>{{ $cita->horario }}</td>
+            <td data-toggle="tooltip" data-placement="top" title="Telefono: {{$cita->paciente->phone_casa}} / Cel: {{$cita->paciente->phone}}">{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }}
+              <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}}</small></strong>
+            </td>
+     		    <td>{{ $cita->horario }}</td>
             <td>
-
-            
               <a class="load-form-modal panelColorGreen"
                 data-url="{{ route('admin.citas.edit', [$medico->slug , $date, $cita->id]) }}" 
                 data-toggle ="modal" data-target='#form-modal'><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
