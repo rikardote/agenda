@@ -71,10 +71,10 @@
       <tbody>
         @foreach($citas as $cita)
         {{--*/ $tachado = ($cita->concretada == 1) ? "tachado" : "" /*--}}
-          <tr class='{{$tachado}}'>
+          <tr class='{{$tachado}}' data-toggle="tooltip" data-placement="top" title="Telefono: {{$cita->paciente->phone_casa}} / Cel: {{$cita->paciente->phone}}">
             <td>{{ $cita->folio }}</td>
           
-            <td data-toggle="tooltip" data-placement="top" title="Telefono: {{$cita->paciente->phone_casa}} / Cel: {{$cita->paciente->phone}}">{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }}
+            <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }}
               <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}}</small></strong>
             </td>
      		    <td>{{ $cita->horario }}</td>
