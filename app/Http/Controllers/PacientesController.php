@@ -92,4 +92,14 @@ class PacientesController extends Controller
         
         return Response::json($return_array);
     }
+    public function search(Request $request)
+    {
+        $query = $request->rfc;
+        $pacientes = Paciente::where('rfc', '=', $query)->paginate(25);
+        $pacientes->each(function($pacientes) {
+              $pacientes->tipo;
+        });
+        
+        return view('admin/pacientes/index')->with('pacientes', $pacientes);
+    }
 }

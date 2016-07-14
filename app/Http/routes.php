@@ -83,6 +83,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'PacientesController@destroy',
         'as' => 'admin.pacientes.destroy'
     ]);
+    Route::post('pacientes/search', [
+        'uses' => 'PacientesController@search',
+        'as' => 'admin.pacientes.search'
+    ]);
+
     Route::resource('codigos', 'CodigosController');
     Route::get('codigos/{id}/destroy', [
         'uses' => 'CodigosController@destroy',

@@ -6,33 +6,48 @@
   <a data-url="{{ route('pacientes.create') }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
     <span class="fa fa-plus-circle fa-2x" aria-hidden='true'></span>
   </a> 
+  
+<div class="pull pull-right">
+    <div class="col-md-8">
+    {!! Form::open(['route' => ['admin.pacientes.search'], 'method' => 'post']) !!}
+      <input  type="text" class="form-control" name="rfc" placeholder="Buscar paciente por RFC">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-success" type="submit">Buscar</button>
+    </div>
+    {!!Form::close()!!}
+    
+  </div>  
 
    <table class="table table-striped table-condensed">
-   {!! $pacientes->render() !!}
+   
     <thead>
         <th>RFC</th>
         <th>Nombre</th>
         <th>Accion</th>
     </thead>
     <tbody>
-    @foreach($pacientes as $paciente)
-        <tr>
-        <td>{{ $paciente->rfc }} /{{$paciente->tipo->code}}</td>
-         <td>{{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} {{ $paciente->nombres }}</td>
-        
-         
-         <td>
-            <a data-url="{{ route('pacientes.edit', $paciente->id) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
-                <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
-            </a>
-            <a href="{{ route('admin.pacientes.destroy', $paciente->id) }} " <span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true" onclick="return confirm('Seguro desea eliminarlo?')"></span></a>
-            <?php $array = ['01','02','90','91'];  ?>
-            @if($paciente->fecha_nacimiento == "1969-12-31" && in_array($paciente->tipo->code, $array))
-              !
-            @endif
-         </td>
-        </tr>
-    @endforeach
+    @if($pacientes)
+      @foreach($pacientes as $paciente)
+          <tr>
+          <td>{{ $paciente->rfc }} /{{$paciente->tipo->code}}</td>
+           <td>{{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} {{ $paciente->nombres }}</td>
+          
+           
+           <td>
+              <a data-url="{{ route('pacientes.edit', $paciente->id) }}" class="load-form-modal  panelColorGreen" data-toggle ="modal" data-target='#form-modal'>
+                  <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
+              </a>
+              <a href="{{ route('admin.pacientes.destroy', $paciente->id) }} " <span class="fa fa-trash fa-2x panelColorRed" aria-hidden="true" onclick="return confirm('Seguro desea eliminarlo?')"></span></a>
+              <?php $array = ['01','02','90','91'];  ?>
+              @if($paciente->fecha_nacimiento == "1969-12-31" && in_array($paciente->tipo->code, $array))
+                !
+              @endif
+           </td>
+          </tr>
+      @endforeach
+    @endif
+   
     </tbody>
 </table>
 {!! $pacientes->render() !!}
