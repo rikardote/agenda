@@ -132,7 +132,7 @@ class SearchPacientesController extends Controller
         $entrada = $medico->horario->entrada;
         $salida = $medico->horario->salida;
 
-        Flash::success('Paciente registrado con exito!');
+        Flash::success('Paciente actualizado con exito!');
         return view('admin.citas.create')
         	->with('pacientes', $pacientes)
         	->with('medico', $medico)
