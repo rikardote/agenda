@@ -9,7 +9,7 @@
 @if($pacientes->count() == 1)
 
 	@foreach($pacientes as $paciente)
-		 <a data-url="{{ route('admin.pacientes.edit', [$medico->slug , $date,  $paciente->id]) }}" class="load-form-modal fa fa-pencil " data-toggle ="modal" data-target='#form-modal'>{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}</a>
+		 <a data-url="{{ route('admin.pacientes.edit', [$medico->slug , $date,  $paciente->id]) }}" class="load-form-modal" data-toggle ="modal" data-target='#form-modal'>{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}</a>
 		<br>
 
 		{!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
@@ -28,7 +28,7 @@
  </a>
 
   <div id="{{$paciente->slug}}" class="collapse">
-		<a data-url="{{ route('admin.pacientes.edit', [$medico->slug , $date, $paciente->id]) }}" class="load-form-modal fa fa-pencil " data-toggle ="modal" data-target='#form-modal'> EDITAR INFORMACION DEL PACIENTE</a>
+		<a data-url="{{ route('admin.pacientes.edit', [$medico->slug , $date, $paciente->id]) }}" class="load-form-modal" data-toggle ="modal" data-target='#form-modal'> EDITAR INFORMACION DEL PACIENTE</a>
 	   {!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
 
