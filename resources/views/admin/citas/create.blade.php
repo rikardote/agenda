@@ -9,12 +9,14 @@
 @if($pacientes->count() == 1)
 
 	@foreach($pacientes as $paciente)
-		 <a data-url="{{ route('admin.pacientes.edit', [$medico->slug , $date,  $paciente->id]) }}" class="load-form-modal fa fa-pencil " data-toggle ="modal" data-target='#form-modal'>{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}</a>
+		<div class="alert alert-success">	{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}</div>
+	
+		<a data-url="{{ route('admin.pacientes.edit', [$medico->slug , $date,  $paciente->id]) }}" class="load-form-modal fa fa-pencil " data-toggle ="modal" data-target='#form-modal'> Editar Informacion Del Paciente</a>
 		<br>
-
+		<br>
 		{!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
-			{!! Form::submit('Registrar', ['class' => 'btn btn-success']) !!}
+			{!! Form::submit('Registrar', ['class' => 'btn btn-warning']) !!}
 		{!! Form::close() !!}
 	@endforeach
 
@@ -28,7 +30,7 @@
  </a>
 
   <div id="{{$paciente->slug}}" class="collapse">
-		<a data-url="{{ route('admin.pacientes.edit', [$medico->slug , $date, $paciente->id]) }}" class="load-form-modal fa fa-pencil " data-toggle ="modal" data-target='#form-modal'> EDITAR INFORMACION DEL PACIENTE</a>
+		<a data-url="{{ route('admin.pacientes.edit', [$medico->slug , $date, $paciente->id]) }}" class="load-form-modal fa fa-pencil " data-toggle ="modal" data-target='#form-modal'> Editar Informacion Del Paciente</a>
 	   {!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
 
