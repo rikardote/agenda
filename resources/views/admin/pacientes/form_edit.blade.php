@@ -90,13 +90,13 @@
 			
 			
 
-			{!! Form::text('colonia_id',  isset($paciente->colonia_id) ? strtoupper($paciente->colonia_id):null, [
+			{!! Form::text('colonia_id',  isset($paciente->colonia_id) ? $paciente->colonia_id:null, [
 				'id' => 'autocomplete',
 				'class' => 'form-control',
 				'placeholder' => 'Colonia', 
 				
 			]) !!}
-			<p>{{$paciente->colonia->colonia}}</p>
+			<p>{{ ($paciente->colonia_id != 0) ? strtoupper($paciente->colonia->colonia):null}}</p>
 			{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
 			<br>
 			{!! Form::text('fecha_nacimiento', $paciente->fecha_nacimiento, [

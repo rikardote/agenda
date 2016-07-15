@@ -95,7 +95,7 @@
 				'placeholder' => 'Colonia', 
 				
 			]) !!}
-			<p>{{$paciente->colonia->colonia}}</p>
+			<p>{{ ($paciente->colonia_id != 0) ? strtoupper($paciente->colonia->colonia):null}}</p>
 			
 			{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
 			<br>
