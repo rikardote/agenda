@@ -63,7 +63,7 @@
  @endif
 
 
-@include('admin.partials.form-modal', ['title'=>'Nuevo Paciente'])
+@include('admin.partials.form-modal', ['title'=>'Nuevo/Editar Paciente'])
 @include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
 
 @endsection
