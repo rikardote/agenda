@@ -160,6 +160,16 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'SearchPacientesController@StorePaciente',
         'as' => 'admin.pacientes.store'
     ]);
+
+    Route::get('citas/{slug}/{date}/nueva_cita/paciente/edit_paciente/{id}', [
+        'uses' => 'SearchPacientesController@EditPaciente',
+        'as' => 'admin.pacientes.edit'
+    ]);
+    Route::patch('citas/{slug}/{date}/nueva_cita/paciente/edit_paciente/{id}/update', [
+        'uses' => 'SearchPacientesController@UpdatePaciente',
+        'as' => 'admin.pacientes.update'
+    ]);
+
     Route::get('citas/{medico_id}/{date}/print', [
         'uses' => 'CitasController@print',
         'as' => 'admin.citas.print'
