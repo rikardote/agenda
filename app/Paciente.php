@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 use Cviebrock\EloquentSluggable\SluggableInterface;
@@ -57,6 +57,16 @@ class Paciente extends Model implements SluggableInterface
     public function colonia()
     {
         return $this->belongsTo('App\Colonia');
+    }
+    public static function repetidos()
+    {
+        $conteo_total = DB::raw('SUM(rfc) as total');
+        $records = Paciente::getQuery()
+                 ->select('*', DB::raw($conteo_total))
+                 ->groupBy('rfc')
+                 ->havingRaw('count(*) > 1')
+                 ->get();
+        return $records;
     }
   
 }

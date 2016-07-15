@@ -88,6 +88,14 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'admin.pacientes.search'
     ]);
 
+    /*repetidos*/
+    Route::get('pacientes/repetidos/mostrar', [
+        'uses' => 'PacientesController@repetidos',
+        'as' => 'admin.pacientes.repetidos'
+    ]);
+
+
+
     Route::resource('codigos', 'CodigosController');
     Route::get('codigos/{id}/destroy', [
         'uses' => 'CodigosController@destroy',

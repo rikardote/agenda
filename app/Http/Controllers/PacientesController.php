@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PacientesRequest;
 use App\Paciente;
+use App\Cita;
 use App\Colonia;
 use App\Tipo;
 use Laracasts\Flash\Flash;
@@ -101,5 +102,20 @@ class PacientesController extends Controller
         });
         
         return view('admin/pacientes/index')->with('pacientes', $pacientes);
+    }
+    public function repetidos()
+    {
+       $pacientes_ids = Cita::select('paciente_id')->lists('paciente_id')->toArray();
+       $pacientes = Paciente::whereNotIn('id', $pacientes_ids)->get();
+       foreach ($pacientes as $paciente) {
+           echo $paciente->rfc.'/'.$paciente->id. ' - '.$paciente->nombres.'  '.$paciente->apellido_pat.'  '.$paciente->apellido_mat;
+           echo '<br>';
+           $pa = Paciente::find($paciente->id); 
+           $pa->delete();
+           echo 'Eliminado';
+           echo '<br>';
+       }
+               
+       
     }
 }
