@@ -148,7 +148,18 @@
       $('#text-input').focus();
     });
   </script>
+<script>
+ 
+ document.addEventListener("keydown", function(event) {
+  
+  if(event.keyCode == 113){
+    var url = "{{ route('citas.nueva_cita', [$medico->slug , $date]) }}";
+    $('#form-modal').modal({remote: url});
+  }
 
+  });
+
+ </script>
 
 
 @endsection
