@@ -155,6 +155,8 @@ class CitasController extends Controller
 
         $medico = Medico::findBySlug($slug);
         $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
+
+        // Validando Citas Repetidas //
         $getCitas = Cita::where('paciente_id', '=', $request->paciente_id)->where('fecha', '=', $cita->fecha)->count();
 
         if($total_citas) {
@@ -168,9 +170,7 @@ class CitasController extends Controller
         else{
                 $cita->save();            
         }
-        
 
-        //Flash::success('Cita registrada con exito!');
         Toastr::success('Cita Agendada con exito');
         return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);
     }  
@@ -181,7 +181,7 @@ class CitasController extends Controller
 
         $cita->delete();
        
-        Toastr::error('Cita borrada exitosamente');
+        Toastr::info('Cita borrada exitosamente');
         return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
     } 
     public function concretada($slug,$date,$id)
