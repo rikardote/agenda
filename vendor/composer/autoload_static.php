@@ -350,7 +350,6 @@ class ComposerStaticInit6d660748b59d8e8af5d7b8a23476a330
     public static $classMap = array (
         'Absolute_Positioner' => __DIR__ . '/..' . '/dompdf/dompdf/include/absolute_positioner.cls.php',
         'Abstract_Renderer' => __DIR__ . '/..' . '/dompdf/dompdf/include/abstract_renderer.cls.php',
-        'AddAccionToCitas' => __DIR__ . '/../..' . '/database/migrations/2016_07_18_084218_add_accion_to_citas.php',
         'AddEdadToHojasTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_27_092353_add_edad_to_hojas_table.php',
         'AddForaneoIdToPacientesTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_23_103913_add_foraneo_id_to_pacientes_table.php',
         'AddTurnoToMedicosTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_28_112825_add_turno_to_medicos_table.php',
@@ -954,6 +953,7 @@ class ComposerStaticInit6d660748b59d8e8af5d7b8a23476a330
         'Page_Frame_Decorator' => __DIR__ . '/..' . '/dompdf/dompdf/include/page_frame_decorator.cls.php',
         'Page_Frame_Reflower' => __DIR__ . '/..' . '/dompdf/dompdf/include/page_frame_reflower.cls.php',
         'Positioner' => __DIR__ . '/..' . '/dompdf/dompdf/include/positioner.cls.php',
+        'RemoveForaneoFromCitas2' => __DIR__ . '/../..' . '/database/migrations/2016_07_19_175043_remove_foraneo_from_citas2.php',
         'Renderer' => __DIR__ . '/..' . '/dompdf/dompdf/include/renderer.cls.php',
         'SEA' => __DIR__ . '/..' . '/mpdf/mpdf/classes/sea.php',
         'SVG' => __DIR__ . '/..' . '/mpdf/mpdf/classes/svg.php',

@@ -90,8 +90,7 @@ class ReportesController extends Controller
             $citas->codigo;
             $citas->medico->especialidad;
             $citas->paciente->tipo;
-
-        });
+         });
       
         $citas = $citas->sortBy('horario')->groupBy('medico_id');
 

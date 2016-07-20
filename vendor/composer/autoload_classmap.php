@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Absolute_Positioner' => $vendorDir . '/dompdf/dompdf/include/absolute_positioner.cls.php',
     'Abstract_Renderer' => $vendorDir . '/dompdf/dompdf/include/abstract_renderer.cls.php',
-    'AddAccionToCitas' => $baseDir . '/database/migrations/2016_07_18_084218_add_accion_to_citas.php',
     'AddEdadToHojasTable' => $baseDir . '/database/migrations/2016_06_27_092353_add_edad_to_hojas_table.php',
     'AddForaneoIdToPacientesTable' => $baseDir . '/database/migrations/2016_06_23_103913_add_foraneo_id_to_pacientes_table.php',
     'AddTurnoToMedicosTable' => $baseDir . '/database/migrations/2016_06_28_112825_add_turno_to_medicos_table.php',
@@ -612,6 +611,7 @@ return array(
     'Page_Frame_Decorator' => $vendorDir . '/dompdf/dompdf/include/page_frame_decorator.cls.php',
     'Page_Frame_Reflower' => $vendorDir . '/dompdf/dompdf/include/page_frame_reflower.cls.php',
     'Positioner' => $vendorDir . '/dompdf/dompdf/include/positioner.cls.php',
+    'RemoveForaneoFromCitas2' => $baseDir . '/database/migrations/2016_07_19_175043_remove_foraneo_from_citas2.php',
     'Renderer' => $vendorDir . '/dompdf/dompdf/include/renderer.cls.php',
     'SEA' => $vendorDir . '/mpdf/mpdf/classes/sea.php',
     'SVG' => $vendorDir . '/mpdf/mpdf/classes/svg.php',

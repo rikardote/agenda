@@ -47,10 +47,19 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
     Route::resource('agenda', 'AgendaController');
+
     Route::resource('hojas', 'HojasController');
     Route::get('hojas/{paciente_id}/{medico_id}/{cita_id}', [
         'uses' => 'HojasController@custom_create',
         'as' => 'custom.hojas.create'
+    ]);
+    Route::get('hojas/{paciente_id}/{medico_id}/{cita_id}/edit', [
+        'uses' => 'HojasController@custom_edit',
+        'as' => 'custom.hojas.edit'
+    ]);
+    Route::patch('hojas/{cita_id}/update', [
+        'uses' => 'HojasController@custom_update',
+        'as' => 'custom.hojas.update'
     ]);
     Route::get('hojas/{fecha}/avanzar', [
         'uses' => 'HojasController@avanzar',

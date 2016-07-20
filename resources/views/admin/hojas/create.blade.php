@@ -6,10 +6,23 @@
 	<link rel="stylesheet" href="{{ asset('plugins/jQuery-Tags-Input/jquery.tagsinput.min.css') }}">
 @endsection
 
-@section('title', 'Hoja medica del paciente: '. $paciente->fullname)
+@section('title', 'Hoja medica del paciente: '. $paciente->fullname . '  ' . getForaneo($cita->paciente->foraneo_id)  )
 
 @section('content')
-	@include('admin.hojas._form')
+	@if($cita->concretada)
+	
+		<?php $estado = 'Actualizar';  ?>
+		{!! Form::model($cita, ['route' => ['custom.hojas.update', $cita->id], 'method' => 'PATCH']) !!}
+	@else
+		<?php $estado = 'Registrar';  ?>
+		{!! Form::open(['route' => 'hojas.store', 'method' => 'POST']) !!}
+	@endif
+	      @include('admin.hojas._form')
+	<div align="right">
+	     {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
+	 </div>
+	    {!! Form::close() !!}
+
 @endsection
 
 @section('js')

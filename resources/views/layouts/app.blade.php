@@ -9,7 +9,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+    
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/jquery-bootstrap-datepicker.css') }}">
@@ -64,31 +64,10 @@
     <script src="{{ asset('plugins/datetextentry/datetextentry.js') }}"></script>
     <script src="{{ asset('plugins/timepicker/jquery.timepicker.min.js') }}"></script>
     <script src="{{ asset('plugins/toastr/js/toastr.min.js') }}"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>    
-<script type="text/javascript" src="//cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>    
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>    
-<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>    
-<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>    
-<script type="text/javascript" src="//cdn.datatables.net/buttons/1.1.2/js/buttons.html5.min.js"></script> 
-<script type="text/javascript" src="//cdn.datatables.net/buttons/1.1.2/js/buttons.print.min.js"></script>    
+   
     
     @yield('js')
-    <script>
-        $(document).ready(function(){
-             $('#myTable').DataTable({
-                "language" : {"url" : "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"},
-                "processing": true,
-                "serverSide": true,
-                "ajax": "api/codigos",
-                "columns": [
-                    {data: 'code'},
-                    {data: 'description'},
-                   ]
-            });
-        });
-    </script>
+   
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script>
         $('#alert').delay(2000).fadeOut(800)

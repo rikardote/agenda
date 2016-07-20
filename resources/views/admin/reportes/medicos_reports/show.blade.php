@@ -45,8 +45,7 @@
 			<td class="reporte" rowspan=2 align="center" valign=middle>REPROG</td>
 			<td class="reporte" rowspan=2 align="center" valign=middle>SUSP</td>
 			<td class="reporte" rowspan=2 align="center" valign=middle>DIFE</td>
-			<td class="reporte" rowspan=2 align="center" valign=middle>VISITA</td>
-			<td class="reporte" rowspan=2 align="center" valign=middle>NO.OTOR</td>
+
 		</tr>
 		<tr>
 			<td class="reporte" align="center" valign=bottom>SI</td>
@@ -69,34 +68,32 @@
 			<td class="reporte2" align="center" valign=bottom ><br></td>
 			<td class="reporte2" align="center" valign=bottom >
 				@if ($cit->paciente->gender == 'F')
-					
+					{{$cit->age}}
 				@endif
 			</td>
 			<td class="reporte2" align="center" valign=bottom>
 				@if ($cit->paciente->gender == 'M')
-					
+					{{$cit->age}}					
 				@endif
 			</td>
 			<td class="reporte2" align="center" valign=bottom ><br>
 				{{ getForaneo($cit->paciente->foraneo_id) }}
 
 			</td>
-			<td class="reporte2" align="center" valign=bottom ></td>
-			<td class="reporte2" align="center" valign=bottom ></td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
-			<td class="reporte2" align="center" valign=bottom ></td>
-			<td class="reporte2" align="center" valign=bottom ></td>
-			<td class="reporte2" align="center" valign=bottom ></td>
-			<td class="reporte2" align="center" valign=bottom ></td>
-			<td class="reporte2" align="center" valign=bottom ><b><font size=1></td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
-			<td class="reporte2" align="center" valign=bottom ></td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
-			<td class="reporte2" align="center" valign=bottom ><br></td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->laboratorio ? √:null}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->rayosx ? √:null}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->interconsulta ? √:null}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->pase_otra_unidad ? √:null}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->num_licencia_medica}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->num_de_dias}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->num_medicamentos}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->codigo->code}}</td>
+			<td class="reporte2" align="center" valign=bottom ><font size=8>{{str_limit($cit->codigo->description,40)}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->primera_vez ? √:null}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->subsecuente ? √:null}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->reprogramada ? √:null}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->suspendida ? √:null}}</td>
+			<td class="reporte2" align="center" valign=bottom >{{$cit->diferida ? √:null}}</td>
 		</tr>
 		@endforeach	
 	</table>

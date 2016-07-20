@@ -70,7 +70,7 @@ class HojasController extends Controller
         $cie = Cie::where('code', '=', $request->codigo_cie_id)->first();
         
         $cita->codigo_cie_id = $cie->id;
-        $cita->foraneo = $request->foraneo;
+        
         $cita->laboratorio = $request->laboratorio;
         $cita->rayosx = $request->rayosx;
         $cita->interconsulta = $request->interconsulta;
@@ -196,7 +196,7 @@ class HojasController extends Controller
                 ->with('salida', $salida);
     }
     public function cita_store(CitasRequest $request, $date)
-    {
+    {   
 
         $cita = new Cita($request->all());
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
@@ -219,10 +219,32 @@ class HojasController extends Controller
         return redirect()->route('hojas.index', ['date' => $request->date]);
     }  
 
-      public function custom_create($paciente_id, $medico_id, $cita_id)
+    public function custom_create($paciente_id, $medico_id, $cita_id)
+    {   
+
+        $cita = Cita::find($cita_id);
+        $cita->paciente;
+
+        $cie = Cie::find($cita->codigo_cie_id);
+        $medico = Medico::find($medico_id);
+        $paciente = Paciente::find($paciente_id);
+        $dt = Carbon::parse($paciente->fecha_nacimiento);
+        $anos = Carbon::createFromDate($dt->year, $dt->month, $dt->day)->diff(Carbon::now())->format('%y Años');
+        
+        return view('admin.hojas.create')
+              ->with('medico', $medico)
+              ->with('paciente', $paciente)
+              ->with('anos', $anos)
+              ->with('cita_id', $cita_id)
+              ->with('cita', $cita)
+              ->with('cie', $cie);
+            
+    }
+    public function custom_edit($paciente_id, $medico_id, $cita_id)
     {
         $medico = Medico::find($medico_id);
         $paciente = Paciente::find($paciente_id);
+        $cie = Cie::find($cita->codigo_cie_id);
         $dt = Carbon::parse($paciente->fecha_nacimiento);
         $anos = Carbon::createFromDate($dt->year, $dt->month, $dt->day)->diff(Carbon::now())->format('%y Años');
  
@@ -230,9 +252,40 @@ class HojasController extends Controller
               ->with('medico', $medico)
               ->with('paciente', $paciente)
               ->with('anos', $anos)
-              ->with('cita_id', $cita_id);
+              ->with('cita_id', $cita_id)
+              ->with('cie', $cie);
             
-      }
+    }
+    public function custom_update(Request $request, $cita_id)
+    {
+
+        $cita = Cita::find($cita_id);
+       
+        $cie = Cie::where('code', '=', $request->codigo_cie_id)->first();
+        
+        $cita->codigo_cie_id = $cie->id;
+        
+        $cita->laboratorio = $request->laboratorio;
+        $cita->rayosx = $request->rayosx;
+        $cita->interconsulta = $request->interconsulta;
+        $cita->pase_otra_unidad = $request->pase_otra_unidad;
+        $cita->num_licencia_medica =  strtoupper($request->num_licencia_medica);
+        $cita->num_de_dias = $request->num_de_dias;
+        $cita->num_medicamentos = $request->num_medicamentos;
+        $cita->reprogramada = $request->reprogramada;
+        $cita->suspendida = $request->suspendida;
+        $cita->subsecuente = $request->subsecuente;
+        $cita->diferida = $request->diferida;
+        $cita->num_otorgados =  $request->num_otorgados;
+        $cita->primera_vez =  $request->primera_vez;
+        $cita->concretada = 1;
+        $cita->age = $request->age;
+        $cita->save();
+        
+        Toastr::success('Hoja medica del paciente editada con exito!!');
+        return redirect()->route('hojas.index');
+    }  
+
    /* public function getHoras(Request $request)
     {
         $horas_usadas = Cita::where('fecha', '=', $request->fecha)->where('medico_id', '=', $request->medico_id)->lists('horario', 'id')->toArray();
