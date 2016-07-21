@@ -16,6 +16,9 @@
 		<br>
 		{!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
+			@if(isset($medico->comentarios))
+        		<p class="well well-sm"> {{ $medico->comentarios }} </p>
+    		@endif
 			{!! Form::submit('Registrar', ['class' => 'btn btn-warning btn-block']) !!}
 		{!! Form::close() !!}
 	@endforeach
