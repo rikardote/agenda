@@ -40,21 +40,20 @@
 			'required'
 		]) !!}
 	</div>
-	<div class="form-group">
-		{!! Form::label('cedula', 'Cedula Profesional') !!}
-		
-		{!! Form::text('cedula', null, [
-			
-			'class' => 'form-control',
-			'placeholder' => 'Cedula Profesional', 
-			'required'
-		]) !!}
-	</div>
+	
 	<div class="form-group">
 		{!! Form::label('especialidad_id', 'Especialidad') !!}
 		{!! Form::select('especialidad_id', $especialidades, null, [
 			'class' => 'form-control', 
 			'placeholder' => 'Selecciona una especialidad', 
+			'required'
+		]) !!}
+	</div>
+	<div class="form-group">
+		{!! Form::label('consultorio_id', 'Consultorio') !!}
+		{!! Form::select('consultorio_id', $consultorios, null, [
+			'class' => 'form-control', 
+			'placeholder' => 'Selecciona un Consultorio', 
 			'required'
 		]) !!}
 	</div>
@@ -96,11 +95,14 @@
 			'required'
 		]) !!}
 	</div>
+	
 	<div class="form-group">
-		{!! Form::label('consultorio_id', 'Consultorio') !!}
-		{!! Form::select('consultorio_id', $consultorios, null, [
-			'class' => 'form-control', 
-			'placeholder' => 'Selecciona un Consultorio', 
+		{!! Form::label('comentarios', 'Comentario') !!}
+		
+		{!! Form::textarea('comentarios', null, [
+			
+			'class' => 'form-control',
+			'placeholder' => 'Inserta un comentario', 
 			'required'
 		]) !!}
 	</div>

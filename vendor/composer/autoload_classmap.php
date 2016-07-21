@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Absolute_Positioner' => $vendorDir . '/dompdf/dompdf/include/absolute_positioner.cls.php',
     'Abstract_Renderer' => $vendorDir . '/dompdf/dompdf/include/abstract_renderer.cls.php',
+    'AddComentariosToMedicosTable' => $baseDir . '/database/migrations/2016_07_21_094332_add_comentarios_to_medicos_table.php',
     'AddEdadToHojasTable' => $baseDir . '/database/migrations/2016_06_27_092353_add_edad_to_hojas_table.php',
     'AddForaneoIdToPacientesTable' => $baseDir . '/database/migrations/2016_06_23_103913_add_foraneo_id_to_pacientes_table.php',
     'AddMedicosUsersToUsers' => $baseDir . '/database/migrations/2016_07_20_191804_add_medicos_users_to_users.php',
@@ -35,6 +36,7 @@ return array(
     'DOMPDF_Exception' => $vendorDir . '/dompdf/dompdf/include/dompdf_exception.cls.php',
     'DOMPDF_Image_Exception' => $vendorDir . '/dompdf/dompdf/include/dompdf_image_exception.cls.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'DropCedulaFromMedicosTable' => $baseDir . '/database/migrations/2016_07_21_095620_drop_cedula_from_medicos_table.php',
     'Encoding_Map' => $vendorDir . '/phenx/php-font-lib/classes/Encoding_Map.php',
     'EspecialidadesTableSeeder' => $baseDir . '/database/seeds/EspecialidadesTableSeeder.php',
     'FPDF_TPL' => $vendorDir . '/setasign/fpdi/fpdf_tpl.php',

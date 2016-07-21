@@ -18,7 +18,7 @@ class Medico extends Model implements SluggableInterface
     ];
      protected $table = 'medicos';
 
-     protected $fillable = ['num_empleado', 'nombres', 'apellido_pat', 'apellido_mat', 'cedula', 'especialidad_id', 'horario_id', 'consultorio_id','turno'];
+     protected $fillable = ['num_empleado', 'nombres', 'apellido_pat', 'apellido_mat', 'especialidad_id', 'horario_id', 'consultorio_id','turno', 'comentarios'];
 
 
     public function especialidad()
@@ -47,6 +47,10 @@ class Medico extends Model implements SluggableInterface
     public function setnombresAttribute($value)
     {
         $this->attributes['nombres'] = strtoupper($value);
+    }
+    public function setcomentariosAttribute($value)
+    {
+        $this->attributes['comentarios'] = strtoupper($value);
     }
     public function setapellidopatAttribute($value)
     {

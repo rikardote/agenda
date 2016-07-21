@@ -12,6 +12,10 @@
   </div>
 <div class="col-md-4">
     <div id="datepicker" id="depart"></div>
+    <br>
+    @if(isset($medico->comentarios))
+        <p class="well well-sm"> {{ $medico->comentarios }} </p>
+    @endif
 </div>
 
 @if($citas)

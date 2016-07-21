@@ -350,6 +350,7 @@ class ComposerStaticInit6d660748b59d8e8af5d7b8a23476a330
     public static $classMap = array (
         'Absolute_Positioner' => __DIR__ . '/..' . '/dompdf/dompdf/include/absolute_positioner.cls.php',
         'Abstract_Renderer' => __DIR__ . '/..' . '/dompdf/dompdf/include/abstract_renderer.cls.php',
+        'AddComentariosToMedicosTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_21_094332_add_comentarios_to_medicos_table.php',
         'AddEdadToHojasTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_27_092353_add_edad_to_hojas_table.php',
         'AddForaneoIdToPacientesTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_23_103913_add_foraneo_id_to_pacientes_table.php',
         'AddMedicosUsersToUsers' => __DIR__ . '/../..' . '/database/migrations/2016_07_20_191804_add_medicos_users_to_users.php',
@@ -377,6 +378,7 @@ class ComposerStaticInit6d660748b59d8e8af5d7b8a23476a330
         'DOMPDF_Exception' => __DIR__ . '/..' . '/dompdf/dompdf/include/dompdf_exception.cls.php',
         'DOMPDF_Image_Exception' => __DIR__ . '/..' . '/dompdf/dompdf/include/dompdf_image_exception.cls.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'DropCedulaFromMedicosTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_21_095620_drop_cedula_from_medicos_table.php',
         'Encoding_Map' => __DIR__ . '/..' . '/phenx/php-font-lib/classes/Encoding_Map.php',
         'EspecialidadesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/EspecialidadesTableSeeder.php',
         'FPDF_TPL' => __DIR__ . '/..' . '/setasign/fpdi/fpdf_tpl.php',
