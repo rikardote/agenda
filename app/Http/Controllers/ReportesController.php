@@ -116,7 +116,7 @@ class ReportesController extends Controller
         $mpdf = new mPDF('', 'Legal-L');
         $header = \View('admin.reportes.header')->with('date', $request->date)->render();
         $mpdf->SetFooter('Generado el: {DATE j-m-Y}| AgendaElectronica | &copy;'.date('Y').' ISSSTE BAJA CALIFORNIA');
-        $html =  \View('admin.reportes.medicos_reports.show')->with('citas', $citas)->with('date', $date)->render();
+        $html =  \View('admin.reportes.show')->with('citas', $citas)->with('date', $date)->render();
         $pdfFilePath = 'Citas del '.fecha_dmy($date).'.pdf';
         $mpdf->setAutoTopMargin = 'stretch';
         $mpdf->setAutoBottomMargin = 'stretch';
