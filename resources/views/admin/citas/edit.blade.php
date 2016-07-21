@@ -8,7 +8,7 @@
 	{!!  Form::model($cita, ['route' => ['admin.citas.update', $medico->slug, $date, $cita->id], 'method' => 'PATCH']) !!}
 		@include('admin.citas.edit_form')
 	 <div align="right">
-		{!! Form::submit('Actualizar', ['class' => 'btn btn-success']) !!}
+		{!! Form::submit('Actualizar', ['class' => 'btn btn-success btn-block']) !!}
 	{!! Form::close() !!}
 	</div>
 

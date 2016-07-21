@@ -108,7 +108,7 @@
 		
 </div>
 <div align="right">
-				{!! Form::submit('Agregar', ['class' => 'btn btn-success']) !!}
+				{!! Form::submit('Agregar', ['class' => 'btn btn-success btn-block']) !!}
 
 			</div>	
 			{!!Form::close()!!}	

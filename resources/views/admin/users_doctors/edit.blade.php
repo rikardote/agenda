@@ -24,7 +24,7 @@
 </div>
 
 	<div align="right">
-	     {!! Form::submit('Actualizar', ['class' => 'btn btn-success']) !!}
+	     {!! Form::submit('Actualizar', ['class' => 'btn btn-success btn-block']) !!}
 	</div>  
  {!! Form::close() !!}
 

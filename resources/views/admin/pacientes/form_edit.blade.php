@@ -111,7 +111,7 @@
 		</div>	
 </div>
 <div align="right">
-				{!! Form::submit('Editar', ['class' => 'btn btn-success']) !!}
+				{!! Form::submit('Editar', ['class' => 'btn btn-success btn-block']) !!}
 
 			</div>	
 			{!!Form::close()!!}	

@@ -225,10 +225,19 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'reporte.vesp'
     ]);
     */
-    Route::get('reportes/{date}/', [
+    Route::get('reportes/{date}', [
         'uses' => 'ReportesController@pdf',
         'as' => 'reporte.pdf'
     ]);
+    Route::post('reportes/individual/', [
+        'uses' => 'ReportesController@medicos_checkbox',
+        'as' => 'reportes.medicos.checkboxes'
+    ]);
+    Route::post('reportes/guardar_configuracion/', [
+        'uses' => 'ReportesController@guardar_configuracion',
+        'as' => 'reportes.salvar.configuracion'
+    ]);
+
     Route::get('medico/reportes', [
         'uses' => 'ReportesController@hoja_medica_get',
         'as' => 'reporte.hoja_medica'

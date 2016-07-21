@@ -7,7 +7,7 @@
 @endif
       @include('admin.horarios.form')
 <div align="right">
-     {!! Form::submit($estado, ['class' => 'btn btn-success']) !!}
+     {!! Form::submit($estado, ['class' => 'btn btn-success btn-block']) !!}
 </div>  
     {!! Form::close() !!}
 

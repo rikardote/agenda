@@ -16,7 +16,7 @@
 		<br>
 		{!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
-			{!! Form::submit('Registrar', ['class' => 'btn btn-warning']) !!}
+			{!! Form::submit('Registrar', ['class' => 'btn btn-warning btn-block']) !!}
 		{!! Form::close() !!}
 	@endforeach
 
@@ -34,7 +34,7 @@
 	   {!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
 
-			{!! Form::submit('Registrar', ['class' => 'btn btn-warning']) !!}
+			{!! Form::submit('Registrar', ['class' => 'btn btn-warning btn-block']) !!}
 		{!! Form::close() !!}
 		<br>
   </div>

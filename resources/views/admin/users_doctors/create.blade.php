@@ -32,7 +32,7 @@
 </div>
 
 <div align="right">
-     {!! Form::submit("Crear Nuevo Usuario Medico", ['class' => 'btn btn-success']) !!}
+     {!! Form::submit("Crear Nuevo Usuario Medico", ['class' => 'btn btn-success btn-block']) !!}
 </div>  
  {!! Form::close() !!}
 

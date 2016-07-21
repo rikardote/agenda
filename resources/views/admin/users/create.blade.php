@@ -39,7 +39,7 @@
 	{!! Form::select('type', ['member' => 'Miembro', 'admin' => 'Administrador'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una opcion...']) !!}
 </div>
 	<div align="right">
-	     {!! Form::submit("Crear Nuevo Usuario", ['class' => 'btn btn-success']) !!}
+	     {!! Form::submit("Crear Nuevo Usuario", ['class' => 'btn btn-success btn-block']) !!}
 	</div>  
  {!! Form::close() !!}
 
