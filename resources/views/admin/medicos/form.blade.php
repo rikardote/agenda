@@ -103,7 +103,6 @@
 			
 			'class' => 'form-control',
 			'placeholder' => 'Inserta un comentario', 
-			'required'
 		]) !!}
 	</div>
 </div>
