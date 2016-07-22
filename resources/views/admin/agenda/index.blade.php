@@ -7,13 +7,11 @@
 <div class="row">
 	@foreach($especialidades as $especialidad)
 		<div class="col-md-6 col-md-4">
-			<div class="w3-card-8 w3-green panel panel-primary">
-				<a href="{{ route('agenda.show', $especialidad->slug) }}">
+			<a href="{{ route('agenda.show', $especialidad->slug) }}">
+				<div class="w3-card-8 w3-green panel panel-primary">
 					<h4 class="text-white text-center">{{ $especialidad->name }}</h4>
-					
-				</a>
-				
-			</div>
+				</div>
+			</a>
 		</div>
 	@endforeach
 </div>
