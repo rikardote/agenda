@@ -28,7 +28,6 @@ class MedicosRequest extends Request
             'nombres' => 'min:4|max:20|required',
             'apellido_pat' => 'min:4|max:20|required',
             'apellido_mat' => 'min:4|max:20|required',
-            'cedula' => 'min:5|max:20|required',
             'especialidad_id' => 'required',
             'horario_id' => 'required',
         ];

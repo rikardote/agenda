@@ -161,3 +161,8 @@ td.ui-datepicker-week-end {
     border: 1px solid transparent;
 }
 
+.toast-middle-center {  
+    top: 70px; 
+    left: 150%; 
+    margin-left: -50px; 
+} 

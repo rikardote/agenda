@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'options' => ['positionClass' => 'center']
+    'options' => ['positionClass' => 'toast-middle-center']
 ];
