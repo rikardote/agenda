@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'options' => ['positionClass' => 'toast-middle-center']
+    'options' => ['positionClass' => 'toast-bottom-full-width']
 ];
