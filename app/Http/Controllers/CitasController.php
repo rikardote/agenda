@@ -157,7 +157,7 @@ class CitasController extends Controller
         $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
 
         // Validando Citas Repetidas //
-        $getCitas = Cita::where('paciente_id', '=', $request->paciente_id)->where('fecha', '=', $cita->fecha)->count();
+        $getCitas = Cita::where('paciente_id', '=', $request->paciente_id)->where('medico_id', '=', $medico->id)->where('fecha', '=', $cita->fecha)->count();
 
         if($total_citas) {
             Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
