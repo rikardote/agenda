@@ -25,9 +25,9 @@ class PacientesRequest extends Request
     {
         return [
             'rfc' => 'min:10|max:13|required',
-            'nombres' => 'min:2|max:20|required',
-            'apellido_pat' => 'min:2|max:20|required',
-            'apellido_mat' => 'min:2|max:20|required',
+            'nombres' => 'min:2|max:40|required',
+            'apellido_pat' => 'min:2|max:30|required',
+            'apellido_mat' => 'min:2|max:30|required',
         ];
     }
 }
