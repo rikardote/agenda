@@ -56,7 +56,7 @@
               @endif
               
             @else
-               <div class="label label-warning pull pull-right">{{ fecha_dmy($date) }}</div>
+               <div class="col-md-5 date label label-warning pull pull-right">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d de %B del %Y') }}</div>
               <div class="label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>
               <br>
               @if($citas->count() >= 18)
