@@ -74,5 +74,23 @@ function getForaneo($id)
         return "S.F.";
 
   }
+}
+function getDayName($date) {
+    $dt = Carbon::parse($date);
 
+    if ($dt->dayOfWeek === Carbon::MONDAY) {
+        return 'LUNES';
+    }
+    if ($dt->dayOfWeek === Carbon::TUESDAY) {
+        return 'MARTES';
+    }
+    if ($dt->dayOfWeek === Carbon::WEDNESDAY) {
+        return 'MIERCOLES '.$dt->month.' '.$dt->year;
+    }
+    if ($dt->dayOfWeek === Carbon::THURSDAY) {
+        return 'JUEVES';
+    }
+    if ($dt->dayOfWeek === Carbon::FRIDAY) {
+        return 'VIERNES';
+    }
 }

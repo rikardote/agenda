@@ -66,6 +66,7 @@ class SearchPacientesController extends Controller
     	
         $pacientes = new Paciente($request->all());
         $pacientes->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
+        $pacientes->rfc = preg_replace('/\s+/', '', $request->rfc);
         $pacientes->save();
 
        	$pacientes = Paciente::where('rfc', '=', $request->rfc)->get();

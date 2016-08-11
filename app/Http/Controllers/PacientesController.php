@@ -66,6 +66,7 @@ class PacientesController extends Controller
     public function store(PacientesRequest $request)
     {
         $paciente = new Paciente($request->all());
+        $paciente->rfc = preg_replace('/\s+/', '', $request->rfc);
         $paciente->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
         $paciente->save();
 

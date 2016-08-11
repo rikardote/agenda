@@ -32,10 +32,13 @@ footer {
   text-align: center;
  }
 
- .text-white{
+.text-white{
   color: white
 
  }
+.date {
+  font-size: 10px;
+}
 
 
 /*#1AB9C5;*/
