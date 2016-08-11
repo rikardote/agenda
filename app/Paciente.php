@@ -37,6 +37,7 @@ class Paciente extends Model implements SluggableInterface
     public function setrfcAttribute($value)
     {
         $this->attributes['rfc'] = strtoupper($value);
+        $this->attributes['rfc'] = preg_replace('/\s+/', '', $value);
     }
     public function setaddressAttribute($value)
     {
@@ -46,6 +47,9 @@ class Paciente extends Model implements SluggableInterface
         return $this->apellido_pat . ' ' . $this->apellido_mat. ' ' . $this->nombres;
     
     }
+
+
+    
     public function cita()
     {
         return $this->hasMany('App\Cita');
