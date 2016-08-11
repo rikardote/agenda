@@ -43,21 +43,23 @@
           ?>
 
 
-            @if($citas->count() < 18 && $permiso_act != 1 && $f_anterior != 1 && in_array($dia_semana,$diasconsulta_select) || in_array($dia_semana,$diaconsulta_select))
-              
-              <div class="col-md-5 date label label-warning pull pull-right">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d de %B del %Y') }}</div>
+            @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select) || in_array($dia_semana,$diaconsulta_select))
+              @if($f_anterior != true)
+              <div class="col-md-4 date pull pull-left">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d de %B del %Y') }}</div>
               
                 <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'><span class="fa fa-calendar fa-2x"></span></a> 
+              
 
-              <div class="col-md-4 label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>
+              <div class="col-md-4 date label label-warning pull pull-right"> Hay {{ $citas->count() }}  Citas</div>
+              @endif
               @if(in_array($dia_semana,$diaconsulta_select))
                <br>
                <div class=""> <strong> Dia Especial de Consulta</strong> </div>
               @endif
               
             @else
-               <div class="col-md-5 date label label-warning pull pull-right">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d de %B del %Y') }}</div>
-               <div class="col-md-4 label label-warning pull pull-left"> Hay {{ $citas->count() }}  Citas</div>
+               <div class="col-md-4 date label label-warning pull pull-left">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d de %B del %Y') }}</div>
+               <div class="col-md-4 date label label-warning pull pull-right"> Hay {{ $citas->count() }}  Citas</div>
               <br>
               @if($citas->count() >= 18)
                 <b><span class="blink font-border">No se pueden programar mas Citas para esta fecha.</span></b>
@@ -91,10 +93,10 @@
                 data-toggle ="modal" data-target='#form-modal'><span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
               </a> 
               
-              <?php  /*@if(checkExpire($cita->created_at)) */?>
+             @if($f_anterior != true)
                 <a href="{{ route('admin.citas.destroy', [$medico->slug, $date, $cita->id]) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span  class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span>
                </a>
-              <?php /*@endif*/ ?>
+              @endif
 
             </td>
           </tr>
