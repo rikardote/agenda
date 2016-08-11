@@ -956,6 +956,7 @@ class ComposerStaticInit6d660748b59d8e8af5d7b8a23476a330
         'Page_Frame_Decorator' => __DIR__ . '/..' . '/dompdf/dompdf/include/page_frame_decorator.cls.php',
         'Page_Frame_Reflower' => __DIR__ . '/..' . '/dompdf/dompdf/include/page_frame_reflower.cls.php',
         'Positioner' => __DIR__ . '/..' . '/dompdf/dompdf/include/positioner.cls.php',
+        'RemoveColoniaColumnFromPacientes' => __DIR__ . '/../..' . '/database/migrations/2016_08_11_112752_remove_colonia_column_from_pacientes.php',
         'RemoveForaneoFromCitas2' => __DIR__ . '/../..' . '/database/migrations/2016_07_19_175043_remove_foraneo_from_citas2.php',
         'Renderer' => __DIR__ . '/..' . '/dompdf/dompdf/include/renderer.cls.php',
         'SEA' => __DIR__ . '/..' . '/mpdf/mpdf/classes/sea.php',

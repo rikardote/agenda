@@ -47,9 +47,6 @@ class Paciente extends Model implements SluggableInterface
         return $this->apellido_pat . ' ' . $this->apellido_mat. ' ' . $this->nombres;
     
     }
-
-
-    
     public function cita()
     {
         return $this->hasMany('App\Cita');

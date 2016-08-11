@@ -18,13 +18,4 @@
 	<script>
 		$('#dob').datetextentry();
 	</script>
-	<script>
-        $(document).ready(function () {
-            $('input:text').bind({
-            });
-            $("#autocomplete").autocomplete({
-                minLength:3,
-                source: '/getColonias'
-            });
-        });
-    </script>
+

@@ -21,7 +21,7 @@
 		{!! Form::label('gender', 'Sexo') !!}
 		{!!	Form::select('gender', array('F' => 'FEMENINO', 'M' => 'MASCULINO'), null, [
 			'class' => 'form-control',
-			'placeholder' => 'Selecciona el genero', 
+			'placeholder' => 'Selecciona el Género', 
 			'required'
 		]) !!}
 
@@ -61,40 +61,31 @@
 				'placeholder' => 'Selecciona ubicación', 
 				'required'
 			]) !!}
-			{!! Form::label('phone', 'Telefono Movil') !!}
+			{!! Form::label('phone', 'Teléfono Movil') !!}
 			
 			{!! Form::text('phone', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Movil', 
+				'placeholder' => 'Teléfono Movil', 
 				
 			]) !!}
-			{!! Form::label('phone_casa', 'Telefono Fijo') !!}
+			{!! Form::label('phone_casa', 'Teléfono Fijo') !!}
 			
 			{!! Form::text('phone_casa', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Fijo', 
+				'placeholder' => 'Teléfono Fijo', 
 				
 			]) !!}
-			{!! Form::label('address', 'Direccion') !!}
+			{!! Form::label('address', 'Dirección') !!}
 			
 			{!! Form::text('address', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Direccion', 
+				'placeholder' => 'Dirección', 
 				
 			]) !!}
-			{!! Form::label('colonia_id', 'Colonia') !!}
-			
-			
-
-			{!! Form::text('colonia_id',  isset($paciente->colonia_id) ? strtoupper($paciente->colonia_id):null, [
-				'id' => 'autocomplete',
-				'class' => 'form-control',
-				'placeholder' => 'Colonia', 
-				
-			]) !!}
+						
 			<p>{{ ($paciente->colonia_id != 0) ? strtoupper($paciente->colonia->colonia):null}}</p>
 			
 			{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}

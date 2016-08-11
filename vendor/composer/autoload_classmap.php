@@ -614,6 +614,7 @@ return array(
     'Page_Frame_Decorator' => $vendorDir . '/dompdf/dompdf/include/page_frame_decorator.cls.php',
     'Page_Frame_Reflower' => $vendorDir . '/dompdf/dompdf/include/page_frame_reflower.cls.php',
     'Positioner' => $vendorDir . '/dompdf/dompdf/include/positioner.cls.php',
+    'RemoveColoniaColumnFromPacientes' => $baseDir . '/database/migrations/2016_08_11_112752_remove_colonia_column_from_pacientes.php',
     'RemoveForaneoFromCitas2' => $baseDir . '/database/migrations/2016_07_19_175043_remove_foraneo_from_citas2.php',
     'Renderer' => $vendorDir . '/dompdf/dompdf/include/renderer.cls.php',
     'SEA' => $vendorDir . '/mpdf/mpdf/classes/sea.php',

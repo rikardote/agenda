@@ -22,7 +22,7 @@
 		{!! Form::label('gender', 'Sexo') !!}
 		{!!	Form::select('gender', array('F' => 'FEMENINO', 'M' => 'MASCULINO'), $paciente->gender, [
 			'class' => 'form-control',
-			'placeholder' => 'Selecciona el genero', 
+			'placeholder' => 'Selecciona el Género', 
 			'required'
 		]) !!}
 
@@ -67,15 +67,15 @@
 			{!! Form::text('phone', isset($paciente->phone) ? $paciente->phone:null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Movil', 
+				'placeholder' => 'Teléfono Movil', 
 				
 			]) !!}
-			{!! Form::label('phone_casa', 'Telefono Fijo') !!}
+			{!! Form::label('phone_casa', 'Teléfono Fijo') !!}
 			
 			{!! Form::text('phone_casa', isset($paciente->phone_casa) ? $paciente->phone_casa:null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Fijo', 
+				'placeholder' => 'Teléfono Fijo', 
 				
 			]) !!}
 			{!! Form::label('address', 'Direccion') !!}
@@ -86,17 +86,10 @@
 				'placeholder' => 'Direccion', 
 				
 			]) !!}
-			{!! Form::label('colonia_id', 'Colonia') !!}
 			
 			
-
-			{!! Form::text('colonia_id',  isset($paciente->colonia_id) ? $paciente->colonia_id:null, [
-				'id' => 'autocomplete',
-				'class' => 'form-control',
-				'placeholder' => 'Colonia', 
-				
-			]) !!}
 			<p>{{ ($paciente->colonia_id != 0) ? strtoupper($paciente->colonia->colonia):null}}</p>
+
 			{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
 			<br>
 			{!! Form::text('fecha_nacimiento', $paciente->fecha_nacimiento, [
@@ -119,16 +112,7 @@
 <script>
 		$('#dob').datetextentry();
 	</script>
-	<script>
-        $(document).ready(function () {
-            $('input:text').bind({
-            });
-            $("#autocomplete").autocomplete({
-                minLength:3,
-                source: '/getColonias'
-            });
-        });
-    </script>
+
 <script>
 	function cambiar()
 	{

@@ -19,7 +19,7 @@
 			{!! Form::label('gender', 'Sexo') !!}
 			{!!	Form::select('gender', array('F' => 'FEMENINO', 'M' => 'MASCULINO'), null, [
 				'class' => 'form-control',
-				'placeholder' => 'Selecciona el genero', 
+				'placeholder' => 'Selecciona el Género', 
 				'required'
 			]) !!}
 
@@ -53,45 +53,36 @@
 	</div>
 	<div class="col-md-6">
 		<div class="form-group">
-			{!! Form::label('foraneo_id', 'Ubicacion') !!}
+			{!! Form::label('foraneo_id', 'Ubicación') !!}
 			{!!	Form::select('foraneo_id', array('1' => 'Mexicali', '2' => 'Ensenada', '3' => 'Tijuana', '4' => 'San Luis R.C', '5' => 'Tecate', 'Delta', 'Algodones', 'San Felipe'), 1, [
 				'class' => 'form-control',
 				'required'
 			]) !!}
-			{!! Form::label('phone', 'Telefono Movil') !!}
+			{!! Form::label('phone', 'Teléfono Movil') !!}
 			
 			{!! Form::text('phone', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Movil', 
+				'placeholder' => 'Teléfono Movil', 
 				
 			]) !!}
-			{!! Form::label('phone_casa', 'Telefono Fijo') !!}
+			{!! Form::label('phone_casa', 'Teléfono Fijo') !!}
 			
 			{!! Form::text('phone_casa', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Telefono Fijo', 
+				'placeholder' => 'Teléfono Fijo', 
 				
 			]) !!}
-			{!! Form::label('address', 'Direccion') !!}
+			{!! Form::label('address', 'Dirección') !!}
 			
 			{!! Form::text('address', null, [
 				
 				'class' => 'form-control',
-				'placeholder' => 'Direccion', 
+				'placeholder' => 'Dirección', 
 				
 			]) !!}
-			{!! Form::label('colonia_id', 'Colonia') !!}
 			
-			{!! Form::text('colonia_id', null, [
-				'id' => 'autocomplete',
-				'class' => 'form-control',
-				'placeholder' => 'Colonia', 
-				
-			]) !!}
-
-
 			{!! Form::label('fecha_nacimiento', 'Fecha de nacimiento') !!}
 			<br>
 			{!! Form::text('fecha_nacimiento',null, [
