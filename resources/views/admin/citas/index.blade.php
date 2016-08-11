@@ -24,8 +24,12 @@
       <div class="panel panel-primary">
         <div class="panel-heading">
           <div align="center">
-            
-
+           <div class="date cut-off">
+             <p>
+              <span class="day">{{getDay($date)}}</span>
+              <span class="month">{{getMonth($date)}}</span>
+             </p>
+            </div>
           <?php 
            $permiso_act = 0;
             if (isset($permiso->fecha_inicio) && isset($permiso->fecha_final)) {
@@ -45,22 +49,21 @@
 
             @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select) || in_array($dia_semana,$diaconsulta_select))
               @if($f_anterior != true)
-              <div class="col-md-4 date pull pull-left">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d de %B del %Y') }}</div>
+            <div class="col-md-2 label label-warning pull pull-right"> Hay {{ $citas->count() }}  Citas</div>
+             
+              <div class="">
+                <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'><span class="fa fa-calendar fa-2x"></span><p>AGENDAR</p></a> 
+                
+              </div>   
               
-                <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'><span class="fa fa-calendar fa-2x"></span></a> 
-              
-
-              <div class="col-md-4 date label label-warning pull pull-right"> Hay {{ $citas->count() }}  Citas</div>
               @endif
               @if(in_array($dia_semana,$diaconsulta_select))
-               <br>
-               <div class=""> <strong> Dia Especial de Consulta</strong> </div>
+               
+               <div class="">Dia Especial de Consulta</div>
               @endif
               
             @else
-               <div class="col-md-4 date label label-warning pull pull-left">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $date)->formatLocalized('%A %d de %B del %Y') }}</div>
-               <div class="col-md-4 date label label-warning pull pull-right"> Hay {{ $citas->count() }}  Citas</div>
-              <br>
+               
               @if($citas->count() >= 18)
                 <b><span class="blink font-border">No se pueden programar mas Citas para esta fecha.</span></b>
               @endif
