@@ -59,9 +59,9 @@ function getForaneo($id)
 {
   switch ($id) {
       case 2:
-        return  "Ens";
+        return "Ens";
       case 3:
-        return  "Tij";
+        return "Tij";
       case 4:
         return "SLRC";
       case 5:
@@ -108,4 +108,21 @@ function getMonth($date) {
 function getDay($date) {
     $dt = Carbon::parse($date);
     return $dt->day;
+}
+function getDia($date) {
+    $dt = Carbon::parse($date);
+    switch ($dt->dayOfWeek) {
+      case 1:
+        return 'LUN';
+      case 2:
+        return 'MAR';
+      case 3:
+        return 'MIE';
+      case 4:
+        return 'JUE';
+      case 5:
+        return 'VIE';
+      
+    }
+
 }

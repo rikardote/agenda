@@ -26,8 +26,10 @@
           <div align="center">
            <div class="date cut-off">
              <p>
+              <span class="dia">{{getDia($date)}}</span>
               <span class="day">{{getDay($date)}}</span>
-              <span class="month">{{getMonth($date)}}</span>
+              <span class="">{{getMonth($date)}}</span>
+              
              </p>
             </div>
           <?php 
@@ -48,19 +50,20 @@
 
 
             @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select) || in_array($dia_semana,$diaconsulta_select))
+              @if(in_array($dia_semana,$diaconsulta_select))
+               
+               <div class="col-offset-col-md-6">Dia Especial de Consulta</div>
+              @endif
               @if($f_anterior != true)
-            <div class="col-md-2 label label-warning pull pull-right"> Hay {{ $citas->count() }}  Citas</div>
+            <div class="" label label-warning pull pull-right"> Hay {{ $citas->count() }}  Citas</div>
              
               <div class="">
-                <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'><span class="fa fa-calendar fa-2x"></span><p>AGENDAR</p></a> 
+                <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'><span class="fa fa-calendar fa-2x"></span> Agendar</a> 
                 
               </div>   
               
               @endif
-              @if(in_array($dia_semana,$diaconsulta_select))
-               
-               <div class="">Dia Especial de Consulta</div>
-              @endif
+              
               
             @else
                

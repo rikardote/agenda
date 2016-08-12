@@ -19,7 +19,7 @@
 			@if(isset($medico->comentarios))
         		<p class="well well-sm"> {{ $medico->comentarios }} </p>
     		@endif
-			{!! Form::submit('Registrar', ['class' => 'btn btn-warning btn-block']) !!}
+			{!! Form::submit('Registrar', ['class' => 'btn btn-success btn-block']) !!}
 		{!! Form::close() !!}
 	@endforeach
 
@@ -37,7 +37,7 @@
 	   {!! Form::open(['route' => ['admin.citas.store', $medico->slug, $date], 'method' => 'POST', 'class' => 'datepickerform']) !!}
 			@include('admin.citas.form')
 
-			{!! Form::submit('Registrar', ['class' => 'btn btn-warning btn-block']) !!}
+			{!! Form::submit('Registrar', ['class' => 'btn btn-success btn-block']) !!}
 		{!! Form::close() !!}
 		<br>
   </div>

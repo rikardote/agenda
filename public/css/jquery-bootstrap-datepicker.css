@@ -4,9 +4,9 @@
     border-radius: 4px;
     box-shadow: 0 0 8px rgba(102,175,233,.6);
     display: none;
-    margin-top: 4px;
+    margin-top: 0px;
     padding: 10px;
-    width: 240px;
+    width: 272px;
 }
 .ui-datepicker a,
 .ui-datepicker a:hover {
