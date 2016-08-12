@@ -274,8 +274,10 @@ margin-right:10px;
 margin-top:0px;
 text-align: center; 
 text-align: center;
-border:3px solid #Cacaca;
+border:2px solid #Cacaca;
+border-radius: 8px;
 margin-bottom:10px;
+
 
 
 }
@@ -296,9 +298,12 @@ font-size:14px;
 
 p.year{
   margin:0px;
-  background:#4289CC;
-  color:#fff;
   padding:0px;
   width:100%;
   
+}
+.date-radius{
+border-radius: 6px;
+border-bottom-right-radius:0px;
+border-bottom-left-radius:0px;
 }

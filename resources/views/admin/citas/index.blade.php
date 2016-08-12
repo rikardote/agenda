@@ -26,7 +26,7 @@
           <div align="center">
            <div class="calander">
             
-              <p class="year">{{getDia($date)}}</p>
+              <p class="year bg-primary date-radius">{{getDia($date)}}</p>
               {{getDay($date)}}
               <p class="month">{{getMonth($date)}}</p>
               
@@ -76,7 +76,7 @@
             @endif
 
           </div>
-         
+         <br>
         </div>
 
      <table class="table table-hover table-condensed">
