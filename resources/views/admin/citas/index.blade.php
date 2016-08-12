@@ -24,13 +24,13 @@
       <div class="panel panel-primary">
         <div class="panel-heading">
           <div align="center">
-           <div class="date cut-off">
-             <p>
-              <span class="dia">{{getDia($date)}}</span>
-              <span class="day">{{getDay($date)}}</span>
-              <span class="">{{getMonth($date)}}</span>
+           <div class="calander">
+            
+              <p class="year">{{getDia($date)}}</p>
+              {{getDay($date)}}
+              <p class="month">{{getMonth($date)}}</p>
               
-             </p>
+            
             </div>
           <?php 
            $permiso_act = 0;
@@ -52,15 +52,17 @@
             @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select) || in_array($dia_semana,$diaconsulta_select))
               @if(in_array($dia_semana,$diaconsulta_select))
                
-               <div class="col-offset-col-md-6">Dia Especial de Consulta</div>
+               <div class="">Dia Especial de Consulta</div>
               @endif
               @if($f_anterior != true)
-            <div class="" label label-warning pull pull-right"> Hay {{ $citas->count() }}  Citas</div>
+            <div class=""> Hay {{ $citas->count() }}  Citas</div>
              
               <div class="">
                 <a data-url="{{ route('citas.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal btn btn-primary" data-toggle ="modal" data-target='#form-modal'><span class="fa fa-calendar fa-2x"></span> Agendar</a> 
                 
-              </div>   
+              </div>  
+              @else
+               <br><br><br> 
               
               @endif
               
@@ -70,10 +72,11 @@
               @if($citas->count() >= 18)
                 <b><span class="blink font-border">No se pueden programar mas Citas para esta fecha.</span></b>
               @endif
-
+                <br><br><br>
             @endif
 
           </div>
+         
         </div>
 
      <table class="table table-hover table-condensed">
