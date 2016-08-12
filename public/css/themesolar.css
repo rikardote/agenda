@@ -300,7 +300,12 @@ p.year{
   margin:0px;
   padding:0px;
   width:100%;
+
   
+}
+.dia{
+ margin-top: 8px;
+  font-size: 26px;
 }
 .date-radius{
 border-radius: 6px;

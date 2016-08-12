@@ -27,7 +27,7 @@
            <div class="calander">
             
               <p class="year bg-primary date-radius">{{getDia($date)}}</p>
-              {{getDay($date)}}
+              <div class="dia"> {{getDay($date)}}</div>
               <p class="month">{{getMonth($date)}}</p>
               
             
