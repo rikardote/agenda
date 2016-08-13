@@ -22,7 +22,7 @@
   <div class="col-md-8">
     <div class="panel-group">
       <div class="panel panel-primary">
-        <div class="panel-heading">
+        <div class="panel-heading clearfix">
           <div align="center">
            <div class="calander">
             
@@ -62,7 +62,7 @@
                 
               </div>  
               @else
-               <br><br><br> 
+               
               
               @endif
               
@@ -72,11 +72,11 @@
               @if($citas->count() >= 18)
                 <b><span class="blink font-border">No se pueden programar mas Citas para esta fecha.</span></b>
               @endif
-                <br><br><br>
+              
             @endif
 
           </div>
-         <br>
+         
         </div>
 
      <table class="table table-hover table-condensed">
