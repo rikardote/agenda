@@ -1,4 +1,4 @@
-<div class="modal fade" id="form-modal" tabindex="8" role="dialog" aria-labelledby="form-modal" aria-hidden="true">
+<div class="modal fade zoom" id="form-modal" tabindex="8" role="dialog" aria-labelledby="form-modal" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header panelColor">
