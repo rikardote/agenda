@@ -4471,44 +4471,37 @@
     },
     {
         "name": "mpdf/mpdf",
-        "version": "dev-development",
-        "version_normalized": "dev-development",
+        "version": "7.0.x-dev",
+        "version_normalized": "7.0.9999999.9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/mpdf/mpdf.git",
-            "reference": "192793376af2057373f625744d8f3b9ce819920f"
+            "reference": "f316a8be3969d5772260b6f0709470af2004c5e1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/mpdf/mpdf/zipball/192793376af2057373f625744d8f3b9ce819920f",
-            "reference": "192793376af2057373f625744d8f3b9ce819920f",
+            "url": "https://api.github.com/repos/mpdf/mpdf/zipball/f316a8be3969d5772260b6f0709470af2004c5e1",
+            "reference": "f316a8be3969d5772260b6f0709470af2004c5e1",
             "shasum": ""
         },
         "require": {
-            "ext-gd": "*",
             "ext-mbstring": "*",
-            "php": "^5.6 || ~7.0.0 || ~7.1.0",
-            "psr/log": "^1.0",
+            "php": ">=5.4.0",
             "setasign/fpdi": "1.6.*"
         },
         "require-dev": {
-            "mockery/mockery": "^0.9.5",
-            "paragonie/random_compat": "^2.0",
-            "phpunit/phpunit": "^5.0"
+            "phpunit/phpunit": "^4.7"
         },
         "suggest": {
-            "ext-bcmath": "Needed for generation of some types of barcodes",
             "ext-zlib": "Needed for compression of embedded resources, such as fonts"
         },
-        "time": "2016-07-20 12:33:17",
+        "time": "2016-05-10 07:10:19",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "psr-4": {
-                "Mpdf\\": "src/"
-            },
-            "files": [
-                "src/functions.php"
+            "classmap": [
+                "mpdf.php",
+                "classes"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
