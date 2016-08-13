@@ -20,7 +20,7 @@ class Paciente extends Model implements SluggableInterface
     ];
 
     
-    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id', 'gender', 'phone', 'phone_casa', 'address', 'colonia_id', 'foraneo_id'];
+    protected $fillable = ['rfc', 'nombres', 'apellido_pat', 'apellido_mat', 'tipo_id', 'gender', 'phone', 'phone_casa', 'address','fecha_nacimiento','colonia_id', 'foraneo_id'];
 
     public function setnombresAttribute($value)
     {

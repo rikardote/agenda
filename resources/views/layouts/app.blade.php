@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    
 
     <title>AgendaElectronica</title>
 
@@ -26,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/timepicker/jquery.timepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/chosen-bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/toastr/css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalert/dist/sweetalert.css') }}">
     @yield('css')
     
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
@@ -65,7 +67,8 @@
     <script src="{{ asset('plugins/datetextentry/datetextentry.js') }}"></script>
     <script src="{{ asset('plugins/timepicker/jquery.timepicker.min.js') }}"></script>
     <script src="{{ asset('plugins/toastr/js/toastr.min.js') }}"></script>
-   
+    <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
+    @include('sweet::alert')
     
     @yield('js')
    

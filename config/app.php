@@ -162,6 +162,7 @@ return [
         Vsmoraes\Pdf\PdfServiceProvider::class,
         Kamaln7\Toastr\ToastrServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
     ],
 
     /*
@@ -213,6 +214,7 @@ return [
         'PDF' => Vsmoraes\Pdf\PdfFacade::class,
         'Toastr' => Kamaln7\Toastr\Facades\Toastr::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
     ],
 
 ];

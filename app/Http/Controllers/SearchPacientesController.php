@@ -13,6 +13,7 @@ use App\Tipo;
 use App\Cita;
 use Carbon\Carbon;
 use Laracasts\Flash\Flash;
+use Alert;
 
 class SearchPacientesController extends Controller
 {
@@ -64,39 +65,17 @@ class SearchPacientesController extends Controller
 	 public function StorePaciente(PacientesRequest $request, $slug, $date)
     {
     	
-        $pacientes = new Paciente($request->all());
-        $pacientes->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
-        $pacientes->save();
+        $paciente = new Paciente($request->all());
+        $paciente->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
 
-       	$pacientes = Paciente::where('rfc', '=', $request->rfc)->get();
-		$pacientes->each(function($pacientes) {
-          	$pacientes->tipo;
-      	});
-
-	   $medico = Medico::findBySlug($slug);
-			$medico->especialidad;
-		
-		$horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
-        $horas = array();
-
-        foreach ($horas_usadas as $hora) {
-            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+        if ($paciente->save()) {
+            return response()->json('',200);
+            
+        }else{
+            return response()->json('',500);
         }
-        $horas = implode(",",$horas);
-        $entrada = $medico->horario->entrada;
-        $salida = $medico->horario->salida;
-
-        Flash::success('Paciente registrado con exito!');
-        return view('admin.citas.create')
-        	->with('pacientes', $pacientes)
-        	->with('medico', $medico)
-        	->with('date', $date)
-        	->with('rfc', $request->rfc)
-        	->with('horas', $horas)
-            ->with('entrada', $entrada)
-            ->with('salida', $salida);
-     	//return view('admin.citas.create')->with('rfc', $request-rfc)->with('medico', $medico)->with('date', $date);
     }  
+
     public function EditPaciente($slug, $date, $id)
     {
     	$paciente = Paciente::find($id);
@@ -104,44 +83,21 @@ class SearchPacientesController extends Controller
 
 	 	$tipos = Tipo::all()->lists('tipo', 'id')->toArray();
         asort($tipos);
-           
+        
 	 	return view('admin.pacientes.form_edit')->with('paciente', $paciente)->with('tipos', $tipos)->with('slug',$slug)->with('date',$date)->with('rfc',$paciente->rfc);
 	 }
+     
 	public function UpdatePaciente(PacientesRequest $request, $slug, $date, $id)
     {
     	
         $paciente = Paciente::find($id);
         $paciente->fill($request->all());
         $paciente->fecha_nacimiento = fecha_ymd($request->fecha_nacimiento);
-        $paciente->save();
-
-       	$pacientes = Paciente::where('rfc', '=', $paciente->rfc)->get();
-		$pacientes->each(function($pacientes) {
-          	$pacientes->tipo;
-      	});
-
-	   $medico = Medico::findBySlug($slug);
-			$medico->especialidad;
-		
-		$horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
-        $horas = array();
-
-        foreach ($horas_usadas as $hora) {
-            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+        if ($paciente->save()) {
+            return response()->json('',200);
+            
+        }else{
+            return response()->json('',500);
         }
-        $horas = implode(",",$horas);
-        $entrada = $medico->horario->entrada;
-        $salida = $medico->horario->salida;
-
-        Flash::success('Paciente actualizado con exito!');
-        return view('admin.citas.create')
-        	->with('pacientes', $pacientes)
-        	->with('medico', $medico)
-        	->with('date', $date)
-        	->with('rfc', $paciente->rfc)
-        	->with('horas', $horas)
-            ->with('entrada', $entrada)
-            ->with('salida', $salida);
-     	//return view('admin.citas.create')->with('rfc', $request-rfc)->with('medico', $medico)->with('date', $date);
     }  
 }

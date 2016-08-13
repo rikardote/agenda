@@ -46,6 +46,10 @@ class TransportManager extends Manager
             $transport->setPassword($config['password']);
         }
 
+        if (isset($config['stream'])) {
+            $transport->setStreamOptions($config['stream']);
+        }
+
         return $transport;
     }
 
@@ -130,7 +134,9 @@ class TransportManager extends Manager
         $config = $this->app['config']->get('services.sparkpost', []);
 
         return new SparkPostTransport(
-            $this->getHttpClient($config), $config['secret']
+            $this->getHttpClient($config),
+            $config['secret'],
+            Arr::get($config, 'options', [])
         );
     }
 
@@ -158,7 +164,7 @@ class TransportManager extends Manager
     }
 
     /**
-     * Get the default cache driver name.
+     * Get the default mail driver name.
      *
      * @return string
      */
@@ -168,7 +174,7 @@ class TransportManager extends Manager
     }
 
     /**
-     * Set the default cache driver name.
+     * Set the default mail driver name.
      *
      * @param  string  $name
      * @return void
