@@ -187,11 +187,7 @@ document.forms.formulario.gender.options[1]=opcion1;
 		var frmbirth = $("#dob").val();
 		var token = $("#token").val();
 		var route = "{{ route('admin.pacientes.update',[$slug, $date, $paciente->id]) }}";
-		
-		//var route = "http://192.168.1.95/incidencias/incidencias/capturar";
-		//var route = "http://sistema.app/incidencias";
-		//var route = "http://incidencias.app/incidencias/";
-	 //var route = "http://sissstema.com/incidencias";
+
 		var dataString = 'rfc='+frmrfc+'&tipo_id='+frmtipo+'&gender='+frmsexo+'&nombres='+frmnombres+'&apellido_pat='+frmapellido1+'&apellido_mat='+frmapellido2+'&foraneo_id='+frmubicacion+'&phone='+frmcel+'&phone_casa='+frmphone+'&address='+frmaddress+'&fecha_nacimiento='+frmbirth; 
 		
 		$.ajax({
