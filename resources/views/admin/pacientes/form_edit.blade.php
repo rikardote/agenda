@@ -121,6 +121,7 @@
 			</div>	
 			{!!Form::close()!!}	
 
+      <div id="searching_spinner_center"></div>
 
 <script>
 		$('#dob').datetextentry();
@@ -172,65 +173,79 @@ document.forms.formulario.gender.options[1]=opcion1;
 </script>
 <script type="text/javascript">
 	$('#register').click(function(){
-  
-    var frmrfc = $('#rfc').val();
-    var frmtipo = $('#tipo').val();
-    var frmsexo = $('#sexo').val();
-    var frmnombres = $('#nombres').val();
-    var frmapellido1 = $('#apellido1').val();
-    var frmapellido2 = $("#apellido2").val();
-    var frmubicacion = $("#ubicacion").val();
-    var frmcel = $("#cel").val();
-    var frmphone = $("#phone").val();
-    var frmaddress = $("#address").val();
-    var frmbirth = $("#dob").val();
-    var token = $("#token").val();
+	
+		var frmrfc = $('#rfc').val();
+		var frmtipo = $('#tipo').val();
+		var frmsexo = $('#sexo').val();
+		var frmnombres = $('#nombres').val();
+		var frmapellido1 = $('#apellido1').val();
+		var frmapellido2 = $("#apellido2").val();
+		var frmubicacion = $("#ubicacion").val();
+		var frmcel = $("#cel").val();
+		var frmphone = $("#phone").val();
+		var frmaddress = $("#address").val();
+		var frmbirth = $("#dob").val();
+		var token = $("#token").val();
 		var route = "{{ route('admin.pacientes.update',[$slug, $date, $paciente->id]) }}";
-    
-    //var route = "http://192.168.1.95/incidencias/incidencias/capturar";
-    //var route = "http://sistema.app/incidencias";
-    //var route = "http://incidencias.app/incidencias/";
-   //var route = "http://sissstema.com/incidencias";
-    var dataString = 'rfc='+frmrfc+'&tipo_id='+frmtipo+'&gender='+frmsexo+'&nombres='+frmnombres+'&apellido_pat='+frmapellido1+'&apellido_mat='+frmapellido2+'&foraneo_id='+frmubicacion+'&phone='+frmcel+'&phone_casa='+frmphone+'&address='+frmaddress+'&fecha_nacimiento='+frmbirth; 
-    
-    $.ajax({
-      url: route,
-      headers: {'X-CSRF-TOKEN': token},
-      type: 'PATCH',
-      data: dataString,
-           success: function(res) {
-               swal({
-                title: "Capturado!! ",   
-                text: "Correctamente",   
-                type: "success",   
-                confirmButtonColor: "#DD6B55",   
-                closeOnConfirm: true,
-                timer: 2000
+		
+		//var route = "http://192.168.1.95/incidencias/incidencias/capturar";
+		//var route = "http://sistema.app/incidencias";
+		//var route = "http://incidencias.app/incidencias/";
+	 //var route = "http://sissstema.com/incidencias";
+		var dataString = 'rfc='+frmrfc+'&tipo_id='+frmtipo+'&gender='+frmsexo+'&nombres='+frmnombres+'&apellido_pat='+frmapellido1+'&apellido_mat='+frmapellido2+'&foraneo_id='+frmubicacion+'&phone='+frmcel+'&phone_casa='+frmphone+'&address='+frmaddress+'&fecha_nacimiento='+frmbirth; 
+		
+		$.ajax({
+			url: route,
+			headers: {'X-CSRF-TOKEN': token},
+			type: 'PATCH',
+			data: dataString,
+					 success: function(res) {
+							var opts = {
+									lines: 13 // The number of lines to draw
+								, length: 0 // The length of each line
+								, width: 14 // The line thickness
+								, radius: 28 // The radius of the inner circle
+								, scale: 1.25 // Scales overall size of the spinner
+								, corners: 1 // Corner roundness (0..1)
+								, color: '#000' // #rgb or #rrggbb or array of colors
+								, opacity: 0.2 // Opacity of the lines
+								, rotate: 25 // The rotation offset
+								, direction: 1 // 1: clockwise, -1: counterclockwise
+								, speed: 0.9 // Rounds per second
+								, trail: 31 // Afterglow percentage
+								, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+								, zIndex: 2e9 // The z-index (defaults to 2000000000)
+								, className: 'spinner' // The CSS class to assign to the spinner
+								, top: '45%' // Top position relative to parent
+								, left: '50%' // Left position relative to parent
+								, shadow: false // Whether to render a shadow
+								, hwaccel: false // Whether to use hardware acceleration
+								, position: 'absolute' // Element positioning
+							}
+							var target = document.getElementById('searching_spinner_center')
+							var spinner = new Spinner(opts).spin(target);
+							window.setTimeout(function(){location.reload()},getRandomizer(0,4000))
+					   },
+						 error: function (res) {
+							var errors = '';
+								for(datos in res.responseJSON){
+										errors += res.responseJSON[datos] + '\n';
+								}
+							swal({
+								title: "Error..!! ",   
+								text: errors,   
+								type: "error",   
+								confirmButtonColor: "#DD6B55",   
+								closeOnConfirm: true,
+								timer: 3000
 
-               });
+							 });
+							
+						 }
 
-            $("#form-modal").modal('toggle');
-            location.reload().delay(5000);
-           },
-
-             error: function (res) {
-              var errors = '';
-                for(datos in res.responseJSON){
-                    errors += res.responseJSON[datos] + '\n';
-                }
-              swal({
-                title: "Error..!! ",   
-                text: errors,   
-                type: "error",   
-                confirmButtonColor: "#DD6B55",   
-                closeOnConfirm: true,
-                timer: 3000
-
-               });
-					    
-             }
-
-        });
-       
-  }); 
+				});
+				function getRandomizer(bottom, top) {
+	        	return Math.floor( Math.random() * ( 1 + top - bottom ) ) + bottom;
+	    	}
+	}); 
 </script>

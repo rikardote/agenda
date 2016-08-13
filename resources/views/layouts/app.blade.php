@@ -64,6 +64,7 @@
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/spin.min.js') }}"></script>
     <script src="{{ asset('plugins/datetextentry/datetextentry.js') }}"></script>
     <script src="{{ asset('plugins/timepicker/jquery.timepicker.min.js') }}"></script>
     <script src="{{ asset('plugins/toastr/js/toastr.min.js') }}"></script>

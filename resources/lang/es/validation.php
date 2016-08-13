@@ -45,14 +45,14 @@ return [
     'max'                  => [
         'numeric' => 'El campo :attribute debe ser menor que :max.',
         'file'    => 'El archivo :attribute debe pesar meno que :max kilobytes.',
-        'string'  => 'El campo :attribute debe contener menos de :max caracteres.',
+        'string'  => 'El campo '.strtoupper(':attribute').' debe contener menos de :max caracteres.',
         'array'   => 'El campo :attribute debe contener al menos :max elementos.',
     ],
     'mimes'                => 'El campo :attribute debe ser un archivo de tipo :values.',
     'min'                  => [
         'numeric' => 'El campo :attribute debe tener al menos :min.',
         'file'    => 'El archivo :attribute debe pesar al menos :min kilobytes.',
-        'string'  => 'El campo :attribute debe contener al menos :min caracteres.',
+        'string'  => 'El campo '.strtoupper(':attribute').' debe contener al menos :min caracteres.',
         'array'   => 'El campo :attribute no debe contener más de :min elementos.',
     ],
     'not_in'               => 'El campo :attribute seleccionado es invalido.',
@@ -68,7 +68,7 @@ return [
     'size'                 => [
         'numeric' => 'El campo :attribute debe ser :size.',
         'file'    => 'El archivo :attribute debe pesar :size kilobytes.',
-        'string'  => 'El campo :attribute debe contener :size caracteres.',
+        'string'  => 'El campo '.strtoupper(':attribute').' debe contener :size caracteres.',
         'array'   => 'El campo :attribute debe contener :size elementos.',
     ],
     'string'               => 'El campo :attribute debe contener solo caracteres.',
