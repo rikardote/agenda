@@ -8,7 +8,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\CitasRequest;
-use Vsmoraes\Pdf\Pdf;
 use App\Cita;
 use App\Especialidad;
 use App\Medico;
@@ -16,17 +15,18 @@ use App\Paciente;
 use App\Permiso;
 use App\User;
 use Carbon\Carbon;
-use Toastr;
 use \mPDF;
+use Alert;
+use Response;
 
 class CitasController extends Controller
 {
-	private $pdf;
-	public function __construct(Pdf $pdf)
+	
+	public function __construct()
     {
         $this->middleware('auth');
         setlocale(LC_ALL,"es_MX.utf8");
-        $this->pdf = $pdf;
+        
     }
 
 	public function show($slug,$date){
@@ -139,7 +139,8 @@ class CitasController extends Controller
             $cita->save();            
         }
                
-        Toastr::success('Cita actualizada exitosamente');
+        //Toastr::success('Cita actualizada exitosamente');
+        alert()->success('Exitosamente!!!', 'Cita re-agendada');
         return redirect()->route('admin.citas.show', ['slug' => $request->slug, 'date' => $date]);
  
     }
@@ -160,29 +161,37 @@ class CitasController extends Controller
         $getCitas = Cita::where('paciente_id', '=', $request->paciente_id)->where('medico_id', '=', $medico->id)->where('fecha', '=', $cita->fecha)->count();
 
         if($total_citas) {
-            Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
+            //Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');
+            alert()->warning('Error al asignar Cita, Agenda Llena', 'Atencion')->autoclose(3500);
             return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);    
         }
         if($getCitas)  {
-            Toastr::error('Paciente ya tiene agendada una cita en esta fecha');
+            alert()->warning('Paciente ya tiene agendada una cita en esta fecha', 'Atencion')->autoclose(3500);
+            //Toastr::error('Paciente ya tiene agendada una cita en esta fecha');
             return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);    
         }
         else{
                 $cita->save();            
         }
 
-        Toastr::success('Cita Agendada con exito');
+        //Toastr::success('Cita Agendada con exito');
+        alert()->success('Exitosamente!!!', 'Cita agendada');
         return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);
     }  
  
-    public function destroy($slug, $date, $id)
+    public function destroy($id)
     {
         $cita = Cita::find($id);
 
-        $cita->delete();
+        if ($cita->delete()){
+            $response = array(
+               'success' => 'true'
+            );
+            return Response::json($response,200); //redirect()->route('qnas.index');
+        }
        
-        Toastr::info('Cita borrada exitosamente');
-        return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
+        //alert()->success('Success Message', 'Optional Title');
+        //return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
     } 
     public function concretada($slug,$date,$id)
     {

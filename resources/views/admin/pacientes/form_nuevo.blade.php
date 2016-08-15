@@ -207,7 +207,7 @@ document.forms.formulario.gender.options[1]=opcion1;
               }
               var target = document.getElementById('searching_spinner_center')
               var spinner = new Spinner(opts).spin(target);
-              window.setTimeout(function(){location.reload()},getRandomizer(0,4000))
+              window.setTimeout(function(){location.reload()},getRandomizer(0,3000))
              },
              error: function (res) {
               var errors = '';
