@@ -19,7 +19,7 @@
 <script>
 $('#text-input').keypress(function(e){
     var key = e.which;
-    return ((key >= 48 && key <= 57) || (key >= 65 && key <= 90) || (key >= 95 && key <= 122));
+    return ((key >= 48 && key <= 57) || (key >= 65 && key <= 90) || (key >= 95 && key <= 122) || key==13);
 });
 
 $("#text-input").on('input', function(evt) {
