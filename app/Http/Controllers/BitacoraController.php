@@ -28,22 +28,26 @@ class BitacoraController extends Controller
       $rfc = $request->rfc;
       $tipo = $request->tipo_id;
       $paciente = Paciente::where('rfc', '=', $rfc)->where('tipo_id', '=', $tipo)->first();
-      if ($paciente->count() > 1) {
-        $paciente->tipo;
+      
+      
+      $tipo = Tipo::find($tipo);
+      if (isset($paciente)) {
+        if ($paciente->count() > 1) {
+
         $citas = Cita::where('paciente_id', '=', $paciente->id)->get();
         $citas->each(function($citas) {
-            $citas->paciente;
+            $citas->paciente->tipo;
             $citas->medico->especialidad;
-
-
+            $citas->fecha = fecha_dmy($citas->fecha);
         });
         
-        return Response::json($citas->toArray(),200);
+        return Response::json($citas,200);
+        }
       }else {
         $response = array(
                'error' => 'true'
             );
-        return Response::json($response,500);
+        return Response::json('No se encontro citas con paciente RFC: '.$rfc.' - '.$tipo->code,500);
       }
       
     }
