@@ -10,7 +10,7 @@
       <input type="hidden" name="_token" value={{ csrf_token() }} id="token">
       <div class="form-group">
         <div class="col-md-4">
-          <input  maxlength="10" id="rfc" type="text" class="form-control" name="rfc" placeholder="Buscar paciente por RFC / 10 digitos">
+          <input  maxlength="10" id="rfc" type="text" class="form-control" name="rfc" placeholder="Buscar paciente por RFC / 10 digitos" required>
         </div>
        </div>
         <div class="form-group">
