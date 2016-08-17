@@ -34,12 +34,7 @@ class BitacoraController extends Controller
       
       
       $tipo = Tipo::find($tipo);
-      if ($request->rfc == null || $request->tipo == null) {
-         $response = array(
-               'error' => 'true'
-            );
-          return Response::json("No ingreso los datos correctamente... intente de nuevo",500);
-      }
+
       if (isset($paciente)) {
         if ($paciente->count() > 1) {
 
