@@ -26,6 +26,10 @@
                     <li class="dropdown {{ Request::segment(1) === 'agenda' || Request::segment(1) === 'citas' ? 'active' : null  }}">
                             <a href="{{route('agenda.index')}}"> Agenda     </a>
                     </li>
+                    <li class="{{ Request::segment(1) === 'bitacora' ? 'active' : null  }}">
+                            <a href="{{route('bitacora.index')}}">Bitacora </a>
+                            
+                    </li>
                      @if(Auth::user()->admin())
                      <li class="dropdown 
                         {{ Request::segment(1) === 'medicos' || Request::segment(2) === 'permisos' || 
@@ -46,6 +50,7 @@
                             <a href="{{route('pacientes.index')}}">Pacientes </a>
                             
                     </li>
+                    
                     <li class="dropdown {{ Request::segment(1) === 'reportes' ? 'active' : null }}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             Reportes <span class="caret"></span>
