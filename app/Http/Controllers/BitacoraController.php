@@ -29,7 +29,7 @@ class BitacoraController extends Controller
       $tipo = $request->tipo_id;
       $today = Carbon::today();
       $today = $today->year.'-'.$today->month.'-'.$today->day;
-      
+
       $paciente = Paciente::where('rfc', '=', $rfc)->where('tipo_id', '=', $tipo)->first();
       
       
@@ -43,14 +43,22 @@ class BitacoraController extends Controller
             $citas->medico->especialidad;
             $citas->fecha = fecha_dmy($citas->fecha);
         });
+        if ($citas->count() >= 1) {
+          return Response::json($citas,200);
+        }
+        else{
+          $response = array(
+               'error' => 'true'
+            );
+        return Response::json('No se encontro citas con paciente RFC: '.$rfc.' - '.$tipo->code,500);
+        }
         
-        return Response::json($citas,200);
         }
       }else {
         $response = array(
                'error' => 'true'
             );
-        return Response::json('No se encontro citas con paciente RFC: '.$rfc.' - '.$tipo->code,500);
+        return Response::json('No se encontro Paciente con RFC: '.$rfc.' - '.$tipo->code,500);
       }
       
     }
