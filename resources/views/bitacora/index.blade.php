@@ -41,7 +41,7 @@
     </table>  
      <table id="datos" class="table table-hover" style="visibility: hidden">
         <thead>
-           <th>Datos de Cita</th>
+           <th>Fecha de Cita</th>
            <th>Medico</th>
            <th>Especialidad</th>
         </thead> 
@@ -72,7 +72,8 @@ $("#rfc").on('input', function(evt) {
       var token = $("#token").val();
       var route = "{{ route('bitacora.search') }}";
       var today = new Date().toISOString().slice(0, 10);
-      
+      var link = "http://agenda.slyip.com/citas/";
+      //var link = "http://agenda.app/citas/";
       var dataString = 'rfc='+frmrfc+'&tipo_id='+frmtipo; 
       
       $.ajax({
@@ -88,7 +89,7 @@ $("#rfc").on('input', function(evt) {
               pacienteRfc.append("<tr><td>"+res[0].paciente.rfc+"/"+res[0].paciente.tipo.code+"</td><td>"+res[0].paciente.nombres+" "+res[0].paciente.apellido_pat+" "+res[0].paciente.apellido_mat+"</td></tr>");  
 
                 $(res).each(function(key, value){
-                  tablaDatos.append("<tr><td><a href='http://agenda.slyip.com/citas/"+value.medico.slug+"/"+today+"?date="+value.fecha+"'>"+value.fecha+"</a></td><td>"+value.medico.nombres+" "+value.medico.apellido_pat+" "+value.medico.apellido_mat+"</td><td>"+value.medico.especialidad.name+"</td></tr>");                  
+                  tablaDatos.append("<tr><td><a href="+link+value.medico.slug+"/"+today+"?date="+value.fecha+">"+value.fecha+"</a></td><td>"+value.medico.nombres+" "+value.medico.apellido_pat+" "+value.medico.apellido_mat+"</td><td>"+value.medico.especialidad.name+"</td></tr>");                  
                 
               });
              },
