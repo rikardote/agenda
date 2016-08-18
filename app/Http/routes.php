@@ -142,8 +142,8 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HojasController@gethoras',
         'as' => 'hoja.gethoras'
     ]);
-    //Route::get('citas/{slug}/{date}/{id}/destroy', [
-    Route::DELETE('citas/{id}/destroy', [
+    Route::get('citas/{slug}/{date}/{id}/destroy', [
+    //Route::DELETE('citas/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'admin.citas.destroy'
     ]);

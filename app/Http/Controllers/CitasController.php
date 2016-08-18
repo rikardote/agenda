@@ -54,7 +54,7 @@ class CitasController extends Controller
 
         });
         $citas = $citas->sortBy('horario');
-	       
+	      
         $todas_citas = Cita::getTotalCitas($medico->id, $date);
         
         $todaysrttotime= strtotime($today);
@@ -179,19 +179,19 @@ class CitasController extends Controller
         return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);
     }  
  
-    public function destroy($id)
+    public function destroy($slug, $date, $id)
     {
         $cita = Cita::find($id);
-
-        if ($cita->delete()){
-            $response = array(
-               'success' => 'true'
-            );
-            return Response::json($response,200); //redirect()->route('qnas.index');
-        }
+        $cita->delete();
+        //if ($cita->delete()){
+          //  $response = array(
+            //   'success' => 'true'
+            //);
+            //return Response::json($response,200); //redirect()->route('qnas.index');
+      //  }
        
         //alert()->success('Success Message', 'Optional Title');
-        //return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
+        return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
     } 
     public function concretada($slug,$date,$id)
     {
