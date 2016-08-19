@@ -266,6 +266,12 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'colonias.autocomplete'
     ]);
 
+    //TEST
+    Route::get('/getfecha', [
+        'uses' => 'CitasController@getfecha',
+        'as' => 'admin.getfecha'
+    ]);    
+    //
 
     Route::get('home', 'HomeController@index');
     Route::get('/doctor/login', 'UserdoctorsController@showLoginForm');

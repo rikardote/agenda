@@ -1,4 +1,5 @@
 <?php 
+use App\User;
 use App\Cita;
 use Carbon\Carbon;
 function fecha_ymd($date){
@@ -125,4 +126,8 @@ function getDia($date) {
       
     }
 
+}
+function capturadopor($user_id){
+  $user = User::find($user_id);
+  return $user->name;
 }

@@ -239,6 +239,18 @@ class CitasController extends Controller
    
         $mpdf->Output($pdfFilePath, "I"); //D
     }
+
+    public function getfecha()
+    {
+        $citas = Cita::orderBy('fecha', 'ASC')->where('fecha', '>','2016-12-31')->get();
+        $citas->each(function($citas) {
+            $citas->codigo;
+            $citas->medico->especialidad;
+            $citas->paciente->tipo;
+
+        });
+        return view('test.index')->with('citas', $citas);
+    }
     
 	
     
