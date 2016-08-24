@@ -36,7 +36,7 @@
         <thead>
            <th>RFC</th>
            <th>Nombre</th>
-           <th>Datos de Cita</th>
+           <th>Fecha</th>
            <th>Medico</th>
            <th>Especialidad</th>
         </thead> 

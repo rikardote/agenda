@@ -33,9 +33,12 @@ class SearchPacientesController extends Controller
           	  $pacientes->tipo;
       		});
 		   	$medico = Medico::findBySlug($slug);
-			$medico->especialidad;
-			$medico->horario;
+  			$medico->especialidad;
+        $medico->horario;
+                
+        $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime('+80 minutes', strtotime($medico->horario->entrada))).'"]';
 
+        //dd($intervaloPrimeravez);
 			$todas_citas = Cita::getTotalCitas($medico->id, $date);
 	        $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
 	        $horas = array();
@@ -53,7 +56,9 @@ class SearchPacientesController extends Controller
 		    	->with('todas_citas', $todas_citas)
 		    	->with('horas', $horas)
 		    	->with('entrada', $entrada)
-            	->with('salida', $salida);
+          ->with('salida', $salida)
+          ->with('intervaloPrimeravez', $intervaloPrimeravez);
+
 	 }
 	 public function NuevoPaciente($slug, $date, $rfc){
 

@@ -84,9 +84,9 @@
 			    'disableTextInput': true,
 			    'disableTimeRanges': 
 			    [
-			 //   ['8am','10am'],
-            	<?php echo $horas; ?>
-		        ]
+					 <?php echo $intervaloPrimeravez; ?>,
+	        	<?php echo $horas; ?>
+	        ]
 		        
 			});
 			

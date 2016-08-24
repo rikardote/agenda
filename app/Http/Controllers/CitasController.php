@@ -43,6 +43,7 @@ class CitasController extends Controller
 
         $medico = Medico::findBySlug($slug);
         $medico->consultorio;
+
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
         $diaconsulta_select = $medico->diaconsulta->lists('id')->toArray();
 
@@ -95,11 +96,14 @@ class CitasController extends Controller
     {
         $cita = Cita::find($id);
         $cita->paciente;
-       
+        $intervaloPrimeravez = "";
         $medico = Medico::findBySlug($slug);
         $medico->especialidad;
         $medico->horario;
-
+        if(!Auth::user()->admin()) {
+            $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime('+80 minutes', strtotime($medico->horario->entrada))).'"]';
+        }
+        
         $todas_citas = Cita::getTotalCitas($medico->id, $date);
         $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
         $horas = array();
@@ -118,7 +122,8 @@ class CitasController extends Controller
             ->with('todas_citas', $todas_citas)
             ->with('horas', $horas)
             ->with('entrada', $entrada)
-            ->with('salida', $salida);
+            ->with('salida', $salida)
+            ->with('intervaloPrimeravez', $intervaloPrimeravez);
         
     }
 
