@@ -41,13 +41,8 @@
     </table>  
      <table id="datos" class="table table-hover" style="visibility: hidden">
         <thead>
-<<<<<<< HEAD
-           <th>RFC</th>
-           <th>Nombre</th>
+
            <th>Fecha</th>
-=======
-           <th>Fecha de Cita</th>
->>>>>>> 76994b54b2cb281931e720df41266bb79446062b
            <th>Medico</th>
            <th>Especialidad</th>
         </thead> 
@@ -78,8 +73,8 @@ $("#rfc").on('input', function(evt) {
       var token = $("#token").val();
       var route = "{{ route('bitacora.search') }}";
       var today = new Date().toISOString().slice(0, 10);
-      var link = "http://agenda.slyip.com/citas/";
-      //var link = "http://agenda.app/citas/";
+      //var link = "http://agenda.slyip.com/citas/";
+      var link = "{{route('citas.index')}}/";
       var dataString = 'rfc='+frmrfc+'&tipo_id='+frmtipo; 
       
       $.ajax({

@@ -42,7 +42,7 @@ $.datepicker.setDefaults($.datepicker.regional['es-MX']);
        
   });
     $('#timepicker').timepicker({ 
-        'step': 20,
+        'step': <?php echo $minutes; ?>,
         'minTime': '<?php echo $entrada; ?>',
           'maxTime': '<?php echo $salida; ?>',
           'timeFormat': 'H:i',

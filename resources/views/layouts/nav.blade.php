@@ -30,7 +30,7 @@
                             <a href="{{route('bitacora.index')}}">Bitacora </a>
                             
                     </li>
-                     @if(Auth::user()->admin())
+                     
                      <li class="dropdown 
                         {{ Request::segment(1) === 'medicos' || Request::segment(2) === 'permisos' || 
                             Request::segment(1) === 'especialidades' || Request::segment(1) === 'horarios' ? 'active' : null  }}">
@@ -63,7 +63,7 @@
                     </li>
                     
                     
-                    @endif
+                    
                     
                 </ul>
                 @endif
@@ -82,10 +82,11 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                @if(Auth::user()->admin())
+                                
                                     <li>
                                         <a href="{{ url('/themes') }}"><i class="fa fa-btn fa fa-cog"></i>Cambiar Tema</a>
                                     </li>
+                                    @if(Auth::user()->admin())
                                     <li>
                                         <a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a>
                                     </li>

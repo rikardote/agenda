@@ -118,6 +118,10 @@ Route::group(['middleware' => 'web'], function () {
     ]);
     // Rutas Citas //
     //Route::resource('citas', 'CitasController');
+    Route::get('citas/', [
+        'uses' => 'CitasController@index',
+        'as' => 'citas.index'
+    ]);
     Route::get('citas/{id}/{date}', [
         'uses' => 'CitasController@show',
         'as' => 'admin.citas.show'

@@ -30,6 +30,7 @@ class MedicosRequest extends Request
             'apellido_mat' => 'min:4|max:20|required',
             'especialidad_id' => 'required',
             'horario_id' => 'required',
+            'minutes' => 'required|numeric'
         ];
     }
 }

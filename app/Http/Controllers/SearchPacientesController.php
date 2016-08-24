@@ -26,7 +26,7 @@ class SearchPacientesController extends Controller
 		 
 		   	// Gets the query string from our form submission 
 		    $query = $request->rfc;
-        $intervaloPrimeravez = "";
+        $intervaloPrimeravez = '["00:00", "00:00"]';
 		    // Returns an array of articles that have the query string located somewhere within 
 		    // our articles titles. Paginates them so we can break up lots of search results.
 		  	$pacientes = Paciente::where('rfc', '=', $query)->get();
@@ -36,18 +36,19 @@ class SearchPacientesController extends Controller
 		   	$medico = Medico::findBySlug($slug);
   			$medico->especialidad;
         $medico->horario;
-        if(!Auth::user()->admin()) {
-          $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime('+80 minutes', strtotime($medico->horario->entrada))).'"]';
-        }
+        $minutes = $medico->minutes ?  $medico->minutes:20;
+        $timeminutes = '+'.($minutes*4).' minutes';
 
+        if(!\Auth::user()->admin()) {
+            $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime($timeminutes, strtotime($medico->horario->entrada))).'"]';
+        }
         
 
-        //dd($intervaloPrimeravez);
-			$todas_citas = Cita::getTotalCitas($medico->id, $date);
+			  $todas_citas = Cita::getTotalCitas($medico->id, $date);
 	        $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
 	        $horas = array();
 	        foreach ($horas_usadas as $hora) {
-	            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+	            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes($minutes)->toTimeString().'"]';          
 	        }
 	        $horas = implode(",",$horas);
 	        $entrada = $medico->horario->entrada;
@@ -61,7 +62,8 @@ class SearchPacientesController extends Controller
 		    	->with('horas', $horas)
 		    	->with('entrada', $entrada)
           ->with('salida', $salida)
-          ->with('intervaloPrimeravez', $intervaloPrimeravez);
+          ->with('intervaloPrimeravez', $intervaloPrimeravez)
+          ->with('minutes', $minutes);
 
 	 }
 	 public function NuevoPaciente($slug, $date, $rfc){

@@ -43,6 +43,7 @@ class CitasController extends Controller
 
         $medico = Medico::findBySlug($slug);
         $medico->consultorio;
+
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
         $diaconsulta_select = $medico->diaconsulta->lists('id')->toArray();
 
@@ -54,7 +55,7 @@ class CitasController extends Controller
 
         });
         $citas = $citas->sortBy('horario');
-	       
+	      
         $todas_citas = Cita::getTotalCitas($medico->id, $date);
         
         $todaysrttotime= strtotime($today);
@@ -95,17 +96,22 @@ class CitasController extends Controller
     {
         $cita = Cita::find($id);
         $cita->paciente;
-       
+        $intervaloPrimeravez = '["00:00", "00:00"]';
         $medico = Medico::findBySlug($slug);
         $medico->especialidad;
         $medico->horario;
-
+        $minutes = $medico->minutes ?  $medico->minutes:20;
+        $timeminutes = '+'.($minutes*4).' minutes';
+        
+        if(!\Auth::user()->admin()) {
+            $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime($timeminutes, strtotime($medico->horario->entrada))).'"]';
+        }
         $todas_citas = Cita::getTotalCitas($medico->id, $date);
         $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
         $horas = array();
 
         foreach ($horas_usadas as $hora) {
-            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes(20)->toTimeString().'"]';          
+            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes($minutes)->toTimeString().'"]';          
         }
         $horas = implode(",",$horas);
         $entrada = $medico->horario->entrada;
@@ -118,7 +124,9 @@ class CitasController extends Controller
             ->with('todas_citas', $todas_citas)
             ->with('horas', $horas)
             ->with('entrada', $entrada)
-            ->with('salida', $salida);
+            ->with('salida', $salida)
+            ->with('intervaloPrimeravez', $intervaloPrimeravez)
+            ->with('minutes', $minutes);
         
     }
 
@@ -179,19 +187,19 @@ class CitasController extends Controller
         return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $request->date]);
     }  
  
-    public function destroy($id)
+    public function destroy($slug, $date, $id)
     {
         $cita = Cita::find($id);
-
-        if ($cita->delete()){
-            $response = array(
-               'success' => 'true'
-            );
-            return Response::json($response,200); //redirect()->route('qnas.index');
-        }
+        $cita->delete();
+        //if ($cita->delete()){
+          //  $response = array(
+            //   'success' => 'true'
+            //);
+            //return Response::json($response,200); //redirect()->route('qnas.index');
+      //  }
        
         //alert()->success('Success Message', 'Optional Title');
-        //return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
+        return redirect()->route('admin.citas.show', ['slug' => $slug, 'date' => $date]);
     } 
     public function concretada($slug,$date,$id)
     {
@@ -238,6 +246,18 @@ class CitasController extends Controller
         $mpdf->WriteHTML($html);
    
         $mpdf->Output($pdfFilePath, "I"); //D
+    }
+
+    public function getfecha()
+    {
+        $citas = Cita::orderBy('fecha', 'ASC')->where('fecha', '>','2016-12-31')->get();
+        $citas->each(function($citas) {
+            $citas->codigo;
+            $citas->medico->especialidad;
+            $citas->paciente->tipo;
+
+        });
+        return view('test.index')->with('citas', $citas);
     }
     
 	

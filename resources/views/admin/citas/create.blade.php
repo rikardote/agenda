@@ -77,7 +77,7 @@
 	@foreach($pacientes as $paciente)
 		 <script>
 			$('#{{$paciente->rfc.$paciente->id}}').timepicker({ 
-				'step': 20,
+				'step': <?php echo $minutes; ?>,
 				'minTime': '<?php echo $entrada; ?>',
           		'maxTime': '<?php echo $salida; ?>',
 			    'timeFormat': 'H:i',
