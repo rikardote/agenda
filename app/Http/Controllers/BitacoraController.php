@@ -9,7 +9,7 @@ use App\Paciente;
 use App\Medico;
 use App\Especialidad;
 use App\Tipo;
-
+use Carbon\Carbon;
 use App\Http\Requests;
 
 use Response;
@@ -27,23 +27,39 @@ class BitacoraController extends Controller
     {
       $rfc = $request->rfc;
       $tipo = $request->tipo_id;
+      $today = Carbon::today();
+      $today = $today->year.'-'.$today->month.'-'.$today->day;
+
       $paciente = Paciente::where('rfc', '=', $rfc)->where('tipo_id', '=', $tipo)->first();
-      if ($paciente->count() > 1) {
-        $paciente->tipo;
-        $citas = Cita::where('paciente_id', '=', $paciente->id)->get();
+      
+      
+      $tipo = Tipo::find($tipo);
+
+      if (isset($paciente)) {
+        if ($paciente->count() > 1) {
+
+        $citas = Cita::orderBy('fecha', 'desc')->where('paciente_id', '=', $paciente->id)->take(5)->get();
         $citas->each(function($citas) {
-            $citas->paciente;
+            $citas->paciente->tipo;
             $citas->medico->especialidad;
-
-
+            $citas->fecha = fecha_dmy($citas->fecha);
         });
+        if ($citas->count() >= 1) {
+          return Response::json($citas,200);
+        }
+        else{
+          $response = array(
+               'error' => 'true'
+            );
+          return Response::json('No se encontro citas con paciente RFC: '.$rfc.' - '.$tipo->code,500);
+        }
         
-        return Response::json($citas->toArray(),200);
+        }
       }else {
         $response = array(
                'error' => 'true'
             );
-        return Response::json($response,500);
+        return Response::json('No se encontro Paciente con RFC: '.$rfc.' - '.$tipo->code,500);
       }
       
     }

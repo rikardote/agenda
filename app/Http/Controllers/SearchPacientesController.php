@@ -26,6 +26,7 @@ class SearchPacientesController extends Controller
 		 
 		   	// Gets the query string from our form submission 
 		    $query = $request->rfc;
+        $intervaloPrimeravez = "";
 		    // Returns an array of articles that have the query string located somewhere within 
 		    // our articles titles. Paginates them so we can break up lots of search results.
 		  	$pacientes = Paciente::where('rfc', '=', $query)->get();
@@ -35,8 +36,11 @@ class SearchPacientesController extends Controller
 		   	$medico = Medico::findBySlug($slug);
   			$medico->especialidad;
         $medico->horario;
-                
-        $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime('+80 minutes', strtotime($medico->horario->entrada))).'"]';
+        if(!Auth::user()->admin()) {
+          $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime('+80 minutes', strtotime($medico->horario->entrada))).'"]';
+        }
+
+        
 
         //dd($intervaloPrimeravez);
 			$todas_citas = Cita::getTotalCitas($medico->id, $date);

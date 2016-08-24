@@ -104,9 +104,9 @@
               </a> 
               
              @if($f_anterior != true)
-                <!-- <a href="{{ route('admin.citas.destroy', [$medico->slug, $date, $cita->id]) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span  class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span>
-               </a>-->
-               <a href="#" onclick="deleteRow(this, <?=$cita->id?>)" ><span class="fa fa-times fa-2x"></span></a>
+                <a href="{{ route('admin.citas.destroy', [$medico->slug, $date, $cita->id]) }}" onclick="return confirm('Seguro desea eliminarlo?')"><span  class="fa fa-trash fa-2x panelColorRed" aria-hidden="true"></span>
+               </a>
+               <!-- <a href="#" onclick="deleteRow(this, <?=$cita->id?>)" ><span class="fa fa-times fa-2x"></span></a> -->
               @endif
 
             </td>
@@ -181,42 +181,6 @@
 
  </script>
 
-<script>
-  function deleteRow(r,cita_id) {
-      var i = r.parentNode.parentNode.rowIndex;
-     
-      var route = '{{ route("admin.citas.destroy",":id") }}';
-      route = route.replace(':id', cita_id);
-     
-      var token = $("#token").val();
-      swal({
-      title: "Seguro de borrar este cita?",   
-  text: "Le recuerdo que puede reagendar la cita, sin necesidad de borrarla",   
-  type: "warning",   
-  showCancelButton: true,   
-  confirmButtonColor: "#DD6B55",   
-  confirmButtonText: "Si, Eliminala!", 
-  cancelButtonText: "Cancelar",    
-  closeOnConfirm: false 
-     
-  }, function (isConfirm) {
-      if (!isConfirm) return;
-        $.ajax({
-            url: route,
-            headers: {'X-CSRF-TOKEN': token},
-            type: 'DELETE',
-            success: function (res) {
-             swal("Borrado!", "La cita ha sido eliminada.", "success");
-             //document.getElementById("myTable").deleteRow(i);
-             window.setTimeout(function(){location.reload()},1000)
-          },
-          error: function (xhr, ajaxOptions, thrownError) {
-              swal("Error al borrar!", "Intenta de nuevo", "error");
-          }
-        });
-      
-      }); 
-  }
-</script>
+
 
 @endsection

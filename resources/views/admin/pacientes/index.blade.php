@@ -40,6 +40,7 @@
               </a>
               
               <?php $array = ['01','02','90','91'];  ?>
+             <!-- <a href="{{ route('admin.pacientes.destroy', $paciente->id)}}"/>Borrar</a> -->
               @if($paciente->fecha_nacimiento == "1969-12-31" && in_array($paciente->tipo->code, $array))
                 !
               @endif

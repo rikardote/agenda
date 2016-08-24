@@ -142,8 +142,8 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HojasController@gethoras',
         'as' => 'hoja.gethoras'
     ]);
-    //Route::get('citas/{slug}/{date}/{id}/destroy', [
-    Route::DELETE('citas/{id}/destroy', [
+    Route::get('citas/{slug}/{date}/{id}/destroy', [
+    //Route::DELETE('citas/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'admin.citas.destroy'
     ]);
@@ -266,6 +266,12 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'colonias.autocomplete'
     ]);
 
+    //TEST
+    Route::get('/getfecha', [
+        'uses' => 'CitasController@getfecha',
+        'as' => 'admin.getfecha'
+    ]);    
+    //
 
     Route::get('home', 'HomeController@index');
     Route::get('/doctor/login', 'UserdoctorsController@showLoginForm');
