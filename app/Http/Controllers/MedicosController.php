@@ -78,7 +78,7 @@ class MedicosController extends Controller
         
     }
 
-    public function update(Request $request, $id)
+    public function update(MedicosRequest $request, $id)
     {
         $medico = Medico::find($id);
         $medico->fill($request->all());
