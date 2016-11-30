@@ -30,6 +30,7 @@ class CitasController extends Controller
     }
 
 	public function show($slug,$date){
+        $nosetrabaja = ['2017-02-06','2017-03-20','2017-05-01','2017-05-05','2017-11-02','2017-11-20'];
         
         if (isset($_GET["date"])) {
             $date = $_GET["date"];
@@ -61,7 +62,14 @@ class CitasController extends Controller
         $todaysrttotime= strtotime($today);
         $date2 = strtotime($date);
         $f_anterior = $date2 < $todaysrttotime ? 1:0;
- 
+
+        if (in_array($date, $nosetrabaja)) {
+            $nosetrabaja = 1;
+        }
+        else{
+            $nosetrabaja = 0;
+        }
+       
         return view('admin.citas.index')
             ->with('medico', $medico)
             ->with('citas', $citas)
@@ -72,7 +80,8 @@ class CitasController extends Controller
             ->with('f_anterior', $f_anterior)
             ->with('dia_semana', $dia_semana)
             ->with('diasconsulta_select', $diasconsulta_select)
-            ->with('diaconsulta_select', $diaconsulta_select);
+            ->with('diaconsulta_select', $diaconsulta_select)
+            ->with('nosetrabaja', $nosetrabaja);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
 

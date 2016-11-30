@@ -50,12 +50,13 @@
           ?>
 
 
-            @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select) || in_array($dia_semana,$diaconsulta_select))
+            @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select)  || in_array($dia_semana,$diaconsulta_select))
               @if(in_array($dia_semana,$diaconsulta_select))
                
                <div class="">Dia Especial de Consulta</div>
               @endif
-              @if($f_anterior != true)
+              @if($f_anterior != true && $nosetrabaja == 0)
+
             <div class=""> Hay {{ $citas->count() }}  Citas</div>
              
               <div class="">
