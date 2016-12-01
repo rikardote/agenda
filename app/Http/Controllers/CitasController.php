@@ -48,7 +48,8 @@ class CitasController extends Controller
         $diasconsulta_select = $medico->diasconsulta->lists('id')->toArray();
         $diaconsulta_select = $medico->diaconsulta->lists('id')->toArray();
 
-        $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
+        $permisos = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->get();
+        //dd($permiso);
         
         $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
@@ -76,7 +77,7 @@ class CitasController extends Controller
             ->with('date', $date)
             ->with('date2', $date2)
             ->with('todas_citas', $todas_citas)
-            ->with('permiso', $permiso)
+            ->with('permisos', $permisos)
             ->with('f_anterior', $f_anterior)
             ->with('dia_semana', $dia_semana)
             ->with('diasconsulta_select', $diasconsulta_select)

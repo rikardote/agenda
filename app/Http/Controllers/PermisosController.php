@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Medico;
 use App\Cita;
 use App\Permiso;
+use Carbon\Carbon;
 
 use Laracasts\Flash\Flash;
 
@@ -15,7 +16,10 @@ class PermisosController extends Controller
 {
 	public function index()
 	{
-	    $permisos = Permiso::all(); 
+        $today = Carbon::today();
+        $today = $today->year.'-'.$today->month.'-'.$today->day;
+
+	    $permisos = Permiso::orderby('fecha_inicio','desc')->paginate(15); 
 	    $permisos->each(function($permisos) {
             $permisos->medico;
         });

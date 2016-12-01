@@ -33,7 +33,7 @@
     @endforeach
     </tbody>
 </table>
-
+{!! $permisos->render() !!}
 @include('admin.partials.form-modal', ['title'=>'Agregar/Editar Medicos'])
 @include('admin.partials.confirmation_modal', ['title'=>'Confirmation Modal'])
 

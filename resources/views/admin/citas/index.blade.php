@@ -33,20 +33,22 @@
               
             
             </div>
-          <?php 
-           $permiso_act = 0;
-            if (isset($permiso->fecha_inicio) && isset($permiso->fecha_final)) {
+            <?php 
+             $permiso_act = 0;
+             foreach ($permisos as $permiso) {
+                         
+              if (isset($permiso->fecha_inicio) && isset($permiso->fecha_final)) {
+                
+                $f_inicio = strtotime($permiso->fecha_inicio); 
+                $f_final = strtotime($permiso->fecha_final); 
               
-              $f_inicio = strtotime($permiso->fecha_inicio); 
-              $f_final = strtotime($permiso->fecha_final); 
-            
-              if($date2 >= $f_inicio && $date2 <= $f_final) {
-                $permiso_act = 1;
-                 echo "<b><span class='font-border'>Medico esta de<br>Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
+                if($date2 >= $f_inicio && $date2 <= $f_final) {
+                  $permiso_act = 1;
+                   echo "<b><span class='font-border'>Medico esta de<br>Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
+                }
               }
-            }
-              
-          ?>
+             }   
+            ?>
 
 
             @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select))
