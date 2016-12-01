@@ -43,14 +43,13 @@
               if($date2 >= $f_inicio && $date2 <= $f_final) {
                 $permiso_act = 1;
                  echo "<b><span class='font-border'>Medico esta de<br>Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
-
               }
             }
               
           ?>
 
 
-            @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select)  || in_array($dia_semana,$diaconsulta_select))
+            @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select))
               @if(in_array($dia_semana,$diaconsulta_select))
                
                <div class="">Dia Especial de Consulta</div>
