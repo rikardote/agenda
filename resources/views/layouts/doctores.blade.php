@@ -52,7 +52,7 @@
     </section>
    
 <footer class="footer">
-    <p class="text-muted text-white"> &copy;  {{date('Y')}} ISSSTE BAJA CALIFORNIA Por: Hector Ricardo Fuentes Armenta Ext. 53746</p>
+    <p class="text-muted text-white"> &copy;  {{date('Y')}} ISSSTE BAJA CALIFORNIA Por: Hector Ricardo Fuentes Armenta Ext. 53040</p>
 </footer>
     <!-- JavaScripts -->
     <script src="{{ asset('plugins/jquery/js/jquery.js') }}"></script>
