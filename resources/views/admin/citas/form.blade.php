@@ -1,4 +1,11 @@
-
+<div class="form-group">
+	{!! Form::label('primera_vez', 'Primera vez? (dejar en blanco para subsecuente)') !!}
+	{!! Form::checkbox('primera_vez', '1',null, [
+		'class' => 'form-control',
+		'placeholder' => 'Selecciona..', 
+		'readonly'
+	]) !!}
+</div>
 <div class="form-group">
 	{!! Form::label('fecha', 'Fecha') !!}
 	{!! Form::text('fecha', fecha_dmy($date), [

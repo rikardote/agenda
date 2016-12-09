@@ -141,6 +141,7 @@ class CitasController extends Controller
 
     public function update(Request $request, $slug,$date,$id)
     {
+
         $cita = Cita::find($id);
         $cita->fill($request->all());
         $cita->capturado_por  = \Auth::user()->id;
@@ -164,7 +165,7 @@ class CitasController extends Controller
 
     public function store(CitasRequest $request, $slug, $date)
     {
-
+        
         $cita = new Cita($request->all());
         $cita->fecha = fecha_ymd($request->fecha);
         $cita->capturado_por = \Auth::user()->id;

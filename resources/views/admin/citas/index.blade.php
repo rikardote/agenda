@@ -96,7 +96,7 @@
             <td>{{ $cita->folio }}</td>
           
             <td>{{ $cita->paciente->apellido_pat }} {{ $cita->paciente->apellido_mat }} {{ $cita->paciente->nombres }}
-              <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}}</small></strong>
+              <br> <strong><small>{{$cita->paciente->rfc}} /{{$cita->paciente->tipo->code}} {{ $cita->primera_vez ? ' - PRIMERA VEZ':'' }}</small></strong>  
             </td>
      		    <td>{{ $cita->horario }}</td>
             <td>

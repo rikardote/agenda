@@ -91,6 +91,7 @@
 				'id' => 'dob',
 				'style' => 'width: 10em;'
 			]) !!}
+			
 
 			</div>	
 				
