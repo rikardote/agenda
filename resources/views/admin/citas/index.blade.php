@@ -88,7 +88,7 @@
         <th>Paciente</th>
         <th>Horario</th>
         <th>Accion</th>
-        <th>Capturo</th>
+        <th>Capturó </th>
       </thead>
       <tbody>
         @foreach($citas as $cita)
