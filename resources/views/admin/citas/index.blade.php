@@ -113,7 +113,7 @@
               @endif
 
             </td>
-            <td style= 'font-size:8px';>{{ str_limit(capturado_por($cita->capturado_por), $limit = 15, $end = '...') }}</td>
+            <td style= 'font-size:8px';>{{ str_limit(capturado_por($cita->capturado_por), $limit = 17, $end = '...') }}</td>
           </tr>
         @endforeach
       </tbody>
