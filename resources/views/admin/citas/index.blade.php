@@ -88,6 +88,7 @@
         <th>Paciente</th>
         <th>Horario</th>
         <th>Accion</th>
+        <th>Capturo</th>
       </thead>
       <tbody>
         @foreach($citas as $cita)
@@ -112,6 +113,7 @@
               @endif
 
             </td>
+            <td style= 'font-size:8px';>{{ str_limit(capturado_por($cita->capturado_por), $limit = 15, $end = '...') }}</td>
           </tr>
         @endforeach
       </tbody>

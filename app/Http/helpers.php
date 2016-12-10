@@ -56,6 +56,16 @@ function checkExpire($cita_date)
   }
   
 }
+function capturado_por($id){
+  $user = User::find($id);
+  if ($user) {
+    return $user->name;  
+  }
+  else {
+   return 'USUARIO ELIMINADO';   
+  }
+  
+}
 function getForaneo($id) 
 {
   switch ($id) {
