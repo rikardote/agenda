@@ -59,10 +59,18 @@ function checkExpire($cita_date)
 function capturado_por($id){
   $user = User::find($id);
   if ($user) {
-    return $user->name;  
+    $notocar = Array('del','de');
+    $trozos = explode(' ',$user->name);
+    $iniciales = '';
+    for($i=0;$i<count($trozos);$i++){
+      if(in_array($trozos[$i],$notocar)) $iniciales .= $trozos[$i]." ";
+      else $iniciales .= substr($trozos[$i],0,1).". ";
+    }
+    return $iniciales;
+    //return $user->name;  
   }
   else {
-   return 'USUARIO ELIMINADO';   
+   return 'U. Eliminado';   
   }
   
 }
