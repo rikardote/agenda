@@ -90,7 +90,7 @@
 			<td class="reporte2" align="center" valign=middle ></td>
 			<td class="reporte2" align="center" valign=middle ></td>
 			<td class="reporte2" align="center" valign=middle ><b><font size=1></td>
-			<td class="reporte2" align="center" valign=middle ><br></td>
+			<td class="reporte2" align="center" valign=middle >{{$cit->primera_vez ? 'x':''}}</td>
 			<td class="reporte2" align="center" valign=middle ></td>
 			<td class="reporte2" align="center" valign=middle ><br></td>
 			<td class="reporte2" align="center" valign=middle ><br></td>
