@@ -200,10 +200,11 @@ class HojasController extends Controller
 
         $cita = new Cita($request->all());
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
+        //$cita->capturado_por = \Auth::guard('doctors')->user()->doctor_id;
         $cita->fecha = fecha_ymd($request->fecha);
         $cita->capturado_por = 1;
         $cita->folio = getRandomeStr(4);
-        $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
+        //$medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
         $total_citas = Cita::getTotalCitasCount($medico->id, $cita->fecha);
         if($total_citas) {
             Toastr::error('Error al asignar Cita, Agenda del dia: '.fecha_dmy($cita->fecha).' llena');

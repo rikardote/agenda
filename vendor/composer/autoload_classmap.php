@@ -33,6 +33,7 @@ return array(
     'Canvas' => $vendorDir . '/dompdf/dompdf/include/canvas.cls.php',
     'Canvas_Factory' => $vendorDir . '/dompdf/dompdf/include/canvas_factory.cls.php',
     'Cellmap' => $vendorDir . '/dompdf/dompdf/include/cellmap.cls.php',
+    'CreateDescansosTable' => $baseDir . '/database/migrations/2017_01_30_125901_create_descansos_table.php',
     'CreateDiaconsultaMedicoTable' => $baseDir . '/database/migrations/2016_07_07_202449_Create_diaconsulta_medico_table.php',
     'DOMPDF' => $vendorDir . '/dompdf/dompdf/include/dompdf.cls.php',
     'DOMPDF_Exception' => $vendorDir . '/dompdf/dompdf/include/dompdf_exception.cls.php',

@@ -88,6 +88,9 @@
                                     </li>
                                     @if(Auth::user()->admin())
                                     <li>
+                                        <a href="{{ url('/dianohabil') }}"><i class="fa fa-btn fa fa-cog"></i>Dias no habiles</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ url('/registrar') }}"><i class="fa fa-btn fa fa-cog"></i>Administrar Usuarios</a>
                                     </li>
                                     <li>

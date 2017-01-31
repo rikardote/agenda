@@ -282,5 +282,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/doctor/login', 'UserdoctorsController@login');
     Route::get('/doctor/logout', 'UserdoctorsController@logout');
 
+
+    //DIA NO HABIL
+    Route::resource('/dianohabil', 'DescansosController');
+    Route::get('/dianohabil/{id}/destroy', [
+        'uses' => 'DescansosController@destroy',
+        'as' => 'admin.descansos.destroy'
+    ]);
+
 });
 

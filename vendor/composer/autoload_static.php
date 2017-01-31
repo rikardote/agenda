@@ -395,6 +395,7 @@ class ComposerStaticInit6d660748b59d8e8af5d7b8a23476a330
         'Canvas' => __DIR__ . '/..' . '/dompdf/dompdf/include/canvas.cls.php',
         'Canvas_Factory' => __DIR__ . '/..' . '/dompdf/dompdf/include/canvas_factory.cls.php',
         'Cellmap' => __DIR__ . '/..' . '/dompdf/dompdf/include/cellmap.cls.php',
+        'CreateDescansosTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_30_125901_create_descansos_table.php',
         'CreateDiaconsultaMedicoTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_07_202449_Create_diaconsulta_medico_table.php',
         'DOMPDF' => __DIR__ . '/..' . '/dompdf/dompdf/include/dompdf.cls.php',
         'DOMPDF_Exception' => __DIR__ . '/..' . '/dompdf/dompdf/include/dompdf_exception.cls.php',

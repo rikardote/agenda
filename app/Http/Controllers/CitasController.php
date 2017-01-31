@@ -11,6 +11,7 @@ use App\Http\Requests\CitasRequest;
 use App\Cita;
 use App\Especialidad;
 use App\Medico;
+use App\Descanso;
 use App\Paciente;
 use App\Permiso;
 use App\User;
@@ -30,7 +31,8 @@ class CitasController extends Controller
     }
 
 	public function show($slug,$date){
-        $nosetrabaja = ['2017-02-06','2017-03-20','2017-05-01','2017-05-05','2017-11-02','2017-11-20'];
+        //$nosetrabaja = ['2017-02-06','2017-03-20','2017-05-01','2017-05-05','2017-11-02','2017-11-20'];
+        $nosetrabaja = Descanso::all()->lists('fecha')->toArray();
         
         if (isset($_GET["date"])) {
             $date = $_GET["date"];
@@ -65,9 +67,11 @@ class CitasController extends Controller
 
         if (in_array($date, $nosetrabaja)) {
             $nosetrabaja = 1;
+            $festivo = Descanso::where('fecha', '=', $date)->first();
         }
         else{
             $nosetrabaja = 0;
+            $festivo = "";
         }
        
         return view('admin.citas.index')
@@ -81,7 +85,8 @@ class CitasController extends Controller
             ->with('dia_semana', $dia_semana)
             ->with('diasconsulta_select', $diasconsulta_select)
             ->with('diaconsulta_select', $diaconsulta_select)
-            ->with('nosetrabaja', $nosetrabaja);
+            ->with('nosetrabaja', $nosetrabaja)
+            ->with('festivo', $festivo);
        /* 
         $html = view('welcome')->with('medico', $medico)->with('citas', $citas)->with('date', $date)->render();
 
