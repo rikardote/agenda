@@ -20,6 +20,9 @@ class PermisosController extends Controller
     }
 	public function index()
 	{
+        if (!\Auth::user()->admin()) {
+            return redirect()->route('agenda.index');
+        }
         $today = Carbon::today();
         $today = $today->year.'-'.$today->month.'-'.$today->day;
 
