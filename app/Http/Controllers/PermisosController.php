@@ -14,6 +14,10 @@ use Laracasts\Flash\Flash;
 
 class PermisosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 	public function index()
 	{
         $today = Carbon::today();

@@ -65,7 +65,6 @@
                 
               </div>  
               @else
-                
                 @if(isset($festivo->description))
                  <div class=""><strong><span class='font-border'>{{ $festivo->description }}</span></strong></div> 
                 @endif
