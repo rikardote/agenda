@@ -65,8 +65,8 @@
                 
               </div>  
               @else
-                <div class="">{{ $festivo->description }}</div> 
-              
+                
+               
               @endif
               
               
