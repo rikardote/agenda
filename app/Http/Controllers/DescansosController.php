@@ -11,8 +11,16 @@ use Toastr;
 
 class DescansosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {	
+        if (!\Auth::user()->admin()) {
+            return redirect()->route('agenda.index');
+        }
     	$dias = Descanso::all();
 
     	return view('admin.descansos.index')->with('dias', $dias);
