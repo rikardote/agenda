@@ -5,7 +5,7 @@
 			border-middle:1px solid black;
 			border-left: 1px solid black;
 			border-right: 1px solid black;
-			
+
 		}
 		.reporte2{
 			border: 1px solid black;
