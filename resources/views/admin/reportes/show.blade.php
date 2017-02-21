@@ -1,11 +1,11 @@
 	<style type="text/css">
-		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family: Helvetica; font-size: small; }
+		body,div,thead,tbody,tfoot,tr,th,td,p { font-family: Helvetica; font-size: small; }
 		.reporte{
 			border-top: 1px solid black;
 			border-middle:1px solid black;
 			border-left: 1px solid black;
 			border-right: 1px solid black;
-			font-size: 18px;
+			
 		}
 		.reporte2{
 			border: 1px solid black;
