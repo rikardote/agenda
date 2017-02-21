@@ -5,8 +5,7 @@
 			border-middle:1px solid black;
 			border-left: 1px solid black;
 			border-right: 1px solid black;
-			font-size: 14px;
-
+			font-size: 18px;
 		}
 		.reporte2{
 			border: 1px solid black;
@@ -85,7 +84,7 @@
 			<td class="reporte2" align="center" valign=middle ></td>
 			<td class="reporte2" align="center" valign=middle ><br></td>
 			<td class="reporte2" align="center" valign=middle ><br></td>
-			<td class="reporte2" align="center" valign=middle ></td>
+			<td class="reporte2" align="center" valign=middle style="width:9%;"></td>
 			<td class="reporte2" align="center" valign=middle ></td>
 			<td class="reporte2" align="center" valign=middle ></td>
 			<td class="reporte2" align="center" valign=middle ></td>

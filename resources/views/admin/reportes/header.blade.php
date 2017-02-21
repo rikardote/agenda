@@ -7,14 +7,12 @@
 <table border="0" cellpadding="12" cellspacing="2" style="width:1450px;">
 	<tbody>
 		<tr>
-			<td><img alt="" src="fotos/issste.png" style="width: 400px; height: 108px;" /></td>
+			<td><img alt="" src="fotos/issste.png" style="width: 400px; height: 80px;" /></td>
 			<td align='right'>
 			<p><h1><strong>HOSPITAL GENERAL 5 DE DICIEMBRE</strong></h1></p>
 
 			<p><h2><strong>ATENCION AL DERECHOHABIENTE</strong></h2></p>
 
-					
-			
 			</td>
 		</tr>
 		<table border="0" cellpadding="1" cellspacing="1" style="width:500px;">
@@ -32,6 +30,5 @@
 	
 </table>
 
-<hr>
 </body>
 </html>
