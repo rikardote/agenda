@@ -33,10 +33,11 @@
               
             
             </div>
+            
             <?php 
              $permiso_act = 0;
              foreach ($permisos as $permiso) {
-                         
+
               if (isset($permiso->fecha_inicio) && isset($permiso->fecha_final)) {
                 
                 $f_inicio = strtotime($permiso->fecha_inicio); 
@@ -50,7 +51,7 @@
              }   
             ?>
 
-
+          @if($medico->id != 25)
             @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select))
               @if(in_array($dia_semana,$diaconsulta_select))
                
@@ -76,10 +77,9 @@
               @if($citas->count() >= 18)
                 <b><span class="blink font-border">No se pueden programar mas Citas para esta fecha.</span></b>
               @endif
-              
+            @endif    
             @endif
-
-          </div>
+           </div>
          
         </div>
 
