@@ -44,13 +44,15 @@ class SearchPacientesController extends Controller
         }
         
 
-			  $todas_citas = Cita::getTotalCitas($medico->id, $date);
+			$todas_citas = Cita::getTotalCitas($medico->id, $date);
 	        $horas_usadas = Cita::where('fecha', '=', $date)->where('medico_id', '=', $medico->id)->lists('horario', 'id')->toArray();
 	        $horas = array();
 	        foreach ($horas_usadas as $hora) {
 	            $horas[] = '["'.Carbon::createFromFormat('H:i', $hora)->toTimeString().'","'.Carbon::createFromFormat('H:i', $hora)->addMinutes($minutes)->toTimeString().'"]';          
 	        }
 	        $horas = implode(",",$horas);
+
+            //var_dump($horas);
 	        $entrada = $medico->horario->entrada;
         	$salida = $medico->horario->salida;
 			// returns a view and passes the view the list of articles and the original query.
