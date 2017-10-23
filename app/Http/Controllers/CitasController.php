@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -130,6 +130,10 @@ class CitasController extends Controller
         $horas = implode(",",$horas);
         $entrada = $medico->horario->entrada;
         $salida = $medico->horario->salida;
+
+            //var_dump($horas);
+            $entrada = $medico->horario->entrada;
+            $salida = $medico->horario->salida;
 
         return view('admin.citas.edit')
             ->with('cita', $cita)

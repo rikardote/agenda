@@ -38,7 +38,7 @@ class BitacoraController extends Controller
       if (isset($paciente)) {
         if ($paciente->count() > 1) {
 
-        $citas = Cita::orderBy('fecha', 'desc')->where('paciente_id', '=', $paciente->id)->take(5)->get();
+        $citas = Cita::orderBy('fecha', 'desc')->where('paciente_id', '=', $paciente->id)->take(15)->get();
         $citas->each(function($citas) {
             $citas->paciente->tipo;
             $citas->medico->especialidad;
