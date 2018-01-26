@@ -38,8 +38,8 @@
 		 		</li>
 		 	</a>
 		   <div id="{{$paciente->slug}}" class="collapse">
-				<div class="col-md-12">
-				    <table class="table table-striped" >
+				<div class="col-md-10">
+				    <table class="table" >
 				        <thead>
 				           <th>Fecha</th>
 				           <th>Medico</th>
