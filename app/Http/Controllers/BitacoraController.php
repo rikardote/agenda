@@ -11,7 +11,7 @@ use App\Especialidad;
 use App\Tipo;
 use Carbon\Carbon;
 use App\Http\Requests;
-
+use Toastr;
 use Response;
 
 class BitacoraController extends Controller
@@ -30,20 +30,18 @@ class BitacoraController extends Controller
       $today = Carbon::today();
       $today = $today->year.'-'.$today->month.'-'.$today->day;
 
-      $paciente = Paciente::where('rfc', '=', $rfc)->where('tipo_id', '=', $tipo)->get();
-      return Response::json($paciente,200);
+      $tipos = Tipo::all()->lists('tipo', 'id')->toArray();
+      asort($tipos);
+
+      $pacientes = Paciente::where('rfc', '=', $rfc)->where('tipo_id', '=', $tipo)->get();
+
+      if (isset($pacientes)) {
+        return view('bitacora.show')->with('pacientes', $pacientes)->with('tipos', $tipos);
+      }
       
-      $tipo = Tipo::find($tipo);
+       
+      /*
 
-      if (isset($paciente)) {
-        if ($paciente->count() > 1) {
-
-        $citas = Cita::orderBy('fecha', 'desc')->where('paciente_id', '=', $paciente->id)->take(15)->get();
-        $citas->each(function($citas) {
-            $citas->paciente->tipo;
-            $citas->medico->especialidad;
-            $citas->fecha = fecha_dmy($citas->fecha);
-        });
         if ($citas->count() >= 1) {
           return Response::json($citas,200);
         }
@@ -61,6 +59,6 @@ class BitacoraController extends Controller
             );
         return Response::json('No se encontro Paciente con RFC: '.$rfc.' - '.$tipo->code,500);
       }
-      
+     */ 
     }
 }

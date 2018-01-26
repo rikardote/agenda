@@ -36,8 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     */
     // Route::get('registrar','RegistroController@index');
     Route::resource('registrar', 'RegistroController');   
-    Route::resource('bitacora', 'BitacoraController', ['only' => [
-        'index']]);
+    Route::resource('bitacora', 'BitacoraController');
     Route::post('bitacora/search', [
         'uses' => 'BitacoraController@search',
         'as' => 'bitacora.search'

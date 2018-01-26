@@ -149,3 +149,13 @@ function capturadopor($user_id){
   $user = User::find($user_id);
   return $user->name;
 }
+
+function getCitasPorPaciente($paciente_id){
+  $citas = Cita::orderBy('fecha', 'desc')->where('paciente_id', '=', $paciente_id)->take(15)->get();
+        $citas->each(function($citas) {
+            $citas->paciente->tipo;
+            $citas->medico->especialidad;
+            $citas->fecha = fecha_dmy($citas->fecha);
+        });
+  return $citas;
+}

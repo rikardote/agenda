@@ -4,15 +4,12 @@
 
 @section('content')
   <div  class="container">
-   
-    
-    <form action="#" method="POST", name="formulario">
-      <input type="hidden" name="_token" value={{ csrf_token() }} id="token">
-      <div class="form-group">
+   {!! Form::open(['route' => ['bitacora.search'], 'method' => 'post']) !!}
+     <div class="form-group">
         <div class="col-md-4">
           <input  maxlength="10" id="rfc" type="text" class="form-control" name="rfc" placeholder="Buscar paciente por RFC / 10 digitos" required>
         </div>
-       </div>
+     </div>
         <div class="form-group">
           <div class="col-md-4">
           
@@ -26,31 +23,12 @@
         </div>
         </div>
         <div class="col-md-4">
-            {!! link_to('#', $title='Buscar', $attributes= ['id' => 'search', 'class' => 'btn btn-success'], $secure=null) !!} 
+             {{ Form::submit('Buscar', array('class' => 'btn btn-success')) }}
         </div>
-     
-    </form>
-  <div class="col-md-8">
-    <table id="paciente" class="table table-hover" style="visibility: hidden">
-      <thead>
-        <th>RFC</th>
-        <th>Nombre</th>
-      </thead>
-      <tbody id="paciente-datos">
-      </tbody>
-    </table>  
-     <table id="datos" class="table table-hover" style="visibility: hidden">
-        <thead>
+    {!!Form::close()!!}
+    
+</div>   
 
-           <th>Fecha</th>
-           <th>Medico</th>
-           <th>Especialidad</th>
-        </thead> 
-       <tbody id="after_tr">
-       </tbody>
-     </table>
-   </div>
- </div>
 @endsection
 
 @section('js')
@@ -64,7 +42,9 @@ $("#rfc").on('input', function(evt) {
   input[0].selectionStart = input[0].selectionEnd = start;
 });
 </script>
+
   <script type="text/javascript">
+/*
     $('#search').click(function(){
       var frmrfc = $('#rfc').val();
       var frmtipo = $('#tipo').val();
@@ -89,11 +69,9 @@ $("#rfc").on('input', function(evt) {
               pacienteRfc.empty();
               console.log(res);
 
-               $(res).each(function(key, value){
-                pacienteRfc.append("<tr><td>"+value.paciente.rfc+"/"+value.paciente.tipo.code+"</td><td>"+value.paciente.nombres+" "+value.paciente.apellido_pat+" "+value.paciente.apellido_mat+"</td></tr>");  
-                  //tablaDatos.append("<tr><td>"+value.fecha+"</td><td>"+value.medico.nombres+" "+value.medico.apellido_pat+" "+value.medico.apellido_mat+"</td><td>"+value.medico.especialidad.name+"</td></tr>");   */               
-                
-              });
+               //$(res).each(function(key, value){
+               
+              //});
              },
              error: function (res) {
               document.getElementById("datos").style.visibility="hidden";
@@ -111,5 +89,6 @@ $("#rfc").on('input', function(evt) {
 
           });
     }); 
+    */
   </script>
 @endsection
