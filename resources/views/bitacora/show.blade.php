@@ -26,7 +26,7 @@
 		 	<a type="button" data-toggle="collapse" data-target="#{{$paciente->slug}}">
 		 		<li class="no-bullet">
 
-		 			<label class="label label-info">{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} -- {{ $paciente->rfc }}/{{ $paciente->tipo->code }}</label>
+		 			<label class="alert alert-info">{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} -- {{ $paciente->rfc }}/{{ $paciente->tipo->code }}</label>
 		 		</li>
 		 	</a>
 		   <div id="{{$paciente->slug}}" class="collapse">
@@ -53,7 +53,7 @@
 		  <br>
 		@endforeach
 	@else
-		<label class="label label-warning"> No hay Datos Registrados Para Ese RFC </label>
+		<label class="alert alert-warning"> No hay Datos Registrados Para Ese RFC </label>
 	@endif
 </div>   
 @endsection
