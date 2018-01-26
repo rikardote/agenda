@@ -10,18 +10,7 @@
           <input  maxlength="10" id="rfc" type="text" class="form-control" name="rfc" placeholder="Buscar paciente por RFC / 10 digitos" required>
         </div>
      </div>
-        <div class="form-group">
-          <div class="col-md-4">
-          
-          {!! Form::select('tipo_id', $tipos, null, [
-            'class' => 'form-control',
-            'name' => 'tipo_id',
-            'id' => 'tipo',
-            'placeholder' => 'Selecciona un tipo', 
-            'required'
-          ]) !!}
-        </div>
-        </div>
+        
         <div class="col-md-4">
              {{ Form::submit('Buscar', array('class' => 'btn btn-success')) }}
         </div>

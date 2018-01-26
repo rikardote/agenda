@@ -18,47 +18,19 @@ class BitacoraController extends Controller
 {
     public function index()
     {
-      $tipos = Tipo::all()->lists('tipo', 'id')->toArray();
-      asort($tipos);
-      return view('bitacora.index')->with('tipos', $tipos);
-
+      return view('bitacora.index');
     }
     public function search(Request $request)
     {
       $rfc = $request->rfc;
-      $tipo = $request->tipo_id;
       $today = Carbon::today();
       $today = $today->year.'-'.$today->month.'-'.$today->day;
 
-      $tipos = Tipo::all()->lists('tipo', 'id')->toArray();
-      asort($tipos);
-
-      $pacientes = Paciente::where('rfc', '=', $rfc)->where('tipo_id', '=', $tipo)->get();
+      $pacientes = Paciente::where('rfc', '=', $rfc)->get();
 
       if (isset($pacientes)) {
-        return view('bitacora.show')->with('pacientes', $pacientes)->with('tipos', $tipos);
+        return view('bitacora.show')->with('pacientes', $pacientes);
       }
-      
-       
-      /*
 
-        if ($citas->count() >= 1) {
-          return Response::json($citas,200);
-        }
-        else{
-          $response = array(
-               'error' => 'true'
-            );
-          return Response::json('No se encontro citas con paciente RFC: '.$rfc.' - '.$tipo->code,500);
-        }
-        
-        }
-      }else {
-        $response = array(
-               'error' => 'true'
-            );
-        return Response::json('No se encontro Paciente con RFC: '.$rfc.' - '.$tipo->code,500);
-      }
-     */ 
     }
 }

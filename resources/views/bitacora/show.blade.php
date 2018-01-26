@@ -10,18 +10,7 @@
           <input  maxlength="10" id="rfc" type="text" class="form-control" name="rfc" placeholder="Buscar paciente por RFC / 10 digitos" required>
         </div>
      </div>
-        <div class="form-group">
-          <div class="col-md-4">
-          
-          {!! Form::select('tipo_id', $tipos, null, [
-            'class' => 'form-control',
-            'name' => 'tipo_id',
-            'id' => 'tipo',
-            'placeholder' => 'Selecciona un tipo', 
-            'required'
-          ]) !!}
-        </div>
-        </div>
+       
         <div class="col-md-4">
              {{ Form::submit('Buscar', array('class' => 'btn btn-success')) }}
         </div>
@@ -29,13 +18,15 @@
     
 <br><br><br><br>
 	@if($pacientes->count() >= 1)
+		Se encontraron {{$pacientes->count()}} pacientes
+		<br>
 		@foreach($pacientes as $paciente)
 			 {{--*/ $citas = getCitasPorPaciente($paciente->id) /*--}}
 
 		 	<a type="button" data-toggle="collapse" data-target="#{{$paciente->slug}}">
 		 		<li class="no-bullet">
 
-		 			<label class="label label-success">{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} -- {{ $paciente->rfc }}/{{ $paciente->tipo->code }}</label>
+		 			<label class="label label-info">{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} -- {{ $paciente->rfc }}/{{ $paciente->tipo->code }}</label>
 		 		</li>
 		 	</a>
 		   <div id="{{$paciente->slug}}" class="collapse">
@@ -59,7 +50,7 @@
 				   </div>
 		 </div>
 
-		  
+		  <br>
 		@endforeach
 	@else
 		<label class="label label-warning"> No hay Datos Registrados Para Ese RFC </label>
