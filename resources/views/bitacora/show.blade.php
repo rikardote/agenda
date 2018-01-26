@@ -39,7 +39,7 @@
 		 	</a>
 		   <div id="{{$paciente->slug}}" class="collapse">
 				<div class="col-md-12">
-				    <table class="table table-hover" >
+				    <table class="table table-striped" >
 				        <thead>
 				           <th>Fecha</th>
 				           <th>Medico</th>
