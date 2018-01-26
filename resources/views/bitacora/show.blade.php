@@ -3,7 +3,7 @@
 @section('title', 'Bitacora / Pacientes')
 
 @section('content')
-	 <div  class="container">
+<div  class="container">
    {!! Form::open(['route' => ['bitacora.search'], 'method' => 'post']) !!}
      <div class="form-group">
         <div class="col-md-4">

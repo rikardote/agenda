@@ -43,52 +43,5 @@ $("#rfc").on('input', function(evt) {
 });
 </script>
 
-  <script type="text/javascript">
-/*
-    $('#search').click(function(){
-      var frmrfc = $('#rfc').val();
-      var frmtipo = $('#tipo').val();
-      var tablaDatos = $("#after_tr");
-      var pacienteRfc = $("#paciente-datos");
-      var token = $("#token").val();
-      var route = "{{ route('bitacora.search') }}";
-      var today = new Date().toISOString().slice(0, 10);
-      //var link = "http://agenda.slyip.com/citas/";
-      var link = "{{route('citas.index')}}/";
-      var dataString = 'rfc='+frmrfc+'&tipo_id='+frmtipo; 
-      
-      $.ajax({
-        url: route,
-        headers: {'X-CSRF-TOKEN': token},
-        type: 'POST',
-        data: dataString,
-             success: function(res) {
-              document.getElementById("datos").style.visibility="visible";
-              document.getElementById("paciente").style.visibility="visible";
-              tablaDatos.empty();
-              pacienteRfc.empty();
-              console.log(res);
-
-               //$(res).each(function(key, value){
-               
-              //});
-             },
-             error: function (res) {
-              document.getElementById("datos").style.visibility="hidden";
-              document.getElementById("paciente").style.visibility="hidden";
-              swal({
-                title: "Atencion!!... ",   
-                text: res.responseText,   
-                type: "warning",   
-                confirmButtonColor: "#DD6B55",   
-                closeOnConfirm: false,
-                timer: 3000
-               });  
-                
-             }
-
-          });
-    }); 
-    */
-  </script>
+ 
 @endsection
