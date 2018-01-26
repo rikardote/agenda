@@ -90,7 +90,7 @@ $("#rfc").on('input', function(evt) {
               pacienteRfc.append("<tr><td>"+res[0].paciente.rfc+"/"+res[0].paciente.tipo.code+"</td><td>"+res[0].paciente.nombres+" "+res[0].paciente.apellido_pat+" "+res[0].paciente.apellido_mat+"</td></tr>");  
 
                 $(res).each(function(key, value){
-                  tablaDatos.append("<tr><td><a href="+link+value.medico.slug+"/"+today+"?date="+value.fecha+">"+value.fecha+"</a></td><td>"+value.medico.nombres+" "+value.medico.apellido_pat+" "+value.medico.apellido_mat+"</td><td>"+value.medico.especialidad.name+"</td></tr>");                  
+                  tablaDatos.append("<tr><td>"+value.fecha+"</td><td>"+value.medico.nombres+" "+value.medico.apellido_pat+" "+value.medico.apellido_mat+"</td><td>"+value.medico.especialidad.name+"</td></tr>");                  
                 
               });
              },
