@@ -34,7 +34,8 @@
 
 		 	<a type="button" data-toggle="collapse" data-target="#{{$paciente->slug}}">
 		 		<li class="no-bullet">
-		 			<label class="label label-success">{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} /{{ $paciente->tipo->code }}</label>
+
+		 			<label class="label label-success">{{ $paciente->nombres }} {{ $paciente->apellido_pat }} {{ $paciente->apellido_mat }} -- {{ $paciente->rfc }}/{{ $paciente->tipo->code }}</label>
 		 		</li>
 		 	</a>
 		   <div id="{{$paciente->slug}}" class="collapse">
