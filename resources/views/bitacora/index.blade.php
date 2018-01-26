@@ -87,10 +87,11 @@ $("#rfc").on('input', function(evt) {
               document.getElementById("paciente").style.visibility="visible";
               tablaDatos.empty();
               pacienteRfc.empty();
-              pacienteRfc.append("<tr><td>"+res[0].paciente.rfc+"/"+res[0].paciente.tipo.code+"</td><td>"+res[0].paciente.nombres+" "+res[0].paciente.apellido_pat+" "+res[0].paciente.apellido_mat+"</td></tr>");  
+              console.log(res);
 
-                $(res).each(function(key, value){
-                  tablaDatos.append("<tr><td>"+value.fecha+"</td><td>"+value.medico.nombres+" "+value.medico.apellido_pat+" "+value.medico.apellido_mat+"</td><td>"+value.medico.especialidad.name+"</td></tr>");                  
+               $(res).each(function(key, value){
+                pacienteRfc.append("<tr><td>"+value.paciente.rfc+"/"+value.paciente.tipo.code+"</td><td>"+value.paciente.nombres+" "+value.paciente.apellido_pat+" "+value.paciente.apellido_mat+"</td></tr>");  
+                  //tablaDatos.append("<tr><td>"+value.fecha+"</td><td>"+value.medico.nombres+" "+value.medico.apellido_pat+" "+value.medico.apellido_mat+"</td><td>"+value.medico.especialidad.name+"</td></tr>");   */               
                 
               });
              },

@@ -30,8 +30,8 @@ class BitacoraController extends Controller
       $today = Carbon::today();
       $today = $today->year.'-'.$today->month.'-'.$today->day;
 
-      $paciente = Paciente::where('rfc', '=', $rfc)->where('tipo_id', '=', $tipo)->first();
-      
+      $paciente = Paciente::where('rfc', '=', $rfc)->where('tipo_id', '=', $tipo)->get();
+      return Response::json($paciente,200);
       
       $tipo = Tipo::find($tipo);
 
