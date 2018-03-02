@@ -61,7 +61,7 @@
 	<div class="col-md-6">
 		<div class="form-group">
 			{!! Form::label('foraneo_id', 'Ubicacion') !!}
-			{!!	Form::select('foraneo_id', array('1' => 'Mexicali', '2' => 'Ensenada', '3' => 'Tijuana', '4' => 'San Luis R.C', '5' => 'Tecate', 'Delta', 'Algodones', 'San Felipe'), 1, [
+			{!!	Form::select('foraneo_id', array('1' => 'Mexicali', '2' => 'Ensenada', '3' => 'Tijuana', '4' => 'San Luis R.C', '5' => 'Tecate', 'Delta', 'Algodones', 'San Felipe','Foraneos'), 1, [
 				'class' => 'form-control',
 				'id' => 'ubicacion',
 				'required'

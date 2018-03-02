@@ -91,6 +91,8 @@ function getForaneo($id)
         return "Algodones";
       case 8:
         return "S.F.";
+      case 9:
+        return "Foraneo";
 
   }
 }
