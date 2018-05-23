@@ -39,9 +39,9 @@ class SearchPacientesController extends Controller
         $minutes = $medico->minutes ?  $medico->minutes:20;
         $timeminutes = '+'.($minutes*4).' minutes';
 
-        if(!\Auth::user()->admin()) {
-            $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime($timeminutes, strtotime($medico->horario->entrada))).'"]';
-        }
+        //if(!\Auth::user()->admin()) {
+        //    $intervaloPrimeravez = '["'.$medico->horario->entrada.'","'.date('H:i', strtotime($timeminutes, strtotime($medico->horario->entrada))).'"]';
+        //}
         
 
 			$todas_citas = Cita::getTotalCitas($medico->id, $date);
