@@ -143,7 +143,10 @@ function getDia($date) {
         return 'JUE';
       case 5:
         return 'VIE';
-      
+      case 6:
+        return 'SAB';
+      case 7:
+        return 'DOM';
     }
 
 }

@@ -50,7 +50,9 @@
               }
              }   
             ?>
-
+          @if($dia_semana == 0)
+              {{-- */$dia_semana = 7; /* --}}
+          @endif
           @if($medico->id != 25)
             @if($citas->count() < 18 && $permiso_act != 1 && in_array($dia_semana,$diasconsulta_select))
               @if(in_array($dia_semana,$diaconsulta_select))
