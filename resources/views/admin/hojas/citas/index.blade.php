@@ -16,18 +16,21 @@
             
 
           <?php 
-            $permiso_act = 0;
+             $permiso_act = 0;
+             foreach ($permisos as $permiso) {
+
               if (isset($permiso->fecha_inicio) && isset($permiso->fecha_final)) {
-                $date2 = strtotime($date);
+                
                 $f_inicio = strtotime($permiso->fecha_inicio); 
                 $f_final = strtotime($permiso->fecha_final); 
               
                 if($date2 >= $f_inicio && $date2 <= $f_final) {
                   $permiso_act = 1;
-                   echo "<b><span style='color: red'>El medico esta de Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
+                   echo "<b><span class='font-border'>Medico esta de<br>Permiso hasta el ".fecha_dmy($permiso->fecha_final)."</span></b>";
                 }
               }
-          ?>
+             }   
+            ?>
             @if($citas->count() < 10 && $permiso_act != 1)
               <a data-url="{{ route('medico.nueva_cita', [$medico->slug , $date]) }}" class="load-form-modal fa fa-pencil fa-2x panelColor" data-toggle ="modal" data-target='#form-modal'></a> 
               <h3> Hay <span class="badge">{{ $citas->count() }}</span> Citas del dia: {{ fecha_dmy($date) }}</h3>
