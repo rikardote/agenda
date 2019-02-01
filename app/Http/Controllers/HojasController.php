@@ -37,7 +37,7 @@ class HojasController extends Controller
         
     
         $medico = Medico::find(\Auth::guard('doctors')->user()->doctor_id);
-        $permiso = Permiso::where('medico_id', '=', $medico->id)->where('fecha_inicio', '>=', $today)->first();
+        $permisos = Permiso::where('medico_id', '=', $medico->id)->get();
 
         $citas = Cita::orderBy('id', 'ASC')->where('medico_id', '=' , $medico->id)->where('fecha', '=', $date)->get();
         $citas->each(function($citas) {
@@ -60,7 +60,7 @@ class HojasController extends Controller
             ->with('date', $date)
             ->with('date2', $date2)
             ->with('todas_citas', $todas_citas)
-            ->with('permiso', $permiso)
+            ->with('permisos', $permisos)
             ->with('f_anterior', $f_anterior);
 
     }
